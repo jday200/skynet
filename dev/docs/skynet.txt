@@ -10,10 +10,11 @@ skynet整体规划
 1、skynet
 负责启动，初始化，平台选择，组件选择等。
 
-2、T200Lib
+T200Func
+T200Libs
 
-3、T200Util
+T200Parts
+T200Suites
 
-4、T200Suite
+T200Apps
 
-5、T200App
