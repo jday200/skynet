@@ -18,3 +18,7 @@
 /source/T200/T200Tests/src/T200Tests/bin/Debug
 /source/T200/T200Tests/src/T200Tests/obj/Debug
 /source/T200/T200Tests/src/T200Tests/T200Tests.depend
+/source/T200/T200Apps/src/T200Apps/.objs/src/Graphics
+/source/T200/T200Apps/src/T200Apps/.objs/src/Test
+/source/T200/T200Apps/src/T200Apps/.objs/src/Tui
+/source/T200/libT200Apps.a
