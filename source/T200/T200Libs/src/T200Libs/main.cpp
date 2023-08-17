@@ -1,9 +1,9 @@
-#include <iostream>
+#include "T200LibTuiTest.h"
 
-using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    T200LibTuiTest      test;
+
+    return test.test_all();
 }

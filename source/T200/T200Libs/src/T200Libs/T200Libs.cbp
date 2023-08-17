@@ -16,6 +16,8 @@
 					<Add directory="include/Graphics" />
 					<Add directory="include/Tui" />
 					<Add directory="include/Test" />
+					<Add directory="include" />
+					<Add directory="test/Tui" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -28,6 +30,8 @@
 					<Add directory="include/Graphics" />
 					<Add directory="include/Tui" />
 					<Add directory="include/Test" />
+					<Add directory="include" />
+					<Add directory="test/Tui" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -39,12 +43,17 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Graphics/T200LibGraphics.h" />
+		<Unit filename="include/T200Class.h" />
+		<Unit filename="include/T200Common.h" />
 		<Unit filename="include/Test/T200LibTest.h" />
 		<Unit filename="include/Tui/T200LibTui.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Graphics/T200LibGraphics.cpp" />
+		<Unit filename="src/T200Class.cpp" />
 		<Unit filename="src/Test/T200LibTest.cpp" />
 		<Unit filename="src/Tui/T200LibTui.cpp" />
+		<Unit filename="test/Tui/T200LibTuiTest.cpp" />
+		<Unit filename="test/Tui/T200LibTuiTest.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
