@@ -15,6 +15,7 @@
 					<Add option="-g" />
 					<Add directory="include/Graphics" />
 					<Add directory="include/Tui" />
+					<Add directory="include/Test" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -26,6 +27,7 @@
 					<Add option="-O2" />
 					<Add directory="include/Graphics" />
 					<Add directory="include/Tui" />
+					<Add directory="include/Test" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -37,9 +39,11 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Graphics/T200PartGraphics.h" />
+		<Unit filename="include/Test/T200PartTest.h" />
 		<Unit filename="include/Tui/T200PartTui.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Graphics/T200PartGraphics.cpp" />
+		<Unit filename="src/Test/T200PartTest.cpp" />
 		<Unit filename="src/Tui/T200PartTui.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
