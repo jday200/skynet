@@ -8,6 +8,8 @@ class T200AppTest
         T200AppTest();
         virtual ~T200AppTest();
 
+        int             run();
+
     protected:
 
     private:

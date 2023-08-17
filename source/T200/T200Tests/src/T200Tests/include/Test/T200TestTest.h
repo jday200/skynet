@@ -1,8 +1,10 @@
 #ifndef T200TESTTEST_H
 #define T200TESTTEST_H
 
+#include "Test\T200AppTest.h"
 
-class T200TestTest
+
+class T200TestTest : public T200AppTest
 {
     public:
         T200TestTest();

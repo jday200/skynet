@@ -33,6 +33,18 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Lib">
+				<Option output="../../../T200Apps" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add directory="include/Graphics" />
+					<Add directory="include/Tui" />
+					<Add directory="include/Test" />
+				</Compiler>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -41,7 +53,10 @@
 		<Unit filename="include/Graphics/T200AppGraphics.h" />
 		<Unit filename="include/Test/T200AppTest.h" />
 		<Unit filename="include/Tui/T200AppTui.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/Graphics/T200AppGraphics.cpp" />
 		<Unit filename="src/Test/T200AppTest.cpp" />
 		<Unit filename="src/Tui/T200AppTui.cpp" />
