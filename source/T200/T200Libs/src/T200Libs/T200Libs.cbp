@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include/Graphics" />
+					<Add directory="include/Tui" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +24,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include/Graphics" />
+					<Add directory="include/Tui" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +36,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Graphics/T200LibGraphics.h" />
+		<Unit filename="include/Tui/T200LibTui.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Graphics/T200LibGraphics.cpp" />
+		<Unit filename="src/Tui/T200LibTui.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
