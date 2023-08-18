@@ -7,9 +7,8 @@ class T200String
 {
     public:
         T200String();
+        T200String(const char*);
         virtual ~T200String();
-
-
 
     protected:
 
