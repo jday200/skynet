@@ -2,6 +2,8 @@
 #define T200LIBTUI_H
 
 #include "T200Class.h"
+#include "T200Common.h"
+#include "T200String.h"
 
 
 class T200LibTui : public T200Class
@@ -10,7 +12,7 @@ class T200LibTui : public T200Class
         T200LibTui();
         virtual ~T200LibTui();
 
-        T200VOID            print();
+        T200VOID            print(T200String);
 
     protected:
 

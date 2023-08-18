@@ -11,7 +11,7 @@ T200LibTui::~T200LibTui()
     //dtor
 }
 
-T200VOID T200LibTui::print()
+T200VOID T200LibTui::print(T200String msg)
 {
 
 }
