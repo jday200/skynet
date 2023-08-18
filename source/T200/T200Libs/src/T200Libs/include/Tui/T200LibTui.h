@@ -15,6 +15,8 @@ class T200LibTui : public T200Class
         T200VOID            print(T200String);
 
     protected:
+        T200VOID            create();
+        T200VOID            destroy();
 
     private:
 };
