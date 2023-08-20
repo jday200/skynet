@@ -24,3 +24,8 @@ T200BOOL T200LibDisplay::print(T200String msg)
     //printf("%s", msg);
     return T200FALSE;
 }
+
+std::ostream & operator<<(std::ostream & os, const T200String & c)
+{
+    return os << c.m_string;
+}
