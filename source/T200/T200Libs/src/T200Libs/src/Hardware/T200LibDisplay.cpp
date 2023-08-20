@@ -20,7 +20,7 @@ T200BOOL T200LibDisplay::setMode(T200DISPLAY_MODE mode)
 
 T200BOOL T200LibDisplay::print(T200String msg)
 {
-    //std::cout << msg;
-    printf("%s", msg);
+    std::cout << msg;
+    //printf("%s", msg);
     return T200FALSE;
 }
