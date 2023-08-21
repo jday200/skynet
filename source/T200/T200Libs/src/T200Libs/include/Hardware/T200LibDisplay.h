@@ -4,7 +4,7 @@
 #include "T200Common.h"
 #include "T200String.h"
 
-#include "T200TuiWin10.h"
+#include "Win10/Tui/T200TuiWin10.h"
 
 
 typedef enum {
@@ -19,11 +19,9 @@ class T200LibDisplay : public T200TuiWin10
         T200LibDisplay();
         virtual ~T200LibDisplay();
 
-        static T200BOOL         setMode(T200DISPLAY_MODE);
+        T200BOOL         setMode(T200DISPLAY_MODE);
 
-        static T200BOOL         print(T200String);
-
-        static T200BOOL         moveto(T200INT, T200INT);
+        T200VOID         print(T200String);
 
     protected:
 

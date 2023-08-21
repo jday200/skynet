@@ -18,20 +18,21 @@ T200LibTui::~T200LibTui()
 
 T200VOID T200LibTui::create()
 {
-    T200LibDisplay::setMode(T200DISPLAY_TEXT_MODE);
+    m_display = T200NEW T200LibDisplay();
+    m_display->setMode(T200DISPLAY_TEXT_MODE);
 }
 
 T200VOID T200LibTui::destroy()
 {
-
+    T200DELETE m_display;
 }
 
 T200VOID T200LibTui::print(T200String msg)
 {
-    T200LibDisplay::print(msg);
+    m_display->print(msg);
 }
 
 T200VOID T200LibTui::moveto(T200INT x, T200INT y)
 {
-    T200LibDisplay::moveto(x, y);
+    m_display->moveto(x, y);
 }

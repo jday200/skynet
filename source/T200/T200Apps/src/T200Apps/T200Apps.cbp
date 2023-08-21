@@ -50,6 +50,8 @@
 					<Add directory="include" />
 					<Add directory="../../../T200Libs/src/T200Libs/include" />
 					<Add directory="../../../T200Libs/src/T200Libs/include/String" />
+					<Add directory="../../../T200Norm/src/T200Norm/include" />
+					<Add directory="../../../T200Func/src/T200Func/include" />
 				</Compiler>
 			</Target>
 		</Build>

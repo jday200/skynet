@@ -22,3 +22,8 @@ T200VOID T200TuiWin10::moveto(T200INT x, T200INT y)
 
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+
+T200VOID T200TuiWin10::print(T200String msg)
+{
+
+}

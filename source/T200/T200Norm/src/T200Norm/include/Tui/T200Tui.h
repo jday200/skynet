@@ -12,8 +12,8 @@ class T200Tui
         T200Tui();
         virtual ~T200Tui();
 
-        virtual T200VOID        print(T200String);
-        virtual T200VOID        moveto(T200INT, T200INT);
+        virtual T200VOID        print(T200String) = 0;
+        virtual T200VOID        moveto(T200INT, T200INT) = 0;
 
     protected:
 

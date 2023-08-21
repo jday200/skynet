@@ -17,11 +17,13 @@
 					<Add directory="../../../T200Apps/src/T200Apps/include" />
 					<Add directory="include/Tui" />
 					<Add directory="../../../T200Libs/src/T200Libs/include" />
+					<Add directory="../../../T200Norm/src/T200Norm/include" />
 				</Compiler>
 				<Linker>
 					<Add library="../../../libT200Apps.a" />
 					<Add library="../../../libT200Libs.a" />
 					<Add library="../../../libT200Func.a" />
+					<Add library="../../../libT200Norm.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">

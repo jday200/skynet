@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include/Tui" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include/Tui" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,6 +40,7 @@
 				<Compiler>
 					<Add directory="include/Tui" />
 					<Add directory="../../../T200Libs/src/T200Libs/include" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -45,6 +48,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/T200MacroCommon.h" />
+		<Unit filename="include/T200MacroLeak.h" />
 		<Unit filename="include/Tui/T200Tui.h" />
 		<Unit filename="main.cpp">
 			<Option target="Debug" />

@@ -4,6 +4,7 @@
 #include "T200Class.h"
 #include "T200Common.h"
 #include "T200String.h"
+#include "Hardware/T200LibDisplay.h"
 
 
 class T200LibTui : public T200Class
@@ -20,6 +21,8 @@ class T200LibTui : public T200Class
         T200VOID            destroy();
 
     private:
+        T200LibDisplay*     m_display           = T200NULL;
+
 };
 
 #endif // T200LIBTUI_H

@@ -13,6 +13,8 @@ class T200TuiWin10 : public T200Tui
 
         T200VOID            moveto(T200INT, T200INT);
 
+        T200VOID            print(T200String);
+
     protected:
 
     private:

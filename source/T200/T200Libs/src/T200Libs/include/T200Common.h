@@ -1,6 +1,8 @@
 #ifndef T200COMMON_H
 #define T200COMMON_H
 
+#include "T200MacroCommon.h"
+
 #define     T200NULL                nullptr
 #define     T200TRUE                true
 #define     T200FALSE               false
