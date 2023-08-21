@@ -17,5 +17,7 @@ T200VOID T200AppTui::run()
 {
     T200LibTui      tui;
 
+    tui.moveto(10, 10);
+
     tui.print("Hello");
 }

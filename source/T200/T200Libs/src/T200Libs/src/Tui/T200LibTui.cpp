@@ -30,3 +30,8 @@ T200VOID T200LibTui::print(T200String msg)
 {
     T200LibDisplay::print(msg);
 }
+
+T200VOID T200LibTui::moveto(T200INT x, T200INT y)
+{
+    T200LibDisplay::moveto(x, y);
+}

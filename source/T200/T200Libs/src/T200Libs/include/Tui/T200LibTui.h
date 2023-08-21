@@ -13,6 +13,7 @@ class T200LibTui : public T200Class
         virtual ~T200LibTui();
 
         T200VOID            print(T200String);
+        T200VOID            moveto(T200INT, T200INT);
 
     protected:
         T200VOID            create();

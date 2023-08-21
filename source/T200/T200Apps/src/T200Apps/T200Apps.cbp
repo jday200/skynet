@@ -17,6 +17,8 @@
 					<Add directory="include/Tui" />
 					<Add directory="include/Test" />
 					<Add directory="include" />
+					<Add directory="../../../T200Libs/src/T200Libs/include" />
+					<Add directory="../../../T200Libs/src/T200Libs/include/String" />
 				</Compiler>
 			</Target>
 			<Target title="Release">

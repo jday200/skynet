@@ -15,6 +15,8 @@
 					<Add option="-g" />
 					<Add directory="include/Graphics" />
 					<Add directory="include/Tui" />
+					<Add directory="include/Win10/Tui" />
+					<Add directory="../../../T200Libs/src/T200Libs/include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -26,10 +28,24 @@
 					<Add option="-O2" />
 					<Add directory="Graphics" />
 					<Add directory="include/Tui" />
+					<Add directory="include/Win10/Tui" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 				</Linker>
+			</Target>
+			<Target title="Lib">
+				<Option output="../../../T200Func" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add directory="include/Graphics" />
+					<Add directory="include/Tui" />
+					<Add directory="include/Win10/Tui" />
+					<Add directory="../../../T200Libs/src/T200Libs/include" />
+				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
@@ -38,9 +54,14 @@
 		</Compiler>
 		<Unit filename="include/Graphics/T200FuncGraphics.h" />
 		<Unit filename="include/Tui/T200FuncTui.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include/Win10/Tui/T200TuiWin10.h" />
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/Graphics/T200FuncGraphics.cpp" />
 		<Unit filename="src/Tui/T200FuncTui.cpp" />
+		<Unit filename="src/Win10/Tui/T200TuiWin10.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
