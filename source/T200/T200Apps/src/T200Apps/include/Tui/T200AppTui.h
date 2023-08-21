@@ -1,12 +1,16 @@
 #ifndef T200APPTUI_H
 #define T200APPTUI_H
 
+#include "T200App.h"
 
-class T200AppTui
+
+class T200AppTui : public T200App
 {
     public:
         T200AppTui();
         virtual ~T200AppTui();
+
+        T200VOID        run();
 
     protected:
 

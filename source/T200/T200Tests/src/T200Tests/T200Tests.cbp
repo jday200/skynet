@@ -20,6 +20,7 @@
 				</Compiler>
 				<Linker>
 					<Add library="../../../libT200Apps.a" />
+					<Add library="../../../libT200Libs.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
