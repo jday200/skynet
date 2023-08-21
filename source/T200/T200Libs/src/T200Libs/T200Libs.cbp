@@ -56,6 +56,7 @@
 					<Add directory="include/String" />
 					<Add directory="include/Hardware" />
 					<Add directory="../../../T200Func/src/T200Func/include/Win10/Tui" />
+					<Add directory="../../../T200Norm/src/T200Norm/include" />
 				</Compiler>
 			</Target>
 		</Build>

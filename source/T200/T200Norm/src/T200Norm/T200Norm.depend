@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1584205420 source:c:\dev\spaces\jday200\skynet\source\t200\t200norm\src\t200norm\main.cpp
+	<iostream>
+
+1692622097 source:c:\dev\spaces\jday200\skynet\source\t200\t200norm\src\t200norm\src\tui\t200tui.cpp
+	"T200Tui.h"
+
+1692622441 c:\dev\spaces\jday200\skynet\source\t200\t200norm\src\t200norm\include\tui\t200tui.h
+	"T200Common.h"
+	"String/T200String.h"
+
+1692346024 c:\dev\spaces\jday200\skynet\source\t200\t200libs\src\t200libs\include\t200common.h
+
+1692508189 c:\dev\spaces\jday200\skynet\source\t200\t200libs\src\t200libs\include\string\t200string.h
+	<iostream>
+	"T200Common.h"
+

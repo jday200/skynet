@@ -2,9 +2,10 @@
 #define T200TUIWIN10_H
 
 #include "T200Common.h"
+#include "Tui/T200Tui.h"
 
 
-class T200TuiWin10
+class T200TuiWin10 : public T200Tui
 {
     public:
         T200TuiWin10();

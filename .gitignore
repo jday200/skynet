@@ -33,3 +33,6 @@
 /source/T200/T200Func/src/T200Func/.objs/src/Tui
 /source/T200/T200Func/src/T200Func/.objs/src/Win10/Tui
 /source/T200/libT200Func.a
+/source/T200/T200Norm/src/T200Norm/.objs/src/Tui
+/source/T200/T200Norm/src/T200Norm/obj/Debug
+/source/T200/libT200Norm.a
