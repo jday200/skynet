@@ -41,6 +41,22 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Lib">
+				<Option output="../../../T200Libs" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add directory="include/Graphics" />
+					<Add directory="include/Tui" />
+					<Add directory="include/Test" />
+					<Add directory="include" />
+					<Add directory="test/Tui" />
+					<Add directory="include/String" />
+					<Add directory="include/Hardware" />
+				</Compiler>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -54,7 +70,10 @@
 		<Unit filename="include/T200Common.h" />
 		<Unit filename="include/Test/T200LibTest.h" />
 		<Unit filename="include/Tui/T200LibTui.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/Graphics/T200LibGraphics.cpp" />
 		<Unit filename="src/Hardware/T200LibDisplay.cpp" />
 		<Unit filename="src/String/T200String.cpp" />

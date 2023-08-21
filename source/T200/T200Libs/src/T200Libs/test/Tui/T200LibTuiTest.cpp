@@ -19,5 +19,7 @@ T200BOOL T200LibTuiTest::test_all()
 
     tui.print("Hello world!");
 
+    tui.print("Tui testing...");
+
     return T200FALSE;
 }
