@@ -13,6 +13,13 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="common/include/Tui" />
+					<Add directory="hardware/include/Tui/Win10" />
+					<Add directory="library/include/Tui" />
+					<Add directory="parts/include/Tui" />
+					<Add directory="suites/include/Tui" />
+					<Add directory="apps/include/Tui" />
+					<Add directory="tests/include/Tui" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +29,13 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="common/include/Tui" />
+					<Add directory="hardware/include/Tui/Win10" />
+					<Add directory="library/include/Tui" />
+					<Add directory="parts/include/Tui" />
+					<Add directory="suites/include/Tui" />
+					<Add directory="apps/include/Tui" />
+					<Add directory="tests/include/Tui" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +46,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="apps/include/Tui/T200AppTui.h" />
+		<Unit filename="apps/src/Tui/T200AppTui.cpp" />
+		<Unit filename="common/include/Tui/T200TuiTypes.h" />
+		<Unit filename="hardware/include/Tui/Win10/T200TuiWin10.h" />
+		<Unit filename="hardware/src/Tui/Win10/T200TuiWin10.cpp" />
+		<Unit filename="library/include/Tui/T200Tui.h" />
+		<Unit filename="library/src/Tui/T200Tui.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="parts/include/Tui/T200PartTui.h" />
+		<Unit filename="parts/src/Tui/T200PartTui.cpp" />
+		<Unit filename="suites/include/Tui/T200SuiteTui.h" />
+		<Unit filename="suites/src/Tui/T200SuiteTui.cpp" />
+		<Unit filename="tests/include/Tui/T200TestTui.h" />
+		<Unit filename="tests/src/Tui/T200TestTui.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
