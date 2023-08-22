@@ -26,6 +26,6 @@ T200String::~T200String()
     //dtor
 
     if(m_string){
-        delete[] m_string;
+        //delete[] m_string;
     }
 }

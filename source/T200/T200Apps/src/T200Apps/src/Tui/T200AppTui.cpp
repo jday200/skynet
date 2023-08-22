@@ -20,4 +20,14 @@ T200VOID T200AppTui::run()
     tui.moveto(10, 10);
 
     tui.print("Hello");
+
+    tui.moveto(20, 20);
+
+    tui.print("World!");
+
+    tui.moveto(10, 10);
+
+    tui.print("Start");
+
+    tui.moveto(0, 25);
 }
