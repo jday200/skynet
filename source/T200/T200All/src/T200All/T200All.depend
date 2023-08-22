@@ -37,10 +37,12 @@
 1692679857 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\tests\include\tui\t200testtui.h
 	"T200Common.h"
 
-1692678898 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\src\string\t200string.cpp
+1692681995 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\src\string\t200string.cpp
 	"T200String.h"
 
-1692678898 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\include\string\t200string.h
+1692681973 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\include\string\t200string.h
+	<iostream>
+	"T200Common.h"
 
 1692679836 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\common\include\t200common.h
 	"Win10/T200CommonWin10.h"
@@ -54,8 +56,10 @@
 	"T200Common.h"
 	"T200String.h"
 
-1692680498 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\src\win10\tui\t200win10tui.cpp
+1692681306 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\src\win10\tui\t200win10tui.cpp
 	"T200Win10Tui.h"
+	<iostream>
+	<windows.h>
 
 1692680456 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\include\win10\tui\t200win10tui.h
 	"T200TuiBase.h"
