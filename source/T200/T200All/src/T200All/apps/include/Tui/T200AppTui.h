@@ -8,6 +8,8 @@ class T200AppTui
         T200AppTui();
         virtual ~T200AppTui();
 
+        T200VOID            run();
+
     protected:
 
     private:

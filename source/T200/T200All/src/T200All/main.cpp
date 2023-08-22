@@ -1,9 +1,8 @@
-#include <iostream>
-
-using namespace std;
+#include "T200TestTui.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    T200TestTui     tui;
+
+    return tui.test_all();
 }

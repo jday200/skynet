@@ -8,6 +8,8 @@ class T200TestTui
         T200TestTui();
         virtual ~T200TestTui();
 
+        T200INT             test_all();
+
     protected:
 
     private:

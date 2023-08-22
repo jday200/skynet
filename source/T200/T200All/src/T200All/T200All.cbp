@@ -20,6 +20,7 @@
 					<Add directory="suites/include/Tui" />
 					<Add directory="apps/include/Tui" />
 					<Add directory="tests/include/Tui" />
+					<Add directory="library/include/String" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -36,6 +37,7 @@
 					<Add directory="suites/include/Tui" />
 					<Add directory="apps/include/Tui" />
 					<Add directory="tests/include/Tui" />
+					<Add directory="library/include/String" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -51,7 +53,9 @@
 		<Unit filename="common/include/Tui/T200TuiTypes.h" />
 		<Unit filename="hardware/include/Tui/Win10/T200TuiWin10.h" />
 		<Unit filename="hardware/src/Tui/Win10/T200TuiWin10.cpp" />
+		<Unit filename="library/include/String/T200String.h" />
 		<Unit filename="library/include/Tui/T200Tui.h" />
+		<Unit filename="library/src/String/T200String.cpp" />
 		<Unit filename="library/src/Tui/T200Tui.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="parts/include/Tui/T200PartTui.h" />
