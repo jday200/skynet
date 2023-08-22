@@ -36,3 +36,7 @@
 /source/T200/T200Norm/src/T200Norm/.objs/src/Tui
 /source/T200/T200Norm/src/T200Norm/obj/Debug
 /source/T200/libT200Norm.a
+/source/T200/T200Parts/src/T200Parts/.objs/src/Graphics
+/source/T200/T200Parts/src/T200Parts/.objs/src/Test
+/source/T200/T200Parts/src/T200Parts/.objs/src/Tui
+/source/T200/libT200Parts.a

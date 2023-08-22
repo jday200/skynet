@@ -16,6 +16,10 @@
 					<Add directory="include/Graphics" />
 					<Add directory="include/Tui" />
 					<Add directory="include/Test" />
+					<Add directory="../../../T200Libs/src/T200Libs/include" />
+					<Add directory="../../../T200Norm/src/T200Norm/include" />
+					<Add directory="../../../T200Libs/src/T200Libs/include/String" />
+					<Add directory="../../../T200Func/src/T200Func/include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -33,6 +37,22 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Lib">
+				<Option output="../../../T200Parts" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add directory="include/Graphics" />
+					<Add directory="include/Tui" />
+					<Add directory="include/Test" />
+					<Add directory="../../../T200Libs/src/T200Libs/include" />
+					<Add directory="../../../T200Norm/src/T200Norm/include" />
+					<Add directory="../../../T200Libs/src/T200Libs/include/String" />
+					<Add directory="../../../T200Func/src/T200Func/include" />
+				</Compiler>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -41,10 +61,17 @@
 		<Unit filename="include/Graphics/T200PartGraphics.h" />
 		<Unit filename="include/Test/T200PartTest.h" />
 		<Unit filename="include/Tui/T200PartTui.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include/Tui/T200TuiDialog.h" />
+		<Unit filename="include/Tui/T200TuiDialogBase.h" />
+		<Unit filename="main.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="src/Graphics/T200PartGraphics.cpp" />
 		<Unit filename="src/Test/T200PartTest.cpp" />
 		<Unit filename="src/Tui/T200PartTui.cpp" />
+		<Unit filename="src/Tui/T200TuiDialog.cpp" />
+		<Unit filename="src/Tui/T200TuiDialogBase.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
