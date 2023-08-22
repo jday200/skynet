@@ -73,8 +73,10 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="parts/include/Tui/T200PartTui.h" />
 		<Unit filename="parts/include/Tui/T200TuiDialog.h" />
+		<Unit filename="parts/include/Tui/T200TuiDialogBase.h" />
 		<Unit filename="parts/src/Tui/T200PartTui.cpp" />
 		<Unit filename="parts/src/Tui/T200TuiDialog.cpp" />
+		<Unit filename="parts/src/Tui/T200TuiDialogBase.cpp" />
 		<Unit filename="suites/include/Tui/T200SuiteTui.h" />
 		<Unit filename="suites/src/Tui/T200SuiteTui.cpp" />
 		<Unit filename="tests/include/Tui/T200TestTui.h" />

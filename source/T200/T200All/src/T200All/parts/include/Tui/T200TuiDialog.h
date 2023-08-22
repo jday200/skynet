@@ -2,8 +2,9 @@
 #define T200TUIDIALOG_H
 
 #include "T200Common.h"
+#include "T200TuiDialogBase.h"
 
-class T200TuiDialog
+class T200TuiDialog : public T200TuiDialogBase
 {
     public:
         T200TuiDialog();

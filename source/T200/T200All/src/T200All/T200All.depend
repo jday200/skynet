@@ -64,10 +64,14 @@
 1692680456 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\include\win10\tui\t200win10tui.h
 	"T200TuiBase.h"
 
-1692680833 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\src\tui\t200tuidialog.cpp
+1692682132 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\src\tui\t200tuidialog.cpp
 	"T200TuiDialog.h"
 	"T200Tui.h"
 
-1692680876 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\include\tui\t200tuidialog.h
+1692683059 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\include\tui\t200tuidialog.h
+	"T200Common.h"
+	"T200TuiDialogBase.h"
+
+1692683092 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\include\tui\t200tuidialogbase.h
 	"T200Common.h"
 

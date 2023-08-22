@@ -27,6 +27,8 @@ T200VOID T200TuiDialog::show()
     tui.print("Start");
 
     tui.moveto(0, 25);
+
+    draw();
 }
 
 T200VOID T200TuiDialog::hide()
