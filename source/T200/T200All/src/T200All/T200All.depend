@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1584205420 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\main.cpp
-	<iostream>
+1692679042 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\main.cpp
+	"T200TestTui.h"
 
-1692679185 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\apps\src\tui\t200apptui.cpp
+1692680755 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\apps\src\tui\t200apptui.cpp
 	"T200AppTui.h"
+	"T200TuiDialog.h"
 
 1692679716 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\apps\include\tui\t200apptui.h
 	"T200Common.h"
@@ -16,7 +17,8 @@
 1692677982 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\src\tui\t200tui.cpp
 	"T200Tui.h"
 
-1692677982 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\include\tui\t200tui.h
+1692680541 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\include\tui\t200tui.h
+	"T200Win10Tui.h"
 
 1692678061 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\src\tui\t200parttui.cpp
 	"T200PartTui.h"
@@ -28,10 +30,12 @@
 
 1692678118 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\suites\include\tui\t200suitetui.h
 
-1692678254 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\tests\src\tui\t200testtui.cpp
+1692679128 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\tests\src\tui\t200testtui.cpp
 	"T200TestTui.h"
+	"T200AppTui.h"
 
-1692678254 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\tests\include\tui\t200testtui.h
+1692679857 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\tests\include\tui\t200testtui.h
+	"T200Common.h"
 
 1692678898 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\library\src\string\t200string.cpp
 	"T200String.h"
@@ -42,4 +46,24 @@
 	"Win10/T200CommonWin10.h"
 
 1692679678 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\include\win10\t200commonwin10.h
+
+1692680155 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\common\src\tui\t200tuibase.cpp
+	"T200TuiBase.h"
+
+1692680284 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\common\include\tui\t200tuibase.h
+	"T200Common.h"
+	"T200String.h"
+
+1692680498 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\src\win10\tui\t200win10tui.cpp
+	"T200Win10Tui.h"
+
+1692680456 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\include\win10\tui\t200win10tui.h
+	"T200TuiBase.h"
+
+1692680833 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\src\tui\t200tuidialog.cpp
+	"T200TuiDialog.h"
+	"T200Tui.h"
+
+1692680876 c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\parts\include\tui\t200tuidialog.h
+	"T200Common.h"
 

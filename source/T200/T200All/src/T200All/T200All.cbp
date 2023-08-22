@@ -24,6 +24,7 @@
 					<Add directory="library/include/String" />
 					<Add directory="hardware/include/Win10" />
 					<Add directory="common/include" />
+					<Add directory="hardware/include/Win10/Tui" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -43,6 +44,7 @@
 					<Add directory="library/include/String" />
 					<Add directory="hardware/include/Win10" />
 					<Add directory="common/include" />
+					<Add directory="hardware/include/Win10/Tui" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -56,17 +58,23 @@
 		<Unit filename="apps/include/Tui/T200AppTui.h" />
 		<Unit filename="apps/src/Tui/T200AppTui.cpp" />
 		<Unit filename="common/include/T200Common.h" />
+		<Unit filename="common/include/Tui/T200TuiBase.h" />
 		<Unit filename="common/include/Tui/T200TuiTypes.h" />
+		<Unit filename="common/src/Tui/T200TuiBase.cpp" />
 		<Unit filename="hardware/include/Tui/Win10/T200TuiWin10.h" />
 		<Unit filename="hardware/include/Win10/T200CommonWin10.h" />
+		<Unit filename="hardware/include/Win10/Tui/T200Win10Tui.h" />
 		<Unit filename="hardware/src/Tui/Win10/T200TuiWin10.cpp" />
+		<Unit filename="hardware/src/Win10/Tui/T200Win10Tui.cpp" />
 		<Unit filename="library/include/String/T200String.h" />
 		<Unit filename="library/include/Tui/T200Tui.h" />
 		<Unit filename="library/src/String/T200String.cpp" />
 		<Unit filename="library/src/Tui/T200Tui.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="parts/include/Tui/T200PartTui.h" />
+		<Unit filename="parts/include/Tui/T200TuiDialog.h" />
 		<Unit filename="parts/src/Tui/T200PartTui.cpp" />
+		<Unit filename="parts/src/Tui/T200TuiDialog.cpp" />
 		<Unit filename="suites/include/Tui/T200SuiteTui.h" />
 		<Unit filename="suites/src/Tui/T200SuiteTui.cpp" />
 		<Unit filename="tests/include/Tui/T200TestTui.h" />
