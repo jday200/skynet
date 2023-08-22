@@ -40,3 +40,11 @@
 /source/T200/T200Parts/src/T200Parts/.objs/src/Test
 /source/T200/T200Parts/src/T200Parts/.objs/src/Tui
 /source/T200/libT200Parts.a
+/source/T200/T200All/src/T200All/bin/Debug/T200All.exe
+/source/T200/T200All/src/T200All/obj/Debug/main.o
+/source/T200/T200All/src/T200All/obj/Debug/apps/src/Tui
+/source/T200/T200All/src/T200All/obj/Debug/hardware/src/Tui/Win10
+/source/T200/T200All/src/T200All/obj/Debug/library/src/Tui
+/source/T200/T200All/src/T200All/obj/Debug/parts/src/Tui
+/source/T200/T200All/src/T200All/obj/Debug/suites/src/Tui
+/source/T200/T200All/src/T200All/obj/Debug/tests/src/Tui
