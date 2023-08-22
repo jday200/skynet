@@ -1,6 +1,8 @@
 #ifndef T200APPTUI_H
 #define T200APPTUI_H
 
+#include "T200Common.h"
+
 
 class T200AppTui
 {

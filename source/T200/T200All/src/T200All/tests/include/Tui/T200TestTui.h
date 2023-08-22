@@ -1,6 +1,8 @@
 #ifndef T200TESTTUI_H
 #define T200TESTTUI_H
 
+#include "T200Common.h"
+
 
 class T200TestTui
 {
