@@ -27,4 +27,10 @@ T200VOID T200TuiDialogBase::draw()
 
     tui.settextcolor(0);
     tui.print("\x1b[44m\x1b[37mHello, World!\x1b[0m");
+
+    for(int j=0;j<50;j++){
+    for(int i=0;i<100;i++){
+        tui.print(" ");
+    }
+    }
 }

@@ -56,7 +56,7 @@
 	"T200Common.h"
 	"T200String.h"
 
-1692760222 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\src\win10\tui\t200win10tui.cpp
+1692760803 source:c:\dev\spaces\jday200\skynet\source\t200\t200all\src\t200all\hardware\src\win10\tui\t200win10tui.cpp
 	"T200Win10Tui.h"
 	<iostream>
 	<windows.h>
