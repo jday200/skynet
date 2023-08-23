@@ -15,22 +15,40 @@ T200TuiDialogBase::~T200TuiDialogBase()
 
 T200VOID T200TuiDialogBase::draw()
 {
+    clear();
+    draw_title();
+
+}
+
+
+T200VOID T200TuiDialogBase::clear()
+{
     T200Tui         tui;
 
-    tui.moveto(10, 10);
-    tui.print("1111111111111111111111111111111111111");
-
-    tui.moveto(10,20);
-    tui.print("1111111111111111111111111111111111111");
-
-
-
     tui.settextcolor(0);
-    tui.print("\x1b[44m\x1b[37mHello, World!\x1b[0m");
 
     for(int j=0;j<50;j++){
     for(int i=0;i<100;i++){
         tui.print(" ");
     }
     }
+}
+
+T200VOID T200TuiDialogBase::draw_title()
+{
+    T200Tui         tui;
+
+    tui.settextcolor(1);
+    tui.moveto(0, 0);
+
+    tui.print("title");
+    tui.moveto(0, 1);
+    tui.print("-");
+}
+
+T200VOID T200TuiDialogBase::draw_panel()
+{
+    T200Tui         tui;
+
+
 }

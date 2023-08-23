@@ -10,7 +10,13 @@ class T200TuiDialogBase
         T200TuiDialogBase();
         virtual ~T200TuiDialogBase();
 
-        T200VOID        draw();
+        T200VOID            draw();
+
+
+        T200VOID            clear();
+
+        T200VOID            draw_title();
+        T200VOID            draw_panel();
 
     protected:
         T200BYTE            x;
