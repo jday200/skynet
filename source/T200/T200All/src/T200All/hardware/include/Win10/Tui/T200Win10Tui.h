@@ -4,7 +4,7 @@
 #include "T200TuiBase.h"
 
 
-class T200Win10Tui
+class T200Win10Tui : public T200TuiBase
 {
     public:
         T200Win10Tui();
@@ -12,6 +12,11 @@ class T200Win10Tui
 
         T200VOID            moveto(T200INT, T200INT);
         T200VOID            print(T200String);
+
+        T200VOID            settextcolor(T200INT);
+        T200VOID            setbackgroundcolor(T200INT);
+
+        T200VOID            clear();
 
     protected:
 

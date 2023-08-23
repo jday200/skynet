@@ -28,3 +28,20 @@ T200VOID T200Win10Tui::print(T200String msg)
 {
     std::cout << msg;
 }
+
+T200VOID T200Win10Tui::settextcolor(T200INT color)
+{
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    SetConsoleTextAttribute(console, FOREGROUND_RED | BACKGROUND_BLUE);
+}
+
+T200VOID T200Win10Tui::setbackgroundcolor(T200INT color)
+{
+
+}
+
+T200VOID T200Win10Tui::clear()
+{
+
+}

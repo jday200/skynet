@@ -22,4 +22,9 @@ T200VOID T200TuiDialogBase::draw()
 
     tui.moveto(10,20);
     tui.print("1111111111111111111111111111111111111");
+
+
+
+    tui.settextcolor(0);
+    tui.print("\x1b[44m\x1b[37mHello, World!\x1b[0m");
 }
