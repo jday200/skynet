@@ -10,6 +10,14 @@ class T200Win10Tui : public T200TuiBase
         T200Win10Tui();
         virtual ~T200Win10Tui();
 
+        T200VOID            get_info();
+
+        T200VOID            set_color();
+        T200VOID            get_color();
+
+        T200VOID            set_attribute();
+        T200VOID            get_attribute();
+
         T200VOID            moveto(T200INT, T200INT);
         T200VOID            print(T200String);
 

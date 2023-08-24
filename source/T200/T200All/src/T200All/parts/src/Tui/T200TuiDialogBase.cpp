@@ -17,7 +17,7 @@ T200VOID T200TuiDialogBase::draw()
 {
     clear();
     draw_title();
-
+    clear();
 }
 
 
@@ -25,13 +25,8 @@ T200VOID T200TuiDialogBase::clear()
 {
     T200Tui         tui;
 
-    tui.settextcolor(0);
-
-    for(int j=0;j<50;j++){
-    for(int i=0;i<100;i++){
-        tui.print(" ");
-    }
-    }
+    tui.get_info();
+    tui.clear();
 }
 
 T200VOID T200TuiDialogBase::draw_title()
