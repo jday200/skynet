@@ -1,15 +1,17 @@
 function App() {
+    console.log("App");
     return ( 
-        <form>
-            <field name="">
+        <form action="/save.html">
+            <label>username:</label>
+            <input type="text" name="username">
 
-            </field>
-            <field name="">
+            </input>
+            <label>password:</label>
+            <input type="text" name="password">
 
-            </field>
-            <button>
-                Submit  
-            </button>
+            </input>
+            <input type="submit" value="Submit">
+            </input>
         </form>
     );
 }
