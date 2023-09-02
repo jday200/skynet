@@ -1,5 +1,5 @@
-const temp = require('./src/server.js');
+const SiteServer = require('./src/server.js');
 
-server = temp.SiteServer;
+server = new SiteServer();
 
-server.start;
+server.start();
