@@ -5,7 +5,7 @@ class T200Database {
 		this.database = {};
 	}
 	
-	connect(service, host, port, db, username, password) {
+	async connect(service, host, port, db, username, password) {
 		if('mariadb' === service) {
 			const T200Mariadb = require('./T200Mariadb.js');
 			
@@ -13,18 +13,18 @@ class T200Database {
 			
 			console.log('mariabdb...');			
 			
-			this.database.connect(host, port, db, username, password);
+			await this.database.connect(host, port, db, username, password);
 		}
 	}
 	
-	disconnect() {
+	async disconnect() {
 		if(this.database) {
-			this.database.disconnect();
+			await this.database.disconnect();
 		}
 	}
 	
-	execute(sql) {
-		this.database.execute(sql);
+	async execute(sql) {
+		await this.database.execute(sql);
 	}
 }
 

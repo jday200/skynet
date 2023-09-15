@@ -5,41 +5,51 @@ class T200HomeDatabase {
 		
 	}
 	
-	clear(db) {
+	async clear(db) {
 		var sql;
 		
-		sql = "";
+		sql = "drop table if exists person";
 		
-		db.execute(sql);
+		await db.execute(sql);
+		
+		sql = "drop table if exists content";
+		
+		await db.execute(sql);
+		
+		
 	}
 	
-	create(db) {
+	async create(db) {
 		var sql;
 		
-		sql = "";
+		sql = "create table if not exists person(userid integer, username varchar(50), password varchar(100), email varchar(100))";
 		
-		db.execute(sql);
+		await db.execute(sql);
+		
+		sql = "create table if not exists content(userid integer, article text)"
+		
+		await db.execute(sql);
 	}
 	
-	recreate(db) {
+	async recreate(db) {
 		console.log('recreate...');
 				
-		this.clear(db);
-		this.create(db);
+		await this.clear(db);
+		await this.create(db);
 	}
 	
-	init() {
+	async init() {
 		var database = new T200Database();
 		
 		console.log('connecting...');
 		
-		database.connect('mariadb', 'localhost', 3306, 'home', 'root', '');
+		await database.connect('mariadb', 'localhost', 3306, 'home', 'home', 'home123');
 		
 		console.log('connected.');		
 		
-		this.recreate(database);		
+		await this.recreate(database);		
 		
-		database.disconnect();		
+		await database.disconnect();		
 	}	
 	
 }
