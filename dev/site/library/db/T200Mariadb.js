@@ -8,21 +8,42 @@ class T200Mariadb {
 	async connect(host, port, db, username, password) {
 		var setup = {};
 		
-		setup.host = host;
-		setup.port = port;
+		setup.host = host + ':' + port;
+		//setup.port = port;
 		setup.database = db;
 		setup.user = username;
 		setup.password = password;		
 		setup.connectionLimit = 5;
 		
-		var pool = mariadb.createPool(setup);
+		console.log(setup);
+		
+		//var pool = mariadb.createPool(setup);
+		
+		var pool = mariadb.createPool({
+			host:'localhost',
+			database:'home',
+			user:'home',
+			password:'home123',
+			connectionLimit:5
+		});
+		
+		console.log('get connect...');	
+		console.log(pool);	
+		
+		
+		var conn = await pool.getConnection();
+		
+		console.log(conn);
 		
 		try{
-			this.conn = await pool.getConnection();	
+			//this.conn = await pool.getConnection();	
+			this.conn = conn;
+			console.log(this.conn);
 		}catch(err){
+			console.log("connect fault.");
 			if(err)throw err;
 		}finally{
-			
+			console.log('finally');
 		}
 	}
 	
@@ -38,6 +59,8 @@ class T200Mariadb {
 	
 	async execute(sql) {
 		try{
+			console.log(this.conn);
+			
 			await this.conn.query(sql);
 		}catch(err){
 			if(err)throw err;

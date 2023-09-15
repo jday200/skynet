@@ -5,13 +5,15 @@ class T200Database {
 		this.database = {};
 	}
 	
-	connect(db, host, port) {
-		if('mariadb' === db) {
+	connect(service, host, port, db, username, password) {
+		if('mariadb' === service) {
 			const T200Mariadb = require('./T200Mariadb.js');
 			
 			this.database = new T200Mariadb();	
 			
-			this.database.connect(host, port);
+			console.log('mariabdb...');			
+			
+			this.database.connect(host, port, db, username, password);
 		}
 	}
 	

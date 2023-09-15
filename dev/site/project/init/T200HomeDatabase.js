@@ -22,6 +22,8 @@ class T200HomeDatabase {
 	}
 	
 	recreate(db) {
+		console.log('recreate...');
+				
 		this.clear(db);
 		this.create(db);
 	}
@@ -29,7 +31,11 @@ class T200HomeDatabase {
 	init() {
 		var database = new T200Database();
 		
-		database.connect('mariadb', 'localhost', 3306);
+		console.log('connecting...');
+		
+		database.connect('mariadb', 'localhost', 3306, 'home', 'root', '');
+		
+		console.log('connected.');		
 		
 		this.recreate(database);		
 		
