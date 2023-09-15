@@ -1,73 +1,86 @@
 const mariadb = require('mariadb');
 
 class T200Mariadb {
-	constructor() {
-		
+
+	constructor() {	
+	
 	}
 	
-	async connect(host, port, db, username, password) {
+	async connect(host, port, database, username, password) {
 		var setup = {};
 		
-		setup.host = host + ':' + port;
-		//setup.port = port;
-		setup.database = db;
+		setup.host = host;
+		setup.port = port;
+		setup.database = database;
 		setup.user = username;
-		setup.password = password;		
-		setup.connectionLimit = 5;
+		setup.password = password;
 		
-		console.log(setup);
-		
-		//var pool = mariadb.createPool(setup);
-		
-		var pool = mariadb.createPool({
-			host:'localhost',
-			database:'home',
-			user:'home',
-			password:'home123',
-			connectionLimit:5
-		});
-		
-		console.log('get connect...');	
-		console.log(pool);	
-		
-		
-		var conn = await pool.getConnection();
-		
-		console.log(conn);
+		var pool = await mariadb.createPool(setup);
 		
 		try{
-			//this.conn = await pool.getConnection();	
-			this.conn = conn;
-			console.log(this.conn);
+			this.conn = await pool.getConnection();	
 		}catch(err){
-			console.log("connect fault.");
 			if(err)throw err;
 		}finally{
-			console.log('finally');
+			console.log(this.conn);
 		}
 	}
 	
 	async disconnect() {
 		try{
-			await this.conn.end();
+			this.conn.end();	
 		}catch(err){
 			if(err)throw err;
 		}finally{
 			
+		}	
+	}
+
+	async execute(sql) {
+		console.log(this.conn);
+		try{
+			await this.conn.query(sql);	
+		}catch(err){
+			if(err)throw err;
+		}finally{
+			
+		}	
+	}	
+	
+	async query(sql) {
+		var result;		
+		try{
+			result = await this.conn.query(sql);
+		}catch(err){
+			if(err)throw err;
+		}finally{
+			return result;			
 		}
 	}
 	
-	async execute(sql) {
-		try{
-			console.log(this.conn);
-			
-			await this.conn.query(sql);
-		}catch(err){
-			if(err)throw err;
-		}finally{
-			
-		}
-	}
+	
+	async test() {
+		var pool = mariadb.createPool({
+			host:'localhost',
+			database:'home',
+			user:'home',
+			password:'home123'		
+		});	
+		
+		console.log(pool);
+		
+		var conn = await pool.getConnection();
+		
+		console.log(conn);
+		
+		this.conn = conn;
+		
+		console.log(this.conn);
+		
+		var res = await this.conn.query("select * from users");
+		
+		console.log(res);
+	}	
 
 }
 

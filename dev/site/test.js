@@ -1,26 +1,19 @@
-const mariadb = require('mariadb');
+const T200Mariadb = require('./library/db/T200Mariadb.js');
 
+async function test() {
+var home = new T200Mariadb();
 
-var pool = mariadb.createPool({
-	host:'localhost',
-	database:'home',
-	user:'home',
-	password:'home123'
-});
+await home.connect('localhost', 3306, 'home', 'home', 'home123');
 
-async function connect() {
-	let conn;
-	
-	conn = await pool.getConnection();
-	
-	console.log(conn);	
-	
-	const res = await conn.query('select * from users');
-	
-	console.log(res);
-	
-	conn.end();
+await home.execute("select * from users");
+
+var result;
+
+result = await home.query("select * from users");
+
+console.log(result);
+
+await home.disconnect();
 }
 
-
-connect();
+test();
