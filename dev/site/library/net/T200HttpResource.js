@@ -5,6 +5,26 @@ class T200HttpResource {
 	constructor() {
 		
 	}
+
+	parse_html(url) {
+		var result;
+		var flag;
+
+		var name = path.join("", url);
+		var real = path.join(__dirname, name);
+
+		return real;
+	}
+
+	parse_js(url) {
+		var result;
+		var flag;
+
+		var name = path.join("", url);
+		var real = path.join(__dirname, name);
+
+		return real;
+	}
 	
 	load(file, callback) {
 		var temp = "../../home"  + file;
