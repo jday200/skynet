@@ -31,12 +31,12 @@ class T200HttpRequest {
 		}
 	}
 	
-	get(){
-		
+	get(action, callback){
+		this.get[action] = callback;
 	}
 	
-	post(){
-		
+	post(action, callback){
+		this.post[action] = callback;
 	}
 }
 
