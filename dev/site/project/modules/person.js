@@ -1,4 +1,4 @@
-class T200HomePerson {
+class T200Person {
     constructor() {
 
     }
@@ -39,4 +39,4 @@ class T200HomePerson {
     }
 }
 
-module.exports = T200HomePerson;
+module.exports = T200Person;

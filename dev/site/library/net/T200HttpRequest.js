@@ -22,7 +22,7 @@ class T200HttpRequest {
 
 		if(result){
 			try{
-				result();
+				result(req, res);
 			}catch(err){
 				res.writeHead(404);
 				res.end();

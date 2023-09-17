@@ -11,7 +11,7 @@ class T200HomePerson {
 
         await HomeDatabase.connect();
 
-        await HomeDatabase.query("select * form person where username = %s", user.username);
+        await HomeDatabase.query("select * form person where username = ${user.username}");
 
         await HomeDatabase.execute("insert into person ");
 
