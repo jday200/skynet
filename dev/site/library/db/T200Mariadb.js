@@ -48,7 +48,10 @@ class T200Mariadb {
 	}	
 	
 	async query(sql) {
-		var result;		
+
+		console.log(sql);
+		
+		let result;		
 		try{
 			result = await this.conn.query(sql);
 		}catch(err){

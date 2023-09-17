@@ -7,13 +7,17 @@ class T200HomePerson {
     }
 
     async register(user) {
+        console.log('connecting...');
+
         var HomeDatabase = new T200HomeDatabase();
 
         await HomeDatabase.connect();
 
-        await HomeDatabase.query("select * form person where username = ${user.username}");
+        let result = await HomeDatabase.query("select * form person where username = ${user.username}");
 
-        await HomeDatabase.execute("insert into person ");
+        console.log(result);
+
+        //await HomeDatabase.execute("insert into person ");
 
     }
 
@@ -30,3 +34,5 @@ class T200HomePerson {
     }
 
 }
+
+module.exports = T200HomePerson;

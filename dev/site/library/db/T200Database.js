@@ -26,6 +26,11 @@ class T200Database {
 	async execute(sql) {
 		await this.database.execute(sql);
 	}
+
+	async query(sql) {
+		console.log(this.database);
+		return await this.database.query(sql);
+	}
 }
 
 module.exports = T200Database;

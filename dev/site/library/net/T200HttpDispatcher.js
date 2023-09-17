@@ -11,8 +11,10 @@ class T200HttpDispatcher {
 		let result = url.parse(req.url);
 
 		console.log(result);
+		//console.log(req);
+		console.log(result.path);
 
-		global.request.run(result.protocol, result.path, req, res);
+		global.request.run(req.method, result.path, req, res);
 
 	}
 

@@ -6,11 +6,16 @@ class T200HttpResource {
 		
 	}
 
+	existsSync(file) {
+		return fs.existsSync(file);
+	}
+
 	parse_html(url) {
 		var result;
 		var flag;
 
-		var name = path.join("", url);
+		console.log(url);
+		var name = path.join(global.setup.path, url);
 		var real = path.join(__dirname, name);
 
 		return real;
@@ -20,32 +25,22 @@ class T200HttpResource {
 		var result;
 		var flag;
 
-		var name = path.join("", url);
+		var name = path.join(global.setup.actions, url + '.js');
 		var real = path.join(__dirname, name);
-
+		console.log(real);
 		return real;
 	}
 	
 	load(file, callback) {
-		var temp = "../../home"  + file;
-		var real = path.join(__dirname, temp);
-		
-		console.log(real);		
-		
-		fs.readFile(real, callback);
+		fs.readFile(file, callback);
 	}
 
 	async load_js(file) {
-		var name = path.join("", file);
-		var real = path.join(__dirname, name);
-
-		console.log(real);
-
-		if(fs.existsSync(real)) {
-			var result = require(real);
+		if(fs.existsSync(file)) {
+			var result = require(file);
 
 			if(result){
-				result();
+				result;
 			}
 		}
 	}
