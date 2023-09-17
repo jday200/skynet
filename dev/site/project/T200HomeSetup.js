@@ -9,10 +9,6 @@ class T200HomeSetup extends T200HttpSetup {
 		this.path = "../../home";
 		this.actions = "../../project/actions";
 		this.default = "index.html,index.htm";
-
-		this.database = "home";
-		this.user = "home";
-		this.password = "home123";
 	}
 
 }

@@ -13,12 +13,22 @@ class T200HomePerson {
 
         await HomeDatabase.connect();
 
-        let result = await HomeDatabase.query("select * form person where username = ${user.username}");
+        let result = await HomeDatabase.query(`select * from person where username = '${user.username}'`);
 
         console.log(result);
 
-        //await HomeDatabase.execute("insert into person ");
+        if(result){
+            throw "error";
+        }
 
+        let flag = await HomeDatabase.execute(user.parse_insert());
+
+        if(flag){
+            return true;
+        }else{
+
+        }
+        return false;
     }
 
     unregister() {

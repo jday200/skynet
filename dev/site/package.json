@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mariadb": "^3.2.0"
+    "mariadb": "^3.2.1"
   }
 }

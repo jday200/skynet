@@ -23,7 +23,11 @@ class T200Person {
     country;
 
     parse_insert() {
+        let sql;
 
+        sql = `insert into person (username, password) values(${this.username}, ${this.password})`;
+
+        return sql;
     }
 
     parse_delete() {
@@ -33,7 +37,7 @@ class T200Person {
     parse_select() {
         let sql;
 
-        sql = "select * from person where username = ${this.username}";
+        sql = `select * from person where username = '${this.username}'`;
 
         return sql;
     }

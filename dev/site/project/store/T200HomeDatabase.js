@@ -3,10 +3,17 @@ const T200Database = require('../../library/db/T200Database.js');
 class T200HomeDatabase extends T200Database {
     constructor() {
         super();
+
+        this.setup.host = "localhost";
+        this.setup.port = 3306;
+        this.setup.database = "home";
+        this.setup.user = "home";
+        this.setup.password = "home123";
     }
 
     async connect() {
-        await super.connect('mariadb', global.setup.host, global.setup.port, global.setup.database, global.setup.user, global.setup.password);
+        console.log(this.setup);
+        await super.connect('mariadb', this.setup.host, this.setup.port, this.setup.database, this.setup.user, this.setup.password);
     }
 }
 

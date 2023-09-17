@@ -1,11 +1,19 @@
-
+const T200DBSetup = require('./T200DBSetup.js');
 
 class T200Database {
 	constructor() {
 		this.database = {};
+		this.setup = new T200DBSetup();
 	}
 	
 	async connect(service, host, port, db, username, password) {
+		this.setup.type = service;
+		this.setup.host = host;
+		this.setup.port = port;
+		this.setup.database = db;
+		this.setup.user = username;
+		this.setup.password = password;
+		
 		if('mariadb' === service) {
 			const T200Mariadb = require('./T200Mariadb.js');
 			
