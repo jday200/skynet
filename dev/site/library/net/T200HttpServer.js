@@ -5,19 +5,19 @@ const T200HttpDispatcher = require('./T200HttpDispatcher.js');
 
 class T200HttpServer {
 	constructor() {
-		this.setup = new T200HttpSetup();
+		global.setup = new T200HttpSetup();
 	} 
 	
 	start() {
 		global.request = new T200HttpRequest();
 		
-		var server = http.createServer(function(req, res) {
-			var HttpDispatcher = new T200HttpDispatcher();
+		let server = http.createServer(function(req, res) {
+			let HttpDispatcher = new T200HttpDispatcher();
 			
 			HttpDispatcher.run(req, res);		
 		});
 		
-		server.listen(this.setup.port);
+		server.listen(global.setup.port);
 	}
 }
 

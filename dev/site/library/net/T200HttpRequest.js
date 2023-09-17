@@ -16,30 +16,50 @@ class T200HttpRequest {
 	}
 
 	execute(actions, action, req, res) {
-		var result;
+		let result;
 
 		result = actions[action];
 
 		if(result){
-			var HttpResource = new T200HttpResource();
-
-			var flag = HttpResource.exists(result);
-
-			if(flag){
-				HttpResource.load_js(result);
-			}else{
+			try{
+				result();
+			}catch(err){
+				res.writeHead(404);
+				res.end();
+			}finally{
 
 			}
 		}else{
-			var HttpResource = new T200HttpResource();
+			let HttpResource = new T200HttpResource();
 
-			var flag = HttpResource.exists(action);
+			let real_js = HttpResource.parse_js(action);
+
+			let flag = HttpResource.existsSync(real_js);
 
 			if(flag){
-				HttpResource.load(action, function(err, data){
-					if(err)throw err;
-					res.writeHead(200);
-					res.end(data);
+				flag = HttpResource.load_js(real);
+
+				if(flag){
+
+				}else{
+					res.writeHead(404);
+					res.end();
+				}
+			}
+
+			let real_html = HttpResource.parse_html(action);
+
+			flag = HttpResource.existsSync(real_html);
+
+			if(flag){
+				HttpResource.load(real_html, function(err, data){
+					if(err){
+						res.writeHead(404);
+						res.end();
+					}else{
+						res.writeHead(200);
+						res.end(data);
+					}
 				});
 			}else{
 				res.writeHead(404);
@@ -47,8 +67,9 @@ class T200HttpRequest {
 			}
 
 		}
+
 	}
-	
+
 	get(action, callback){
 		this.get[action] = callback;
 	}
