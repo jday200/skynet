@@ -32,7 +32,15 @@ class T200HttpRequest {
 			console.log(1);
 			console.log(action);
 			try{
-				result(req, res);
+				let flag = result(req, res);
+				console.log(flag);
+				if(flag){
+					res.writeHead(200);
+					res.end();
+				}else{
+					res.writeHead(404);
+					res.end();
+				}
 			}catch(err){
 				res.writeHead(404);
 				res.end();

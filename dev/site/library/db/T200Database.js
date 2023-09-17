@@ -32,7 +32,7 @@ class T200Database {
 	}
 	
 	async execute(sql) {
-		await this.database.execute(sql);
+		return await this.database.execute(sql);
 	}
 
 	async query(sql) {

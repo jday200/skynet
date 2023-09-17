@@ -8,6 +8,7 @@ class T200HomePerson {
 
     async register(user) {
         console.log('connecting...');
+        console.log(user);
 
         var HomeDatabase = new T200HomeDatabase();
 
@@ -17,16 +18,17 @@ class T200HomePerson {
 
         console.log(result);
 
-        if(result){
-            throw "error";
+        if(Object.keys(result).length != 0){
+            return false;
         }
 
         let flag = await HomeDatabase.execute(user.parse_insert());
 
         if(flag){
+            console.log('register success!');
             return true;
         }else{
-
+            console.log('register fault!');
         }
         return false;
     }

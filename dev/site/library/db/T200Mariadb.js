@@ -47,6 +47,7 @@ class T200Mariadb {
 			if(err)throw err;
 		}finally{
 			console.log(result);
+			return result;
 		}	
 	}	
 	
