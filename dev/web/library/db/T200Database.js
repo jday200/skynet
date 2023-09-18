@@ -2,27 +2,37 @@ const T200DBSetup = require('./T200DBSetup.js');
 
 class T200Database {
     constructor() {
+        this.setup = new T200DBSetup();
+    }
+
+    build() {
+        switch(this.setup.type) {
+            case "mariadb":
+            case "":
+
+        }
+    }
+
+    connect(type, host, port, db, user, password, callback) {
 
     }
 
-    connect(type, host, port, db, user, password) {
-
+    connect(callback) {
+        this.pool.getConnection();
     }
 
-    connect() {
-        
+    disconnect(callback) {
+        this.conn.disconnect(callback);
     }
 
-    disconnect() {
-
+    query(url, callback) {
+        this.conn.query(url, callback);
     }
 
-    query() {
-
-    }
-
-    execute() {
-
+    execute(url, callback) {
+        this.conn.query(url, function(err, data){
+            
+        });
     }
 }
 

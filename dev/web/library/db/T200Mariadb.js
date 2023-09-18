@@ -5,20 +5,26 @@ class T200Mariadb {
 
     }
 
-    connect() {
+    build() {
 
     }
 
-    disconnect() {
-
+    connect(callback) {
+        this.pool.getConnection();
     }
 
-    query() {
-
+    disconnect(callback) {
+        this.conn.disconnect(callback);
     }
 
-    execute() {
-        
+    query(url, callback) {
+        this.conn.query(url, callback);
+    }
+
+    execute(url, callback) {
+        this.conn.query(url, function(err, data){
+            
+        });
     }
 }
 
