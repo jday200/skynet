@@ -1,5 +1,5 @@
 class T200DBSetup {
-    type = "mariabd";
+    type = "mariadb";
     host = "localhost";
     port = 3306;
     database = "";

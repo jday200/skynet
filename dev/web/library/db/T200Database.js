@@ -1,15 +1,19 @@
 const T200DBSetup = require('./T200DBSetup.js');
+const T200Mariadb = require('./T200Mariadb.js');
 
 class T200Database {
     constructor() {
         this.setup = new T200DBSetup();
     }
 
-    build() {
+    build(callback) {
+        console.log(this.setup);
         switch(this.setup.type) {
             case "mariadb":
-            case "":
-
+                console.log("mariadb");
+                this.database = new T200Mariadb();
+                this.database.build(this.setup, callback);
+                break;
         }
     }
 
@@ -18,19 +22,19 @@ class T200Database {
     }
 
     connect(callback) {
-        this.pool.getConnection();
+        this.database.connect(callback);
     }
 
     disconnect(callback) {
-        this.conn.disconnect(callback);
+        this.database.disconnect(callback);
     }
 
     query(url, callback) {
-        this.conn.query(url, callback);
+        this.database.query(url, callback);
     }
 
     execute(url, callback) {
-        this.conn.query(url, function(err, data){
+        this.database.query(url, function(err, data){
             
         });
     }
