@@ -1,11 +1,12 @@
 const http = require('http');
 const T200HttpSetup = require('./T200HttpSetup.js');
-
+const T200HttpDispatcher = require('./T200HttpDispatcher.js');
 
 
 class T200HttpServer {
     constructor() {
-        this.setup = new T200HttpSetup();
+        global.setup = {};
+        global.setup.http = new T200HttpSetup();
     }
 
     start(callback) {
@@ -15,9 +16,9 @@ class T200HttpServer {
             HttpDispatcher.run(req, res);
         });
 
-        server.listen(this.setup.port);
+        server.listen(global.setup.http.port);
 
-        callback();
+        if(callback)callback();
     }
 }
 
