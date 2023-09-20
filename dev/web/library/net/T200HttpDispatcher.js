@@ -9,48 +9,54 @@ class T200HttpDispatcher {
     }
 
     run(req, res) {
-        this.request = new T200HttpRequest(req);
+        global.request = new T200HttpRequest(req);
         this.response = new T200HttpResponse(res);
         this.resource = new T200HttpResource();
 
         let data = url.parse(req.url, true);
         let flag = "/";
-        if("/" != data.path){
+        if(!data.path.endsWith('/')){
             flag = req.method;
         }
+        global.request.data = data;
         console.log(data);
         console.log(flag);
 
         switch(flag){
             case "/":
                 console.log('/');
+                this.assign_default(data.path);
                 break;
             case "GET":
-                this.assign_get();
+                this.assign_get(data.path);
                 break;
             case "POST":
-                this.assign_post();
+                this.assign_post(data.path);
                 break;
         }
     }
 
+    assign_default(action) {
+
+    }
+
     assign_get(action) {
         let self = this;
-        let name = HttpResource.merge_action(action);
-        let html = HttpResource.merge_html(action);
+        let name = this.resource.merge_action(action);
+        let html = this.resource.merge_html(action);
 
-        HttpResource.exists(name, function(err){
-            HttpResource.load_action(name, function(){
-                HttpResource.exists(html, function(err){
-                    HttpResource.load_file(html, function(err){
-                        self.response.SEND_200("");
+        self.resource.exists(name, function(err){
+            self.resource.load_action(name, function(err){
+                self.resource.exists(html, function(err){
+                    self.resource.load_file(html, function(err, data){
+                        self.response.SEND_200(data);
                     });
                 });
             });
         });
     }
 
-    assign_post() {
+    assign_post(action) {
 
     }
     
