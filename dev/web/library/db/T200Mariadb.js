@@ -10,7 +10,7 @@ class T200Mariadb {
         this.pool = mariadb.createPool(setup);
         
         console.log(this.pool);
-        callback();
+        if(callback)callback();
     }
 
     connect(callback) {
@@ -18,25 +18,21 @@ class T200Mariadb {
         this.pool.getConnection().then(function(conn){
             console.log(conn);
             self.conn = conn;
-            callback();
+            if(callback)callback();
         });
     }
 
     disconnect(callback) {
-        //this.conn.disconnect(callback);
         this.conn.release().then(callback);
     }
 
     query(url, callback) {
         console.log(this.conn);
-        //this.conn.query(url, callback);
         this.conn.query(url).then(callback);
     }
 
     execute(url, callback) {
-        this.conn.query(url, function(err, data){
-            
-        });
+        this.conn.query(url).then(callback);
     }
 }
 

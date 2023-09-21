@@ -1,8 +1,8 @@
 const T200DBSetup = require('./T200DBSetup.js');
-const T200Mariadb = require('./T200Mariadb.js');
 
 class T200Database {
     constructor() {
+        this.database = {};
         this.setup = new T200DBSetup();
     }
 
@@ -11,6 +11,7 @@ class T200Database {
         switch(this.setup.type) {
             case "mariadb":
                 console.log("mariadb");
+                const T200Mariadb = require('./T200Mariadb.js');
                 this.database = new T200Mariadb();
                 this.database.build(this.setup, callback);
                 break;
@@ -18,7 +19,14 @@ class T200Database {
     }
 
     connect(type, host, port, db, user, password, callback) {
+        this.setup.type = type;
+        this.setup.host = host;
+        this.setup.port = port;
+        this.setup.database = db;
+        this.setup.user = user;
+        this.setup.password = password;
 
+        this.connect(callback);
     }
 
     connect(callback) {
@@ -34,9 +42,7 @@ class T200Database {
     }
 
     execute(url, callback) {
-        this.database.query(url, function(err, data){
-            
-        });
+        this.database.execute(url, callback);
     }
 }
 

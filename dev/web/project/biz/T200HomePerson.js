@@ -5,8 +5,18 @@ class T200HomePerson {
 
     }
 
-    register() {
+    register(user, callback) {
+        let HomeStore = new T200HomeStore();
 
+        HomeStore.connect(function(){
+            HomeStore.query(user.merge_select(), function(){
+                HomeStore.execute(user.merge_insert(), function(){
+                    HomeStore.disconnect(function(){
+                        
+                    });
+                })
+            });
+        });
     }
 
     unregister() {

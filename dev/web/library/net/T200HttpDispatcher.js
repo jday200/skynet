@@ -105,7 +105,22 @@ class T200HttpDispatcher {
     }
 
     assign_post(action) {
+        let result = global.request.post[action];
 
+        if(result){
+            try{
+                let flag = result(global.request, this.response);
+                if(flag){
+                    this.response.SEND_200();
+                }else{
+                    this.response.SEND_500();
+                }
+            }catch(err){
+                this.response.SEND_500();
+            }            
+        }else{
+            this.response.SEND_404();
+        }
     }
     
 
