@@ -29,11 +29,11 @@ class T200Person {
 
     //
     build_create() {
-        return `create table if not exists 'person' ('userid' integer, 'username' varchar(50), 'password' varchar(100), 'email' varchar(100))`;
+        return `create table if not exists person (userid int, username varchar(50), password varchar(100), email varchar(100))`;
     }
 
     build_drop() {
-        return `drop table if exists 'person'`;
+        return `drop table if exists person`;
     }
 }
 

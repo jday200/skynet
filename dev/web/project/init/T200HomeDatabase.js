@@ -1,5 +1,7 @@
 const T200Database = require('../../library/db/T200Database.js');
 const T200HomeDBSetup = require('../store/T200HomeDBSetup.js');
+const T200Person = require('../modules/T200Person.js');
+
 
 class T200HomeDatabase extends T200Database {
     constructor() {
@@ -8,26 +10,40 @@ class T200HomeDatabase extends T200Database {
     }
 
     init() {
-        this.clear(function(err){
-            create(function(err){
-
+        let self = this;
+        this.build(function(){
+            self.clear(function(err){
+                self.create(function(err){
+                    console.log('release');
+                    self.release(function(){
+                        console.log('close');
+                    });
+                });
             });
         });
     }
 
     clear(callback) {
         let self = this;
+        let person = new T200Person();
+
         this.connect(function(err){
             if(err)throw err;
             let sql;
 
-            sql = "";
+            sql = person.build_drop();
             self.execute(sql, function(err){
+                console.log(err);
                 if(err){
                     self.disconnect(function(err){
-
+                        if(callback)callback();
                     });
                 }else{
+                    self.disconnect(function(err){
+                        if(callback)callback();
+                    });
+
+                    /*
                     sql = "";
                     self.execute(sql, function(err){
                         if(err){
@@ -49,6 +65,7 @@ class T200HomeDatabase extends T200Database {
                             });
                         }
                     });
+                    */
                 }
             });
         });
@@ -56,17 +73,24 @@ class T200HomeDatabase extends T200Database {
 
     create(callback) {
         let self = this;
+        let person = new T200Person();
+
         this.connect(function(err){
             if(err)throw err;
             let sql;
 
-            sql = "";
+            sql = person.build_create();
             self.execute(sql, function(err){
+                console.log(err);
                 if(err){
                     self.disconnect(function(err){
-
+                        if(callback)callback();
                     });
                 }else{
+                    self.disconnect(function(err){
+                        if(callback)callback();
+                    });
+                    /*
                     sql = "";
                     self.execute(sql, function(err){
                         if(err){
@@ -88,6 +112,7 @@ class T200HomeDatabase extends T200Database {
                             });
                         }
                     });
+                    */
                 }
             });
         });

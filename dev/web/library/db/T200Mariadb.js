@@ -13,6 +13,12 @@ class T200Mariadb {
         if(callback)callback();
     }
 
+    release(callback) {
+        console.log('release');
+        this.pool.end();
+        if(callback)callback();
+    }
+
     connect(callback) {
         let self = this;
         this.pool.getConnection().then(function(conn){
@@ -23,15 +29,22 @@ class T200Mariadb {
     }
 
     disconnect(callback) {
-        this.conn.release().then(callback);
+        //this.conn.release().then(callback);
+        //this.conn.end();
+        //if(callback)callback();
+        console.log('disconnect');
+        this.conn.end();
+        console.log('disconnect');
+        if(callback)callback();
     }
 
     query(url, callback) {
-        console.log(this.conn);
+        console.log(url);
         this.conn.query(url).then(callback);
     }
 
     execute(url, callback) {
+        console.log(url);
         this.conn.query(url).then(callback);
     }
 }

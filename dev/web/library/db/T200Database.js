@@ -18,6 +18,10 @@ class T200Database {
         }
     }
 
+    release(callback) {
+        this.database.release(callback);
+    }
+
     connect(type, host, port, db, user, password, callback) {
         this.setup.type = type;
         this.setup.host = host;
