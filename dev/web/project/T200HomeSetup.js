@@ -6,7 +6,7 @@ class T200HomeSetup extends T200HttpSetup {
         super();
 
         this.port = 8888;
-        this.default = "index.html,index.htm";
+        this.index = "index.html,index.htm";
     }
 }
 

@@ -37,7 +37,27 @@ class T200HttpDispatcher {
     }
 
     assign_default(action) {
+        let self = this;
+        let files = this.resource.merge_default(action);
 
+        for(let id in files) {
+            self.resource.exists(files[id], function(err){
+                console.log(files[id]);
+                if(err){
+
+                }else{
+                    self.resource.load_file(files[id], function(err, data){
+                        if(err){
+                            self.response.SEND_500();
+                        }else{
+                            self.response.SEND_200(data);
+                        }
+                        return;
+                    });
+                }
+                
+            });
+        }
     }
 
     assign_get(action) {
@@ -46,13 +66,41 @@ class T200HttpDispatcher {
         let html = this.resource.merge_html(action);
 
         self.resource.exists(name, function(err){
-            self.resource.load_action(name, function(err){
+            if(err){
                 self.resource.exists(html, function(err){
-                    self.resource.load_file(html, function(err, data){
-                        self.response.SEND_200(data);
-                    });
+                    if(err){
+                        self.response.SEND_404();
+                    }else{
+                        self.resource.load_file(html, function(err, data){
+                            if(err){
+                                self.response.SEND_500();
+                            }else{
+                                self.response.SEND_200(data);
+                            }
+                        });
+                    }
                 });
-            });
+            }else{
+                self.resource.load_action(name, function(err){
+                    if(err){
+                        self.SEND_500();
+                    }else{
+                        self.resource.exists(html, function(err){
+                            if(err){
+                                self.response.SEND_404();
+                            }else{
+                                self.resource.load_file(html, function(err, data){
+                                    if(err){
+                                        self.response.SEND_500();
+                                    }else{
+                                        self.response.SEND_200(data);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
         });
     }
 

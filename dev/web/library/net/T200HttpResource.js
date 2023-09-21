@@ -11,12 +11,18 @@ class T200HttpResource {
     }
 
     merge_default(url) {
+        console.log(global.setup.http.index);
         let files = global.setup.http.index.split(',');
-        let result;
-        for(let file in files){
-            let name = path.join(global.setup.http.path, url + file);
+        let result = new Array();
+
+        console.log(url);
+        console.log(files);
+
+        for(let id in files){
+            let name = path.join(global.setup.http.home, url + files[id]);
             let real = path.join(__dirname, name);
-            
+            console.log(real);
+            result.push(real);
         }
         return result;
     }
