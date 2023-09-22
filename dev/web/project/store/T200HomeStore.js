@@ -1,4 +1,4 @@
-const T200HomeDBSetup = request('./T200HomeDBSetup.js');
+const T200HomeDBSetup = require('./T200HomeDBSetup.js');
 
 class T200HomeStore {
     constructor() {
