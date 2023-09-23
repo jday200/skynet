@@ -6,13 +6,17 @@ class T200HomePerson {
     }
 
     register(user, callback) {
+        console.log("register");
+
         let HomeStore = new T200HomeStore();
+
+        console.log("register");
 
         HomeStore.connect(function(){
             HomeStore.query(user.merge_select(), function(){
                 HomeStore.execute(user.merge_insert(), function(){
                     HomeStore.disconnect(function(){
-                        
+                        if(callback)callback();
                     });
                 })
             });

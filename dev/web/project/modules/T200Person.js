@@ -12,7 +12,7 @@ class T200Person {
     }
 
     merge_insert() {
-        return `insert into 'person' ('username', 'password') values('${this.username}', '${this.password}')`;
+        return `insert into person (username, password) values('${this.username}', '${this.password}')`;
     }
 
     merge_delete() {
@@ -24,7 +24,7 @@ class T200Person {
     }
 
     merge_select() {
-        return `select * from 'person' where 'username' = '${this.username}'`;
+        return `select * from person where 'username' = '${this.username}'`;
     }
 
     //

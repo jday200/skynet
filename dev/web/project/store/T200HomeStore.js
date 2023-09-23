@@ -1,24 +1,23 @@
-const T200HomeDBSetup = require('./T200HomeDBSetup.js');
 
 class T200HomeStore {
     constructor() {
-        this.setup = new T200HomeDBSetup();
-    }
-
-    connect() {
 
     }
 
-    disconnect() {
-
+    connect(callback) {
+        global.database.connect(callback);
     }
 
-    query() {
-
+    disconnect(callback) {
+        global.database.disconnect(callback);
     }
 
-    execute() {
-        
+    query(sql, callback) {
+        global.database.query(sql, callback);
+    }
+
+    execute(sql, callback) {
+        global.database.execute(sql, callback);
     }
 }
 

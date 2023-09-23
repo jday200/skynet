@@ -1,5 +1,6 @@
 const http = require('http');
 const T200HttpSetup = require('./T200HttpSetup.js');
+const T200HttpAction = require('./T200HttpAction.js');
 const T200HttpDispatcher = require('./T200HttpDispatcher.js');
 const T200Database = require('../../library/db/T200Database.js');
 const T200HomeDBSetup = require('../../project/store/T200HomeDBSetup.js');
@@ -16,6 +17,7 @@ class T200HttpServer {
         let database = new T200Database();
 
         database.setup = HomeDBSetup;
+        global.action = new T200HttpAction();
 
         database.build(function(){
             global.database = database;

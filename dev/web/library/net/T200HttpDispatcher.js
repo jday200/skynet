@@ -9,32 +9,37 @@ class T200HttpDispatcher {
     }
 
     run(req, res) {
-        global.request = new T200HttpRequest(req);
-        this.response = new T200HttpResponse(res);
-        this.resource = new T200HttpResource();
+        let self = this;
+        this.request = new T200HttpRequest(req, function(){
+            console.log("run");
+            self.response = new T200HttpResponse(res);
+            self.resource = new T200HttpResource();
 
-        let data = url.parse(req.url, true);
-        let flag = "/";
-        if(!data.path.endsWith('/')){
-            flag = req.method;
-        }
-        global.request.data = data;
-        console.log(data);
-        console.log(flag);
+            let data = url.parse(req.url, true);
+            let flag = "/";
+            if(!data.path.endsWith('/')){
+                flag = req.method;
+            }
+            //global.request.data = data;
+            console.log(data);
+            console.log(flag);
+    
+            switch(flag){
+                case "/":
+                    console.log('/');
+                    self.assign_default(data.path);
+                    break;
+                case "GET":
+                    self.assign_get(data.path);
+                    break;
+                case "POST":
+                    self.assign_post(data.path);
+                    break;
+            }
 
-        switch(flag){
-            case "/":
-                console.log('/');
-                this.assign_default(data.path);
-                break;
-            case "GET":
-                this.assign_get(data.path);
-                break;
-            case "POST":
-                this.assign_post(data.path);
-                break;
-        }
+        });
     }
+
 
     assign_default(action) {
         let self = this;
@@ -105,11 +110,12 @@ class T200HttpDispatcher {
     }
 
     assign_post(action) {
-        let result = global.request.post[action];
+        let result = global.action.post[action];
 
+        console.log(result);
         if(result){
             try{
-                let flag = result(global.request, this.response);
+                let flag = result(this.request, this.response);
                 if(flag){
                     this.response.SEND_200();
                 }else{
