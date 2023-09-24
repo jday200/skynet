@@ -1,9 +1,13 @@
 const  querystring = require('querystring');
+const T200HttpCookie = require('./T200HttpCookie.js');
+const T200HttpSession = require('./T200HttpSession.js');
 
 
 class T200HttpRequest {
     constructor(req, callback) {
         this.request = req;
+        this.cookie = new T200HttpCookie(req);
+        this.session = new T200HttpSession(req);
 
         console.log(callback);
         req.callback = callback;

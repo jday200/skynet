@@ -6,21 +6,27 @@ const T200HomePerson = require('../biz/T200HomePerson.js');
 function do_register(req, res) {
     console.log("do_register");
 
-    var person = new T200Person();
-    let HomePerson = new T200HomePerson();
+    let pwd1 = req.value('password1');
+    let pwd2 = req.value('password2');
 
-    console.log("register form");
+    if(pwd1 === pwd2){
+        let person = new T200Person();
+        let HomePerson = new T200HomePerson();
 
-    console.log(person);
-    console.log(req.value('username'));
+        person.username = req.value('username');
+        person.password = pwd1;
 
-    debugger;
-    person.username = req.value('username');
-    person.password = req.value('password1');
-  
-    HomePerson.register(person, function(){
-        console.log("register end");
-    });
+        HomePerson.register(person, function(err){
+            console.log("register end");
+            if(err){
+                return false;
+            }
+            return true;
+        });
+    
+    }else{
+        return false;
+    }
 
 }
 

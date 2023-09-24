@@ -110,21 +110,27 @@ class T200HttpDispatcher {
     }
 
     assign_post(action) {
+        let self = this;
         let result = global.action.post[action];
 
         console.log(result);
         if(result){
             try{
-                let flag = result(this.request, this.response);
-                if(flag){
-                    this.response.SEND_200();
-                }else{
-                    this.response.SEND_500();
-                }
+                result(this.request, this.response, function(err){
+                    if(err){
+                        console.log('1');
+                        self.response.SEND_500();
+                    }else{
+                        console.log('2');
+                        self.response.SEND_200();
+                    }
+                });
             }catch(err){
+                console.log("3");
                 this.response.SEND_500();
             }            
         }else{
+            console.log("4");
             this.response.SEND_404();
         }
     }

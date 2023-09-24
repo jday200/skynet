@@ -27,6 +27,10 @@ class T200Person {
         return `select * from person where 'username' = '${this.username}'`;
     }
 
+    merge_login() {
+        return `select * from person where 'username' = '${this.username}' and 'password' = '${this.password}'`;
+    }
+
     //
     build_create() {
         return `create table if not exists person (userid int, username varchar(50), password varchar(100), email varchar(100))`;
