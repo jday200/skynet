@@ -32,7 +32,7 @@ class T200Mariadb {
         //this.conn.release().then(callback);
         //this.conn.end();
         //if(callback)callback();
-        console.log('disconnect');
+        //console.log('disconnect');
         this.conn.end();
         console.log('disconnect');
         if(callback)callback();

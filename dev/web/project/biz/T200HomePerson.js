@@ -11,14 +11,10 @@ class T200HomePerson {
         let HomeStore = new T200HomeStore();
 
         HomeStore.connect(function(){
-            HomeStore.query(user.merge_select(), function(err, result){
-                if(err){
+            HomeStore.query(user.merge_select(), function(result){
+                if(result){
                     HomeStore.disconnect(function() {
-
-                    });
-                }else if(result){
-                    HomeStore.disconnect(function() {
-
+                        console.log('err');
                     });
                 }else{
                     HomeStore.execute(user.merge_insert(), function(err){

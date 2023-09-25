@@ -1,12 +1,23 @@
 class T200HttpSession {
-    constructor(req) {
+    constructor(req, cookie) {
         this.request = req;
+        this.cookie = cookie;
+
+        console.log(global.session);
     }
 
-    create() {
-        this.request.session = {};
-        this.request.session['1'] = 1;
+    static clear() {
+        global.session = {};
     }
+
+    set(name, value) {
+        global.session[name] = value;
+    }
+
+    get(name) {
+        return global.session[name];
+    }
+
 }
 
 module.exports = T200HttpSession;

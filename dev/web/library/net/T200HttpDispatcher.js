@@ -1,11 +1,13 @@
 const url = require('url');
+const T200HttpCookie = require('./T200HttpCookie.js');
+const T200HttpSession = require('./T200HttpSession.js');
 const T200HttpRequest = require('./T200HttpRequest.js');
 const T200HttpResponse = require('./T200HttpResponse.js');
 const T200HttpResource = require('./T200HttpResource.js');
 
 class T200HttpDispatcher {
     constructor() {
-
+        
     }
 
     run(req, res) {
@@ -13,6 +15,8 @@ class T200HttpDispatcher {
         this.request = new T200HttpRequest(req, function(){
             console.log("run");
             self.response = new T200HttpResponse(res);
+            self.cookie = new T200HttpCookie(req, res); 
+            self.session = new T200HttpSession(req, self.cookie);
             self.resource = new T200HttpResource();
 
             let data = url.parse(req.url, true);
@@ -116,7 +120,7 @@ class T200HttpDispatcher {
         console.log(result);
         if(result){
             try{
-                result(this.request, this.response, function(err){
+                result(this.request, this.response, this.cookie, this.session, function(err){
                     if(err){
                         console.log('1');
                         self.response.SEND_500();

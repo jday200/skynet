@@ -3,7 +3,7 @@ const T200Person = require('../modules/T200Person.js');
 const T200HomePerson = require('../biz/T200HomePerson.js');
 
 
-function do_login(req, res, callback) {
+function do_login(req, res, cookie, session, callback) {
     console.log("do_login");
 
     if(1) {
@@ -15,8 +15,9 @@ function do_login(req, res, callback) {
 
         HomePerson.login(person, function(err){
             console.log("login end");
-
-            req.session.create();
+            
+            cookie.set('name', `${person.username}`);
+            session.set('name', `${person.username}`);
 
             res.SET_HEADER('Location', '/index.html');
             if(callback)callback(err);
