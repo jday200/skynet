@@ -6,12 +6,55 @@ Database.setup.database = "home";
 Database.setup.user = "home";
 Database.setup.password = "home123";
 
-Database.start().then(function(){
-    console.log('success');
-}, function(){
-    console.log('failure');
-}).then(function(){
-    console.log('success');
-}, function(){
-    console.log('failure');
-});
+
+function stop(){
+    console.log('stop');
+    return Database.stop().then(function(){
+        console.log('success');
+    }, function(){
+        console.log('failure');
+    });
+}
+
+
+function disconnect(){
+    console.log('disconnect');
+    return Database.disconnect().then(function(){
+        return stop();
+    }, function(){
+        console.log('failure');
+    });
+}
+
+function query(){
+    let sql;
+
+    console.log('query');
+    sql = "select * from person";
+    return Database.query(sql).then(function(){
+        return disconnect();
+    }, function(){
+        return disconnect();
+    });
+} 
+
+function connect(){
+    console.log('connect');
+    return Database.connect().then(function(){
+        return query();
+    }, function(){
+        console.log('failure');
+    });
+} 
+
+function start(){
+    console.log('start');
+    return Database.start().then(function(){
+        console.log('success');
+        return connect();
+    }, function(){
+        console.log('failure');
+    });
+}
+
+start();

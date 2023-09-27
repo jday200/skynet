@@ -1,6 +1,19 @@
 class T200HttpSession {
-    constructor() {
+    constructor(request, cookie) {
+        this.request = request;
+        this.cookie = cookie;
+    }
 
+    static clear(){
+        global.session = {};
+    }
+
+    set(name, value){
+        global.session[name] = value;
+    }
+
+    get(name){
+        return global.session[name];
     }
 }
 

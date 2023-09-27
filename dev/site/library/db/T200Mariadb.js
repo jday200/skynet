@@ -9,10 +9,13 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
+                console.log('pool');
                 self.pool = mariadb.createPool(setup);
                 this.setup = setup;
+                console.log('pool2');
                 if(resolve)resolve();
             }else{
+                console.log('pool3');
                 if(reject)reject();
             }
         });
