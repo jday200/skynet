@@ -13,10 +13,10 @@ class T200Mariadb {
                 self.pool = mariadb.createPool(setup);
                 this.setup = setup;
                 console.log('pool2');
-                if(resolve)resolve();
+                //if(resolve)resolve();
             }else{
                 console.log('pool3');
-                if(reject)reject();
+                //if(reject)reject();
             }
         });
 
