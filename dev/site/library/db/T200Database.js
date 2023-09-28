@@ -2,7 +2,6 @@ const T200DBSetup = require('./T200DBSetup.js');
 
 class T200Database {
     constructor() {
-        //this.database = {};
         this.setup = new T200DBSetup();
     }
 
@@ -26,7 +25,6 @@ class T200Database {
                     const T200Mariadb = require('./T200Mariadb.js');
                     self.database = new T200Mariadb();
                     self.database.start(self.setup).then(resolve, reject);
-                    console.log('mariadb2');
                     break;
             }
         });

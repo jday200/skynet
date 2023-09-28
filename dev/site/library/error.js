@@ -3,3 +3,5 @@ function error(){
         if(reject)reject();
     });
 }
+
+module.exports = { error: error };
