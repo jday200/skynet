@@ -14,7 +14,7 @@ class T200Database {
             if(undefined == self.database){
 
             }else{
-                if(reject)reject();
+                if(reject)reject("start error");
                 return;
             }
 
@@ -36,7 +36,7 @@ class T200Database {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.database){
-                if(reject)reject();
+                if(reject)reject("stop error");
             }else{
                 self.database.stop().then(resolve, reject);
             }
@@ -49,7 +49,7 @@ class T200Database {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.database){
-                if(reject)reject();
+                if(reject)reject("database is null");
             }else{
                 self.database.connect().then(resolve, reject);
             }
@@ -62,7 +62,7 @@ class T200Database {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.database){
-                if(reject)reject();
+                if(reject)reject("database is null");
             }else{
                 self.database.disconnect().then(resolve, reject);
             }
@@ -75,7 +75,7 @@ class T200Database {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.database){
-                if(reject)reject();
+                if(reject)reject("query error");
             }else{
                 self.database.query(sql).then(resolve, reject);
             }
@@ -88,7 +88,7 @@ class T200Database {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.database){
-                if(reject)reject();
+                if(reject)reject("execute error");
             }else{
                 self.database.execute(sql).then(resolve, reject);
             }

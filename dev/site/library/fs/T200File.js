@@ -11,7 +11,7 @@ class T200File {
             console.log(file);
             fs.access(file, fs.constants.F_OK, function(err){
                 if(err){
-                    if(reject)reject();
+                    if(reject)reject(err);
                 }else{
                     if(resolve)resolve();
                 }
@@ -28,7 +28,7 @@ class T200File {
                 console.log(err);
                 if(err){
                     console.log(err);
-                    if(reject)reject();
+                    if(reject)reject(err);
                 }else{
                     if(resolve)resolve(data);
                 }

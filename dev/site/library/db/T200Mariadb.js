@@ -21,7 +21,7 @@ class T200Mariadb {
             if(flag){
                 if(resolve)resolve();
             }else{
-                if(reject)reject();
+                if(reject)reject("mariadb start error");
             }
         });
 
@@ -32,7 +32,7 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
-                if(reject)reject();
+                if(reject)reject("mariadb stop error");
             }else{
                 self.pool.end();
                 if(resolve)resolve();
@@ -46,7 +46,7 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
-                if(reject)reject();
+                if(reject)reject("mariadb connect error");
             }else{
                 self.pool.getConnection().then(function(conn){
                     self.connect = conn;
@@ -62,7 +62,7 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.connect){
-                if(reject)reject();
+                if(reject)reject("mariadb disconnect error");
             }else{
                 self.connect.end().then(function(){
                     self.connect = undefined;
@@ -78,7 +78,7 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.connect){
-                if(reject)reject();
+                if(reject)reject("mariadb query error");
             }else{
                 self.connect.query(sql).then(function(data){
                     if(resolve)resolve(data);
@@ -93,7 +93,7 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.connect){
-                if(reject)reject();
+                if(reject)reject("mariadb execute error");
             }else{
                 self.connect.query(sql).then(function(data){
                     let result = false;

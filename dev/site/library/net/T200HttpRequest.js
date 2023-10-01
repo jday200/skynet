@@ -6,6 +6,8 @@ class T200HttpRequest {
     }
 
     load(callback){
+        console.log(this.request);
+        
         this.request.callback = callback;
         this.request.on('data', this.merge_data);
         this.request.on('end', this.parse_data);
@@ -17,7 +19,7 @@ class T200HttpRequest {
 
     parse_data(){
         this.body = querystring.parse(this.data);
-        if(this.callback)this.callback();
+        if(this.callback)this.callback(this.body);
     }
 }
 

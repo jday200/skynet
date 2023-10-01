@@ -14,13 +14,15 @@ class T200HttpDispatcher {
     run(req, res) {
         let self = this;
 
+        debugger;
         this.request = new T200HttpRequest(req);
         this.request.load(function(){
             self.response = new T200HttpResponse(res);
-            self.cookie = new T200HttpCookie();
-            self.session = new T200HttpSession();
+            self.cookie = new T200HttpCookie(req, res);
+            self.session = new T200HttpSession(req);
             self.resource = new T200HttpResource();
 
+            debugger;
             let data = url.parse(req.url, true);
             let flag = "/";
 
@@ -50,7 +52,7 @@ class T200HttpDispatcher {
         let result = false;
 
         for(let id in files){
-            self.resource.exists(files[id], function(){
+            self.resource.exists(files[id], function(err){
                 if(err){
 
                 }else{
@@ -60,30 +62,42 @@ class T200HttpDispatcher {
                         flag = true;
                     });
                 }
+            }).catch(function(){
+
+            }).finally(function(){
+                //if(flag)break;
             });
+
+            if(flag)break;
+        }
+
+        if(flag){
+
+        }else{
+            this.response.SEND_404();
         }
     }
 
     assign_get(action) {
-        let selft = this;
+        let self = this;
         let name = this.resource.merge_action(action);
         let html = this.resource.merge_html(action);
 
-        self.resouce.exists(name, function(err){
+        self.resource.exists(name, function(err){
             if(err){
                 
             }else{
                 self.load_action().then(function(){
-
+                    self.response.SEND_200();
                 }, function(){
-
+                    self.response.SEND_500();
                 });
             }
 
             self.load_html().then(function(){
-                    
+                self.response.SEND_200();
             }, function(){
-
+                self.response.SEND_500();
             });
         });
     }

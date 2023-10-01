@@ -1,3 +1,4 @@
+const path = require('path');
 const T200File = require('../fs/T200File.js');
 const T200Path = require('../fs/T200Path.js');
 
@@ -32,21 +33,21 @@ class T200HttpResource {
         for(let id in files){
             let name = path.join(global.setup.http.home, url + files[id]);
             let real = T200Path.merge_root(name);
-            result.push(real);
+            result.push(name);
         }
         return result;
     }
 
     merge_action(url){
         let name = path.join(global.setup.http.actions, url + '.js');
-        let real = T200Path.merge_root(name);
-        return real;
+        //let real = T200Path.merge_root(name);
+        return name;
     }
 
     merge_html(url){
         let name = path.join(global.setup.http.home, url);
-        let real = T200Path.merge_root(name);
-        return real;
+        //let real = T200Path.merge_root(name);
+        return name;
     }
 
 }
