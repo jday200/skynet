@@ -5,7 +5,7 @@ class T200HttpRequest {
         this.request = req;
     }
 
-    create(callback){
+    load(callback){
         this.request.callback = callback;
         this.request.on('data', this.merge_data);
         this.request.on('end', this.parse_data);

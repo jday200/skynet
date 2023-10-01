@@ -9,7 +9,7 @@ class T200HttpCookie {
     }
 
     get(name){
-        return this.cookie[name];
+        return this.request.cookie[name];
     }
 }
 

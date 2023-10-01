@@ -4,6 +4,8 @@ let HttpServer = new T200HttpServer();
 
 global.setup.http.port = 8888;
 
-HttpServer.start(function(){
+HttpServer.start().then(function(){
     console.log('start success');
+}, function(){
+    console.log('start failure');
 });

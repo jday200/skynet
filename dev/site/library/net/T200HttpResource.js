@@ -1,48 +1,54 @@
-const fs = require('fs');
-const path = require('path');
+const T200File = require('../fs/T200File.js');
+const T200Path = require('../fs/T200Path.js');
 
 class T200HttpResource {
     constructor() {
 
     }
 
-    exists(file, callback){
-        fs.access(file, fs.constants.F_OK, callback);
+    exists(file) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let real = T200Path.merge_root(file);
+            T200File.exists(real).then(resolve, reject);
+        });
+
+        return promise;
     }
 
-    merge_default(url){
+    load_action(file) {
+        let result = require(file);
+        if(result)result;
+    }
+
+    load_file(file) {
+        return T200File.load(file);
+    }
+
+    merge_default(url) {
         let files = global.setup.http.index.split(',');
         let result = new Array();
 
         for(let id in files){
             let name = path.join(global.setup.http.home, url + files[id]);
-            let real = path.join(__dirname, name);
+            let real = T200Path.merge_root(name);
             result.push(real);
         }
         return result;
     }
 
     merge_action(url){
-        let name = path.join(global.setup.http.actions, url + ‘.js’);
-        let real = path.join(__dirname, name);
+        let name = path.join(global.setup.http.actions, url + '.js');
+        let real = T200Path.merge_root(name);
         return real;
     }
 
     merge_html(url){
         let name = path.join(global.setup.http.home, url);
-        let real = path.join(__dirname, name);
+        let real = T200Path.merge_root(name);
         return real;
     }
 
-    load_action(file, callback){
-        let result = require(file);
-        if(result)result;
-        if(callback)callback();
-    }
-
-    load_file(file, callback){
-        fs.readFile(file, callback);
-    }
 }
 
 module.exports = T200HttpResource;

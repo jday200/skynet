@@ -4,12 +4,14 @@ class T200HttpResponse {
         this.response = res;
     }
 
-    SEND_200(){
-
+    SEND_200(msg){
+        this.response.writeHead(200);
+        this.response.end(msg);
     }
 
-    SEND_404(){
-
+    SEND_404(msg){
+        this.response.writeHead(404);
+        this.response.end(msg);
     }
 
     SEND_500(msg){

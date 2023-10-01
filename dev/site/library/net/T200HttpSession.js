@@ -1,7 +1,6 @@
 class T200HttpSession {
-    constructor(request, cookie) {
+    constructor(request) {
         this.request = request;
-        this.cookie = cookie;
     }
 
     static clear(){
