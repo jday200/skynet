@@ -4,6 +4,7 @@ class T200HttpSetup {
     index = "index.html";
     home = "home";
     actions = "project/actions";
+    pages = "project/pages";
     
     constructor() {
 

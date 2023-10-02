@@ -22,6 +22,8 @@ class T200HttpDispatcher {
             self.session = new T200HttpSession(req);
             self.resource = new T200HttpResource();
 
+            global.response = self.response;
+
         
             let data = url.parse(req.url, true);
             let flag = "/";
@@ -35,7 +37,8 @@ class T200HttpDispatcher {
                     self.assign_default(data.path);
                     break;
                 case "GET":
-                    self.assign_get(data.path);
+                    //self.assign_get(data.path);
+                    self.a_get(data.path);
                     break;
                 case "POST":
                     self.assign_post(data.path);
@@ -80,6 +83,23 @@ class T200HttpDispatcher {
             }
         }else{
             this.response.SEND_404();
+        }
+    }
+
+    a_get(action) {
+        let self = this;
+        let done = global.action.get[action];
+
+        console.log(done);
+
+        if(done) {
+            done(this.request, this.response, this.cookie, this.session).then(function(){
+                self.response.SEND_200();
+            }, function(){
+                self.response.SEND_500();
+            });
+        }else{
+            self.assign_get(action);
         }
     }
 

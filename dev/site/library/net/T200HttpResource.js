@@ -65,6 +65,15 @@ class T200HttpResource {
         return name;
     }
 
+    merge_app() {
+        let name = path.join(global.setup.http.actions, '/app.js');
+        return name;
+    }
+
+    merge_pages(url){
+        return path.join(global.setup.http.pages, "/" + url);
+    }
+
 }
 
 module.exports = T200HttpResource;
