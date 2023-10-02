@@ -1,5 +1,6 @@
 const http = require('http');
 const T200HttpSetup = require('./T200HttpSetup.js');
+const T200HttpAction = require('./T200HttpAction.js');
 const T200HttpDispatcher = require('./T200HttpDispatcher.js');
 
 class T200HttpServer {
@@ -20,6 +21,8 @@ class T200HttpServer {
 
     run() {
         let self = this;
+
+        global.action = new T200HttpAction();
 
         let promise = new Promise(function(resolve, reject){
             let server = http.createServer(function(req, res){

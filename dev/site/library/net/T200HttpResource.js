@@ -18,12 +18,27 @@ class T200HttpResource {
     }
 
     load_action(file) {
-        let result = require(file);
-        if(result)result;
+        debugger;
+        let name = T200Path.merge_root(file);
+        let biz = require(name);
+        let result;
+
+        if(biz){
+            result = biz;
+        }else{
+            result = false;
+        }
+
+        debugger;
+        console.log(biz);
+        console.log(result);
+        return result;
     }
 
     load_file(file) {
-        return T200File.load(file);
+        debugger;
+        let name = T200Path.merge_root(file);
+        return T200File.load(name);
     }
 
     merge_default(url) {
