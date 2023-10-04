@@ -51,6 +51,7 @@ class T200Database {
             if(undefined == self.database){
                 if(reject)reject("database is null");
             }else{
+                console.log(self.database);
                 self.database.connect().then(resolve, reject);
             }
         });

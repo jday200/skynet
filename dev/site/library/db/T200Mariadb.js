@@ -29,6 +29,8 @@ class T200Mariadb {
     }
 
     stop() {
+        console.log('mariadb stop');
+
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
@@ -43,13 +45,15 @@ class T200Mariadb {
     }
 
     connect() {
+        console.log('mariadb connect');
+
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
                 if(reject)reject("mariadb connect error");
             }else{
                 self.pool.getConnection().then(function(conn){
-                    self.connect = conn;
+                    self.conn = conn;
                     if(resolve)resolve();
                 }, reject);
             }
@@ -61,11 +65,11 @@ class T200Mariadb {
     disconnect() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            if(undefined == self.connect){
+            if(undefined == self.conn){
                 if(reject)reject("mariadb disconnect error");
             }else{
-                self.connect.end().then(function(){
-                    self.connect = undefined;
+                self.conn.end().then(function(){
+                    self.conn = undefined;
                     if(resolve)resolve();
                 }, reject);
             }
@@ -77,10 +81,10 @@ class T200Mariadb {
     query(sql) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            if(undefined == self.connect){
+            if(undefined == self.conn){
                 if(reject)reject("mariadb query error");
             }else{
-                self.connect.query(sql).then(function(data){
+                self.conn.query(sql).then(function(data){
                     if(resolve)resolve(data);
                 }, reject);
             }
@@ -90,18 +94,20 @@ class T200Mariadb {
     }
 
     execute(sql) {
+        console.log('mariadb execute ' + sql);
+
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            if(undefined == self.connect){
+            if(undefined == self.conn){
                 if(reject)reject("mariadb execute error");
             }else{
-                self.connect.query(sql).then(function(data){
+                self.conn.query(sql).then(function(data){
                     let result = false;
                     if(undefined == data){
 
                     }else if(null == data){
 
-                    }else if(1 != data.length()){
+                    }else if(1 != data.length){
 
                     }else{
                         result = true;
