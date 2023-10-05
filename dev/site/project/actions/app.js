@@ -17,11 +17,16 @@ function do_index(request, response, cookie, session) {
 
         let data = {name : 'user'};
 
+        data.name = session.get('name');
+
+        debugger;
         console.log(real);
+        console.log(cookie.get('name'));
 
         EJS.render_file(real, data).then(function(result){
             resolve(result);
-        }, function(){
+        }, function(err){
+            console.log(err);
             reject();
         });
     });

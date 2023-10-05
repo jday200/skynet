@@ -43,6 +43,8 @@ class T200HomeServer extends T200HttpServer {
         let promise = new Promise(function(resolve, reject){
             var database = new T200Database();
 
+            database.setup = new T200HomeDBSetup();
+
             database.start().then(function(){
                 global.database = database;
                 if(resolve)resolve();

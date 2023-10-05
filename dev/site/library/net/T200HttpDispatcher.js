@@ -95,7 +95,8 @@ class T200HttpDispatcher {
         if(done) {
             done(this.request, this.response, this.cookie, this.session).then(function(data){
                 self.response.SEND_200(data);
-            }, function(){
+            }, function(err){
+                console.log(err);
                 self.response.SEND_500();
             });
         }else{
