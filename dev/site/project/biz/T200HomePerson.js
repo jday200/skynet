@@ -39,8 +39,31 @@ class T200HomePerson {
 
     }
 
-    login() {
+    login(user) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let HomeStore = new T200HomeStore();
 
+            console.log('login');
+
+            return HomeStore.connect().then(function(){
+                return HomeStore.query(user.merge_select()).then(function(){
+                    
+                }, function(){
+                    return HomeStore.execute(user.merge_insert()).then(function(){
+
+                    }, function(){
+
+                    });
+                }).finally(function(){
+                    return HomeStore.disconnect();
+                });
+            }, function(){
+                
+            }).then(resolve, reject);
+        });
+
+        return promise;
     }
 
     logout() {

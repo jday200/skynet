@@ -21,6 +21,10 @@ class T200HttpRequest {
         this.body = querystring.parse(this.data);
         if(this.callback)this.callback(this.body);
     }
+
+    value(key) {
+        return this.request.body[key];
+    }
 }
 
 module.exports = T200HttpRequest;

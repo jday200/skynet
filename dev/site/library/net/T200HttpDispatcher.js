@@ -93,8 +93,8 @@ class T200HttpDispatcher {
         console.log(done);
 
         if(done) {
-            done(this.request, this.response, this.cookie, this.session).then(function(){
-                self.response.SEND_200();
+            done(this.request, this.response, this.cookie, this.session).then(function(data){
+                self.response.SEND_200(data);
             }, function(){
                 self.response.SEND_500();
             });
@@ -108,7 +108,6 @@ class T200HttpDispatcher {
         let name = this.resource.merge_action(action);
         let html = this.resource.merge_html(action);
 
-        debugger;
         self.resource.exists(name).then(function(){
             return self.load_action(name);
         }, function(){
@@ -143,7 +142,8 @@ class T200HttpDispatcher {
         if(done){
             done(this.request, this.response, this.cookie, this.session).then(function(){
                 self.response.SEND_200();
-            }, function(){
+            }, function(err){
+                console.log(err);
                 self.response.SEND_500();
             });
         }else{

@@ -2,6 +2,7 @@ const T200HomeSetup = require('./T200HomeSetup.js');
 const T200HomeDBSetup = require('./store/T200HomeDBSetup.js');
 const T200DBSetup = require('../library/db/T200DBSetup.js');
 const T200Database = require('../library/db/T200Database.js');
+const T200HttpAction = require('../library/net/T200HttpAction.js');
 const T200HttpResource = require('../library/net/T200HttpResource.js');
 const T200HttpServer = require('../library/net/T200HttpServer.js');
 
@@ -14,6 +15,8 @@ class T200HomeServer extends T200HttpServer {
 
     start() {
         let self = this;
+
+        global.action = new T200HttpAction();
 
         let promise = new Promise(function(resolve, reject){
             self.load().then(function(){
@@ -63,7 +66,8 @@ class T200HomeServer extends T200HttpServer {
 
             }).then(function(){
                 if(resolve)resolve();
-            }, function(){
+            }, function(err){
+                console.log(err);
                 if(reject)reject();
             });
         });

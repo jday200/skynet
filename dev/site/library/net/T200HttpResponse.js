@@ -1,7 +1,11 @@
 class T200HttpResponse {
     constructor(res) {
-        this.redirect = false;
+        this.flag = false;
         this.response = res;
+    }
+
+    redirect(url) {
+        this.response.writeHead(301, url);
     }
 
     SEND_200(msg){
