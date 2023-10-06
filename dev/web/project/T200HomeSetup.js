@@ -1,7 +1,6 @@
-const T200HttpSetup = require('../library/net/T200HttpSetup.js');
+const T200HttpsSetup = require('../library/net/T200HttpsSetup.js');
 
-
-class T200HomeSetup extends T200HttpSetup {
+class T200HomeSetup extends T200HttpsSetup {
     constructor() {
         super();
 

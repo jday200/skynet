@@ -1,5 +1,5 @@
 {
-  "name": "t200home",
+  "name": "t200",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "debug": "^4.3.4",
-    "mariadb": "^3.2.1",
-    "url": "^0.11.3"
+    "mariadb": "^3.2.1"
   }
 }

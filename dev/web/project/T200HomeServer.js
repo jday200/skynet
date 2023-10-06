@@ -1,11 +1,8 @@
-const T200HomeSetup = require('./T200HomeSetup.js');
-const T200HttpServer = require('../library/net/T200HttpServer.js');
+const T200HttpsServer = require('../library/net/T200HttpsServer.js');
 
-
-class T200HomeServer extends T200HttpServer {
+class T200HomeServer extends T200HttpsServer {
     constructor() {
         super();
-        global.setup.http = new T200HomeSetup();
     }
 }
 
