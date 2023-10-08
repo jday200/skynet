@@ -3,14 +3,14 @@ const querystring = require('querystring');
 
 class T200HttpsRequest {
     constructor(req) {
-        this.request = req;
+        this.req = req;
     }
 
     load() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            self.request.on('data', self.merge_data);
-            self.request.on('end', self.parse_data(resolve));
+            self.req.on('data', self.merge_data);
+            self.req.on('end', self.parse_data(resolve));
         });
 
         return promise;
