@@ -29,7 +29,8 @@ class T200HttpsDispatcher {
                 console.log('request load failure');
             }).then(function(){
                 console.log('dispense success');
-            }, function(){
+            }, function(err){
+                console.log(err);
                 console.log('dispense failure');
             });
         });
@@ -42,17 +43,115 @@ class T200HttpsDispatcher {
         let promise = new Promise(function(resolve, reject){
             let data = url.parse(req.url, true);
             let flag = '/';
+
+            if(!data.path.endsWith('/')){
+                flag = req.method;
+            }
+
+            debugger;
+            switch(flag){
+                case '/':
+                    self.assign_index(data.path).then(resolve, reject);
+                    break;
+                case 'GET':
+                    self.assign_get(data.path).then(resolve, reject);
+                    break;
+                case 'POST':
+                    self.assign_post(data.path).then(resolve, reject);
+                    break;
+            }
         });
 
         return promise;
     }
 
-    assign_get() {
+    assign_index(action) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let files = self.resource.merge_index(action);
+
+            for(let id in files){
+                self.resource.exists(files[id]).then(function(){
+                    self.load_html().then(function(){
+
+                    }, function(){
+
+                    });
+                }, function(){
+
+                });
+            }
+        });
+
+        return promise;
+    }
+
+    assign_get(action) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let done = global.action.get[action];
+
+            console.log(done);
+
+            if(done){
+                done(self.request, self.response, self.cookie, self.session).then(function(){
+                    resolve();
+                }, function(){
+                    reject();
+                });
+            }else{
+                let name = self.resource.merge_action(action);
+                let html = self.resource.merge_html(action);
+
+                self.resource.exists(name),then(function(){
+                    self.load_action(name).then(function(){
+
+                    }, function(){
+
+                    });
+                }, function(){
+
+                }).finally(function(){
+                    self.load_html(html).then(function(){
+
+                    }, function(){
+
+                    });
+                });
+
+            }
+        });
+
+        return promise;
+    }
+
+    assign_post(action) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let done = global.action.post[action];
+
+            console.log(done);
+
+            if(done){
+                done(self.request, self.response, self.cookie, self.session).then(function(){
+                    resolve();
+                }, function(){
+                    reject();
+                });
+            }else{
+                reject();
+            }
+        });
+
+        return promise;
+    }
+
+    load_action() {
 
     }
 
-    assign_post() {
-        
+    load_html() {
+
     }
 }
 
