@@ -44,7 +44,7 @@ class T200Mariadb {
 
     connect() {
         let self = this;
-        let promise = new Promise(function(){
+        let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
                 if(reject)reject("mariadb connect error");
             }else{

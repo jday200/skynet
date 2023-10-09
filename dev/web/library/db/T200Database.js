@@ -8,7 +8,7 @@ class T200Database {
     start() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            if(undefined = self.database){
+            if(undefined == self.database){
 
             }else{
                 if(reject)reject("database start error");

@@ -24,14 +24,17 @@ class T200HttpsDispatcher {
                 self.cookie = new T200HttpsCookie(req, res);
                 self.session = new T200HttpsSession();
 
-                return self.dispense(req);
-            }, function(){
-                console.log('request load failure');
-            }).then(function(){
-                console.log('dispense success');
+                //return self.dispense(req);
+                self.dispense(req).then(function(data){
+                    console.log('dispense success');
+                    self.response.SEND_200(data);
+                }, function(err){
+                    console.log(err);
+                    console.log('dispense failure');
+                    self.response.SEND_500();
+                });
             }, function(err){
-                console.log(err);
-                console.log('dispense failure');
+                console.log('request load failure');
             });
         });
 
@@ -103,7 +106,7 @@ class T200HttpsDispatcher {
                 let name = self.resource.merge_action(action);
                 let html = self.resource.merge_html(action);
 
-                self.resource.exists(name),then(function(){
+                self.resource.exists(name).then(function(){
                     self.load_action(name).then(function(){
 
                     }, function(){
@@ -112,10 +115,10 @@ class T200HttpsDispatcher {
                 }, function(){
 
                 }).finally(function(){
-                    self.load_html(html).then(function(){
-
-                    }, function(){
-
+                    self.load_html(html).then(function(data){
+                        resolve(data);
+                    }, function(err){
+                        reject(err);
                     });
                 });
 
@@ -135,8 +138,8 @@ class T200HttpsDispatcher {
             if(done){
                 done(self.request, self.response, self.cookie, self.session).then(function(){
                     resolve();
-                }, function(){
-                    reject();
+                }, function(err){
+                    reject(err);
                 });
             }else{
                 reject();
@@ -146,12 +149,22 @@ class T200HttpsDispatcher {
         return promise;
     }
 
-    load_action() {
+    load_action(action) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let result = self.resource.load_action(action);
+            if(result){
+                if(resolve)resolve();
+            }else{
+                if(reject)reject();
+            }
+        });
 
+        return promise;
     }
 
-    load_html() {
-
+    load_html(file) {
+        return this.resource.load_file(file);
     }
 }
 

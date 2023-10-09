@@ -22,4 +22,4 @@ function do_index(request, response, cookie, session, resource) {
     return promise;
 }
 
-global.cancelAnimationFrame.use_get('/', do_index);
+global.action.use_get('/', do_index);

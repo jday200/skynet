@@ -1,5 +1,5 @@
 const path = require('path');
-const T200FIle = require('../fs/T200File.js');
+const T200File = require('../fs/T200File.js');
 const T200Path = require('../fs/T200Path.js');
 
 
@@ -38,11 +38,11 @@ class T200HttpsResource {
     }
 
     merge_default(url) {
-        let files = global.setup.http.index.split(',');
+        let files = global.setup.https.index.split(',');
         let result = new Array();
 
         for(let id in files){
-            let name = path.join(global.setup.http.home, url + files[id]);
+            let name = path.join(global.setup.https.home, url + files[id]);
             result.push(name);
         }
 
@@ -50,22 +50,22 @@ class T200HttpsResource {
     }
 
     merge_action(url) {
-        let name = path.join(global.setup.http.actions, url + '.js');
+        let name = path.join(global.setup.https.actions, url + '.js');
         return name;
     }
 
     merge_html(url) {
-        let name = path.join(global.setup.http.home, url);
+        let name = path.join(global.setup.https.home, url);
         return name;
     }
 
     merge_app() {
-        let name = path.join(global.setup.http.actions, '/app.js');
+        let name = path.join(global.setup.https.actions, '/app.js');
         return name;
     }
 
     merge_pages(url) {
-        let name = path.join(global.setup.http.pages, "/" + url);
+        let name = path.join(global.setup.https.pages, "/" + url);
         return name;
     }
 }

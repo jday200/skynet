@@ -17,12 +17,21 @@ class T200HttpsRequest {
     }
 
     merge_data(current) {
+        debugger;
         this.data += current;
     }
 
     parse_data(callback) {
+        debugger;
         this.body = querystring.parse(this.data);
+        console.log(this.body);
         if(callback)callback(this.body);
+    }
+
+    value(key) {
+        console.log(this.req.body);
+        console.log(this.body);
+        return this.req.body[key];
     }
 }
 
