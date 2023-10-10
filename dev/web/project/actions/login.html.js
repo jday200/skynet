@@ -9,6 +9,7 @@ function do_login(request, response, cookie, session, resource) {
         let person = new T200Person();
         let HomePerson = new T200HomePerson();
 
+        debugger;
         person.username = request.value('username');
         person.password = request.value('password');
 
@@ -16,11 +17,13 @@ function do_login(request, response, cookie, session, resource) {
             && T200HttpsForm.verify_text(person.password)){
                 HomePerson.login(person).then(function(){
                     //
+                    debugger;
                     session.set('name', person.username);
                     cookie.set('name', person.username);
 
                     resolve();
                 }, function(err){
+                    debugger;
                     reject(err);
                 });
             }else{

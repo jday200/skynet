@@ -19,8 +19,7 @@ class T200HomePerson {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             let HomeStore = new T200HomeStore();
-            let result = false;
-
+            
             console.log('login');
 
             HomeStore.connect().then(function(){
@@ -33,6 +32,46 @@ class T200HomePerson {
 
                         });
                         */
+                        if(resolve)resolve();
+                    }else{
+                        if(reject)reject("login error");
+                    }
+                }, function(err){
+                    if(reject)reject(err);
+                }).finally(function(){
+                    HomeStore.disconnect().then(function(){
+
+                    }, function(err){
+                        if(reject)reject(err);
+                    });
+                });
+            }, function(err){
+                if(reject)reject(err);
+            });
+        });
+
+        return promise;
+    }
+
+    /*
+    login(user) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let HomeStore = new T200HomeStore();
+            let result = false;
+
+            console.log('login');
+
+            HomeStore.connect().then(function(){
+                HomeStore.query(user.merge_select()).then(function(data){
+                    if(data && (1 == data.length)){
+                        / *
+                        HomeStore.execute(user.merge_update()).then(function(){
+
+                        }, function(){
+
+                        });
+                        * /
                        result = true;
                     }else{
 
@@ -59,6 +98,7 @@ class T200HomePerson {
 
         return promise;
     }
+    */
 
     logout() {
         

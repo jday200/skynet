@@ -17,6 +17,35 @@ class T200HttpsDispatcher {
             self.resource = new T200HttpsResource();
             self.request = new T200HttpsRequest(req);
 
+            self.request.load(function(){
+                console.log('request load success');
+
+                self.response = new T200HttpsResponse(res);
+                self.cookie = new T200HttpsCookie(req, res);
+                self.session = new T200HttpsSession();
+
+                //return self.dispense(req);
+                self.dispense(req).then(function(data){
+                    console.log('dispense success');
+                    self.response.SEND_200(data);
+                }, function(err){
+                    console.log(err);
+                    console.log('dispense failure');
+                    self.response.SEND_500();
+                });
+            });
+        });
+
+        return promise;
+    }
+
+    /*
+    run(req, res) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.resource = new T200HttpsResource();
+            self.request = new T200HttpsRequest(req);
+
             self.request.load().then(function(){
                 console.log('request load success');
 
@@ -40,6 +69,7 @@ class T200HttpsDispatcher {
 
         return promise;
     }
+    */
 
     dispense(req) {
         let self = this;

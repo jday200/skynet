@@ -6,26 +6,23 @@ class T200HttpsRequest {
         this.req = req;
     }
 
-    load() {
+    load(callback) {
         let self = this;
-        let promise = new Promise(function(resolve, reject){
-            self.req.on('data', self.merge_data);
-            self.req.on('end', self.parse_data(resolve));
-        });
-
-        return promise;
+        self.req.callback = callback;
+        self.req.on('data', self.merge_data);
+        self.req.on('end', self.parse_data);
     }
 
     merge_data(current) {
-        debugger;
+        console.log("merge_data " + current);
         this.data += current;
     }
 
-    parse_data(callback) {
-        debugger;
+    parse_data() {
+        console.log("parse_data");
         this.body = querystring.parse(this.data);
         console.log(this.body);
-        if(callback)callback(this.body);
+        if(this.callback)this.callback(this.body);
     }
 
     value(key) {
