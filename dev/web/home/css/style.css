@@ -1,0 +1,13 @@
+body
+{ 
+    width : 1024;
+    height : 200;
+ }
+
+ div
+{ 
+    width : 1024;
+    height : 200;
+    background-color : #FFC0CB;
+    align : center;
+ }

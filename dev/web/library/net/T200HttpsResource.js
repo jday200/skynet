@@ -37,7 +37,7 @@ class T200HttpsResource {
         return T200File.load(real);
     }
 
-    merge_default(url) {
+    merge_index(url) {
         let files = global.setup.https.index.split(',');
         let result = new Array();
 

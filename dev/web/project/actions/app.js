@@ -1,3 +1,6 @@
+const T200Path = require('../../library/fs/T200Path.js');
+const T200EJS = require('../../library/T200EJS.js');
+
 
 function do_index(request, response, cookie, session, resource) {
     let self = this;

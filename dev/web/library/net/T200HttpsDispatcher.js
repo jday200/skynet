@@ -81,7 +81,6 @@ class T200HttpsDispatcher {
                 flag = req.method;
             }
 
-            debugger;
             switch(flag){
                 case '/':
                     self.assign_index(data.path).then(resolve, reject);
@@ -101,18 +100,30 @@ class T200HttpsDispatcher {
     assign_index(action) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            let files = self.resource.merge_index(action);
+            let done = global.action.get[action];
 
-            for(let id in files){
-                self.resource.exists(files[id]).then(function(){
-                    self.load_html().then(function(){
+            console.log(done);
 
-                    }, function(){
-
-                    });
-                }, function(){
-
+            if(done){
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(data){
+                    resolve(data);
+                }, function(err){
+                    reject(err);
                 });
+            }else{
+                let files = self.resource.merge_index(action);
+
+                for(let id in files){
+                    self.resource.exists(files[id]).then(function(){
+                        self.load_html().then(function(){
+                            if(resolve)resolve();
+                        }, function(err){
+                            if(reject)reject(err);
+                        });
+                    }, function(err){
+                        if(reject)reject(err);
+                    });
+                }
             }
         });
 
@@ -127,7 +138,7 @@ class T200HttpsDispatcher {
             console.log(done);
 
             if(done){
-                done(self.request, self.response, self.cookie, self.session).then(function(){
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
                     resolve();
                 }, function(){
                     reject();
@@ -166,7 +177,7 @@ class T200HttpsDispatcher {
             console.log(done);
 
             if(done){
-                done(self.request, self.response, self.cookie, self.session).then(function(){
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
                     resolve();
                 }, function(err){
                     reject(err);

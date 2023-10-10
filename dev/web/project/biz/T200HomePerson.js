@@ -7,8 +7,39 @@ class T200HomePerson {
 
     }
 
-    register() {
+    register(user) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let HomeStore = new T200HomeStore();
 
+            console.log('register');
+
+            HomeStore.connect().then(function(){
+                HomeStore.query(user.merge_select()).then(function(data){
+                    if(data && 0 < data.length){
+                        if(reject)reject("register error");
+                    }else{
+                        HomeStore.execute(user.merge_insert()).then(function(){
+                            if(resolve)resolve();
+                        }, function(err){
+                            if(reject)reject(err);
+                        });
+                    }
+                }, function(err){
+                    if(reject)reject(err);
+                }).finally(function(){
+                    HomeStore.disconnect().then(function(){
+
+                    }, function(err){
+                        if(reject)reject(err);
+                    });
+                });
+            }, function(err){
+                if(reject)reject(err);
+            });
+        });
+
+        return promise;
     }
 
     unregister() {

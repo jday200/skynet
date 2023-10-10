@@ -1,6 +1,10 @@
+const T200HttpsForm = require('../../library/net/T200HttpsForm.js');
+const T200Person = require('../models/T200Person.js');
+const T200HomePerson = require('../biz/T200HomePerson.js');
+
 function do_register(request, response, cookie, session, resource) {
     let self = this;
-    let promise = new Promise(function(){
+    let promise = new Promise(function(resolve, reject){
         let person = new T200Person();
         let HomePerson = new T200HomePerson();
 
