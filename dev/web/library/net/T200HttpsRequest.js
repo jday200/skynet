@@ -20,6 +20,7 @@ class T200HttpsRequest {
 
     parse_data() {
         console.log("parse_data");
+        console.log(this.data);
         this.body = querystring.parse(this.data);
         console.log(this.body);
         if(this.callback)this.callback(this.body);

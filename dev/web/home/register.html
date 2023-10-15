@@ -3,9 +3,9 @@
 
 <head>
     <title></title>
-    <meta name="generator" content="Bluefish 2.2.10">
-    <meta name="author" content="user">
-    <meta name="date" content="2023-10-05T13:58:34+0800">
+    <meta name="generator" content="Bluefish 2.2.10" >
+    <meta name="author" content="user" >
+    <meta name="date" content="2023-10-15T12:33:37+0800" >
     <meta name="copyright" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -14,6 +14,12 @@
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
     <meta http-equiv="content-style-type" content="text/css">
     <meta http-equiv="expires" content="0">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/js/t200.js"></script>
+    <script src="/js/home.js"></script>
+
 </head>
 
 <body bgcolor="#ADD8E6">
@@ -27,7 +33,7 @@
         </tr>
         <tr>
             <td colspan="8">
-                <form action="/register" method="post">
+                <form id="register" action="/register" method="post" onsubmit="return false;">
                     <table align="center">
                         <tr>
                             <td></td>
@@ -74,7 +80,7 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td colspan="4" align="center"><input type="submit" name="submit" value="submit"></td>
+                            <td colspan="4" align="center"><input type="button" id="submit" name="submit" value="submit"></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -131,5 +137,18 @@
         </tr>
     </table>
 </body>
+
+<script>
+console.log($.element('register'));
+$.element('submit').onclick = function(){
+    console.log('click');
+    let data = new FormData($.element('register'));
+    let result = $.datatostring(data);
+    console.log(result);
+    $.post('/register', result, function(){
+        alert('success');
+    });
+};
+</script>
 
 </html>

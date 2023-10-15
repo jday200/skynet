@@ -20,7 +20,7 @@ class T200HomePerson {
                         if(reject)reject("register error");
                     }else{
                         HomeStore.execute(user.merge_insert()).then(function(){
-                            if(resolve)resolve();
+                            if(resolve)resolve('success');
                         }, function(err){
                             if(reject)reject(err);
                         });
@@ -84,55 +84,39 @@ class T200HomePerson {
         return promise;
     }
 
-    /*
-    login(user) {
+    logout() {
+        
+    }
+
+    find(user) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             let HomeStore = new T200HomeStore();
-            let result = false;
 
-            console.log('login');
+            console.log('find');
 
             HomeStore.connect().then(function(){
                 HomeStore.query(user.merge_select()).then(function(data){
-                    if(data && (1 == data.length)){
-                        / *
-                        HomeStore.execute(user.merge_update()).then(function(){
-
-                        }, function(){
-
-                        });
-                        * /
-                       result = true;
+                    if(data && 0 < data.length){
+                        if(reject)reject("find error");
                     }else{
-
+                        if(resolve)resolve(data);
                     }
-                }, function(){
-
+                }, function(err){
+                    if(reject)reject(err);
                 }).finally(function(){
                     HomeStore.disconnect().then(function(){
 
-                    }, function(){
-                        result = false;
+                    }, function(err){
+                        if(reject)reject(err);
                     });
                 });
             }, function(err){
-
-            }).finally(function(){
-                if(result){
-                    if(resolve)resolve();
-                }else{
-                    if(reject)reject("login error");
-                }
+                if(reject)reject(err);
             });
         });
 
         return promise;
-    }
-    */
-
-    logout() {
-        
     }
 }
 

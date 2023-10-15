@@ -14,6 +14,7 @@ function do_register(request, response, cookie, session, resource) {
         let pwd2 = request.value('password2');
         let email = request.value('email');
 
+        debugger;
         if(T200HttpsForm.verify_equal(pwd1, pwd2)
             && T200HttpsForm.verify_text(person.username)
             && T200HttpsForm.verify_email(email)){
@@ -21,8 +22,9 @@ function do_register(request, response, cookie, session, resource) {
             person.password = pwd1;
             person.email = email;
 
-            HomePerson.register(person).then(function(){
-                resolve();
+            HomePerson.register(person).then(function(data){
+                response.set('Content-Type', 'application/json');
+                resolve(`{"result":"${data}"}`);
             }, function(err){
                 reject(err);
             });

@@ -31,7 +31,7 @@ class T200HttpsDispatcher {
                 }, function(err){
                     console.log(err);
                     console.log('dispense failure');
-                    self.response.SEND_500();
+                    self.response.SEND_500(err);
                 });
             });
         });
@@ -138,8 +138,8 @@ class T200HttpsDispatcher {
             console.log(done);
 
             if(done){
-                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
-                    resolve();
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(data){
+                    resolve(data);
                 }, function(){
                     reject();
                 });
@@ -177,13 +177,14 @@ class T200HttpsDispatcher {
             console.log(done);
 
             if(done){
-                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
-                    resolve();
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(data){
+                    resolve(data);
                 }, function(err){
                     reject(err);
                 });
             }else{
-                reject();
+                self.response.set('Content-Type', 'application/json');
+                reject('{"err":"done is null"}');
             }
         });
 
@@ -205,6 +206,9 @@ class T200HttpsDispatcher {
     }
 
     load_html(file) {
+        if(file.endsWith('.js')){
+            this.response.set('Content-Type', 'text/plain;charset=utf-8');
+        };
         return this.resource.load_file(file);
     }
 }
