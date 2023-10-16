@@ -149,15 +149,20 @@ class T200HttpsDispatcher {
 
                 self.resource.exists(name).then(function(){
                     self.load_action(name).then(function(){
-
-                    }, function(){
-
+                        //resolve();
+                    }, function(err){
+                        console.log('load_action ' + err);
+                        //reject(err);
                     });
                 }, function(){
-
+                    //reject('file not exists');
                 }).finally(function(){
-                    self.load_html(html).then(function(data){
-                        resolve(data);
+                    self.resource.exists(html).then(function(){
+                        self.load_html(html).then(function(data){
+                            resolve(data);
+                        }, function(err){
+                            reject(err);
+                        });
                     }, function(err){
                         reject(err);
                     });
@@ -207,7 +212,7 @@ class T200HttpsDispatcher {
 
     load_html(file) {
         if(file.endsWith('.js')){
-            this.response.set('Content-Type', 'text/plain;charset=utf-8');
+            this.response.set('Content-Type', 'application/javascript');
         };
         return this.resource.load_file(file);
     }

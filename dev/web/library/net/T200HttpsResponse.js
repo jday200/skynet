@@ -24,6 +24,8 @@ class T200HttpsResponse {
     }
 
     SEND_500(msg) {
+        console.log('500 ' + msg);
+        console.log(msg);
         this.res.writeHead(500);
         this.res.end(msg);
     }

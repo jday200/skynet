@@ -32,7 +32,7 @@
             <td></td>
         </tr>
         <tr>
-            <td colspan="8">
+            <td id="main" colspan="8">
                 <form id="register" action="/register" method="post" onsubmit="return false;">
                     <table align="center">
                         <tr>
@@ -146,7 +146,12 @@ $.element('submit').onclick = function(){
     let result = $.datatostring(data);
     console.log(result);
     $.post('/register', result, function(){
-        alert('success');
+        //alert('success');
+        //$.element('main').innerHTML = "<div><a href='/'>跳转</a></div><sc ript>window.location='/';</scri pt>";
+        $.element('main').innerHTML = "<div><a href='/login.html'>跳转</a></div>";
+        window.location = '/login.html';
+    }, function(){
+        alert('注册失败！');
     });
 };
 </script>

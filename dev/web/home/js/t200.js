@@ -11,7 +11,7 @@ class T200 {
         return document.getElementById(name);
     }
 
-    post(url, data, success) {
+    post(url, data, success, failure) {
         let xhr = new XMLHttpRequest();
 
         xhr.open('POST', url, true);
@@ -23,6 +23,8 @@ class T200 {
             if('success' == flag.result){
                 console.log('success');
                 success();
+            }else{
+                failure();
             }
         });
     }
