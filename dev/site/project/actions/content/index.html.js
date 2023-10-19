@@ -1,19 +1,19 @@
-const { log, log_start, log_stop } = require('../../library/lib.js');
+const { log, log_start, log_stop } = require('../../../library/lib.js');
 
-const T200Path = require('../../library/fs/T200Path.js');
-const T200EJS = require('../../library/T200EJS.js');
+const T200Path = require('../../../library/fs/T200Path.js');
+const T200EJS = require('../../../library/T200EJS.js');
 
-const T200Article = require('../models/T200Article.js');
-const T200HomeArticle = require('../biz/T200HomeArticle.js');
+const T200Article = require('../../models/T200Article.js');
+const T200HomeArticle = require('../../biz/T200HomeArticle.js');
 
 
-function do_index(request, response, cookie, session, resource) {
+function do_articles(request, response, cookie, session, resource) {
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        log(__filename, "do_index");
+        log(__filename, "do_articles");
 
         let EJS = new T200EJS();
-        let file = resource.merge_pages('index.ejs');
+        let file = resource.merge_pages('content/articles.ejs');
         let real = T200Path.join_root(file);
 
         let data = {};
@@ -24,11 +24,14 @@ function do_index(request, response, cookie, session, resource) {
             data.articles = articles;
             return EJS.render_file(real, data);
         }, function(err){
+            console.log(err);
             return error();
         }).then(function(data){
+            response.type('json');
             response.data(data);
             resolve();
         }, function(err){
+            console.log(err);
             reject();
         });
     });
@@ -52,4 +55,4 @@ function get_articles(userid) {
     return promise;
 }
 
-module.exports = { do_index };
+global.action.use_post('/content/articles', do_articles);

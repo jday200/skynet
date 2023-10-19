@@ -23,7 +23,7 @@ class T200HttpsDispatcher {
             
                 self.response = new T200HttpsResponse(res);
                 self.cookie = new T200HttpsCookie(req, res);
-                self.session = new T200HttpsSession();
+                self.session = new T200HttpsSession(self.cookie);
                 
                 self.dispense(req).then(function(){
                     log(__filename, "dispense success");
@@ -82,7 +82,8 @@ class T200HttpsDispatcher {
             if(done){
                 done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
                     resolve();
-                }, function(){
+                }, function(err){
+                    debugger;
                     reject();
                 });
             }else{
@@ -172,7 +173,7 @@ class T200HttpsDispatcher {
             if(done){
                 done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
                     resolve();
-                }, function(){
+                }, function(err){
                     reject();
                 });
             }else{

@@ -1,4 +1,4 @@
-const { log, log_start, log_stop } = require('../lib.js');
+const { log, log_start, log_stop } = require('./lib.js');
 const ejs = require('ejs');
 
 class T200EJS {

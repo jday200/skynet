@@ -19,12 +19,12 @@
 <script src="/js/t200.js"></script>
   
 </head>
-<body>
+<body id="body">
 
-<div id="main" class="main">
+<div class="main">
 
     <div>
-        <nav>
+        <nav id="nav">
             <a href="/">Home</a> |
             <a href="/">About</a> 
         </nav>
@@ -36,18 +36,8 @@
         </header>
     </div>
 
-    <div class="form">
-        <div class="form_label">Login</div>
-        <div>
-            <form id="login"><input type="hidden" name="text">
-                <div class="form_item"><label class="form_title" for="username">Username:</label><input type="text" name="username"></div>
-                <div class="form_item"><label class="form_title" for="password">Password:</label><input type="password" name="password"></div>
-                <div class="form_submit"><input type="button" id="submit" name="submit" value="submit"></div>
-            </form>	
-        </div>
-        <div class="form_text"><a href="/register.html">register</a></div>
-        <div class="form_text"><a href="/forget.html">忘记密码</a></div>
-        <div class="form_text">&nbsp;</div>
+    <div id="main" class="">
+
     </div>
 
     <div>
@@ -66,17 +56,24 @@
 </body>
 
 <script>
-$.element('submit').onclick = function(){
-    let data = new FormData($.element('login'));
-    let result = $.datatostring(data);
+    window.onload = function(){
+        let sid = $.cookie('sid');
 
-    $.post('/login', result, function(){
-        $.element('main').innerHTML = "<div><a href='/'>跳转</a></div>";
-        window.location = '/';
-    }, function(){
-        alert('登录失败！');
-    });
-};
+        if(sid){
+            $.element('nav').innerHTML = "<div><a href='/'>跳转</a></div>";
+
+            let data = '{}';
+            $.post('/content/articles', data, function(result){
+                //alert(result);
+                $.element('main').innerHTML = result;
+            }, function(){
+                alert('加载失败！');
+            });
+        }else{
+            alert('error');
+        }
+
+    };
 </script>
 
 </html>

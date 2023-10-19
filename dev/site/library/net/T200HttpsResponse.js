@@ -9,12 +9,21 @@ class T200HttpsResponse {
         this._type = "text";
         this._result = false;
         //this._data = {};
+
+        this.parameters['result'] = "failure";
+    }
+
+    type(value) {
+        log(__filename, "type", value);
+        this._type = value;
     }
 
     data(value) {
         log(__filename, "set data");
         this._data = value;
         this._result = true;
+        this.parameters['data'] = value;
+        this.parameters['result'] = "success";
     }
 
     status(value) {
@@ -46,7 +55,19 @@ class T200HttpsResponse {
 
     merge_result() {
         log(__filename, "merge_result");
-        return this._data;
+
+        let result;
+
+        switch(this._type){
+            case 'json':
+                result = JSON.stringify(this.parameters);
+                this.set('Content-Type', 'text/json');
+                break;
+            case 'text':
+                result = this._data;
+                break;
+        }
+        return result;
     }
 }
 

@@ -16,7 +16,7 @@ class T200HttpsCookie {
 
     get(name) {
         log(__filename, "T200HttpsCookie get", name);
-        return this.req.cookie[name];
+        return this.cookie[name];
     }
 
     parse() {
