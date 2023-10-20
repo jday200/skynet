@@ -88,29 +88,36 @@ class T200HttpsDispatcher {
                 });
             }else{
                 let files = self.resource.merge_index(action);
-                let flag = false;
+                let job = new Array();
+   
+                for(let file of files){
+                    let task = self.load_html2(file);
+                    job.push(task);
+                }
 
-                for(let id in files){
-                    self.resource.exists(files[id]).then(function(){
-                        self.load_html().then(function(){
+                const result  = Promise.all(job);
+
+                result.then(values =>{
+                    let flag = false;
+                    for(let value of values){
+                        if(value){
                             flag = true;
                             self.response.status(200);
-                            if(resolve)resolve();
-                        }, function(){
-                            flag = true;
-                            self.response.status(500);
-                            if(reject)reject();
-                        });
-                    }, function(){
+                            self.response.data(value);
+                            break;
+                        }
+                    }
+                    if(flag){
+                        resolve();
+                    }else{
+                        self.response.status(404);
+                        reject();
+                    }
+                });
 
-                    })
+                result.then(function(){
 
-                    if(flag)break;
-                }
-
-                if(!flag){
-                    self.response.status(404);
-                }
+                });
             }
         });
 
@@ -215,6 +222,25 @@ class T200HttpsDispatcher {
     load_html(file) {
         log(__filename, "load_html", file);
         return this.resource.load_file(file);
+    }
+
+    load_html2(file) {
+        log(__filename, "load_html2", file);
+
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.resource.exists(file).then(function(){
+                return self.resource.load_file(file);
+            }, function(err){
+                
+            }).then(function(data){
+                resolve(data);
+            }, function(err){
+                reject();
+            });
+        });
+
+        return promise;
     }
 }
 
