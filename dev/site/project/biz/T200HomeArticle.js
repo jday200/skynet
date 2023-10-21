@@ -43,6 +43,34 @@ class T200HomeArticle {
         return promise;
     }
 
+    search(article) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let HomeStore = new T200HomeStore();
+
+            console.log('search');
+
+            HomeStore.connect().then(function(){
+                HomeStore.query(article.merge_select()).then(function(data){
+                    if(resolve)resolve(data);
+                }, function(err){
+                    if(reject)reject(err);
+                }).finally(function(){
+                    HomeStore.disconnect().then(function(){
+
+                    }, function(err){
+                        if(reject)reject(err);
+                    });
+                });
+            }, function(err){
+                if(reject)reject(err);
+            });
+
+        });
+
+        return promise;
+    }
+
     list(article) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
@@ -51,7 +79,7 @@ class T200HomeArticle {
             console.log('list');
 
             HomeStore.connect().then(function(){
-                HomeStore.query(article.merge_select()).then(function(data){
+                HomeStore.query(article.merge_select_all()).then(function(data){
                     if(resolve)resolve(data);
                 }, function(err){
                     if(reject)reject(err);

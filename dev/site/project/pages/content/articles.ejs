@@ -1,1 +1,23 @@
-<div>hello</div>
+<div class="channel">
+    <div class="channel_paging">
+
+    </div>
+    <div class="channel_list">
+        <% 
+            if(articles){
+                articles.forEach(article => { %>
+                    <div class="channel_list_item">
+                        <div><%=article.title %></div>
+                        <div>
+                        <div><a href="/content/article.html">Edit</a></div>
+                        <div><input type="checkbox"></div>
+                        </div>
+                    </div>
+                <% });
+            }
+        %>
+    </div>
+    <div class="channel_paging">
+
+    </div>
+</div>

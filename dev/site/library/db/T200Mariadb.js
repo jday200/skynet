@@ -103,9 +103,10 @@ class T200Mariadb {
             }else{
                 self.conn.query(sql).then(function(data){
                     let result = false;
-                    if(result && (0 < data.length)){
-                        result = true;
-                    }
+
+                   if(data && 0 == data.warningStatus){
+                    result = true;
+                   }
                     if(resolve)resolve(result);
                 }, function(err){
                     if(reject)reject(err);

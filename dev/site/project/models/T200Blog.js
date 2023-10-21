@@ -10,7 +10,7 @@ class T200Blog {
     }
 
     build_create() {
-        return `create table if not exists blog(blogid int, content text, userid int)`;
+        return `create table if not exists blog(blogid int primary key auto_increment, content text, userid int, INDEX index_userid (userid) )`;
     }
 
     build_drop() {

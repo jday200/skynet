@@ -12,7 +12,7 @@ class T200Article {
     }
 
     build_create() {
-        return `create table if not exists article(articleid int, title varchar(200), content text, userid int)`;
+        return `create table if not exists article(articleid int primary key auto_increment, title varchar(200), content text, userid int, INDEX index_userid(userid) )`;
     }
 
     build_drop() {
@@ -34,6 +34,10 @@ class T200Article {
 
     merge_select() {
         return `select * from article where userid = '${this.userid}'`;
+    }
+
+    merge_select_all() {
+        return `select * from article order by userid`;
     }
 }
 

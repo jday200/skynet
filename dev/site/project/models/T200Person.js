@@ -12,7 +12,7 @@ class T200Person {
     }
 
     build_create() {
-        return `create table if not exists person (userid int primary key auto_increment, username varchar(50), password varchar(100), email varchar(100))`;
+        return `create table if not exists person (userid int primary key auto_increment, username varchar(50) UNIQUE, password varchar(100), email varchar(100) UNIQUE )`;
     }
 
     build_drop() {

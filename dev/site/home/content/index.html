@@ -2,9 +2,9 @@
 <html>
 <head>
 <title></title>
-<meta name="generator" content="Bluefish 2.2.10" >
-<meta name="author" content="user" >
-<meta name="date" content="2023-10-14T12:48:02+0800" >
+<meta name="generator" content="Bluefish">
+<meta name="author" content="">
+<meta name="date" content="">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -14,44 +14,61 @@
 <meta http-equiv="content-style-type" content="text/css">
 <meta http-equiv="expires" content="0">
 
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/styles.css">
 
 <script src="/js/t200.js"></script>
-  
+
 </head>
-<body id="body">
+<body>
 
-<div class="main">
+    <div class="container">
+        <div>
+            <nav>
+                <div class="nav_container">
+                    <div class="nav_left">
+                        <a class="nav_item" href="/">Home</a> |
+                        <a href="/">About</a>
+                    </div>
+                    <div id="nav_right" class="nav_right">
+                        <a href="/login.html">Login</a> |
+                        <a href="/register.html">Register</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
 
-    <div>
-        <nav id="nav">
-            <a href="/">Home</a> |
-            <a href="/">About</a> 
-        </nav>
-    </div>
-    <div>
-        <header class="header">
-            <div>
+        <div class="header">
+            <header>
+                header
+            </header>
+        </div>
+
+        <div class="channel_panel">
+            <div class="channel_panel_msg">
+                <a href="/content/article.html">publish</a>
             </div>
-        </header>
-    </div>
+        </div>
 
-    <div id="main" class="">
+        <div id="main" class="channel">
+            <div class="channel_paging">
 
-    </div>
-
-    <div>
-        <footer class="footer">
-            <div>		
-                <nav>
-                    <a href="/">Home</a> |
-                    <a href="/">About</a> 
-                </nav>
             </div>
-        </footer>
-    </div>
+            <div class="channel_list">
+                <div class="channel_list_item">
+                </div>
+            </div>
+            <div class="channel_paging">
 
-</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <footer>
+                footer
+            </footer>
+        </div>
+
+    </div>
 
 </body>
 
@@ -60,21 +77,19 @@
         let sid = $.cookie('sid');
 
         if(sid){
-            $.element('nav').innerHTML = "<div><a href='/'>跳转</a></div>";
-
+            $.element('nav_right').innerHTML = '<a href="/content/index.html">我的主页</a>';
+            
             let data = '{}';
             $.post('/content/articles', data, function(result){
                 //alert(result);
                 $.element('main').innerHTML = result;
             }, function(){
                 alert('加载失败！');
-            });
+            })
         }else{
             alert('error');
         }
-
     };
 </script>
 
 </html>
-

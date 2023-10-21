@@ -18,9 +18,13 @@ function do_index(request, response, cookie, session, resource) {
 
         let data = {};
 
-        data.userid = session.get('userid');
-
-        get_articles(data.userid).then(function(articles){
+        try{
+            data.userid = session.get('userid');
+        }catch(err){
+            data.userid = 0;
+        }
+    
+        get_articles().then(function(articles){
             data.articles = articles;
             return EJS.render_file(real, data);
         }, function(err){
@@ -36,15 +40,13 @@ function do_index(request, response, cookie, session, resource) {
     return promise;
 }
 
-function get_articles(userid) {
-    log(__filename, "get_articles", userid);
+function get_articles() {
+    log(__filename, "get_articles");
     
     let self = this;
     let promise = new Promise(function(resolve, reject){
         let article = new T200Article();
         let HomeArticle = new T200HomeArticle();
-
-        article.userid = userid;
 
         HomeArticle.list(article).then(resolve, reject);
     });

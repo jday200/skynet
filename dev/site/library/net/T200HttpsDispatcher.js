@@ -83,7 +83,6 @@ class T200HttpsDispatcher {
                 done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
                     resolve();
                 }, function(err){
-                    debugger;
                     reject();
                 });
             }else{

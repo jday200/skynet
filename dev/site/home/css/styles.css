@@ -52,16 +52,20 @@ a:hover {
     display:flex;
     justify-content:center;
 	align-items:center;
+    flex-direction:column;
 }
 
 .main_list {
     width: 512px;
-    min-height: 600px;
+    min-height: 300px;
+    display:flex;
+    justify-content:center;
+	align-items:center;
 }
 
 .main_channel {
     width: 512px;
-
+    background-color: #FFC0CB;
 }
 
 .main_channel_title {
@@ -71,9 +75,9 @@ a:hover {
 }
 
 .main_item {
-    width: 512px;
+    width: 480px;
     height: 100px;
-    background-color: #FFC0CB;
+
 }
 
 .footer {
@@ -99,12 +103,30 @@ a:hover {
 
 .form_item {
     height: 35px;
-    width: 400px;
-    text-align: justify;
-    align-items: center;
+    min-width: 400px;
     display:flex;
 	justify-content:center;
 	align-items:center;
+}
+
+.form_textarea_item {
+    height: 35px;
+    width: 1024px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_textarea {
+    width: 1024px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_textarea_field {
+    position: relative;
+    width: 700px;
 }
 
 .form_label {
@@ -140,6 +162,15 @@ a:hover {
     flex-direction:column;
 }
 
+.channel_panel {
+    width: 1024px;
+    min-height: 35px;
+}
+
+.channel_panel_msg {
+    font-weight: bold;
+}
+
 .channel_paging {
     height: 50px;
     display:flex;
@@ -152,5 +183,23 @@ a:hover {
 }
 
 .channel_list_item {
+    width: 900px;
+    border: solid 1px white;
+}
 
+.side {
+    width: 1024px;
+    min-height: 60px;
+    display:flex;
+    justify-content:center;
+	align-items:center;
+}
+
+.side_small {
+    min-width: 100px;
+    background-color: #FFC0CB;
+}
+
+.side_large {
+    width:100%;
 }
