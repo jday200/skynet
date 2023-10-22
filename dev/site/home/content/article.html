@@ -49,10 +49,11 @@
                 <form id="form">
                     <div>
                         <div class="form_textarea_item"><input type="hidden" name="test">
-                            <label class="form_label" for="title">Title:</label><input class="form_textarea_field" type="text" name="title">
+                            <input type="hidden" id="article_id" name="article_id">
+                            <label class="form_label" for="title">Title:</label><input class="form_textarea_field" type="text" id="title" name="title">
                         </div>
                         <div class="form_textarea">
-                            <label class="form_label" for="content">Content:</label><textarea class="form_textarea_field" name="content" cols="80" rows="20"></textarea>
+                            <label class="form_label" for="content">Content:</label><textarea class="form_textarea_field" id="content" name="content" cols="80" rows="20"></textarea>
                         </div>
                         <div class="form_button">
                             <input id="submit" type="button" value="submit">
@@ -86,11 +87,28 @@
         let data = new FormData($.element('form'));
         let result = $.datatostring(data);
 
-        $.post('/content/add_article', result, function(){
+        $.post('/content/edit_article', result, function(){
             alert('success');
         }, function(){
             alert('failure');
         });
+    };
+
+    window.onload = function(){
+        let aid = $.cookie('aid');
+
+        if(aid && 0 < aid){
+            let result = "{}";
+
+            $.post('/content/get_article', result, function(data){
+                //alert('success');
+                $.element("article_id").value = data.articleid;
+                $.element("title").value = data.title;
+                $.element("content").value = data.content;
+            }, function(){
+                alert('failure');
+            });
+        }
     };
 </script>
 

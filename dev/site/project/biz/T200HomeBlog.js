@@ -42,6 +42,33 @@ class T200HomeBlog {
 
         return promise;
     }
+
+    list(blog) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let HomeStore = new T200HomeStore();
+
+            log(__filename, "list");
+
+            HomeStore.connect().then(function(){
+                HomeStore.query(blog.merge_select_all()).then(function(data){
+                    if(resolve)resolve(data);
+                }, function(err){
+                    if(reject)reject(err);
+                }).finally(function(){
+                    HomeStore.disconnect().then(function(){
+
+                    }, function(err){
+                        if(reject)reject(err);
+                    });
+                });
+            }, function(err){
+                if(reject)reject(err);
+            });
+        });
+
+        return promise;
+    }
 }
 
 module.exports = T200HomeBlog;

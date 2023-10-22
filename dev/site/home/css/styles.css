@@ -179,12 +179,31 @@ a:hover {
 }
 
 .channel_list {
-
+    border: solid 1px red;
 }
 
 .channel_list_item {
     width: 900px;
     border: solid 1px white;
+    margin: 5px;
+    display:flex;
+    justify-content:space-between;
+	align-items:center;
+}
+
+.channel_list_item_left {
+    width: auto;
+}
+
+.channel_list_item_right {
+    min-width: 60px;
+    display:flex;
+    justify-content:space-between;
+	align-items:center;
+ }
+
+.channel_list_item_right_item {
+    margin: 0px 20px;
 }
 
 .side {

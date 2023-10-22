@@ -32,6 +32,11 @@ class T200Traffic {
     merge_select() {
         return `select * from traffic`;
     }
+
+    merge_select_all() {
+        return `select * from traffic order by traffic_id`;
+    }
+
 }
 
 module.exports = T200Traffic;

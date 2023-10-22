@@ -33,6 +33,11 @@ class T200Blog {
     merge_select() {
         return `select * from blog where userid = '${this.userid}'`;
     }
+
+    merge_select_all() {
+        return `select * from blog order by blogid`;
+    }
+
 }
 
 module.exports = T200Blog;

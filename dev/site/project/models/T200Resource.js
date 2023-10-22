@@ -36,6 +36,11 @@ class T200Resource {
     merge_select() {
         return `select * from resource`;
     }
+
+    merge_select_all() {
+        return `select * from resource order by resource_id`;
+    }
+
 }
 
 module.exports = T200Resource;

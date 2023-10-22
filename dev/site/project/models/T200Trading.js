@@ -32,6 +32,11 @@ class T200Trading {
     merge_select() {
         return `select * from trading`;
     }
+
+    merge_select_all() {
+        return `select * from trading order by trading_id`;
+    }
+
 }
 
 module.exports = T200Trading;

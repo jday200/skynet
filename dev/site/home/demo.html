@@ -131,16 +131,73 @@
         </div>
 
         <div class="channel">
+            <form>
             <div class="channel_paging">
 
             </div>
             <div class="channel_list">
                 <div class="channel_list_item">
+                    <div class="channel_list_item_left">
+                        
+                    </div>
+                    <div class="channel_list_item_right">
+                        <button id="remove" disabled onclick="remove();return false;">remove</button>
+                    </div>
                 </div>
+
+                <div class="channel_list_item">
+                    <div class="channel_list_item_left">
+                        <div data-locale="title">title</div>
+                        <label data-locale="title">title</label>
+                        <input type="text" data-locale="title" value="title">
+                    </div>
+                    <div class="channel_list_item_right">
+
+                    </div>
+                </div>
+
+                <div class="channel_list_item">
+                    <div class="channel_list_item_left">
+                        a
+                    </div>
+                    <div class="channel_list_item_right">
+                        <div class="channel_list_item_rigth_item">
+                            <a href="/content/article.html" onclick="$.set_cookie('aid', <%=article.articleid%>)">Edit</a>
+                        </div>
+                        <div class="channel_list_item_rigth_item">
+                            <input type="checkbox" id="ids" name="ids" value="1" onclick="$.element('remove').disabled = false;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="channel_list_item">
+                    <div class="channel_list_item_left">
+                        a
+                    </div>
+                    <div class="channel_list_item_right">
+                        <div class="channel_list_item_rigth_item">
+                            <a href="/content/article.html" onclick="$.set_cookie('aid', <%=article.articleid%>)">Edit</a>
+                        </div>
+                        <div class="channel_list_item_rigth_item">
+                            <input type="checkbox" id="ids" name="ids" value="2" onclick="$.element('remove').disabled = false;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="channel_list_item">
+                    <div class="channel_list_item_left">
+                        
+                    </div>
+                    <div class="channel_list_item_right">
+                        <button></button>
+                    </div>
+                </div>
+
             </div>
             <div class="channel_paging">
 
             </div>
+            </form>
         </div>
 
         <div class="side">
@@ -169,4 +226,46 @@
     </div>
 
 </body>
+
+<script>
+    function remove() {
+        alert($.all('ids'));
+    }
+
+    window.onload = function(){
+        //alert(navigator.language);
+        var i18n = {};
+        let data = "{}";
+        $.get('/i18n/zh-CN.properties', data, function(result){
+            //alert('success');
+            //alert(result);
+            result.split('\n').forEach(item => {
+                let values = item.split('=');
+
+                i18n[values[0]] = values[1];
+
+                //alert(i18n);
+                //alert(values[0]);
+                //alert(values[1]);
+
+                //alert(i18n['title']);
+                
+                //alert(document.querySelectorAll('.data-locale'));
+
+                alert(document.querySelectorAll('[data-locale]').length);
+
+                document.querySelectorAll('[data-locale]').forEach(item => {
+                    //alert(item.getAttribute('data-locale'));
+                    item.innerHTML = i18n['title'];
+                    item.value = i18n['title'];
+                });
+
+            });
+        }, function(){
+            alert('failure');
+        });
+    };
+
+</script>
+
 </html>

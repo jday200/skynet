@@ -55,4 +55,46 @@ function get_articles(userid) {
     return promise;
 }
 
+
+function do_remove_articles(request, response, cookie, session, resource) {
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        log(__filename, "do_remove_articles");
+
+        let data = {};
+
+        data.userid = session.get('userid');
+
+        let ids = request.value('ids');
+
+        remove_articles(ids).then(function(){
+            response.type('json');
+            response.data("success");
+            resolve();
+        }, function(err){
+            response.type('json');
+            reject();
+        });
+    });
+
+    return promise;
+}
+
+function remove_articles(ids) {
+    log(__filename, "remove_articles", ids);
+    
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let article = new T200Article();
+        let HomeArticle = new T200HomeArticle();
+
+        article.articleid = ids;
+
+        HomeArticle.remove_all(article).then(resolve, reject);
+    });
+
+    return promise;
+}
+
 global.action.use_post('/content/articles', do_articles);
+global.action.use_post('/content/remove_articles', do_remove_articles);

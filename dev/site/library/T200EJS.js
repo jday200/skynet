@@ -10,7 +10,7 @@ class T200EJS {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             log(__filename, "render_file", file);
-            ejs.renderFile(file, data, function(err, result){
+            ejs.renderFile(file, data, '{async:true}', function(err, result){
                 if(err){
                     if(reject)reject(err);
                 }else{

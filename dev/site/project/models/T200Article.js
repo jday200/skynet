@@ -28,16 +28,24 @@ class T200Article {
         return `delete from article where articleid = '${this.articleid}'`;
     }
 
-    merge_update() {
+    merge_delete_all() {
+        return `delete from article where articleid in (${this.articleid})`;
+    }
 
+    merge_update() {
+        return `update article set title = '${this.title}', content = '${this.content}' where articleid = '${this.articleid}'`;
     }
 
     merge_select() {
         return `select * from article where userid = '${this.userid}'`;
     }
+    
+    merge_select_by_article_id() {
+        return `select * from article where articleid = '${this.articleid}'`;
+    }
 
     merge_select_all() {
-        return `select * from article order by userid`;
+        return `select * from article order by articleid`;
     }
 }
 

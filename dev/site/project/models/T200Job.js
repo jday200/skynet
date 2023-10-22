@@ -32,6 +32,11 @@ class T200Job {
     merge_select() {
         return `select * from job`;
     }
+
+    merge_select_all() {
+        return `select * from job order by job_id`;
+    }
+
 }
 
 module.exports = T200Job;

@@ -8,8 +8,7 @@ class T200HttpsResponse {
         this._status = 200;
         this._type = "text";
         this._result = false;
-        //this._data = {};
-
+        this._data = "failure";
         this.parameters['result'] = "failure";
     }
 
@@ -39,12 +38,10 @@ class T200HttpsResponse {
     SEND_END() {
         log(__filename, "send end");
 
-        if(this._result){
-            let value = this.merge_result();
-            this.res.end(value);
-        }else{
-            this.res.end();
-        }        
+        let value = this.merge_result();
+        this.res.writeHead(this._status);
+        this.res.end(value);
+     
     }
 
     SEND_500() {

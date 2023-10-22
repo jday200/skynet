@@ -34,6 +34,11 @@ class T200Exchange {
     merge_select() {
         return `select * from exchange`;
     }
+
+    merge_select_all() {
+        return `select * from exchange order by exchange_id`;
+    }
+
 }
 
 module.exports = T200Exchange;

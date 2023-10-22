@@ -1,16 +1,39 @@
+
+
+
 <div class="channel">
+    <form id="form">
+    
     <div class="channel_paging">
 
     </div>
     <div class="channel_list">
+        <div class="channel_list_item">
+            <div class="channel_list_item_left">
+                
+            </div>
+            <div class="channel_list_item_right">
+                <div class="channel_list_item_rigth_item">
+                    <input type="button" id="remove" value="remove" onclick="remove_articles();" disabled>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="test">
         <% 
             if(articles){
                 articles.forEach(article => { %>
                     <div class="channel_list_item">
-                        <div><%=article.title %></div>
-                        <div>
-                        <div><a href="/content/article.html">Edit</a></div>
-                        <div><input type="checkbox"></div>
+                        <div class="channel_list_item_left">
+                            <%=article.title %>
+                        </div>
+                        <div class="channel_list_item_right">
+                            <div class="channel_list_item_rigth_item">
+                                <a href="/content/article.html" onclick="$.set_cookie('aid', <%=article.articleid%>)">Edit</a>
+                            </div>
+                            <div class="channel_list_item_rigth_item">
+                                <input type="checkbox" id="ids" name="ids" value="<%=article.articleid%>" onclick="$.element('remove').disabled = false;">
+                            </div>
                         </div>
                     </div>
                 <% });
@@ -20,4 +43,7 @@
     <div class="channel_paging">
 
     </div>
+
+    </form>
 </div>
+

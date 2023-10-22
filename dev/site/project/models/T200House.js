@@ -32,6 +32,11 @@ class T200House {
     merge_select() {
         return `select * from house`;
     }
+
+    merge_select_all() {
+        return `select * from house order by house_id`;
+    }
+
 }
 
 module.exports = T200House;

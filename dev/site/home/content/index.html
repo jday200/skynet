@@ -17,7 +17,20 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 <script src="/js/t200.js"></script>
+<script>
 
+    function remove_articles() {
+            let data = new FormData($.element('form'));
+            let result = $.datatostring(data);
+               
+            $.post('/content/remove_articles', result, function(){
+                location.reload();
+            }, function(){
+                alert('删除失败！');
+            });
+        };
+        
+    </script>
 </head>
 <body>
 
@@ -45,7 +58,7 @@
 
         <div class="channel_panel">
             <div class="channel_panel_msg">
-                <a href="/content/article.html">publish</a>
+                <a href="/content/article.html" onclick="$.set_cookie('aid', 0);">publish</a>
             </div>
         </div>
 
