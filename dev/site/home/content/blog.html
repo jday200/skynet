@@ -44,12 +44,12 @@
         </div>
 
         <div class="form">
-            <div class="form_title">Article</div>
+            <div class="form_title">Blog</div>
             <div>
                 <form id="form">
                     <div>
                         <div class="form_textarea_item"><input type="hidden" name="test">
-                            <input type="hidden" id="article_id" name="article_id">
+                            <input type="hidden" id="blog_id" name="blog_id">
                             <label class="form_label" for="title">Title:</label><input class="form_textarea_field" id="title" name="title">
                         </div>
                         <div class="form_textarea">
@@ -87,7 +87,7 @@
         let data = new FormData($.element('form'));
         let result = $.datatostring(data);
 
-        $.post('/article/edit_article', result, function(){
+        $.post('/blog/edit_blog', result, function(){
             alert('success');
         }, function(){
             alert('failure');
@@ -95,14 +95,14 @@
     };
 
     window.onload = function(){
-        let aid = $.cookie('aid');
+        let bid = $.cookie('bid');
 
-        if(aid && 0 < aid){
+        if(bid && 0 < bid){
             let result = "{}";
 
-            $.post('/article/get_article', result, function(data){
+            $.post('/blog/get_blog', result, function(data){
                 //alert('success');
-                $.element("article_id").value = data.article_id;
+                $.element("blog_id").value = data.blog_id;
                 $.element("title").value = data.title;
                 $.element("content").value = data.content;
             }, function(){

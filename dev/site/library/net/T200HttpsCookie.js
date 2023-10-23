@@ -20,6 +20,8 @@ class T200HttpsCookie {
     }
 
     parse() {
+        log(__filename, 'parse cookie', this.req.headers.cookie);
+        
         let self = this;
         if(this.req && this.req.headers
             && this.req.headers.cookie){

@@ -86,11 +86,11 @@ class T200HttpsDispatcher {
                     reject();
                 });
             }else{
-                let files = self.resource.merge_index(action);
+                let files = self.resource.merge_index2(action);
                 let job = new Array();
    
                 for(let file of files){
-                    let task = self.load_html2(file);
+                    let task = self.load_html3(file);
                     job.push(task);
                 }
 
@@ -237,6 +237,39 @@ class T200HttpsDispatcher {
             }, function(err){
                 reject();
             });
+        });
+
+        return promise;
+    }
+
+    load_html3(file) {
+        log(__filename, "load_html3", file);
+
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let name = self.resource.merge_action(file);
+            let html = self.resource.merge_html(file);
+
+            return self.resource.exists(name).then(function(){
+                return self.load_action(name).then(function(){
+
+                }, function(err){
+                    throw err;
+                });
+            }, function(){
+
+            }).finally(function(){
+                return self.resource.exists(html).then(function(){
+                    return self.resource.load_file(html);
+                }, function(err){
+
+                }).then(function(data){
+                    resolve(data);
+                }, function(err){
+                    reject();
+                });
+            });
+
         });
 
         return promise;

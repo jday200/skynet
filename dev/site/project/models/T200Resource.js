@@ -29,12 +29,20 @@ class T200Resource {
         return `delete from resource where resource_id = '${this.resource_id}'`;
     }
 
-    merge_update() {
+    merge_delete_all() {
+        return `delete from resource where resource_id in (${this.resource_id})`;
+    }
 
+    merge_update() {
+        return `update resource set name = '${this.name}', path = '${this.path}' where resource_id = '${this.resource_id}'`;
     }
 
     merge_select() {
-        return `select * from resource`;
+        return `select * from resource where user_id = '${this.user_id}'`;
+    }
+
+    merge_select_by_resource_id() {
+        return `select * from resource where resource_id = '${this.resource_id}'`;
     }
 
     merge_select_all() {

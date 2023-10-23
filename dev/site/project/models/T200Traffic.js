@@ -4,12 +4,14 @@ class T200Traffic {
 
     user_id;
 
+    content;
+
     constructor() {
 
     }
 
     build_create() {
-        return `create table if not exists traffic(traffic_id int primary key auto_increment, user_id int, INDEX index_user_id(user_id) )`;
+        return `create table if not exists traffic(traffic_id int primary key auto_increment, content text, user_id int, INDEX index_user_id(user_id) )`;
     }
 
     build_drop() {
@@ -18,19 +20,27 @@ class T200Traffic {
 
     //
     merge_insert() {
-        return `insert into traffic(user_id) values (${this.user_id})`;
+        return `insert into traffic(content, user_id) values ('${this.content}', ${this.user_id})`;
     }
 
     merge_delete() {
         return `delete from traffic where traffic_id = '${this.traffic_id}'`;
     }
 
-    merge_update() {
+    merge_delete_all() {
+        return `delete from traffic where traffic_id in (${this.traffic_id})`;
+    }
 
+    merge_update() {
+        return `update traffic set content = '${this.content}' where traffic_id = '${this.traffic_id}'`;
     }
 
     merge_select() {
-        return `select * from traffic`;
+        return `select * from traffic where user_id = '${this.user_id}'`;
+    }
+
+    merge_select_by_traffic_id() {
+        return `select * from traffic where traffic_id = '${this.traffic_id}'`;
     }
 
     merge_select_all() {

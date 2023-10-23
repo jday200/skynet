@@ -16,17 +16,17 @@ function do_edit_article(request, response, cookie, session, resource) {
             let article_id = request.value("article_id");
 
             if(0 < article_id){
-                article.articleid = article_id;
+                article.article_id = article_id;
             }
 
-            article.userid = session.get("userid");
+            article.user_id = session.get("userid");
             article.title = request.value('title');
             article.content = request.value('content');
         }catch(err){
             throw(err);
         }
 
-        if(0 < article.articleid){
+        if(0 < article.article_id){
             HomeArticle.modify(article).then(function(){
                 response.type('json');
                 response.data("success");
@@ -67,7 +67,7 @@ function do_get_article(request, response, cookie, session, resource) {
                 throw("article id is null");
             }
 
-            article.articleid = article_id;
+            article.article_id = article_id;
 
         }catch(err){
             throw(err);
@@ -89,5 +89,5 @@ function do_get_article(request, response, cookie, session, resource) {
 }
 
 
-global.action.use_post('/content/edit_article', do_edit_article);
-global.action.use_post('/content/get_article', do_get_article);
+global.action.use_post('/article/edit_article', do_edit_article);
+global.action.use_post('/article/get_article', do_get_article);

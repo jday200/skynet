@@ -17,7 +17,20 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 <script src="/js/t200.js"></script>
+<script>
 
+    function remove_traffics() {
+            let data = new FormData($.element('form'));
+            let result = $.datatostring(data);
+               
+            $.post('/traffic/remove_traffics', result, function(){
+                location.reload();
+            }, function(){
+                alert('删除失败！');
+            });
+        };
+        
+    </script>
 </head>
 <body>
 
@@ -29,7 +42,7 @@
                         <a class="nav_item" href="/">Home</a> |
                         <a href="/">About</a>
                     </div>
-                    <div class="nav_right">
+                    <div id="nav_right" class="nav_right">
                         <a href="/login.html">Login</a> |
                         <a href="/register.html">Register</a>
                     </div>
@@ -43,94 +56,13 @@
             </header>
         </div>
 
-        <div>
-            <div class="main">
-                <div class="main_list">
-                    <div class="main_channel">
-                        <div class="main_channel_title">
-                            job
-                        </div>
-                        <div class="main_item">
-                            a
-                        </div>
-                        <div class="main_item">
-                            b
-                        </div>
-                        <div class="main_item">
-                            c
-                        </div>
-                    </div>
-                    <div class="main_channel">
-                        <div class="main_channel_title">
-                            job
-                        </div>
-                        <div class="main_item">
-                            a
-                        </div>
-                        <div class="main_item">
-                            b
-                        </div>
-                        <div class="main_item">
-                            c
-                        </div>
-                    </div>
-                </div>
-                <div class="main_list">
-                    <div class="main_channel">
-                        <div class="main_channel_title">
-                            job
-                        </div>
-                        <div class="main_item">
-                            a
-                        </div>
-                        <div class="main_item">
-                            b
-                        </div>
-                        <div class="main_item">
-                            c
-                        </div>
-                    </div>
-                    <div class="main_channel">
-                        <div class="main_channel_title">
-                            job
-                        </div>
-                        <div class="main_item">
-                            a
-                        </div>
-                        <div class="main_item">
-                            b
-                        </div>
-                        <div class="main_item">
-                            c
-                        </div>
-                    </div>
-                </div>
+        <div class="channel_panel">
+            <div class="channel_panel_msg">
+                <a href="/traffic/traffic.html" onclick="$.set_cookie('fid', 0);">publish</a>
             </div>
         </div>
 
-        <div class="form">
-            <div class="form_title">Login</div>
-            <div>
-                <form>
-                    <div>
-                        <div class="form_item">
-                            <label class="form_label">Username:</label><input class="form_field" type="text">
-                        </div>
-                        <div class="form_item">
-                            <label class="form_label">Email:</label><input class="form_field" type="text">
-                        </div>
-                        <div class="form_button">
-                            <input type="button" value="submit">
-                        </div>
-                    </div>
-                </form>
-                <div class="form_msg">
-                    hello
-                </div>
-            </div>
-        </div>
-
-        <div class="channel">
+        <div id="main" class="channel">
             <div class="channel_paging">
 
             </div>
@@ -143,23 +75,6 @@
             </div>
         </div>
 
-        <div class="side">
-            <div class="side_small">
-                <fieldset>
-                    <details>
-                        <summary>a</summary>
-                        <div>a</div>
-                        <div>b</div>
-                    </details>
-                </fieldset>
-            </div>
-            <div class="side_large">
-                <fieldset>
-                    <legend>hello</legend>
-                </fieldset>
-            </div>
-        </div>
-
         <div class="footer">
             <footer>
                 footer
@@ -169,4 +84,25 @@
     </div>
 
 </body>
+
+<script>
+    window.onload = function(){
+        let sid = $.cookie('sid');
+
+        if(sid){
+            $.element('nav_right').innerHTML = '<a href="/content/index.html">我的主页</a>';
+            
+            let data = '{}';
+            $.post('/traffic/traffics', data, function(result){
+                //alert(result);
+                $.element('main').innerHTML = result;
+            }, function(){
+                alert('加载失败！');
+            })
+        }else{
+            alert('error');
+        }
+    };
+</script>
+
 </html>

@@ -3,25 +3,25 @@ const { log, log_start, log_stop } = require('../../../library/lib.js');
 const T200Path = require('../../../library/fs/T200Path.js');
 const T200EJS = require('../../../library/T200EJS.js');
 
-const T200Trading = require('../../models/T200Trading.js');
-const T200HomeTrading = require('../../biz/T200HomeTrading.js');
+const T200Article = require('../../models/T200Article.js');
+const T200HomeArticle = require('../../biz/T200HomeArticle.js');
 
 
-function do_tradings(request, response, cookie, session, resource) {
+function do_articles(request, response, cookie, session, resource) {
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        log(__filename, "do_tradings");
+        log(__filename, "do_articles");
 
         let EJS = new T200EJS();
-        let file = resource.merge_pages('trading/tradings.ejs');
+        let file = resource.merge_pages('article/articles.ejs');
         let real = T200Path.join_root(file);
 
         let data = {};
 
         data.user_id = session.get('userid');
 
-        get_tradings(data.user_id).then(function(tradings){
-            data.tradings = tradings;
+        get_articles(data.user_id).then(function(articles){
+            data.articles = articles;
             return EJS.render_file(real, data);
         }, function(err){
             console.log(err);
@@ -40,27 +40,27 @@ function do_tradings(request, response, cookie, session, resource) {
     return promise;
 }
 
-function get_tradings(userid) {
-    log(__filename, "get_tradings", userid);
+function get_articles(userid) {
+    log(__filename, "get_articles", userid);
     
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        let trading = new T200Trading();
-        let HomeTrading = new T200HomeTrading();
+        let article = new T200Article();
+        let HomeArticle = new T200HomeArticle();
 
-        trading.user_id = userid;
+        article.user_id = userid;
 
-        HomeTrading.list(trading).then(resolve, reject);
+        HomeArticle.list(article).then(resolve, reject);
     });
 
     return promise;
 }
 
 
-function do_remove_tradings(request, response, cookie, session, resource) {
+function do_remove_articles(request, response, cookie, session, resource) {
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        log(__filename, "do_remove_tradings");
+        log(__filename, "do_remove_articles");
 
         let data = {};
 
@@ -68,7 +68,7 @@ function do_remove_tradings(request, response, cookie, session, resource) {
 
         let ids = request.value('ids');
 
-        remove_tradings(ids).then(function(){
+        remove_articles(ids).then(function(){
             response.type('json');
             response.data("success");
             resolve();
@@ -81,21 +81,21 @@ function do_remove_tradings(request, response, cookie, session, resource) {
     return promise;
 }
 
-function remove_tradings(ids) {
-    log(__filename, "remove_tradings", ids);
+function remove_articles(ids) {
+    log(__filename, "remove_articles", ids);
     
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        let trading = new T200Trading();
-        let HomeTrading = new T200HomeTrading();
+        let article = new T200Article();
+        let HomeArticle = new T200HomeArticle();
 
-        trading.trading_id = ids;
+        article.article_id = ids;
 
-        HomeTrading.remove_all(trading).then(resolve, reject);
+        HomeArticle.remove_all(article).then(resolve, reject);
     });
 
     return promise;
 }
 
-global.action.use_post('/trading/tradings', do_tradings);
-global.action.use_post('/trading/remove_tradings', do_remove_tradings);
+global.action.use_post('/article/articles', do_articles);
+global.action.use_post('/article/remove_articles', do_remove_articles);

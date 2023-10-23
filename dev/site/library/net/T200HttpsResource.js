@@ -54,6 +54,20 @@ class T200HttpsResource {
         return result;
     }
 
+    merge_index2(url) {
+        let files = global.setup.https.index.split(',');
+        let result = new Array();
+
+        log(__filename, "merge_index", url);
+        for(let id in files){
+            //let name = path.join(global.setup.https.home, url + files[id]);
+            let name = path.join(url, files[id]);
+            result.push(name);
+        }
+
+        return result;
+    }
+
     merge_action(url) {
         log(__filename, "merge_action", url);
         return path.join(global.setup.https.actions, url + '.js');

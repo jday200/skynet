@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta name="generator" content="Bluefish">
+<meta name="author" content="">
+<meta name="date" content="">
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+
+<link rel="stylesheet" href="/css/styles.css">
+
+<script src="/js/t200.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <nav>
+                <div class="nav_container">
+                    <div class="nav_left">
+                        <a class="nav_item" href="/">Home</a> |
+                        <a href="/">About</a>
+                    </div>
+                    <div id="nav_right" class="nav_right">
+                        <a href="/login.html">Login</a> |
+                        <a href="/register.html">Register</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="header">
+            <header>
+                header
+            </header>
+        </div>
+
+        <div class="form">
+            <div class="form_title">Resource</div>
+            <div>
+                <form id="form">
+                    <div>
+                        <div class="form_textarea_item"><input type="hidden" name="test">
+                            <input type="hidden" id="resource_id" name="resource_id">
+                            <label class="form_label" for="filename">FileName:</label><input class="form_textarea_field" type="text" id="filename" name="filename">
+                        </div>
+                        <div class="form_textarea_item">
+                            <label class="form_label" for="path">Path:</label><input class="form_textarea_field" type="text" id="path" name="path">
+                        </div>
+                        <div class="form_button">
+                            <input id="submit" type="button" value="submit">
+                        </div>
+                    </div>
+                </form>
+                <div class="form_msg">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <footer>
+                footer
+            </footer>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    let sid = $.cookie('sid');
+
+    if(sid){
+        $.element('nav_right').innerHTML = '<a href="/content/index.html">我的主页</a>';
+    }
+
+    $.element('submit').onclick = function(){
+        let data = new FormData($.element('form'));
+        let result = $.datatostring(data);
+
+        $.post('/resource/edit_resource', result, function(){
+            alert('success');
+        }, function(){
+            alert('failure');
+        });
+    };
+
+    window.onload = function(){
+        let rid = $.cookie('rid');
+
+        if(rid && 0 < rid){
+            let result = "{}";
+
+            $.post('/resource/get_resource', result, function(data){
+                //alert('success');
+                $.element("resource_id").value = data.resource_id;
+                $.element("filename").value = data.name;
+                $.element("path").value = data.path;
+            }, function(){
+                alert('failure');
+            });
+        }
+    };
+</script>
+
+</html>

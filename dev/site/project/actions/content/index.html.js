@@ -31,6 +31,7 @@ function do_articles(request, response, cookie, session, resource) {
             response.data(data);
             resolve();
         }, function(err){
+            response.type('json');
             console.log(err);
             reject();
         });

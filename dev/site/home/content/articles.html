@@ -19,11 +19,11 @@
 <script src="/js/t200.js"></script>
 <script>
 
-    function remove_jobs() {
+    function remove_articles() {
             let data = new FormData($.element('form'));
             let result = $.datatostring(data);
                
-            $.post('/job/remove_jobs', result, function(){
+            $.post('/article/remove_articles', result, function(){
                 location.reload();
             }, function(){
                 alert('删除失败！');
@@ -58,7 +58,7 @@
 
         <div class="channel_panel">
             <div class="channel_panel_msg">
-                <a href="/job/job.html" onclick="$.set_cookie('jid', 0);">publish</a>
+                <a href="/article/article.html" onclick="$.set_cookie('aid', 0);">publish</a>
             </div>
         </div>
 
@@ -93,7 +93,7 @@
             $.element('nav_right').innerHTML = '<a href="/content/index.html">我的主页</a>';
             
             let data = '{}';
-            $.post('/job/jobs', data, function(result){
+            $.post('/article/articles', data, function(result){
                 //alert(result);
                 $.element('main').innerHTML = result;
             }, function(){

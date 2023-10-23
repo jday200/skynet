@@ -27,12 +27,20 @@ class T200Exchange {
         return `delete from exchange where exchange_id = '${this.exchange_id}'`;
     }
 
-    merge_update() {
+    merge_delete_all() {
+        return `delete from exchange where exchange_id in (${this.exchange_id})`;
+    }
 
+    merge_update() {
+        return `update exchange set content = '${this.content}' where exchange_id = '${this.exchange_id}'`;
     }
 
     merge_select() {
-        return `select * from exchange`;
+        return `select * from exchange where userid = '${this.userid}'`;
+    }
+
+    merge_select_by_exchange_id() {
+        return `select * from exchange where exchange_id = '${this.exchange_id}'`;
     }
 
     merge_select_all() {
