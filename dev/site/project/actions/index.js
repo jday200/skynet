@@ -26,7 +26,7 @@ const T200HomeTrading = require('../biz/T200HomeTrading.js');
 const T200HomeTraffic = require('../biz/T200HomeTraffic.js');
 
 
-function do_index(request, response, cookie, session, resource) {
+function do_index2(request, response, cookie, session, resource) {
     let self = this;
     let promise = new Promise(function(resolve, reject){
         log(__filename, "do_index");
@@ -54,6 +54,80 @@ function do_index(request, response, cookie, session, resource) {
         }, function(err){
             reject();
         });
+    });
+
+    return promise;
+}
+
+
+function do_index(request, response, cookie, session, resource) {
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        log(__filename, "do_index");
+
+        let EJS = new T200EJS();
+        let file = resource.merge_pages('index.ejs');
+        let real = T200Path.join_root(file);
+
+        let data = {};
+
+        try{
+            data.userid = session.get('userid');
+        }catch(err){
+            data.userid = 0;
+        }
+
+        get_articles().then(function(articles){
+            data.articles = articles;
+            return get_blogs();
+        }, function(){
+            return error();
+        }).then(function(blogs){
+            data.blogs = blogs;
+            return get_exchanges();
+        }, function(){
+            return error();
+        }).then(function(exchanges){
+            data.exchanges = exchanges;
+            return get_houses();
+        }, function(){
+            return error();
+        }).then(function(houses){
+            data.houses = houses;
+            return get_jobs();
+        }, function(){
+            return error();
+        }).then(function(jobs){
+            data.jobs = jobs;
+            return get_resources();
+        }, function(){
+            return error();
+        }).then(function(resources){
+            data.resources = resources;
+            return get_tradings();
+        }, function(){
+            return error();
+        }).then(function(tradings){
+            data.tradings = tradings;
+            return get_traffics();
+        }, function(){
+            return error();
+        }).then(function(traffics){
+            data.traffics = traffics;
+        }, function(){
+            return error();
+        }).then(function(){
+            return EJS.render_file(real, data);
+        }, function(){
+            return error();
+        }).then(function(result){
+            response.data(result);
+            resolve();
+        }, function(err){
+            debugger;
+            reject();
+        });
+
     });
 
     return promise;

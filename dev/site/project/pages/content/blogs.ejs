@@ -25,11 +25,11 @@
                 blogs.forEach(blog => { %>
                     <div class="channel_list_item">
                         <div class="channel_list_item_left">
-                            <%=blog.title %>
+                            <%=blog.content %>
                         </div>
                         <div class="channel_list_item_right">
                             <div class="channel_list_item_rigth_item">
-                                <a href="/blog/blog.html" onclick="$.set_cookie('bid', <%=blog.blog_id%>)">Edit</a>
+                                <a href="/content/blog.html" onclick="$.set_cookie('bid', <%=blog.blog_id%>)">Edit</a>
                             </div>
                             <div class="channel_list_item_rigth_item">
                                 <input type="checkbox" id="ids" name="ids" value="<%=blog.blog_id%>" onclick="$.element('remove').disabled = false;">

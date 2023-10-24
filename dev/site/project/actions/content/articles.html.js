@@ -13,14 +13,14 @@ function do_articles(request, response, cookie, session, resource) {
         log(__filename, "do_articles");
 
         let EJS = new T200EJS();
-        let file = resource.merge_pages('article/articles.ejs');
+        let file = resource.merge_pages('content/articles.ejs');
         let real = T200Path.join_root(file);
 
         let data = {};
 
-        data.user_id = session.get('userid');
+        data.userid = session.get('userid');
 
-        get_articles(data.user_id).then(function(articles){
+        get_articles(data.userid).then(function(articles){
             data.articles = articles;
             return EJS.render_file(real, data);
         }, function(err){
@@ -48,7 +48,7 @@ function get_articles(userid) {
         let article = new T200Article();
         let HomeArticle = new T200HomeArticle();
 
-        article.user_id = userid;
+        article.userid = userid;
 
         HomeArticle.list(article).then(resolve, reject);
     });
@@ -64,7 +64,7 @@ function do_remove_articles(request, response, cookie, session, resource) {
 
         let data = {};
 
-        data.user_id = session.get('userid');
+        data.userid = session.get('userid');
 
         let ids = request.value('ids');
 
@@ -89,7 +89,7 @@ function remove_articles(ids) {
         let article = new T200Article();
         let HomeArticle = new T200HomeArticle();
 
-        article.article_id = ids;
+        article.articleid = ids;
 
         HomeArticle.remove_all(article).then(resolve, reject);
     });

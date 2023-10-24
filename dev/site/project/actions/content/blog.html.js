@@ -19,8 +19,7 @@ function do_edit_blog(request, response, cookie, session, resource) {
                 blog.blog_id = blog_id;
             }
 
-            blog.blog_id = session.get("userid");
-            blog.title = request.value('title');
+            blog.user_id = session.get("userid");
             blog.content = request.value('content');
         }catch(err){
             throw(err);

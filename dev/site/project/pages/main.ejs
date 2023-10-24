@@ -10,15 +10,13 @@
                     <legend>
                         <a href="/house/"><b>House</b></a>
                     </legend>
+                    <% if(houses){
+                        houses.forEach(house =>{ %>
                     <div class="main_item">
-                        a
+                        <%=house.content%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 
@@ -27,15 +25,13 @@
                     <legend>
                         <a href="/job/"><b>Job</b></a>
                     </legend>
+                    <% if(jobs){
+                        jobs.forEach(job =>{ %>
                     <div class="main_item">
-                        a
+                        <%=job.content%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 
@@ -48,15 +44,13 @@
                     <legend>
                         <a href="/exchange/"><b>Exchange</b></a>
                     </legend>
+                    <% if(exchanges){
+                        exchanges.forEach(exchange =>{ %>
                     <div class="main_item">
-                        a
+                        <%=exchange.content%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 
@@ -65,15 +59,13 @@
                     <legend>
                         <a href="/trading/"><b>Trading</b></a>
                     </legend>
+                    <% if(tradings){
+                        tradings.forEach(trading =>{ %>
                     <div class="main_item">
-                        a
+                        <%=trading.content%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 
@@ -86,15 +78,13 @@
                     <legend>
                         <a href="/traffic/"><b>Traffic</b></a>
                     </legend>
+                    <% if(traffics){
+                        traffics.forEach(traffic =>{ %>
                     <div class="main_item">
-                        a
+                        <%=traffic.content%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 
@@ -103,15 +93,13 @@
                     <legend>
                         <a href="/resource/"><b>Resource</b></a>
                     </legend>
+                    <% if(resources){
+                        resources.forEach(resource =>{ %>
                     <div class="main_item">
-                        a
+                        <%=resource.name%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 
@@ -124,15 +112,13 @@
                     <legend>
                         <a href="/content/articles.html"><b>Article</b></a>
                     </legend>
+                    <% if(articles){
+                        articles.forEach(article =>{ %>
                     <div class="main_item">
-                        a
+                        <%=article.title%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 
@@ -141,15 +127,13 @@
                     <legend>
                         <a href="/content/blogs.html"><b>Blog</b></a>
                     </legend>
+                    <% if(blogs){
+                        blogs.forEach(blog =>{ %>
                     <div class="main_item">
-                        a
+                        <%=blog.content%>
                     </div>
-                    <div class="main_item">
-                        b
-                    </div>
-                    <div class="main_item">
-                        c
-                    </div>
+                     <% });
+                    } %>
                 </fieldset>
             </div>
 

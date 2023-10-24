@@ -13,7 +13,7 @@ function do_blogs(request, response, cookie, session, resource) {
         log(__filename, "do_blogs");
 
         let EJS = new T200EJS();
-        let file = resource.merge_pages('blog/blogs.ejs');
+        let file = resource.merge_pages('content/blogs.ejs');
         let real = T200Path.join_root(file);
 
         let data = {};

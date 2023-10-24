@@ -48,11 +48,8 @@
             <div>
                 <form id="form">
                     <div>
-                        <div class="form_textarea_item"><input type="hidden" name="test">
+                        <div class="form_textarea"><input type="hidden" name="test">
                             <input type="hidden" id="blog_id" name="blog_id">
-                            <label class="form_label" for="title">Title:</label><input class="form_textarea_field" id="title" name="title">
-                        </div>
-                        <div class="form_textarea">
                             <label class="form_label" for="content">Content:</label><textarea class="form_textarea_field" id="content" name="content" cols="80" rows="20"></textarea>
                         </div>
                         <div class="form_button">
@@ -103,7 +100,6 @@
             $.post('/blog/get_blog', result, function(data){
                 //alert('success');
                 $.element("blog_id").value = data.blog_id;
-                $.element("title").value = data.title;
                 $.element("content").value = data.content;
             }, function(){
                 alert('failure');

@@ -13,20 +13,20 @@ function do_edit_article(request, response, cookie, session, resource) {
         let HomeArticle = new T200HomeArticle();
 
         try{
-            let article_id = request.value("article_id");
+            let articleid = request.value("articleid");
 
-            if(0 < article_id){
-                article.article_id = article_id;
+            if(0 < articleid){
+                article.articleid = articleid;
             }
 
-            article.user_id = session.get("userid");
+            article.userid = session.get("userid");
             article.title = request.value('title');
             article.content = request.value('content');
         }catch(err){
             throw(err);
         }
 
-        if(0 < article.article_id){
+        if(0 < article.articleid){
             HomeArticle.modify(article).then(function(){
                 response.type('json');
                 response.data("success");
@@ -61,13 +61,13 @@ function do_get_article(request, response, cookie, session, resource) {
         let HomeArticle = new T200HomeArticle();
 
         try{
-            let article_id = cookie.get('aid');
+            let articleid = cookie.get('aid');
 
-            if(!article_id){
+            if(!articleid){
                 throw("article id is null");
             }
 
-            article.article_id = article_id;
+            article.articleid = articleid;
 
         }catch(err){
             throw(err);

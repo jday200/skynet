@@ -102,7 +102,7 @@
 
             $.post('/article/get_article', result, function(data){
                 //alert('success');
-                $.element("article_id").value = data.article_id;
+                $.element("articleid").value = data.articleid;
                 $.element("title").value = data.title;
                 $.element("content").value = data.content;
             }, function(){
