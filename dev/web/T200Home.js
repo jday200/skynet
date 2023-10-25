@@ -1,7 +1,6 @@
-const T200HomeServer = require('./project/T200HomeServer.js');
+const { log, log_start, log_stop } = require('./library/lib.js');
 
-let HomeServer = new T200HomeServer();
 
-HomeServer.start().then(function(){
-    console.log('HomeServer start success');
-});
+log_start(__filename, "Home Server");
+
+log_stop(__filename, "Home Server");

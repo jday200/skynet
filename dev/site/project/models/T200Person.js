@@ -21,20 +21,33 @@ class T200Person {
 
     //
     merge_insert() {
-        return `insert into person (username, password) values('${this.username}', '${this.password}')`;
+        return `insert into person (username, password, email) values('${this.username}', '${this.password}', '${this.email}')`;
     }
 
     merge_delete() {
         return `delete from person where userid = '${this.userid}'`;
     }
 
-    merge_update() {
+    merge_delete_all() {
+        return `delete from person where userid in (${this.userid})`;
+    }
 
+    merge_update() {
+        return `update person set username = '${this.username}', password = '${this.password}', email = '${this.email}' where userid = '${this.userid}'`;
     }
 
     merge_select() {
         return `select * from person where username = '${this.username}'`;
     }
+
+    merge_select_by_user_id() {
+        return `select * from person where userid = '${this.userid}'`;
+    }
+
+    merge_select_all() {
+        return `select * from person order by userid`;
+    }
+
 
     //
     merge_login() {

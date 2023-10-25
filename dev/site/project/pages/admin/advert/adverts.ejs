@@ -1,0 +1,49 @@
+
+
+
+<div class="channel">
+    <form id="form">
+    
+    <div class="channel_paging">
+
+    </div>
+    <div class="channel_list">
+        <div class="channel_list_item">
+            <div class="channel_list_item_left">
+                
+            </div>
+            <div class="channel_list_item_right">
+                <div class="channel_list_item_rigth_item">
+                    <input type="button" id="remove" value="remove" onclick="remove_adverts();" disabled>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="test">
+        <% 
+            if(adverts){
+                adverts.forEach(advert => { %>
+                    <div class="channel_list_item">
+                        <div class="channel_list_item_left">
+                            <%=advert.title %>
+                        </div>
+                        <div class="channel_list_item_right">
+                            <div class="channel_list_item_rigth_item">
+                                <a href="/admin/advert/advert.html" onclick="$.set_cookie('aid', <%=advert.advert_id%>)">Edit</a>
+                            </div>
+                            <div class="channel_list_item_rigth_item">
+                                <input type="checkbox" id="ids" name="ids" value="<%=advert.advert_id%>" onclick="$.element('remove').disabled = false;">
+                            </div>
+                        </div>
+                    </div>
+                <% });
+            }
+        %>
+    </div>
+    <div class="channel_paging">
+
+    </div>
+
+    </form>
+</div>
+

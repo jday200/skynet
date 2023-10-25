@@ -1,4 +1,6 @@
 const mariadb = require('mariadb');
+const T200Error = require('../T200Error.js');
+
 
 class T200Mariadb {
     constructor() {
@@ -13,15 +15,13 @@ class T200Mariadb {
             flag = true;
             this.pool = mariadb.createPool(setup);
             this.setup = setup;
-        }else{
-
         }
 
         let promise = new Promise(function(resolve, reject){
             if(flag){
-                if(resolve)resolve();
+                resolve();
             }else{
-                if(reject)reject("mariadb start error");
+                reject(T200Error.build(1));
             }
         });
 
@@ -32,10 +32,10 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
-                if(reject)reject("mariadb stop error");
+                reject(T200Error.build(2));
             }else{
                 self.pool.end();
-                if(resolve)resolve();
+                resolve();
             }
         });
 
@@ -46,13 +46,13 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
-                if(reject)reject("mariadb connect error");
+                reject(T200Error.build(3));
             }else{
                 self.pool.getConnection().then(function(conn){
                     self.conn = conn;
-                    if(resolve)resolve();
+                    resolve();
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build(5, err));
                 });
             }
         });
@@ -64,13 +64,13 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.conn){
-                if(reject)reject("mariadb disconnect error");
+                reject(T200Error.build(6));
             }else{
                 self.conn.end().then(function(){
-                    self.conn = undefined;
-                    if(resolve)resolve();
+                    delete self.conn;
+                    resolve();
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build(6, err));
                 });
             }
         });
@@ -82,12 +82,12 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.conn){
-                if(reject)reject("mariadb query error");
+                reject(T200Error.build(5));
             }else{
                 self.conn.query(sql).then(function(data){
-                    if(resolve)resolve(data);
+                    resolve(data);
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build(6, err));
                 });
             }
         });
@@ -99,18 +99,37 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.conn){
-                if(reject)reject("mariadb execute error");
+                reject(T200Error.build(5));
             }else{
                 self.conn.query(sql).then(function(data){
                     let result = false;
-                    if(result && (0 < data.length)){
+
+                    if(data && 0 == data.warningStatus){
                         result = true;
                     }
-                    if(resolve)resolve(result);
+                    resolve(result);
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build(6, err));
                 });
             }
+        });
+
+        return promise;
+    }
+
+    begin() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+
+        });
+
+        return promise;
+    }
+
+    end() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+
         });
 
         return promise;
