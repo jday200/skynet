@@ -98,7 +98,7 @@ class T200HttpsDispatcher {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             log(__filename, "dir");
-            return self.resource.dir1(action).then(function(){
+            return self.resource.isdir(action).then(function(){
                 log(__filename, "search_index");
                 return self.search_index(action).then(function(file){
                     log(__filename, "load_html");
@@ -172,23 +172,12 @@ class T200HttpsDispatcher {
                 items.push(task);
             }
 
-            const result = Promise.all(items);
+            const result = Promise.any(items);
 
-            result.then(values => {
-                let flag = false;
-                let index = '';
-                for(let value of values){
-                    if(value){
-                        index = value;
-                        flag = true;
-                        break;
-                    }
-                }
-                if(flag){
-                    resolve(index);
-                }else{
-                    reject();
-                }
+            result.then(function(data){
+                resolve(data);
+            }, function(err){
+                reject(err);
             });
         });
 
@@ -204,10 +193,10 @@ class T200HttpsDispatcher {
                 resolve(file);
             }, function(err){
                 console.log(err);
-                resolve();
+                reject();
             }).catch(function(err){
                 console.log(err);
-                resolve();
+                reject();
             });
         });
 

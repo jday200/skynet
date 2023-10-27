@@ -60,6 +60,9 @@ class T200HttpsServer {
 
             });
 
+            server.on('listen', function(){
+                log(__filename, "Https Server listen success");
+            });
             server.listen(8888);
         });
 
@@ -67,16 +70,19 @@ class T200HttpsServer {
     }
 
     distribute(req, res) {
+        log(__filename, "distribute");
         let self = this;
         let request = new T200HttpsRequest(req);
 
         request.on('load', function(){
+            log(__filename, "request load");
             let dispatcher = new T200HttpsDispatcher();
 
             dispatcher.request = request;
             dispatcher.response = new T200HttpsResponse(res);
             dispatcher.resource = self.resource;
             dispatcher.cookie = new T200HttpsCookie(req, res);
+            dispatcher.cookie.load();
             dispatcher.session = new T200HttpsSession(dispatcher.cookie);
 
             dispatcher.run(req, res).then(function(data){
@@ -84,8 +90,10 @@ class T200HttpsServer {
                 dispatcher.response.data(data);
             }, function(err){
                 log(__filename, "dispatcher run failure", err);
+                dispatcher.response.FAILURE();
             }).catch(function(err){
                 log(__filename, "dispatcher run error");
+                dispatcher.response.ERROR();
             }).finally(function(){
                 dispatcher.response.SEND_END();
             });

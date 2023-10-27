@@ -14,6 +14,7 @@ class T200HttpsRequest {
     }
 
     on(name, callback) {
+        log(__filename, "on", name);
         this.req.events[name] = callback;
     }
 
@@ -27,7 +28,10 @@ class T200HttpsRequest {
         this.values = querystring.parse(this.data);
         let load = this.events['load'];
 
-        if(load)load();
+        if(load){
+            log(__filename, "call load");
+            load();
+        }
     }
 
     get(name) {

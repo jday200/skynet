@@ -8,14 +8,14 @@ class T200Path {
 
     }
 
-    static dir1(file) {
+    static isdir(file) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             fs.lstat(file, function(err, stats){
                 if(err){
-                    reject(err);
+                    throw T200Error.build(1);
                 }else{
-                    if(stats.isDirectory){
+                    if(stats.isDirectory()){
                         resolve();
                     }else{
                         reject();

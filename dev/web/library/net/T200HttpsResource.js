@@ -23,21 +23,12 @@ class T200HttpsResource {
         return promise;
     }
 
-    dir1(file) {
+    isdir(file) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             let real = T200Path.join_root(file);
-            log(__filename, "dir", file);
-
-            T200Path.dir1(real).then(function(){
-                resolve();
-            }, function(err){
-                console.log(err);
-                reject();
-            }).catch(function(err){
-                console.log(err);
-                reject();
-            });
+            log(__filename, "isdir", file);
+            T200Path.isdir(real).then(resolve, reject);
         });
 
         return promise;
