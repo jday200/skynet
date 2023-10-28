@@ -33,20 +33,72 @@ class T200HttpsResponse {
         this.res.setHeader(name, value);
     }
 
-    FAILURE() {
+    success(data) {
         this._status = 200;
+        this._data = data;
+        this._result = true;
+    }
+
+    failure() {
         this._result = false;
     }
 
-    ERROR() {
+    error() {
         this._status = 500;
     }
 
     SEND_END() {
-        log(__filename, "END");
-        
-        
+        log(__filename, "SEND_END");
+
+        switch(this._status){
+            case 200:
+                if(this._result){
+                    switch(this._type){
+                        case "text":
+                            //console.log(this._data);
+                            this.res.end(this._data);
+                            break;
+                        case "json":
+                            if(this._result){
+                                this.paras['result'] = "success";
+                                this.paras['data'] = this._data;
+                            }else{
+                                this.paras['result'] = "failure";
+                            }
+                            
+                            this.res.end(JSON.stringify(this.paras));
+                            break;
+                    }
+                }else{
+                    this.res.end();
+                }
+                
+                break;
+            case 404:
+                this.res.writeHead(this._status);
+                switch(this._type){
+                    case "text":
+                        this.res.end(this._data);
+                        break;
+                    case "json":
+                        this.res.end(JSON.stringify(this.paras));
+                        break;
+                }
+                break;
+            case 500:
+                this.res.writeHead(this._status);
+                switch(this._type){
+                    case "text":
+                        this.res.end(this._data);
+                        break;
+                    case "json":
+                        this.res.end(JSON.stringify(this.paras));
+                        break;
+                }
+                break;
+        }
     }
+
 }
 
 module.exports = T200HttpsResponse;

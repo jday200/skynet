@@ -1,7 +1,7 @@
-const { error, log } = require('../lib.js');
-const T200Error = require('../T200Error.js');
+const { error, log } = require('../../library/lib.js');
+const T200Error = require('../../library/T200Error.js');
 
-const T200BizBase = require('../,,/library/biz/T200BizBase.js');
+const T200BizBase = require('../../library/biz/T200BizBase.js');
 const T200HomeStore = require('../store/T200HomeStore.js');
 
 

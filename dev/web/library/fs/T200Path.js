@@ -11,17 +11,22 @@ class T200Path {
     static isdir(file) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            fs.lstat(file, function(err, stats){
-                if(err){
-                    throw T200Error.build(1);
-                }else{
-                    if(stats.isDirectory()){
-                        resolve();
+            try{
+                fs.lstat(file, function(err, stats){
+                    if(err){
+                        reject(T200Error.build(1));
                     }else{
-                        reject();
+                        if(stats.isDirectory()){
+                            resolve(true);
+                        }else{
+                            resolve(false);
+                        }
                     }
-                }
-            });
+                });
+
+            }catch(err){
+                reject(T200Error.build(1));
+            };
         });
 
         return promise;

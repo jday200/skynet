@@ -62,8 +62,8 @@ class T200HttpsDispatcher {
             let done = global.action.get[action];
 
             if(done){
-                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
-                    resolve();
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(data){
+                    resolve(data);
                 }, function(err){
                     reject(err);
                 });
@@ -73,7 +73,6 @@ class T200HttpsDispatcher {
                 }, function(err){
                     reject(err);
                 }).catch(function(err){
-                    debugger;
                     console.log(err);
                     reject(err);
                 });
@@ -87,7 +86,18 @@ class T200HttpsDispatcher {
         log(__filename, "assign_post", action);
         let self = this;
         let promise = new Promise(function(resolve, reject){
+            let done = global.action.post[action];
 
+            if(done){
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
+                    resolve();
+                }, function(err){
+                    reject();
+                });
+            }else{
+                self.response.status(500);
+                reject(500);
+            }
         });
 
         return promise;
@@ -97,25 +107,24 @@ class T200HttpsDispatcher {
         log(__filename, "assign_index", action);
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            log(__filename, "dir");
-            return self.resource.isdir(action).then(function(){
-                log(__filename, "search_index");
-                return self.search_index(action).then(function(file){
-                    log(__filename, "load_html");
-                    return self.load_html(file).then(function(data){
-                        resolve(data);
-                    }, function(){
+            return self.resource.isdir(action).then(function(result){
+                if(result){
+                    return self.search_index(action).then(function(file){
+                        return self.load_html(file).then(function(data){
+                            resolve(data);
+                        }, function(){
+                            return error();
+                        });
+                    }, function(err){
+                        return error();
+                    }).catch(function(err){
                         return error();
                     });
-                }, function(err){
-                    log(__filename, "search_index", err);
+                }else{
                     return error();
-                }).catch(function(err){
-                    console.log(err);
-                    return error();
-                });
+                }
+            
             }, function(err){
-                log(__filename, "dir", err);
                 reject();
             }).catch(function(err){
                 reject();
@@ -149,10 +158,15 @@ class T200HttpsDispatcher {
         log(__filename, "assign_file", action);
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            return self.resource.exists(action).then(function(){
+            let real = self.resource.merge_html(action);
+            return self.resource.exists(real).then(function(){
                 return self.sorting_file(action);
             }, function(err){
                 reject(err);
+            }).then(function(data){
+                resolve(data);
+            }, function(){
+                reject();
             });
         });
 
@@ -177,6 +191,7 @@ class T200HttpsDispatcher {
             result.then(function(data){
                 resolve(data);
             }, function(err){
+                self.response.status(404);
                 reject(err);
             });
         });
@@ -208,7 +223,7 @@ class T200HttpsDispatcher {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             self.parse_type(file);
-            self.load_html(file).then(function(data){
+            return self.load_html(file).then(function(data){
                 resolve(data);
             }, function(err){
                 reject(err);
@@ -233,14 +248,19 @@ class T200HttpsDispatcher {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             let name = self.resource.merge_action(file);
-            //let html = self.resource.merge_html(file);
-            let html = file;
-
+            let html = self.resource.merge_html(file);
+            
             return self.load_file(html).then(function(data){
                 return self.resource.exists(name).then(function(){
                     return self.load_action(name);
                 }, function(){
 
+                }).then(function(){
+
+                }, function(){
+                    return error();
+                }).catch(function(err){
+                    log(__filename, "load_action error", err);
                 }).finally(function(){
                     resolve(data);
                 });
@@ -257,11 +277,13 @@ class T200HttpsDispatcher {
         log(__filename, "load_action", action);
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            self.resource.load_action(action).then(function(){
+            let result = self.resource.load_action(action);
+
+            if(result){
                 resolve();
-            }, function(err){
-                reject(err);
-            });
+            }else{
+                reject();
+            }
         });
 
         return promise;
@@ -271,7 +293,7 @@ class T200HttpsDispatcher {
         log(__filename, "load_file", file);
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            self.resource.load_file(file).then(function(data){
+            return self.resource.load_file(file).then(function(data){
                 resolve(data);
             }, function(err){
                 reject(err);

@@ -8,6 +8,7 @@ class T200HttpsRequest {
     constructor(req) {
         this.events = {};
         this.req = req;
+        this.data = "";
         this.req.events = {};
         req.on('data', this.merge_data);
         req.on('end', this.parse_data);

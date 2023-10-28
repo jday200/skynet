@@ -28,7 +28,13 @@ class T200HttpsResource {
         let promise = new Promise(function(resolve, reject){
             let real = T200Path.join_root(file);
             log(__filename, "isdir", file);
-            T200Path.isdir(real).then(resolve, reject);
+            T200Path.isdir(function(flag){
+                resolve(flag);
+            }, function(){
+                reject();
+            }).catch(function(err){
+                reject();
+            });
         });
 
         return promise;
@@ -36,8 +42,16 @@ class T200HttpsResource {
 
     load_action(file) {
         let name = T200Path.join_root(file);
-        let biz = require(name);
+        
         let result;
+        let biz;
+
+        try{
+            biz = require(name);
+        }catch(err){
+            console.log(err);
+            throw err;
+        };
 
         log(__filename, "load_action", file);
         if(biz){

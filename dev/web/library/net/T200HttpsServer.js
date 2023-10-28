@@ -87,13 +87,13 @@ class T200HttpsServer {
 
             dispatcher.run(req, res).then(function(data){
                 log(__filename, "dispatcher run success");
-                dispatcher.response.data(data);
+                dispatcher.response.success(data);
             }, function(err){
                 log(__filename, "dispatcher run failure", err);
-                dispatcher.response.FAILURE();
+                dispatcher.response.failure();
             }).catch(function(err){
                 log(__filename, "dispatcher run error");
-                dispatcher.response.ERROR();
+                dispatcher.response.error();
             }).finally(function(){
                 dispatcher.response.SEND_END();
             });
