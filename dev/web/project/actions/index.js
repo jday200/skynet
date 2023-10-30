@@ -10,7 +10,8 @@ function do_index(request, response, cookie, session, resource) {
         let view = new T200View(resource);
         let HomeIndex = new T200HomeIndex();
 
-        return HomeIndex.load().then(function(data){
+        return HomeIndex.load_index().then(function(data){
+            console.log(data);
             return view.render_file('index.ejs', data);
         }, function(){
             return error();

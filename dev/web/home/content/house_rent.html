@@ -43,18 +43,39 @@
                 <fieldset>
                     <details>
                         <summary class="side_title">House</summary>
-                        <div class="side_item">
-                            <a href="/content/house_rent.html">Rent</a>
-                        </div>
-                        <div class="side_item">
-                            Want
-                        </div>
+                        <div class="side_item">Rent</div>
+                        <div class="side_item">Want</div>
                     </details>
                 </fieldset>
             </div>
             <div class="side_large">
                 <fieldset>
                     <legend>hello</legend>
+
+                    <div class="form">
+                        <div class="form_title">House Rent</div>
+                        <div>
+                            <div class="form_msg">
+                                hello
+                            </div>
+                            <form id="rent">
+                                <div>
+                                    <div class="form_textarea_item"><input type="hidden" name="test">
+                                        <label class="form_label">Title:</label><input class="form_textarea_field" type="text" name="title">
+                                    </div>
+                                    <div class="form_textarea">
+                                        <label class="form_label">Content:</label>
+                                        <textarea class="form_textarea_field" id="content" name="content" cols="80" rows="20"></textarea>
+                                    </div>
+                                    <div class="form_button">
+                                        <input type="button" id="submit" value="submit">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
                 </fieldset>
             </div>
         </div>
@@ -70,6 +91,16 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        $.id('submit').onclick = function(){
+            let result = formtostring("rent");
+
+            $.post('/content/house_rent_add', result, function(){
+                alert('publish success!');
+            }, function(){
+                alert('publish failure!');
+            });
+        };
     };
 </script>
 

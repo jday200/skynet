@@ -28,7 +28,7 @@
                 <a href="/">Home</a> |
                 <a href="/">About</a>
             </div>
-            <div id="nav_right" class="nav_right">
+            <div class="nav_right">
                 <a href="/login.html">Login</a> |
                 <a href="/register.html">Register</a> 
             </div>
@@ -38,27 +38,33 @@
             header
         </div>
 
-        <div class="side">
-            <div class="side_small">
-                <fieldset>
-                    <details>
-                        <summary class="side_title">House</summary>
-                        <div class="side_item">
-                            <a href="/content/house_rent.html">Rent</a>
+        <div>
+            <div>
+
+                <form>
+                    <div>
+                        <div class="form_item">
+                            <input class="form_field" type="text">
                         </div>
-                        <div class="side_item">
-                            Want
+                        <div class="form_button">
+                            <input type="button" value="search">
                         </div>
-                    </details>
-                </fieldset>
-            </div>
-            <div class="side_large">
-                <fieldset>
-                    <legend>hello</legend>
-                </fieldset>
+                    </div>
+                </form>
+
             </div>
         </div>
-   
+
+        <div class="index_channel">
+            <fieldset>
+                <legend>title</legend>
+                <div class="index_channel">
+                    <div class="index_channel_group">1</div>
+                    <div class="index_channel_group">2</div>
+                </div>
+            </fieldset>
+        </div>
+
         <div class="footer">
             footer
         </div>
@@ -66,11 +72,4 @@
     </div>
 
 </body>
-
-<script>
-    $.win.onload = function(){
-        nav_check();
-    };
-</script>
-
 </html>

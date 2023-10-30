@@ -106,7 +106,7 @@ a:hover {
 }
 
 .form_title {
-	height: 50px;
+	line-height: 50px;
 	font-weight: bold;
 }
 
@@ -137,6 +137,24 @@ a:hover {
 	float: left;
 }
 
+.title {
+	height: 35px;
+	width: 1024px;
+	border: 1px solid black;
+}
+
+.content {
+	min-height: 300px;
+	width: 1024px;
+	border: 1px solid black;
+}
+
+.msg {
+	height: 35px;
+	width: 1024px;
+	border: 1px solid black;
+}
+
 </style>
 
 </head>
@@ -157,28 +175,26 @@ a:hover {
 		</div>
 	</div>
 
+	<div class="header">
+		header
+	</div>
+
 	<div class="main">
-		<div class="form_div">
-			<div class="form_title">
-				Article
-			</div>
-			<div class="form_msg">
-				hello
-			</div>
-			<form>
-				<div class="form_div">
-					<div class="form_item">
-						<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
-					</div>
-					<div class="form_item">
-						<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
-					</div>
-					<div class="form_item">
-						<input type="button" value="submit">
-					</div>
-				</div>
-			</form>
+		<div class="title">
+			11111111
 		</div>
+
+		<div class="content">
+			22222222
+		</div>
+
+		<div class="msg">
+			3333333333
+		</div>
+		<div class="msg">
+			3333333333
+		</div>
+		
 	</div>
 
 	<div class="footer">

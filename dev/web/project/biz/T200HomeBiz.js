@@ -11,18 +11,45 @@ class T200HomeBiz extends T200BizBase {
         this.store = new T200HomeStore();
     }
 
-    add() {
+    load(sql) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.store.connect().then(function(){
+                self.store.query(sql).then(function(data){
+                    resolve(data);
+                }, function(){
+                    reject();
+                }).finally(function(){
+                    self.store.disconnect().then(function(){
+
+                    }, function(){
+                        reject();
+                    });
+                });
+            }, function(){
+                reject();
+            });
+        });
+
+        return promise;
+    }
+
+    add(sql) {
         let self = this;
         return this.check().then(function(){
             return self.store.connect().then(function(){
-                return self.store.query().then(function(){
+                return self.store.execute(sql).then(function(){
+                    debugger;
+                    /*
                     return self.store.query().then(function(){
 
                     }, function(){
 
                     });
-                }, function(){
+                    */
 
+                }, function(){
+                    debugger;
                 }).finally(function(){
                     return self.store.disconnect().then(function(){
 
@@ -56,6 +83,21 @@ class T200HomeBiz extends T200BizBase {
 
     list() {
 
+    }
+
+    verify_login(cookie, session) {
+        let sid = cookie.get("sid");
+        debugger;
+        if(sid && 0 < sid){
+            let user_id = session.get("userid");
+            if(user_id && 0 < user_id){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
 }

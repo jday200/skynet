@@ -19,7 +19,7 @@ function do_login(request, response, cookie, session, resource) {
             && T200HttpsForm.verify_text(person.password)){
 
             HomePerson.login(person).then(function(data){
-
+                debugger;
                 set_data(cookie, session, data);
 
                 response.type('json');
@@ -48,8 +48,8 @@ function set_data(cookie, session, data) {
 
     let result = {};
 
-    result.userid = data.user_id;
-    result.username = data.username;
+    result.userid = data[0].user_id;
+    result.username = data[0].username;
 
     session.set(sid, result);
 }

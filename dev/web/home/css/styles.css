@@ -194,3 +194,15 @@ a:hover {
 .side_large {
     width:100%;
 }
+
+.side_title {
+    height: 35px;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.side_item {
+    height: 35px;
+    font-weight: bold;
+    cursor:pointer;
+}

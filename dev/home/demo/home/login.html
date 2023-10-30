@@ -96,8 +96,9 @@ a:hover {
 	text-overflow: ellipsis;
 }
 
+
 .form_div {
-	width: 1024px;
+	width: 500px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -106,20 +107,20 @@ a:hover {
 }
 
 .form_title {
-	height: 50px;
+	line-height: 50px;
 	font-weight: bold;
 }
 
 .form_msg {
-	width: 1024px;
+	width: 300px;
 	height: 50px;
 	float: left;
-	margin-left: 200px;
+	margin-left: 100px;
 }
 
 .form_item {
 	min-height: 50px;
-	width: 800px;
+	width: 300px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -132,7 +133,7 @@ a:hover {
 }
 
 .form_value {
-	width: 600px;
+	width: 200px;
 	position:relative;
 	float: left;
 }
@@ -157,28 +158,37 @@ a:hover {
 		</div>
 	</div>
 
+	<div class="header">
+		header
+	</div>
+
 	<div class="main">
+
 		<div class="form_div">
 			<div class="form_title">
-				Article
+				Login
 			</div>
-			<div class="form_msg">
-				hello
-			</div>
+
 			<form>
 				<div class="form_div">
 					<div class="form_item">
-						<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
+						<label class="form_label">Username:</label><input class="form_value" type="text" name="username"> 
 					</div>
 					<div class="form_item">
-						<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
+						<label class="form_label">Password:</label><input class="form_value" type="password" name="password">
 					</div>
 					<div class="form_item">
 						<input type="button" value="submit">
 					</div>
 				</div>
 			</form>
+
+			<div class="form_msg">
+				hello
+			</div>
+
 		</div>
+
 	</div>
 
 	<div class="footer">

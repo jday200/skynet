@@ -3,14 +3,15 @@ function login() {
 }
 
 function logout() {
-    
+    $.set_cookie('sid', '');
+    location.reload();
 }
 
 function nav_check() {
     let sid = $.cookie('sid');
 
     if(sid && 0 < sid){
-        $.find('nav_right').innerHTML = '<a href="/content/index.html">My</a> | <a href=".">Logout</a>';
+        $.id('nav_right').innerHTML = '<a href="/content/index.html">My</a> | <a href="#" onclick="logout();">Logout</a>';
     }
 }
 
