@@ -61,15 +61,17 @@ a:hover {
 .header {
 	width: 1024px;
     height:200px;
-	margin: 0 auto;
+	background-color:aquamarine;
 	text-align: center;
+	margin: 0 auto;
 }
 
 .footer {
-	width: 1024px;
     height:50px;
-	margin: 0 auto;
+	width: 1024px;
+	background-color: aquamarine;
 	text-align: center;
+	margin: 0 auto;
 }
 
 .main {
@@ -86,6 +88,7 @@ a:hover {
 	font-weight: bold;
 	background-color: #FFC0CB;
 }
+
 .index_channel_group {
 	display:flex;
 	justify-content:center;
@@ -102,50 +105,27 @@ a:hover {
 	height: 35px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
-
-.form_div {
-	width: 500px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	flex-direction:column;
-	background-color: #FFC0CB;
-}
-
-.form_title {
-	line-height: 50px;
+.region {
+	width: 1024px;
 	font-weight: bold;
-	
+	margin: 0 auto;
 }
 
-.form_msg {
-	width: 300px;
-	height: 50px;
-	float: left;
-	margin-left: 100px;
+.region_fieldset {
+	min-height: 100px;
+	border: 2px solid black;
 }
 
-.form_item {
-	min-height: 50px;
-	width: 300px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
+.note {
+    width: 1024px;
+    height: 500px;
+    background-color: #FFC0CB;
+    text-align: center;
 }
 
-.form_label {
-	position:relative;
-	width: 100px;
-	text-align:justify;
-}
-
-.form_value {
-	width: 200px;
-	position:relative;
-	float: left;
-}
 
 </style>
 
@@ -157,7 +137,7 @@ a:hover {
 	<div class="nav">
 		<div class="nav_left">
 			<a href="/index.html">Home</a> |
-			<a href="/">About</a>
+			<a href="/about.html">About</a>
 		</div>
 		<div class="nav_right">
 			<a href="/login.html">Login</a> |
@@ -172,38 +152,9 @@ a:hover {
 	</div>
 
 	<div class="main">
-
-		<div class="form_div">
-			<div class="form_title">
-				Register
-			</div>
-
-			<form>
-				<div class="form_div">
-					<div class="form_item">
-						<label class="form_label">Username:</label><input class="form_value" type="text" name="username"> 
-					</div>
-					<div class="form_item">
-						<label class="form_label">Password:</label><input class="form_value" type="password" name="password1">
-					</div>
-					<div class="form_item">
-						<label class="form_label">Password:</label><input class="form_value" type="password" name="password2">
-					</div>
-					<div class="form_item">
-						<label class="form_label">Email:</label><input class="form_value" type="email" name="email">
-					</div>
-					<div class="form_item">
-						<input type="button" value="submit">
-					</div>
-				</div>
-			</form>
-
-			<div class="form_msg">
-				hello
-			</div>
-
-		</div>
-
+        <div class="note">
+            About us
+        </div>
 	</div>
 
 	<div class="footer">

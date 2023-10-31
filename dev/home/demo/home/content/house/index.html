@@ -47,7 +47,6 @@ a:hover {
     display:flex;
 	justify-content:space-between;
 	align-items:center;
-	margin: 0 auto;
 }
 
 .nav_left {
@@ -59,17 +58,11 @@ a:hover {
 }
 
 .header {
-	width: 1024px;
     height:200px;
-	margin: 0 auto;
-	text-align: center;
 }
 
 .footer {
-	width: 1024px;
     height:50px;
-	margin: 0 auto;
-	text-align: center;
 }
 
 .main {
@@ -77,7 +70,6 @@ a:hover {
 	justify-content:center;
 	align-items:center;
 	flex-direction:column;
-	margin: 0 auto;
 }
 
 .index_channel {
@@ -104,9 +96,8 @@ a:hover {
 	text-overflow: ellipsis;
 }
 
-
 .form_div {
-	width: 500px;
+	width: 1024px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -115,21 +106,20 @@ a:hover {
 }
 
 .form_title {
-	line-height: 50px;
+	height: 50px;
 	font-weight: bold;
-	
 }
 
 .form_msg {
-	width: 300px;
+	width: 1024px;
 	height: 50px;
 	float: left;
-	margin-left: 100px;
+	margin-left: 200px;
 }
 
 .form_item {
 	min-height: 50px;
-	width: 300px;
+	width: 800px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -142,7 +132,7 @@ a:hover {
 }
 
 .form_value {
-	width: 200px;
+	width: 600px;
 	position:relative;
 	float: left;
 }
@@ -167,43 +157,28 @@ a:hover {
 		</div>
 	</div>
 
-	<div class="header">
-		header
-	</div>
-
 	<div class="main">
-
 		<div class="form_div">
 			<div class="form_title">
-				Register
+				Article
 			</div>
-
+			<div class="form_msg">
+				hello
+			</div>
 			<form>
 				<div class="form_div">
 					<div class="form_item">
-						<label class="form_label">Username:</label><input class="form_value" type="text" name="username"> 
+						<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
 					</div>
 					<div class="form_item">
-						<label class="form_label">Password:</label><input class="form_value" type="password" name="password1">
-					</div>
-					<div class="form_item">
-						<label class="form_label">Password:</label><input class="form_value" type="password" name="password2">
-					</div>
-					<div class="form_item">
-						<label class="form_label">Email:</label><input class="form_value" type="email" name="email">
+						<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
 					</div>
 					<div class="form_item">
 						<input type="button" value="submit">
 					</div>
 				</div>
 			</form>
-
-			<div class="form_msg">
-				hello
-			</div>
-
 		</div>
-
 	</div>
 
 	<div class="footer">

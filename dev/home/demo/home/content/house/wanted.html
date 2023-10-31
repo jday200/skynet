@@ -73,10 +73,11 @@ a:hover {
 }
 
 .index_channel {
-	width: 1024px;
-	min-height: 200px;
+	width: 780px;
+	min-height: 400px;
 	font-weight: bold;
 	background-color: #FFC0CB;
+
 }
 .index_channel_group {
 	display:flex;
@@ -86,56 +87,61 @@ a:hover {
 }
 
 .channel {
-	width: 496px;
+	width: 700px;
 }
 
 .channel_item {
-	width: 465px;
+	width: 100%;
 	height: 35px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	float: left;
 }
 
-.form_div {
-	width: 1024px;
+.search {
+	width: 780px;
+	height: 50px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color: #FFC0CB;
+}
+
+.search_button {
+	margin-left: 20px;
+}
+
+.publish {
+	width: 780px;
+	height: 35px;
+	display:flex;
+	justify-content:right;
+	align-items:center;
+	background-color: #FFC0CB;
+}
+
+.list {
 	display:flex;
 	justify-content:center;
 	align-items:center;
 	flex-direction:column;
-	background-color: #FFC0CB;
+	width: 750px;
 }
 
-.form_title {
-	height: 50px;
-	font-weight: bold;
+.line_bottom {
+	width:700px;
+	border-bottom: 1px solid red;
+	margin-bottom: 10px;
+	text-align: center;
 }
 
-.form_msg {
-	width: 1024px;
-	height: 50px;
-	float: left;
-	margin-left: 200px;
+.line_top {
+	width:700px;
+	border-top: 1px solid red;
+	margin-top: 10px;
+	text-align: center;
 }
 
-.form_item {
-	min-height: 50px;
-	width: 800px;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-}
-
-.form_label {
-	position:relative;
-	width: 100px;
-	text-align:justify;
-}
-
-.form_value {
-	width: 600px;
-	position:relative;
-	float: left;
-}
 
 .my {
 	width: 1024px;
@@ -179,7 +185,7 @@ a:hover {
 
 	<div class="nav">
 		<div class="nav_left">
-			<a href="/index.html">Home</a> |
+			<a href="/">Home</a> |
 			<a href="/">About</a>
 		</div>
 		<div class="nav_right">
@@ -231,9 +237,78 @@ a:hover {
 				</fieldset>
 			</div>
 			<div class="right">
-				<form>
+				
+					<div class="search">
+						<form>
+							<div>
+								<input type="text"><input class="search_button" type="button" value="search">
+							</div>
+						</form>
+					</div>
 
-				</form>
+					<div class="publish">
+						<a href="/content/house/edit.html">Publish</a>
+					</div>
+			
+					<div class="index_channel">
+						<fieldset class="fieldset">
+							<legend>House</legend>
+							<div class="index_channel_group">
+								<div class="channel">
+									<fieldset>
+										<legend>Want</legend>
+										<div class="list">
+												
+											<div class="line_bottom">
+												<a href="/house/wanted.html">1</a>
+												<a href="/house/wanted.html">2</a>
+												<a href="/house/wanted.html">3</a>
+												<a href="/house/wanted.html">4</a>
+												<a href="/house/wanted.html">5</a>
+											</div>
+									
+											<div class="channel_item">
+												<a href="/house/house.html">11111111111111111111111111111111111111111111111111111111111111</a>
+											</div>
+											<div class="channel_item">
+												2222222222222222222222222222222222222222222222222222222222222222222222222222222
+											</div>
+											<div class="channel_item">
+												3
+											</div>
+											<div class="channel_item">
+												4
+											</div>
+											<div class="channel_item">
+												5
+											</div>
+											<div class="channel_item">
+												6
+											</div>
+											<div class="channel_item">
+												7
+											</div>
+											<div class="channel_item">
+												8
+											</div>
+											<div class="channel_item">
+												9
+											</div>
+											<div class="channel_item">
+												10
+											</div>
+										
+										<div class="line_top">
+											1 2 3 4 5
+										</div>
+			
+										</div>
+									</fieldset>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+
 			</div>
 		</div>
 	</div>

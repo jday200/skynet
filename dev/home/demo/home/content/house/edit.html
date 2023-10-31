@@ -73,7 +73,7 @@ a:hover {
 }
 
 .index_channel {
-	width: 1024px;
+	width: 780px;
 	min-height: 200px;
 	font-weight: bold;
 	background-color: #FFC0CB;
@@ -97,7 +97,7 @@ a:hover {
 }
 
 .form_div {
-	width: 1024px;
+	width: 780px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -106,12 +106,12 @@ a:hover {
 }
 
 .form_title {
-	height: 50px;
+	line-height: 50px;
 	font-weight: bold;
 }
 
 .form_msg {
-	width: 1024px;
+	width: 780px;
 	height: 50px;
 	float: left;
 	margin-left: 200px;
@@ -119,20 +119,35 @@ a:hover {
 
 .form_item {
 	min-height: 50px;
-	width: 800px;
+	width: 780px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
 }
 
+.form_left {
+	min-height: 50px;
+	width: 780px;
+	display:flex;
+	padding-left: 200px;
+}
+
+.form_select {
+	width: 100px;
+}
+
+.form_select_item {
+	padding-right: 50px;
+}
+
 .form_label {
 	position:relative;
 	width: 100px;
-	text-align:justify;
+	text-align:right;
 }
 
 .form_value {
-	width: 600px;
+	width: 680px;
 	position:relative;
 	float: left;
 }
@@ -149,6 +164,11 @@ a:hover {
 .left {
 	width: 200px;	
 	height: 600px;
+}
+
+.fieldset{
+	border: 2px solid black;
+	min-height: 600px;
 }
 
 .right {
@@ -190,6 +210,7 @@ a:hover {
 		</div>
 	</div>
 
+
 	<div class="header">
 		header
 	</div>
@@ -197,7 +218,7 @@ a:hover {
 	<div class="main">
 		<div class="my">
 			<div class="left">
-				<fieldset>
+				<fieldset class="fieldset">
 					<details open>
 						<summary class="tree_title">My</summary>
 						<div class="tree_item_list">
@@ -231,9 +252,43 @@ a:hover {
 				</fieldset>
 			</div>
 			<div class="right">
-				<form>
 
-				</form>
+				<div class="form_div">
+					<div class="form_title">
+						House
+					</div>
+					<div class="form_msg">
+						hello
+					</div>
+					<form>
+						<div class="form_div">
+							<div class="form_left">
+								<div class="form_select_item">
+									<label>Country:</label>
+									<select class="form_select">
+										<option>1</option>
+									</select>
+								</div>
+								<div class="form_select_item">
+									<label>City:</label>
+									<select class="form_select">
+										<option>1</option>
+									</select>
+								</div>
+							</div>
+							<div class="form_item">
+								<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
+							</div>
+							<div class="form_item">
+								<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
+							</div>
+							<div class="form_item">
+								<input type="button" value="submit">
+							</div>
+						</div>
+					</form>
+				</div>
+
 			</div>
 		</div>
 	</div>
