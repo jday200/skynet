@@ -47,6 +47,7 @@ a:hover {
     display:flex;
 	justify-content:space-between;
 	align-items:center;
+	margin: 0 auto;
 }
 
 .nav_left {
@@ -58,11 +59,19 @@ a:hover {
 }
 
 .header {
+	width: 1024px;
     height:200px;
+	background-color:aquamarine;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .footer {
     height:50px;
+	width: 1024px;
+	background-color: aquamarine;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .main {
@@ -70,11 +79,12 @@ a:hover {
 	justify-content:center;
 	align-items:center;
 	flex-direction:column;
+	margin: 0 auto;
 }
 
 .index_channel {
-	width: 1024px;
-	min-height: 200px;
+	width: 680px;
+	min-height: 400px;
 	font-weight: bold;
 	background-color: #FFC0CB;
 }
@@ -82,6 +92,7 @@ a:hover {
 	display:flex;
 	justify-content:center;
 	align-items:center;
+	flex-direction:column;
 	float: left;
 }
 
@@ -90,14 +101,15 @@ a:hover {
 }
 
 .channel_item {
-	width: 465px;
+	width: 600px;
 	height: 35px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .form_div {
-	width: 1024px;
+	width: 780px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -111,7 +123,7 @@ a:hover {
 }
 
 .form_msg {
-	width: 1024px;
+	width: 780px;
 	height: 50px;
 	float: left;
 	margin-left: 200px;
@@ -119,7 +131,7 @@ a:hover {
 
 .form_item {
 	min-height: 50px;
-	width: 800px;
+	width: 780px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -132,10 +144,125 @@ a:hover {
 }
 
 .form_value {
-	width: 600px;
+	width: 680px;
 	position:relative;
 	float: left;
 }
+
+.form_region {
+	width: 780px;
+	display:flex;
+	justify-content:left;
+	align-items:center;
+}
+
+.form_left {
+	width: 780px;
+	display:flex;
+	justify-content:left;
+	align-items:center;
+}
+
+.form_select_item {
+	margin-right: 50px;
+}
+
+.form_select {
+	width: 100px;
+}
+
+.my {
+	width: 1024px;
+	min-height: 600px;
+	display:flex;
+	/*justify-content:center;*/
+	/*align-items:center;*/
+	background-color: #FFC0CB;
+}
+
+.left {
+	width: 200px;	
+	height: 600px;
+}
+
+.right {
+	width: 824px
+}
+
+.tree {
+	width: 160px;	
+	height: 500px;
+	border: 2px solid black;
+}
+
+.tree_group {
+	border-bottom: 1px solid black;
+	margin-top: -1px;
+}
+
+.tree_title {
+	height: 35px;
+	cursor: pointer;
+}
+
+.tree_item_list {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+
+.tree_item {
+	width: 100px;
+	height: 35px;
+	padding-left: 50px;
+	text-align: left;
+}
+
+.search {
+	width: 780px;
+	height: 50px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color: #FFC0CB;
+}
+
+.search_button {
+	margin-left: 20px;
+}
+
+.publish {
+	width: 780px;
+	height: 35px;
+	display:flex;
+	justify-content:right;
+	align-items:center;
+	background-color: #FFC0CB;
+}
+
+.list {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	width: 750px;
+}
+
+.line_bottom {
+	width:700px;
+	border-bottom: 1px solid red;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.line_top {
+	width:700px;
+	border-top: 1px solid red;
+	margin-top: 10px;
+	text-align: center;
+}
+
 
 </style>
 
@@ -147,7 +274,7 @@ a:hover {
 	<div class="nav">
 		<div class="nav_left">
 			<a href="/index.html">Home</a> |
-			<a href="/">About</a>
+			<a href="/about.html">About</a>
 		</div>
 		<div class="nav_right">
 			<a href="/login.html">Login</a> |
@@ -157,27 +284,92 @@ a:hover {
 		</div>
 	</div>
 
+	<div class="header">
+		header
+	</div>
+
 	<div class="main">
-		<div class="form_div">
-			<div class="form_title">
-				Article
+		<div class="my">
+			<div class="left">
+				<fieldset class="tree">
+					<details open class="tree_group">
+						<summary class="tree_title">My</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/person/index.html">Profile</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">House</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/house/rent.html">Rent</a>
+							<a class="tree_item" href="/content/house/wanted.html">Wanted</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">Job</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/job/recruit.html">Recruit</a>
+							<a class="tree_item" href="/content/job/wanted.html">Wanted</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">Exchange</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/exchange/index.html">Exchange</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">Note</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/note/index.html">Note</a>
+						</div>
+					</details>
+
+				</fieldset>
 			</div>
-			<div class="form_msg">
-				hello
+			<div class="right">
+
+
+				
+						<div class="index_channel">
+							<fieldset class="fieldset">
+								<legend>Exchange</legend>
+								<div class="index_channel_group">
+									<div class="index_channel_group">
+						
+													
+				
+												<div class="form_div">
+													<div class="form_msg">
+														hello
+													</div>
+													<form>
+														<div class="form_div">
+															<div class="form_item">
+																<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
+															</div>
+															<div class="form_item">
+																<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
+															</div>
+															<div class="form_item">
+																<input type="button" value="submit">
+															</div>
+														</div>
+													</form>
+												</div>
+
+								</div>
+							</fieldset>
+						</div>
+	
+					</div>
+	
+					
 			</div>
-			<form>
-				<div class="form_div">
-					<div class="form_item">
-						<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
-					</div>
-					<div class="form_item">
-						<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
-					</div>
-					<div class="form_item">
-						<input type="button" value="submit">
-					</div>
-				</div>
-			</form>
 		</div>
 	</div>
 
@@ -189,3 +381,6 @@ a:hover {
 
 </body>
 </html>
+
+
+

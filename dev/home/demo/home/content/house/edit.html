@@ -47,6 +47,7 @@ a:hover {
     display:flex;
 	justify-content:space-between;
 	align-items:center;
+	margin: 0 auto;
 }
 
 .nav_left {
@@ -58,11 +59,19 @@ a:hover {
 }
 
 .header {
+	width: 1024px;
     height:200px;
+	background-color:aquamarine;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .footer {
     height:50px;
+	width: 1024px;
+	background-color: aquamarine;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .main {
@@ -70,11 +79,12 @@ a:hover {
 	justify-content:center;
 	align-items:center;
 	flex-direction:column;
+	margin: 0 auto;
 }
 
 .index_channel {
-	width: 780px;
-	min-height: 200px;
+	width: 680px;
+	min-height: 400px;
 	font-weight: bold;
 	background-color: #FFC0CB;
 }
@@ -82,6 +92,7 @@ a:hover {
 	display:flex;
 	justify-content:center;
 	align-items:center;
+	flex-direction:column;
 	float: left;
 }
 
@@ -90,14 +101,15 @@ a:hover {
 }
 
 .channel_item {
-	width: 465px;
+	width: 600px;
 	height: 35px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .form_div {
-	width: 780px;
+	width: 750px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -106,12 +118,12 @@ a:hover {
 }
 
 .form_title {
-	line-height: 50px;
+	height: 50px;
 	font-weight: bold;
 }
 
 .form_msg {
-	width: 780px;
+	width: 750px;
 	height: 50px;
 	float: left;
 	margin-left: 200px;
@@ -119,37 +131,44 @@ a:hover {
 
 .form_item {
 	min-height: 50px;
-	width: 780px;
+	width: 750px;
 	display:flex;
 	justify-content:center;
 	align-items:center;
 }
 
-.form_left {
-	min-height: 50px;
-	width: 780px;
+.form_label {
+	position:relative;
+	width: 100px;
+	text-align:justify;
+}
+
+.form_value {
+	width: 600px;
+	position:relative;
+	float: left;
+}
+
+.form_region {
+	width: 710px;
 	display:flex;
-	padding-left: 200px;
+	justify-content:left;
+	align-items:center;
+}
+
+.form_left {
+	width: 750px;
+	display:flex;
+	justify-content:left;
+	align-items:center;
+}
+
+.form_select_item {
+	margin-right: 50px;
 }
 
 .form_select {
 	width: 100px;
-}
-
-.form_select_item {
-	padding-right: 50px;
-}
-
-.form_label {
-	position:relative;
-	width: 100px;
-	text-align:right;
-}
-
-.form_value {
-	width: 680px;
-	position:relative;
-	float: left;
 }
 
 .my {
@@ -166,17 +185,24 @@ a:hover {
 	height: 600px;
 }
 
-.fieldset{
-	border: 2px solid black;
-	min-height: 600px;
-}
-
 .right {
 	width: 824px
 }
 
+.tree {
+	width: 160px;	
+	height: 500px;
+	border: 2px solid black;
+}
+
+.tree_group {
+	border-bottom: 1px solid black;
+	margin-top: -1px;
+}
+
 .tree_title {
 	height: 35px;
+	cursor: pointer;
 }
 
 .tree_item_list {
@@ -187,8 +213,56 @@ a:hover {
 }
 
 .tree_item {
+	width: 100px;
 	height: 35px;
+	padding-left: 50px;
+	text-align: left;
 }
+
+.search {
+	width: 780px;
+	height: 50px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color: #FFC0CB;
+}
+
+.search_button {
+	margin-left: 20px;
+}
+
+.publish {
+	width: 780px;
+	height: 35px;
+	display:flex;
+	justify-content:right;
+	align-items:center;
+	background-color: #FFC0CB;
+}
+
+.list {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	width: 750px;
+}
+
+.line_bottom {
+	width:700px;
+	border-bottom: 1px solid red;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.line_top {
+	width:700px;
+	border-top: 1px solid red;
+	margin-top: 10px;
+	text-align: center;
+}
+
 
 </style>
 
@@ -200,7 +274,7 @@ a:hover {
 	<div class="nav">
 		<div class="nav_left">
 			<a href="/index.html">Home</a> |
-			<a href="/">About</a>
+			<a href="/about.html">About</a>
 		</div>
 		<div class="nav_right">
 			<a href="/login.html">Login</a> |
@@ -210,7 +284,6 @@ a:hover {
 		</div>
 	</div>
 
-
 	<div class="header">
 		header
 	</div>
@@ -218,15 +291,15 @@ a:hover {
 	<div class="main">
 		<div class="my">
 			<div class="left">
-				<fieldset class="fieldset">
-					<details open>
+				<fieldset class="tree">
+					<details open class="tree_group">
 						<summary class="tree_title">My</summary>
 						<div class="tree_item_list">
-							<a class="tree_item" href="/content/index.html">Profile</a>
+							<a class="tree_item" href="/content/person/index.html">Profile</a>
 						</div>
 					</details>
 
-					<details open>
+					<details open class="tree_group">
 						<summary class="tree_title">House</summary>
 						<div class="tree_item_list">
 							<a class="tree_item" href="/content/house/rent.html">Rent</a>
@@ -234,18 +307,25 @@ a:hover {
 						</div>
 					</details>
 
-					<details open>
+					<details open class="tree_group">
 						<summary class="tree_title">Job</summary>
 						<div class="tree_item_list">
-							<a class="tree_item" href="">Recruit</a>
-							<a class="tree_item" href="">Wanted</a>
+							<a class="tree_item" href="/content/job/recruit.html">Recruit</a>
+							<a class="tree_item" href="/content/job/wanted.html">Wanted</a>
 						</div>
 					</details>
 
-					<details open>
+					<details open class="tree_group">
 						<summary class="tree_title">Exchange</summary>
 						<div class="tree_item_list">
-							<a class="tree_item" href="">Exchange</a>
+							<a class="tree_item" href="/content/exchange/index.html">Exchange</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">Note</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/note/index.html">Note</a>
 						</div>
 					</details>
 
@@ -253,42 +333,64 @@ a:hover {
 			</div>
 			<div class="right">
 
-				<div class="form_div">
-					<div class="form_title">
-						House
-					</div>
-					<div class="form_msg">
-						hello
-					</div>
-					<form>
-						<div class="form_div">
-							<div class="form_left">
-								<div class="form_select_item">
-									<label>Country:</label>
-									<select class="form_select">
-										<option>1</option>
-									</select>
-								</div>
-								<div class="form_select_item">
-									<label>City:</label>
-									<select class="form_select">
-										<option>1</option>
-									</select>
-								</div>
-							</div>
-							<div class="form_item">
-								<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
-							</div>
-							<div class="form_item">
-								<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
-							</div>
-							<div class="form_item">
-								<input type="button" value="submit">
-							</div>
-						</div>
-					</form>
-				</div>
 
+				
+						<div class="index_channel">
+							<fieldset class="fieldset">
+								<legend>House</legend>
+								<div class="index_channel_group">
+									<div class="index_channel_group">
+										<fieldset>
+											<legend>Rent</legend>
+											<div class="index_channel_group">
+													
+				
+												<div class="form_div">
+													<div class="form_msg">
+														hello
+													</div>
+													<form>
+														<div class="form_div">
+															<div class="form_left">
+																<fieldset class="form_region">
+																	<legend>Region</legend>
+																	<div class="form_select_item">
+																		<label>Country:</label>
+																		<select class="form_select">
+																			<option>1</option>
+																		</select>
+																	</div>
+																	<div class="form_select_item">
+																		<label>City:</label>
+																		<select class="form_select">
+																			<option>1</option>
+																		</select>
+																	</div>
+																</fieldset>
+															</div>
+															<div class="form_item">
+																<label class="form_label">Title:</label><input class="form_value" type="text" name="title"> 
+															</div>
+															<div class="form_item">
+																<label class="form_label">Content:</label><textarea class="form_value" rows="25" name="content"></textarea>
+															</div>
+															<div class="form_item">
+																<input type="button" value="submit">
+															</div>
+														</div>
+													</form>
+												</div>
+
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+	
+					</div>
+	
+					
 			</div>
 		</div>
 	</div>
@@ -301,3 +403,6 @@ a:hover {
 
 </body>
 </html>
+
+
+

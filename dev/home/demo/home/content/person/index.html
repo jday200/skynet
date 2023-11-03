@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta name="generator" content="Bluefish 2.2.10" >
+<meta name="author" content="user" >
+<meta name="date" content="2023-10-29T19:46:41+0800" >
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+
+<style>
+body {
+	background-color: #ADD8E6;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.fieldset {
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+}
+
+.container {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+
+.nav {
+    width: 1024px;
+    height: 35px;
+    display:flex;
+	justify-content:space-between;
+	align-items:center;
+	margin: 0 auto;
+}
+
+.nav_left {
+    float: left;
+}
+
+.nav_right {
+    float: right;
+}
+
+.header {
+	width: 1024px;
+    height:200px;
+	background-color:aquamarine;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.footer {
+    height:50px;
+	width: 1024px;
+	background-color: aquamarine;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.main {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	margin: 0 auto;
+}
+
+.index_channel {
+	width: 1024px;
+	min-height: 200px;
+	font-weight: bold;
+	background-color: #FFC0CB;
+}
+.index_channel_group {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	float: left;
+}
+
+.channel {
+	width: 496px;
+}
+
+.channel_item {
+	width: 465px;
+	height: 35px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.form_div {
+	width: 1024px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	background-color: #FFC0CB;
+}
+
+.form_title {
+	height: 50px;
+	font-weight: bold;
+}
+
+.form_msg {
+	width: 1024px;
+	height: 50px;
+	float: left;
+	margin-left: 200px;
+}
+
+.form_item {
+	min-height: 50px;
+	width: 800px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_label {
+	position:relative;
+	width: 100px;
+	text-align:justify;
+}
+
+.form_value {
+	width: 600px;
+	position:relative;
+	float: left;
+}
+
+.my {
+	width: 1024px;
+	min-height: 600px;
+	display:flex;
+	/*justify-content:center;*/
+	/*align-items:center;*/
+	background-color: #FFC0CB;
+}
+
+.left {
+	width: 200px;	
+	height: 600px;
+}
+
+.right {
+	width: 824px
+}
+
+.tree {
+	width: 160px;	
+	height: 500px;
+	border: 2px solid black;
+}
+
+.tree_group {
+	/*border-top: 1px solid black;*/
+	border-bottom: 1px solid black;
+	margin-top: -1px;
+}
+
+.tree_title {
+	height: 35px;
+	cursor: pointer;
+}
+
+.tree_item_list {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+
+.tree_item {
+	width: 100px;
+	height: 35px;
+	padding-left: 50px;
+	text-align: left;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+	<div class="nav">
+		<div class="nav_left">
+			<a href="/index.html">Home</a> |
+			<a href="/about.html">About</a>
+		</div>
+		<div class="nav_right">
+			<a href="/login.html">Login</a> |
+			<a href="/register.html">Register</a> |
+			<a href="/content/index.html">My</a> |
+			<a href="#">Logout</a> 
+		</div>
+	</div>
+
+	<div class="header">
+		header
+	</div>
+
+	<div class="main">
+		<div class="my">
+			<div class="left">
+				<fieldset class="tree">
+					<details open class="tree_group">
+						<summary class="tree_title">My</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/person/index.html">Profile</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">House</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/house/rent.html">Rent</a>
+							<a class="tree_item" href="/content/house/wanted.html">Wanted</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">Job</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/job/recruit.html">Recruit</a>
+							<a class="tree_item" href="/content/job/wanted.html">Wanted</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">Exchange</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/exchange/index.html">Exchange</a>
+						</div>
+					</details>
+
+					<details open class="tree_group">
+						<summary class="tree_title">Note</summary>
+						<div class="tree_item_list">
+							<a class="tree_item" href="/content/note/index.html">Note</a>
+						</div>
+					</details>
+
+				</fieldset>
+			</div>
+			<div class="right">
+				<fieldset>
+					<legend>Profile</legend>
+					<div>
+
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		footer
+	</div>
+
+</div>
+
+</body>
+</html>
