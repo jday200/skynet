@@ -1,18 +1,46 @@
 class T200 {
     constructor() {
+        this.#load_cookies();
+        this.win = window;
+        this.doc = document;
+        this.nav = navigator;
+    }
 
+    #load_cookies() {
+        let self = this;
+        this._cookies = {};
+        document.cookie.split(';').forEach(item => {
+            let values = item.split('=');
+            self._cookies[ values[0].trim() ] = (values[1] || '').trim();
+        });
+    } 
+
+    cookie(name) {
+        return this._cookies[name];
+    }
+
+    set_cookie(name, value) {
+        document.cookie = `${name}=${value}`;
     }
 
     static create() {
         return new T200();
     }
 
-    all(name) {
-        return document.getElementsByName(name);
+    id(flag) {
+        return document.getElementById(flag);
     }
 
-    element(name) {
-        return document.getElementById(name);
+    name(flag) {
+        return document.getElementsByName(flag);
+    }
+
+    find(flag) {
+        return document.querySelectorAll(flag);
+    }
+
+    datatostring(data) {
+        return new URLSearchParams(data).toString();
     }
 
     get(url, data, success, failure) {
@@ -29,19 +57,16 @@ class T200 {
         });
     }
 
-    post(url, data, success, failure) {
+    post(url, data ,success, failure) {
         let xhr = new XMLHttpRequest();
 
         xhr.open('POST', url, true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(data);
         xhr.addEventListener('load', function(){
-            //console.log(xhr.response);
-            //alert(xhr.status);
             if(200 == xhr.status){
                 let flag = JSON.parse(xhr.response);
                 if('success' == flag.result){
-                    console.log('success');
                     success(flag.data);
                 }else{
                     failure();
@@ -49,27 +74,7 @@ class T200 {
             }else{
                 failure();
             }
-            
         });
-    }
-
-    datatostring(data) {
-        return new URLSearchParams(data).toString();
-    }
-
-    cookie(name) {
-        let self = this;
-        self.cookies = {};
-        document.cookie.split(';').forEach(item =>{
-            let values = item.split('=');
-            self.cookies[ values[0].trim() ] = (values[1] || '').trim();
-        });
-
-        return self.cookies[name];
-    }
-
-    set_cookie(name, value) {
-        document.cookie = `${name}=${value}`;
     }
 }
 

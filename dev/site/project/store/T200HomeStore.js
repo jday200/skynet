@@ -1,4 +1,5 @@
-const { log, log_start, log_stop } = require('../../library/lib.js');
+const { error, log } = require('../../library/T200Lib.js');
+const T200Error = require('../../library/T200Error.js');
 
 
 class T200HomeStore {
@@ -24,6 +25,21 @@ class T200HomeStore {
     execute(sql) {
         log(__filename, "execute", sql);
         return global.database.execute(sql);
+    }
+
+    begin() {
+        log(__filename, "begin");
+        return global.database.begin();
+    }
+
+    commit() {
+        log(__filename, "commit");
+        return global.database.commit();
+    }
+
+    rollback() {
+        log(__filename, "rollback");
+        return global.database.rollback();
     }
 }
 

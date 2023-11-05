@@ -1,31 +1,10 @@
-<div>
-    <nav>
-        <div class="nav_container">
-            <div class="nav_left">
-                <a class="nav_item" href="/">Home</a> |
-                <a href="/">About</a>
-            </div>
-            <div class="nav_right">
-                <% if(0 < userid){ %>
-                    <a href="/content/index.html">My</a> |
-                    <b onclick="logout();">Logout</b>
-                <% }else{ %>
-                <a href="/login.html">Login</a> |
-                <a href="/register.html">Register</a>
-                <% } %>
-            </div>
-        </div>
-    </nav>
+<div class="nav">
+    <div class="nav_left">
+        <a href="/">Home</a> |
+        <a href="/">About</a>
+    </div>
+    <div id="nav_right" class="nav_right">
+        <a href="/login.html">Login</a> |
+        <a href="/register.html">Register</a>
+    </div>
 </div>
-
-<script>
-    function logout() {
-        let data = "{}";
-
-        $.post("/logout", data, function(){
-
-        }, function(){
-
-        });
-    }
-</script>

@@ -1,18 +1,20 @@
+const T200Error = require('../T200Error.js');
 const fs = require('fs');
+
 
 class T200File {
     constructor() {
 
     }
-    
+
     static exists(file) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             fs.access(file, fs.constants.F_OK, function(err){
                 if(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build());
                 }else{
-                    if(resolve)resolve();
+                    resolve();
                 }
             });
         });
@@ -25,11 +27,11 @@ class T200File {
         let promise = new Promise(function(resolve, reject){
             fs.readFile(file, function(err, data){
                 if(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build());
                 }else{
-                    if(resolve)resolve(data);
+                    resolve(data);
                 }
-            })
+            });
         });
 
         return promise;

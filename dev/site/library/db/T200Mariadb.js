@@ -1,4 +1,6 @@
+const T200Error = require('../T200Error.js');
 const mariadb = require('mariadb');
+
 
 class T200Mariadb {
     constructor() {
@@ -13,15 +15,13 @@ class T200Mariadb {
             flag = true;
             this.pool = mariadb.createPool(setup);
             this.setup = setup;
-        }else{
-
-        }
-
+        } 
+        
         let promise = new Promise(function(resolve, reject){
             if(flag){
-                if(resolve)resolve();
+                resolve()
             }else{
-                if(reject)reject("mariadb start error");
+                reject(T200Error.build());
             }
         });
 
@@ -32,10 +32,9 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
-                if(reject)reject("mariadb stop error");
+                reject(T200Error.build());
             }else{
-                self.pool.end();
-                if(resolve)resolve();
+                self.pool.end().then(resolve, reject);
             }
         });
 
@@ -46,13 +45,13 @@ class T200Mariadb {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.pool){
-                if(reject)reject("mariadb connect error");
+                reject(T200Error.build());
             }else{
                 self.pool.getConnection().then(function(conn){
-                    self.conn = conn;
-                    if(resolve)resolve();
+                    self._conn = conn;
+                    resolve();
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build());
                 });
             }
         });
@@ -63,14 +62,14 @@ class T200Mariadb {
     disconnect() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            if(undefined == self.conn){
-                if(reject)reject("mariadb disconnect error");
+            if(undefined == self._conn){
+                reject(T200Error.build());
             }else{
-                self.conn.end().then(function(){
-                    self.conn = undefined;
-                    if(resolve)resolve();
+                self._conn.end().then(function(){
+                    delete self._conn;
+                    resolve();
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build());
                 });
             }
         });
@@ -79,15 +78,15 @@ class T200Mariadb {
     }
 
     query(sql) {
-        let self = this;
+        let self = this
         let promise = new Promise(function(resolve, reject){
-            if(undefined == self.conn){
-                if(reject)reject("mariadb query error");
+            if(undefined == self._conn){
+                reject(T200Error.build());
             }else{
-                self.conn.query(sql).then(function(data){
-                    if(resolve)resolve(data);
+                self._conn.query(sql).then(function(data){
+                    resolve(data);
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build());
                 });
             }
         });
@@ -96,20 +95,71 @@ class T200Mariadb {
     }
 
     execute(sql) {
-        let self = this;
+        let self = this
         let promise = new Promise(function(resolve, reject){
-            if(undefined == self.conn){
-                if(reject)reject("mariadb execute error");
+            if(undefined == self._conn){
+                reject(T200Error.build());
             }else{
-                self.conn.query(sql).then(function(data){
+                self._conn.query(sql).then(function(data){
                     let result = false;
 
-                   if(data && 0 == data.warningStatus){
-                    result = true;
-                   }
-                    if(resolve)resolve(result);
+                    if(data && 0 == data.warningStatus){
+                        result = true;
+                    }
+                    resolve(result);
                 }, function(err){
-                    if(reject)reject(err);
+                    reject(T200Error.build());
+                });
+            }
+        });
+
+        return promise;
+    }
+
+    begin() {
+        let self = this
+        let promise = new Promise(function(resolve, reject){
+            if(undefined == self._conn){
+                reject(T200Error.build());
+            }else{
+                self._conn.beginTransaction().then(function(){
+                    resolve();
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
+        });
+
+        return promise;
+    }
+
+    commit() {
+        let self = this
+        let promise = new Promise(function(resolve, reject){
+            if(undefined == self._conn){
+                reject(T200Error.build());
+            }else{
+                self._conn.commit().then(function(){
+                    resolve();
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
+        });
+
+        return promise;
+    }
+
+    rollback() {
+        let self = this
+        let promise = new Promise(function(resolve, reject){
+            if(undefined == self._conn){
+                reject(T200Error.build());
+            }else{
+                self._conn.rollback().then(function(){
+                    resolve();
+                }, function(err){
+                    reject(T200Error.build());
                 });
             }
         });

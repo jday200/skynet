@@ -1,38 +1,46 @@
-const { log, log_start, log_stop } = require('../lib.js');
+const { error, log } = require('../T200Lib.js');
+const T200Error = require('../T200Error.js');
+
 
 
 class T200HttpsCookie {
     constructor(req, res) {
         this.req = req;
         this.res = res;
+    }
 
-        this.parse();
+    load() {
+        log(__filename, "Cookie load");
+
+        let self = this;
+
+        if(this.req){
+            if(this.req.headers){
+                if(this.req.headers.cookie){
+                    this.cookies = {};
+                    this.req.headers.cookie.split(';').forEach(item => {
+                        let values = item.split('=');
+                        self.cookies[ values[0].trim() ] = (values[1] || '').trim();
+                    });
+                }else{
+
+                }
+            }else{
+                throw(T200Error.build(1));
+            }
+        }else{  
+            throw(T200Error.build(1));
+        }
     }
 
     set(name, value) {
-        log(__filename, "T200HttpsCookie set", name);
+        log(__filename, "Cookie set", name);
         this.res.setHeader('Set-Cookie', `${name}=${value};`);
     }
 
     get(name) {
-        log(__filename, "T200HttpsCookie get", name);
-        return this.cookie[name];
-    }
-
-    parse() {
-        log(__filename, 'parse cookie', this.req.headers.cookie);
-        
-        let self = this;
-        if(this.req && this.req.headers
-            && this.req.headers.cookie){
-                this.cookie = {};
-                this.req.headers.cookie.split(';').forEach(item => {
-                    let cookies = item.split('=');
-                    self.cookie[ cookies[0].trim() ] = (cookies[1] || '').trim();
-                });
-            }else{
-                //throw "parse cookie error";
-            }
+        log(__filename, "Cookie get", name);
+        return this.cookies[name];
     }
 }
 

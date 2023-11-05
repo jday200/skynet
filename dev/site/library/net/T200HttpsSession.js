@@ -1,4 +1,6 @@
-const { log, log_start, log_stop } = require('../lib.js');
+const { error, log } = require('../T200Lib.js');
+const T200Error = require('../T200Error.js');
+
 
 
 class T200HttpsSession {
@@ -7,22 +9,17 @@ class T200HttpsSession {
     }
 
     static clear() {
-        log(__filename, "clear");
+        log(__filename, "Session clear");
         global.session = {};
     }
 
     set(name, value) {
-        log(__filename, "set", name);
+        log(__filename, "Session set", name);
         global.session[name] = value;
     }
 
-    get1(name) {
-        log(__filename, "get", name);
-        return global.session[name];
-    }
-
     get(name) {
-        log(__filename, "get", name);
+        log(__filename, "Session get", name);
         let sid = this.cookie.get('sid');
 
         if(sid){
@@ -31,10 +28,10 @@ class T200HttpsSession {
             if(data){
                 return data[name];
             }else{
-                throw "session data is null";
+                throw T200Error.build(1);
             }
         }else{
-            throw "sid is null";
+            throw T200Error.build(1);
         }
     }
 

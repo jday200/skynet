@@ -34,8 +34,7 @@ class T200Mariadb {
             if(undefined == self.pool){
                 reject(T200Error.build(2));
             }else{
-                self.pool.end();
-                resolve();
+                self.pool.end().then(resolve, reject);
             }
         });
 

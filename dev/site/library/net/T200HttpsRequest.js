@@ -1,18 +1,24 @@
-const { log, log_start, log_stop } = require('../lib.js');
+const { error, log } = require('../T200Lib.js');
+const T200Error = require('../T200Error.js');
+
 const querystring = require('querystring');
+
 
 class T200HttpsRequest {
     constructor(req) {
+        this.events = {};
         this.req = req;
+        this.data = "";
+        this.req.events = {};
+        req.on('data', this.merge_data);
+        req.on('end', this.parse_data);
     }
 
-    load(callback) {
-        let self = this;
-        self.req.callback = callback;
-        self.req.on('data', self.merge_data);
-        self.req.on('end', self.parse_data);
-    }    
-    
+    on(name, callback) {
+        log(__filename, "on", name);
+        this.req.events[name] = callback;
+    }
+
     merge_data(current) {
         log(__filename, "merge_data", current);
         this.data += current;
@@ -20,13 +26,18 @@ class T200HttpsRequest {
 
     parse_data() {
         log(__filename, "parse_data", this.data);
-        this.body = querystring.parse(this.data);
-        if(this.callback)this.callback(this.body);
+        this.values = querystring.parse(this.data);
+        let load = this.events['load'];
+
+        if(load){
+            log(__filename, "call load");
+            load();
+        }
     }
 
-    value(key) {
-        log(__filename, "T200HttpsRequest value", key);
-        return this.req.body[key];
+    get(name) {
+        log(__filename, "Request get", name);
+        return this.req.values[name];
     }
 }
 

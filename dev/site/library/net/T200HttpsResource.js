@@ -1,5 +1,8 @@
-const { log, log_start, log_stop } = require('../lib.js');
+const { error, log } = require('../T200Lib.js');
+const T200Error = require('../T200Error.js');
+
 const path = require('path');
+
 const T200File = require('../fs/T200File.js');
 const T200Path = require('../fs/T200Path.js');
 
@@ -20,10 +23,35 @@ class T200HttpsResource {
         return promise;
     }
 
+    isdir(file) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let real = T200Path.join_root(file);
+            log(__filename, "isdir", file);
+            T200Path.isdir(function(flag){
+                resolve(flag);
+            }, function(){
+                reject();
+            }).catch(function(err){
+                reject();
+            });
+        });
+
+        return promise;
+    }
+
     load_action(file) {
         let name = T200Path.join_root(file);
-        let biz = require(name);
+        
         let result;
+        let biz;
+
+        try{
+            biz = require(name);
+        }catch(err){
+            console.log(err);
+            throw err;
+        };
 
         log(__filename, "load_action", file);
         if(biz){
@@ -46,22 +74,8 @@ class T200HttpsResource {
         let result = new Array();
 
         log(__filename, "merge_index", url);
-        for(let id in files){
-            let name = path.join(global.setup.https.home, url + files[id]);
-            result.push(name);
-        }
-
-        return result;
-    }
-
-    merge_index2(url) {
-        let files = global.setup.https.index.split(',');
-        let result = new Array();
-
-        log(__filename, "merge_index", url);
-        for(let id in files){
-            //let name = path.join(global.setup.https.home, url + files[id]);
-            let name = path.join(url, files[id]);
+        for(let file of files){
+            let name = path.join(url, file);
             result.push(name);
         }
 
@@ -87,6 +101,7 @@ class T200HttpsResource {
         log(__filename, "merge_pages", url);
         return path.join(global.setup.https.pages, "/" + url);
     }
+
 }
 
 module.exports = T200HttpsResource;

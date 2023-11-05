@@ -1,57 +1,48 @@
-class T200Person {
-    userid;
+const { error, log } = require('../../library/T200Lib.js');
+const T200Error = require('../../library/T200Error.js');
+
+const T200ModelBase = require('../../library/model/T200ModelBase.js');
+
+
+class T200Person extends T200ModelBase {
+    user_id;
 
     username;
 
     password;
 
     email;
-
+    
     constructor() {
-
+        super();
+        this._table = "person";
+        this._key = "user_id";
+        //
+        this._fields = this.fields();
     }
 
-    build_create() {
-        return `create table if not exists person (userid int primary key auto_increment, username varchar(50) UNIQUE, password varchar(100), email varchar(100) UNIQUE )`;
+    fields() {
+        return `username, password, email`;
     }
 
-    build_drop() {
-        return `drop table if exists person`;
+    values() {
+        return `'${this.username}', '${this.password}', '${this.email}'`;
     }
 
-    //
-    merge_insert() {
-        return `insert into person (username, password, email) values('${this.username}', '${this.password}', '${this.email}')`;
+    login_fields() {
+        return `username`;
     }
 
-    merge_delete() {
-        return `delete from person where userid = '${this.userid}'`;
+    login_values() {
+        return `'${this.username}'`;
     }
 
-    merge_delete_all() {
-        return `delete from person where userid in (${this.userid})`;
-    }
-
-    merge_update() {
-        return `update person set username = '${this.username}', password = '${this.password}', email = '${this.email}' where userid = '${this.userid}'`;
-    }
-
-    merge_select() {
-        return `select * from person where username = '${this.username}'`;
-    }
-
-    merge_select_by_user_id() {
-        return `select * from person where userid = '${this.userid}'`;
-    }
-
-    merge_select_all() {
-        return `select * from person order by userid`;
-    }
-
-
-    //
     merge_login() {
-        return `select * from person where username = '${this.username}' and password = '${this.password}'`;
+        return `select * from ${this._table} where username = '${this.username}' and password = '${this.password}'`;
+    }
+
+    merge_login_update() {
+        return `update ${this._table} set username = '${this.username}'`;
     }
 }
 
