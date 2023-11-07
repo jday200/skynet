@@ -1,0 +1,33 @@
+.side_box {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.left {
+    width: 200px;
+    min-height: 600px;
+    background-color:lemonchiffon;
+}
+
+.right {
+    width: 800px;
+    min-height: 600px;
+}
+
+.menu {
+    line-height: 50px;
+    border-bottom: 1px solid black;
+}
+
+.menu_group {
+    line-height: 35px;
+}
+
+.menu_title {
+
+}
+
+.menu_item {
+    margin-left: 50px;
+}

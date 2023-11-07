@@ -14,7 +14,7 @@ class T200HomePerson extends T200HomeBiz {
         let promise = new Promise(function(resolve, reject){
             return self.store.connect().then(function(){
                 debugger;
-                return self.store.query(user.merge_select()).then(function(data){
+                return self.store.query(user.merge_select_by_field("username", user.username)).then(function(data){
                     if(data){
                         if(0 < data.length){
                             return error();
@@ -62,6 +62,7 @@ class T200HomePerson extends T200HomeBiz {
                     if(data && 1 == data.length){
                         user._fields = user.login_fields();
                         user._values = user.login_values();
+                        debugger;
                         return self.store.execute(user.merge_login_update()).then(function(){
                             resolve(data);
                             /*

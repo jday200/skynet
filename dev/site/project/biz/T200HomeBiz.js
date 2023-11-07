@@ -11,6 +11,32 @@ class T200HomeBiz extends T200BizBase {
         this.store = new T200HomeStore();
     }
 
+    connect() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.store.connect().then(function(){
+                resolve();
+            }, function(){
+                reject();
+            });
+        });
+
+        return promise;
+    }
+
+    disconnect() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.store.connect().then(function(){
+                resolve();
+            }, function(){
+                reject();
+            });
+        });
+
+        return promise;
+    }
+
     load(sql) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
@@ -81,8 +107,17 @@ class T200HomeBiz extends T200BizBase {
 
     }
 
-    list() {
+    list(sql) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.store.query(sql).then(function(data){
+                resolve(data);
+            }, function(){
+                reject();
+            });
+        });
 
+        return promise;
     }
 
     verify_login(cookie, session) {

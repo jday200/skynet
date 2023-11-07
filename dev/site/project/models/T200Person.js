@@ -42,7 +42,7 @@ class T200Person extends T200ModelBase {
     }
 
     merge_login_update() {
-        return `update ${this._table} set username = '${this.username}'`;
+        return `update ${this._table} set username = '${this.username}' where username = '${this.username}'`;
     }
 }
 

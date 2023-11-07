@@ -1,0 +1,103 @@
+.channel {
+    width: 1024px;
+    min-height: 200px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.title {
+    width: 1024px;
+    min-height: 200px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+    border: 0px;
+    border-top: 1px solid black;
+}
+
+.channel_group {
+    width: 512px;
+}
+
+.channel_item {
+	width: 465px;
+	height: 35px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.region {
+    width: 1024px;
+    min-height: 50px;
+    display:flex;
+    border: 1px solid #FFA500;
+}
+
+.form {
+    min-width: 500px;
+    min-height: 300px;
+    background-color: #FFC0CB;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+
+.form_title {
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.form_item {
+    height: 35px;
+    min-width: 400px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_textarea_item {
+    height: 35px;
+    width: 1024px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_textarea {
+    width: 1024px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_textarea_field {
+    position: relative;
+    width: 700px;
+}
+
+.form_label {
+    position: relative;
+    font-weight: bold;
+    width: 100px;
+    text-align: justify;
+}
+
+.form_field {
+    position: relative;
+    width: 300px;
+}
+
+.form_button {
+    height: 50px;
+    display:flex;
+    justify-content:center;
+	align-items:center;
+}
+
+.form_msg {
+    font-weight: bold;
+    margin-left: 100px;
+}
