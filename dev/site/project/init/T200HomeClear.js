@@ -7,21 +7,6 @@ class T200HomeClear {
         this.#load();
     }
 
-    #load() {
-        this.tables = [
-            "person",
-            "house_rent",
-            "house_wanted",
-            "region",
-            "city",
-            "index_cities"
-        ];
-    }
-
-    drop_person() {
-        return `drop table if exists person`;
-    }
-
     drop_house_rent() {
         return `drop table if exists house_rent`;
     }
@@ -36,6 +21,41 @@ class T200HomeClear {
 
     drop_job_wanted() {
         return `drop table if exists job_wanted`;
+    }
+
+    drop_trading_sell() {
+        return `drop table if exists trading_sell`;
+    }
+
+    drop_trading_buy() {
+        return `drop table if exists trading_buy`;
+    }
+
+    drop_exchange() {
+        return `drop table if exists exchange`;
+    }
+
+    #load() {
+        this.tables = [
+            "person",
+            "house_rent",
+            "house_wanted",
+            "region",
+            "city",
+            "index_cities"
+        ];
+    }
+
+    drop_advert() {
+        return `drop table if exists advert`;
+    }
+    
+    drop_note() {
+        return `drop table if exists note`;
+    }
+
+    drop_person() {
+        return `drop table if exists person`;
     }
 
     drop_region() {
@@ -90,6 +110,51 @@ class T200HomeClear {
                     log(__filename, "drop table job wanted success");
                 }, function(){
                     log(__filename, "drop table job wanted failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_trading_sell()).then(function(){
+                    log(__filename, "drop table trading sell success");
+                }, function(){
+                    log(__filename, "drop table trading sell failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_trading_buy()).then(function(){
+                    log(__filename, "drop table trading buy success");
+                }, function(){
+                    log(__filename, "drop table trading buy failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_exchange()).then(function(){
+                    log(__filename, "drop table exchange success");
+                }, function(){
+                    log(__filename, "drop table exchange failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_advert()).then(function(){
+                    log(__filename, "drop table advert success");
+                }, function(){
+                    log(__filename, "drop table advert failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_note()).then(function(){
+                    log(__filename, "drop table note success");
+                }, function(){
+                    log(__filename, "drop table note failure");
                     return error();
                 });
             }, function(){

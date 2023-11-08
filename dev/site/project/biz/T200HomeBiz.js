@@ -86,8 +86,8 @@ class T200HomeBiz extends T200BizBase {
             }, function(){
 
             });
-        }, function(){
-
+        }, function(err){
+            debugger;
         });
     }
 
@@ -109,21 +109,41 @@ class T200HomeBiz extends T200BizBase {
 
     list(sql) {
         let self = this;
-        let promise = new Promise(function(resolve, reject){
-            self.store.query(sql).then(function(data){
-                resolve(data);
-            }, function(){
-                reject();
-            });
-        });
+        let result = false;
+        let data;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.execute(sql).then(function(value){
+                    data = value;
+                    result = true;
+                }, function(){
 
-        return promise;
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        }).finally(function(){
+            if(result){
+                return data;
+            }else{
+                return error();
+            }
+        });
     }
 
     verify_login(cookie, session) {
         let sid = cookie.get("sid");
-        debugger;
-        if(sid && 0 < sid){
+
+        if(sid && 0 < sid._value){
             let user_id = session.get("userid");
             if(user_id && 0 < user_id){
                 return true;

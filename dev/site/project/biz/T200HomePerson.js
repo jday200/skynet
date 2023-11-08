@@ -13,7 +13,6 @@ class T200HomePerson extends T200HomeBiz {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             return self.store.connect().then(function(){
-                debugger;
                 return self.store.query(user.merge_select_by_field("username", user.username)).then(function(data){
                     if(data){
                         if(0 < data.length){

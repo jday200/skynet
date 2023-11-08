@@ -7,7 +7,7 @@ class T200BizBase {
 
     }
 
-    #check() {
+    check() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.store){

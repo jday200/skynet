@@ -4,7 +4,7 @@ const T200Error = require('../../library/T200Error.js');
 const T200ModelBase = require('../../library/model/T200ModelBase.js');
 
 
-class T200House extends T200ModelBase {
+class T200Job extends T200ModelBase {
     id;
 
     name;
@@ -18,4 +18,4 @@ class T200House extends T200ModelBase {
     }
 }
 
-module.exports = T200House;
+module.exports = T200Job;

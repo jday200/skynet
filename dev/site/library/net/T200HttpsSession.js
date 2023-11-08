@@ -23,7 +23,7 @@ class T200HttpsSession {
         let sid = this.cookie.get('sid');
 
         if(sid){
-            let data = global.session[sid];
+            let data = global.session[sid._value];
 
             if(data){
                 return data[name];

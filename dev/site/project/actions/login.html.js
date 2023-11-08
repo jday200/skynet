@@ -19,7 +19,6 @@ function do_login(request, response, cookie, session, resource) {
             && T200HttpsForm.verify_text(person.password)){
 
             HomePerson.login(person).then(function(data){
-                debugger;
                 set_data(cookie, session, data);
 
                 response.type('json');

@@ -7,10 +7,6 @@ class T200HomeCreate {
 
     }
 
-    create_person() {
-        return `create table if not exists person (user_id int primary key auto_increment, username varchar(50) UNIQUE, password varchar(100), email varchar(100) UNIQUE)`;
-    }
-
     create_house_rent() {
         return `create table if not exists house_rent (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
     }
@@ -25,6 +21,31 @@ class T200HomeCreate {
 
     create_job_wanted() {
         return `create table if not exists job_wanted (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+    }
+
+    create_trading_sell() {
+        return `create table if not exists trading_sell (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+    }
+
+    create_trading_buy() {
+        return `create table if not exists trading_buy (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+    }
+
+    create_exchange() {
+        return `create table if not exists exchange (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+    }
+
+    ///
+    create_person() {
+        return `create table if not exists person (user_id int primary key auto_increment, username varchar(50) UNIQUE, password varchar(100), email varchar(100) UNIQUE)`;
+    }
+
+    create_advert() {
+        return `create table if not exists advert (id int primary key auto_increment, name varchar(255))`;
+    }
+
+    create_note() {
+        return `create table if not exists note (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
     }
 
     create_region() {
@@ -79,6 +100,51 @@ class T200HomeCreate {
                     log(__filename, "create table job wanted success");
                 }, function(){
                     log(__filename, "create table job wanted failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_trading_sell()).then(function(){
+                    log(__filename, "create table trading sell success");
+                }, function(){
+                    log(__filename, "create table trading sell failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_trading_buy()).then(function(){
+                    log(__filename, "create table trading buy success");
+                }, function(){
+                    log(__filename, "create table trading buy failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_exchange()).then(function(){
+                    log(__filename, "create table exchange success");
+                }, function(){
+                    log(__filename, "create table exchange failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_advert()).then(function(){
+                    log(__filename, "create table advert success");
+                }, function(){
+                    log(__filename, "create table advert failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_note()).then(function(){
+                    log(__filename, "create table note success");
+                }, function(){
+                    log(__filename, "create table note failure");
                     return error();
                 });
             }, function(){
