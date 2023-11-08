@@ -15,6 +15,13 @@
     min-height: 600px;
 }
 
+.right_box {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+
 .menu {
     line-height: 50px;
     border-bottom: 1px solid black;
@@ -30,4 +37,118 @@
 
 .menu_item {
     margin-left: 50px;
+}
+
+.publish {
+    width: 800px;
+    line-height: 50px;
+    display:flex;
+	justify-content:right;
+	align-items:center;
+}
+
+.search_box {
+    line-height: 50px;
+    display:flex;
+	justify-content:right;
+	align-items:center;
+}
+
+.list_box {
+    width: 800px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+    flex-direction:column;
+}
+
+.pages_top_box {
+    width: 800px;
+    line-height: 50px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+    border-bottom: 1px solid black;
+}
+
+.pages_bottom_box {
+    width: 800px;
+    line-height: 50px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+    border-top: 1px solid black;
+}
+
+.pages {
+    width: 200px;
+    display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
+.item_box {
+    width: 760px;
+}
+
+.item {
+    width: 760px;
+	height: 35px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.form_title {
+    width: 760px;
+    line-height: 50px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_msg {
+    width: 710px;
+    line-height: 50px;
+    margin-left: 50px;
+}
+
+.form_box {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+    flex-direction:column;
+}
+
+.form {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+    flex-direction:column;
+}
+
+.form_label {
+    width: 100px;
+    text-align:center;
+}
+
+.form_item {
+    width: 760px;
+    line-height: 35px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.form_value {
+    width: 650px;
+}
+
+.form_button {
+    margin: 10px;
+}
+
+.line {
+    width: 760px;
+    border-top: 1px solid black;
 }

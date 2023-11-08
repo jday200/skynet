@@ -62,7 +62,7 @@ class T200HomePerson extends T200HomeBiz {
                     if(data && 1 == data.length){
                         user._fields = user.login_fields();
                         user._values = user.login_values();
-                        debugger;
+
                         return self.store.execute(user.merge_login_update()).then(function(){
                             resolve(data);
                             /*

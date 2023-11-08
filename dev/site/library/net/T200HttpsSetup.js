@@ -5,6 +5,9 @@ class T200HttpsSetup {
     home = "home";
     actions = "project/actions";
     pages = "project/pages";
+    //
+    cookie_live_time = 60 * 15;
+    session_live_time = 60 * 15;
 
     constructor() {
 
