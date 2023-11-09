@@ -22,8 +22,6 @@ class T200HttpsDispatcher {
                 log(__filename, "dispense failure");
                 reject(err);
             }).catch(function(err){
-                debugger;
-                console.log(err);
                 reject(err);
             });
         });

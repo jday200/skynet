@@ -283,15 +283,15 @@ class T200HomeBiz extends T200BizBase {
                 });
             }, function(){
                 return error();
-            }).then(function(){
-                if(result){
-                    return data;
-                }else{
-                    return error();
-                }
-            }, function(){
-                return error();
             });
+        }, function(){
+            return error();
+        }).then(function(){
+            if(result){
+                return data;
+            }else{
+                return error();
+            }
         }, function(){
             return error();
         });

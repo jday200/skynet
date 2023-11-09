@@ -12,7 +12,7 @@ async function do_exchange_list(request, response, cookie, session, resource) {
     let promise = new Promise(function(resolve, reject){
         let exchange = new T200Exchange();
         let HomeExchange = new T200HomeExchange();
-        debugger;
+
         if(HomeExchange.verify_login(cookie, session)){
             exchange.user_id = session.get("userid");
             if(T200HttpsForm.verify_id(exchange.user_id)){

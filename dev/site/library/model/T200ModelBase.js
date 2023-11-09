@@ -36,7 +36,7 @@ class T200ModelBase {
     }
 
     merge_select_by_id(value) {
-        return `select * from ${this._table} where ${this._id} = ${value} order by ${this._key}`;
+        return `select * from ${this._table} where ${this._id} = ${value} order by ${this._key} DESC`;
     }
 
     merge_select_by_field(name, value) {

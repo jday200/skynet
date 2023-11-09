@@ -201,7 +201,7 @@ class T200HomeClear {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             let result = false;
-            debugger;
+
             try{
                 self.tables.forEach(table => {
                     if(!result){

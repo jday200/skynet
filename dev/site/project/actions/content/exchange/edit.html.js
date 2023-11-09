@@ -32,7 +32,7 @@ async function do_exchange_add(request, response, cookie, session, resource) {
     let promise = new Promise(function(resolve, reject){
         let exchange = new T200Exchange();
         let HomeExchange = new T200HomeExchange();
-        debugger;
+
         exchange.user_id = session.get("userid");
         exchange.title = request.get("title");
         exchange.content = request.get("content");

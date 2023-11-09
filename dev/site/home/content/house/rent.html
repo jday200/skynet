@@ -107,10 +107,10 @@
 
             <div class="right">
                 <fieldset>
-                    <legend>Exchange</legend>
+                    <legend>Rent</legend>
                     <div class="right_box">
                         <div class="publish">
-                            <a href="/content/exchange/edit.html">Publish</a>
+                            <a href="/content/house/edit.html">Publish</a>
                         </div>
                         <div class="search_box">
                             <form>
@@ -190,7 +190,7 @@
         nav_check();
 
         let result = formtostring("form");
-        $.post('/content/exchange/list', result, function(data){
+        $.post('/content/house/list', result, function(data){
             $.id("list_box").innerHTML = data;
         }, function(){
             alert("Load Failure!");

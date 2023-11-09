@@ -7,14 +7,27 @@ const T200ModelBase = require('../../library/model/T200ModelBase.js');
 class T200Job extends T200ModelBase {
     id;
 
-    name;
+    user_id;
+
+    title;
 
     content;
 
     constructor() {
         super();
-        this._table = "city";
+        this._table = "";
         this._key = "id";
+        this._id = "user_id";
+        //
+        this._fields = this.fields();
+    }
+
+    fields() {
+        return `user_id, title, content`;
+    }
+
+    values() {
+        return `'${this.user_id}', '${this.title}', '${this.content}'`;
     }
 }
 

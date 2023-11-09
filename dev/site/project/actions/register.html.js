@@ -12,7 +12,6 @@ function do_register(request, response, cookie, session, resource) {
         let person = new T200Person();
         let HomePerson = new T200HomePerson();
 
-        debugger;
         person.username = request.get('username');
 
         let pwd1 = request.get('password1');
