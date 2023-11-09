@@ -51,13 +51,16 @@
                                 <div class="menu_item">
                                     <a href="/admin/index.html">Global</a>
                                 </div>
+                                <div class="menu_item">
+                                    <a href="/admin/server.html">Server</a>
+                                </div>
                             </div>
                         </details>
                         <details open class="menu">
                             <summary>Advert</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="/admin/advert/index.html">Advert</a>
+                                    <a href="/admin/advert/advert.html">Advert</a>
                                 </div>
                             </div>
                         </details>
@@ -65,7 +68,7 @@
                             <summary>Person</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="">Profile</a>
+                                    <a href="/admin/person/index.html">Person</a>
                                 </div>
                             </div>
                         </details>
@@ -73,43 +76,18 @@
                             <summary>Region</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="">Region</a>
+                                    <a href="/admin/region/region.html">Region</a>
                                 </div>
                                 <div class="menu_item">
-                                    <a href="">City</a>
-                                </div>
-                            </div>
-                        </details>
-                        <details open class="menu">
-                            <summary>House</summary>
-                            <div class="menu_group">
-                                <div class="menu_item">
-                                    <a href="">Rent</a>
-                                </div>
-                                <div class="menu_item">
-                                    <a href="">Wanted</a>
+                                    <a href="/admin/region/city.html">City</a>
                                 </div>
                             </div>
                         </details>
                         <details open class="menu">
-                            <summary>Job</summary>
+                            <summary>Article</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="">Recruit</a>
-                                </div>
-                                <div class="menu_item">
-                                    <a href="">Wanted</a>
-                                </div>
-                            </div>
-                        </details>
-                        <details open class="menu">
-                            <summary>Exchange</summary>
-                            <div class="menu_group">
-                                <div class="menu_item">
-                                    <a href="">Rent</a>
-                                </div>
-                                <div class="menu_item">
-                                    <a href="">Wanted</a>
+                                    <a href="/admin/article/index.html">Article</a>
                                 </div>
                             </div>
                         </details>
@@ -125,34 +103,26 @@
                 </div>
             </div>
 
-
             <div class="right">
                 <fieldset>
-                    <legend>Exchange</legend>
-                    <div class="right_box">
-                        <div class="form_title">
-                            Exchange
-                        </div>
-                        <div class="form_msg">
-                            hello
-                        </div>
-                        <hr class="line">
-                        <div class="form_box">
-                            <form class="form">
-                                <div class="form_item">
-                                    <label class="form_label">Title:</label>
-                                    <input class="form_value" type="text">
+                    <legend>Region</legend>
+                    <div>
+                        <form>
+                            <div>
+                                <div>
+                                    <select>
+                                        <option value="1" label="1"></option>
+                                    </select>
                                 </div>
-                                <div class="form_item">
-                                    <label class="form_label">Content:</label>
-                                    <textarea class="form_value" rows="25"></textarea>
+                                <div>
+                                    <label>Name</label>
+                                    <input type="text">
+                                    <label>Name</label>
+                                    <input type="text">
+                                    <input type="button" value="Append">
                                 </div>
-                                <div class="form_item">
-                                    <input type="button" class="form_button" value="submit">
-                                </div>
-                            </form>
-                        </div>
-                        
+                            </div>
+                        </form>
                     </div>
                 </fieldset>
             </div>

@@ -89,8 +89,8 @@ class T200HttpsDispatcher {
             let done = global.action.post[action];
 
             if(done){
-                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(){
-                    resolve();
+                done(self.request, self.response, self.cookie, self.session, self.resource).then(function(data){
+                    resolve(data);
                 }, function(err){
                     reject();
                 });

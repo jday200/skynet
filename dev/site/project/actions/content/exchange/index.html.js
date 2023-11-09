@@ -20,7 +20,6 @@ async function do_exchange_list(request, response, cookie, session, resource) {
                     let view = new T200View(resource);
                     return view.render_file("content/exchange/index.ejs", data).then(function(result){
                         response.type("json");
-                        response.success(result);
                         resolve(result);
                     }, function(){
                         reject();

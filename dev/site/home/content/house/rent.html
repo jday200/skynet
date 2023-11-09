@@ -75,6 +75,17 @@
                             </div>
                         </details>
                         <details open class="menu">
+                            <summary>Trading</summary>
+                            <div class="menu_group">
+                                <div class="menu_item">
+                                    <a href="/content/trading/sell.html">Sell</a>
+                                </div>
+                                <div class="menu_item">
+                                    <a href="/content/trading/buy.html">Buy</a>
+                                </div>
+                            </div>
+                        </details>
+                        <details open class="menu">
                             <summary>Exchange</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -95,7 +106,74 @@
             </div>
 
             <div class="right">
-
+                <fieldset>
+                    <legend>Exchange</legend>
+                    <div class="right_box">
+                        <div class="publish">
+                            <a href="/content/exchange/edit.html">Publish</a>
+                        </div>
+                        <div class="search_box">
+                            <form>
+                                <input type="text">
+                                <input type="submit" value="search">
+                            </form>
+                        </div>
+                        <div id="list_box" class="list_box">
+                            <form id="form">
+                                <div class="pages_top_box">
+                                    <div class="pages">
+                                        <a href="">1</a>
+                                        <a href="">2</a>
+                                        <a href="">3</a>
+                                        <a href="">4</a>
+                                        <a href="">5</a>
+                                    </div>
+                                </div>
+                                <div class="item_box">
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                    <div class="item">
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
+                                    </div>
+                                </div>
+                                <div class="pages_bottom_box">
+                                    <div class="pages">
+                                        <a href="">1</a>
+                                        <a href="">2</a>
+                                        <a href="">3</a>
+                                        <a href="">4</a>
+                                        <a href="">5</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </fieldset>
             </div>
         </div>
 
@@ -110,6 +188,13 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        let result = formtostring("form");
+        $.post('/content/exchange/list', result, function(data){
+            $.id("list_box").innerHTML = data;
+        }, function(){
+            alert("Load Failure!");
+        });
     };
 </script>
 

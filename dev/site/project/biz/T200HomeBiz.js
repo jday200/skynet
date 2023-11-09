@@ -11,135 +11,6 @@ class T200HomeBiz extends T200BizBase {
         this.store = new T200HomeStore();
     }
 
-    connect() {
-        let self = this;
-        let promise = new Promise(function(resolve, reject){
-            self.store.connect().then(function(){
-                resolve();
-            }, function(){
-                reject();
-            });
-        });
-
-        return promise;
-    }
-
-    disconnect() {
-        let self = this;
-        let promise = new Promise(function(resolve, reject){
-            self.store.connect().then(function(){
-                resolve();
-            }, function(){
-                reject();
-            });
-        });
-
-        return promise;
-    }
-
-    load(sql) {
-        let self = this;
-        let promise = new Promise(function(resolve, reject){
-            self.store.connect().then(function(){
-                self.store.query(sql).then(function(data){
-                    resolve(data);
-                }, function(){
-                    reject();
-                }).finally(function(){
-                    self.store.disconnect().then(function(){
-
-                    }, function(){
-                        reject();
-                    });
-                });
-            }, function(){
-                reject();
-            });
-        });
-
-        return promise;
-    }
-
-    add(sql) {
-        let self = this;
-        return this.check().then(function(){
-            return self.store.connect().then(function(){
-                return self.store.execute(sql).then(function(){
-                    debugger;
-                    /*
-                    return self.store.query().then(function(){
-
-                    }, function(){
-
-                    });
-                    */
-
-                }, function(){
-                    debugger;
-                }).finally(function(){
-                    return self.store.disconnect().then(function(){
-
-                    }, function(){
-
-                    });
-                });
-            }, function(){
-
-            });
-        }, function(err){
-            debugger;
-        });
-    }
-
-    remove() {
-
-    }
-
-    modify() {
-
-    }
-
-    find() {
-
-    }
-
-    search() {
-
-    }
-
-    list(sql) {
-        let self = this;
-        let result = false;
-        let data;
-        return self.check().then(function(){
-            return self.store.connect().then(function(){
-                return self.store.execute(sql).then(function(value){
-                    data = value;
-                    result = true;
-                }, function(){
-
-                }).finally(function(){
-                    return self.store.disconnect().then(function(){
-
-                    }, function(){
-                        result = false;
-                        return error();
-                    });
-                });
-            }, function(){
-                return error();
-            });
-        }, function(){
-            return error();
-        }).finally(function(){
-            if(result){
-                return data;
-            }else{
-                return error();
-            }
-        });
-    }
-
     verify_login(cookie, session) {
         let sid = cookie.get("sid");
 
@@ -153,6 +24,317 @@ class T200HomeBiz extends T200BizBase {
         }else{
             return false;
         }
+    }
+
+    ///
+    connect() {
+        let self = this;
+        return self.check().then(function(){
+            return self.store.connect();
+        }, function(){
+            return error();
+        });
+    }
+
+    disconnect() {
+        let self = this;
+        return self.check().then(function(){
+            return self.store.disconnect();
+        }, function(){
+            return error();
+        });
+    }
+
+    query(sql) {
+        let self = this;
+        return self.query(sql).then(function(data){
+            return data;
+        }, function(){
+            return error();
+        });
+    }
+
+    execute(sql) {
+        let self = this;
+        return self.execute(sql).then(function(result){
+            return result;
+        }, function(){
+            return error();
+        });
+    }
+
+    ///
+    add(sql) {
+        let self = this;
+        let result = false;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.execute(sql).then(function(flag){
+                    if(flag){
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return result;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
+    }
+
+
+    remove(sql) {
+        let self = this;
+        let result = false;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.execute(sql).then(function(flag){
+                    if(flag){
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return result;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
+    }
+
+
+    modify(sql) {
+        let self = this;
+        let result = false;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.execute(sql).then(function(flag){
+                    if(flag){
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return result;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
+    }
+
+
+    find(sql) {
+        let self = this;
+        let result = false;
+        let data;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.query(sql).then(function(value){
+                    if(value){
+                        data = value;
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return data;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
+    }
+
+
+    search(sql) {
+        let self = this;
+        let result = false;
+        let data;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.query(sql).then(function(value){
+                    if(value){
+                        data = value;
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return data;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
+    }
+
+
+    list(sql) {
+        let self = this;
+        let result = false;
+        let data;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.query(sql).then(function(value){
+                    if(value){
+                        data = value;
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return data;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
+    }
+
+
+    load(sql) {
+        let self = this;
+        let result = false;
+        let data;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.query(sql).then(function(value){
+                    if(value){
+                        data = value;
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return data;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
     }
 
 }
