@@ -5,6 +5,7 @@ class T200DBSetup {
     database = "";
     user = "";
     password = "";
+    charset = "utf8";
 
     constructor() {
 

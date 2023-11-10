@@ -45,7 +45,7 @@ class T200HomeCreate {
     }
 
     create_note() {
-        return `create table if not exists note (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return `create table if not exists note (id int primary key auto_increment, user_id int, title varchar(255), content text) character set utf8`;
     }
 
     create_region() {

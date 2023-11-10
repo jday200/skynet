@@ -75,17 +75,6 @@
                             </div>
                         </details>
                         <details open class="menu">
-                            <summary>Trading</summary>
-                            <div class="menu_group">
-                                <div class="menu_item">
-                                    <a href="/content/trading/sell.html">Sell</a>
-                                </div>
-                                <div class="menu_item">
-                                    <a href="/content/trading/buy.html">Buy</a>
-                                </div>
-                            </div>
-                        </details>
-                        <details open class="menu">
                             <summary>Exchange</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -109,69 +98,30 @@
                 <fieldset>
                     <legend>Note</legend>
                     <div class="right_box">
-                        <div class="publish">
-                            <a href="/content/note/edit.html">Publish</a>
+                        <div class="form_title">
+                            Note
                         </div>
-                        <div class="search_box">
-                            <form>
-                                <input type="text">
-                                <input type="submit" value="search">
-                            </form>
+                        <div class="form_msg">
+                            hello
                         </div>
-                        <div id="list_box" class="list_box">
-                            <form id="form">
-                                <div class="pages_top_box">
-                                    <div class="pages">
-                                        <a href="">1</a>
-                                        <a href="">2</a>
-                                        <a href="">3</a>
-                                        <a href="">4</a>
-                                        <a href="">5</a>
-                                    </div>
+                        <hr class="line">
+                        <div class="form_box">
+                            <form id="form" class="form">
+                                <input type="hidden" name="test">
+                                <div class="form_item">
+                                    <label class="form_label">Title:</label>
+                                    <input class="form_value" type="text" name="title">
                                 </div>
-                                <div class="item_box">
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
+                                <div class="form_item">
+                                    <label class="form_label">Content:</label>
+                                    <textarea class="form_value" name="content" rows="25"></textarea>
                                 </div>
-                                <div class="pages_bottom_box">
-                                    <div class="pages">
-                                        <a href="">1</a>
-                                        <a href="">2</a>
-                                        <a href="">3</a>
-                                        <a href="">4</a>
-                                        <a href="">5</a>
-                                    </div>
+                                <div class="form_item">
+                                    <input type="button" class="form_button" id="submit" name="submit" value="submit">
                                 </div>
                             </form>
                         </div>
+                        
                     </div>
                 </fieldset>
             </div>
@@ -188,13 +138,14 @@
 <script>
     $.win.onload = function(){
         nav_check();
-
-        let result = formtostring("form");
-        $.post('/content/note/list', result, function(data){
-            $.id("list_box").innerHTML = data;
-        }, function(){
-            alert("Load Failure!");
-        });
+        $.id("submit").onclick = function(){
+            let result = formtostring("form");
+            $.post('/content/note/edit', result, function(){
+                alert('Save Success!');
+            }, function(){
+                alert('Save Failure!');
+            });
+        };
     };
 </script>
 

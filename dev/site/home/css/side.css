@@ -152,3 +152,88 @@
     width: 760px;
     border-top: 1px solid black;
 }
+
+.article_box {
+    width: 800px;
+    height: 200px;
+    border: 1px solid black;
+    display:flex;
+    justify-content:center;
+	align-items:center;
+    margin-top: -1px;
+}
+
+.user_box {
+    width: 200px;
+}
+
+.article {
+    width: 624px;
+    margin-right: -1px;
+}
+
+.article_head {
+    height: 35px;
+    border-left: 1px solid black;
+}
+
+.article_content {
+    height: 130px;
+    border-left: 1px solid black;
+    margin-top: -1px;
+}
+
+.article_foot {
+    height: 35px;
+    border-left: 1px solid black;
+    margin-top: -1px;
+    padding-right: 5px;
+    display:flex;
+    justify-content:right;
+	align-items:center;
+}
+
+
+.reply_box {
+    width: 800px;
+    height: 100px;
+    border: 1px solid black;
+    display:flex;
+    justify-content:center;
+	align-items:center;
+    margin-top: -1px;
+    background-color: #FFC0CB;
+}
+
+.reply_title {
+    width: 200px;
+}
+
+.reply {
+    width: 622px;
+    height: 100px;
+    display:flex;
+    justify-content:center;
+	align-items:center;
+    border-left: 1px solid black;
+}
+
+.reply_form {
+    margin-left: 5px;
+}
+
+.reply_text {
+    width: 500px;
+
+}
+
+.reply_button {
+    margin-left: 35px;
+}
+
+.reply_group {
+    width: 624px;
+    display:flex;
+    justify-content:left;
+	align-items:center;
+}

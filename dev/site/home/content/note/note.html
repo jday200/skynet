@@ -109,9 +109,6 @@
                 <fieldset>
                     <legend>Note</legend>
                     <div class="right_box">
-                        <div class="publish">
-                            <a href="/content/note/edit.html">Publish</a>
-                        </div>
                         <div class="search_box">
                             <form>
                                 <input type="text">
@@ -130,36 +127,41 @@
                                     </div>
                                 </div>
                                 <div class="item_box">
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+
+                                    <div class="article_box">
+                                        <div class="user_box">
+                                            hello
+                                        </div>
+                                        <div class="article">
+                                            <div class="article_head">
+
+                                            </div>
+                                            <div class="article_content">
+
+                                            </div>
+                                            <div class="article_foot">
+                                                <a href="">reply</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                                    
+                                    <div class="article_box">
+                                        <div class="user_box">
+                                            hello
+                                        </div>
+                                        <div class="article">
+                                            <div class="article_head">
+                                                @user
+                                            </div>
+                                            <div class="article_content">
+                                                Content
+                                            </div>
+                                            <div class="article_foot">
+                                                <a href="">reply</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/note/note.html">presentation data</a>
-                                    </div>
+
                                 </div>
                                 <div class="pages_bottom_box">
                                     <div class="pages">
@@ -170,6 +172,26 @@
                                         <a href="">5</a>
                                     </div>
                                 </div>
+
+                                <div class="reply_box">
+                                    <div class="reply_title">
+                                        reply
+                                    </div>
+                                    <div class="reply">
+                                        <form class="reply_form">
+                                            <div class="reply_group">
+                                                <div>
+                                                    <textarea class="reply_text" rows="4"></textarea>
+                                                </div>
+                                                <div>
+                                                    <input class="reply_button" type="button" value="reply">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                                
                             </form>
                         </div>
                     </div>
@@ -191,7 +213,7 @@
 
         let result = formtostring("form");
         $.post('/content/note/list', result, function(data){
-            $.id("list_box").innerHTML = data;
+            //$.id("list_box").innerHTML = data;
         }, function(){
             alert("Load Failure!");
         });
