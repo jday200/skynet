@@ -107,9 +107,9 @@
                 <fieldset>
                     <legend>Region</legend>
                     <div>
-                        <form>
+                        <form id="form">
                             <div>
-                                <div>
+                                <div id="list_box">
                                     <select>
                                         <option value="1" label="1"></option>
                                     </select>
@@ -139,6 +139,13 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        let result = formtostring("form");
+        $.post('/admin/region/list', result, function(data){
+            $.id("list_box").innerHTML = data;
+        }, function(){
+            alert("Load Failure!");
+        });
     };
 </script>
 

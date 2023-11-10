@@ -16,7 +16,16 @@ async function do_exchange_edit(request, response, cookie, session, resource) {
             if(eid && 0 < eid){
                 do_exchange_modify(request, response, cookie, session, resource);
             }else{
-                do_exchange_add(request, response, cookie, session, resource).then(resolve, reject);
+                do_exchange_add(request, response, cookie, session, resource).then(function(result){
+                    response.type("json");
+                    if(result){
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                }, function(){
+                    reject();
+                });
             }
         }else{
             reject();

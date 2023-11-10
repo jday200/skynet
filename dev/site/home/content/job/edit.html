@@ -47,17 +47,19 @@
                         <details open class="menu">
                             <summary>My</summary>
                             <div class="menu_group">
-                                Profile
+                                <div class="menu_item">
+                                    <a href="/content/person/profile.html">Profile</a>
+                                </div>
                             </div>
                         </details>
                         <details open class="menu">
                             <summary>House</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="">Rent</a>
+                                    <a href="/content/house/rent.html">Rent</a>
                                 </div>
                                 <div class="menu_item">
-                                    <a href="">Wanted</a>
+                                    <a href="/content/house/wanted.html">Wanted</a>
                                 </div>
                             </div>
                         </details>
@@ -65,10 +67,21 @@
                             <summary>Job</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="">Recruit</a>
+                                    <a href="/content/job/recruit.html">Recruit</a>
                                 </div>
                                 <div class="menu_item">
-                                    <a href="">Wanted</a>
+                                    <a href="/content/job/wanted.html">Wanted</a>
+                                </div>
+                            </div>
+                        </details>
+                        <details open class="menu">
+                            <summary>Trading</summary>
+                            <div class="menu_group">
+                                <div class="menu_item">
+                                    <a href="/content/trading/sell.html">Sell</a>
+                                </div>
+                                <div class="menu_item">
+                                    <a href="/content/trading/buy.html">Buy</a>
                                 </div>
                             </div>
                         </details>
@@ -76,10 +89,7 @@
                             <summary>Exchange</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="">Rent</a>
-                                </div>
-                                <div class="menu_item">
-                                    <a href="">Wanted</a>
+                                    <a href="/content/exchange/index.html">Exchange</a>
                                 </div>
                             </div>
                         </details>
@@ -87,7 +97,7 @@
                             <summary>Note</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="">Note</a>
+                                    <a href="/content/note/index.html">Note</a>
                                 </div>
                             </div>
                         </details>
@@ -96,7 +106,35 @@
             </div>
 
             <div class="right">
-
+                <fieldset>
+                    <legend>Recruit</legend>
+                    <div class="right_box">
+                        <div class="form_title">
+                            Recruit
+                        </div>
+                        <div class="form_msg">
+                            hello
+                        </div>
+                        <hr class="line">
+                        <div class="form_box">
+                            <form id="form" class="form">
+                                <input type="hidden" name="test">
+                                <div class="form_item">
+                                    <label class="form_label">Title:</label>
+                                    <input class="form_value" type="text" name="title">
+                                </div>
+                                <div class="form_item">
+                                    <label class="form_label">Content:</label>
+                                    <textarea class="form_value" name="content" rows="25"></textarea>
+                                </div>
+                                <div class="form_item">
+                                    <input type="button" class="form_button" id="submit" name="submit" value="submit">
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </fieldset>
             </div>
         </div>
 
@@ -111,6 +149,14 @@
 <script>
     $.win.onload = function(){
         nav_check();
+        $.id("submit").onclick = function(){
+            let result = formtostring("form");
+            $.post('/content/job/edit', result, function(){
+                alert('Save Success!');
+            }, function(){
+                alert('Save Failure!');
+            });
+        };
     };
 </script>
 

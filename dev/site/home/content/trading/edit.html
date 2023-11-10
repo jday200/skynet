@@ -38,7 +38,7 @@
         <div class="header">
             header
         </div>
-        
+
         <div class="side_box">
             <div>
                 <div>
@@ -107,10 +107,10 @@
 
             <div class="right">
                 <fieldset>
-                    <legend>Rent</legend>
+                    <legend>Sell</legend>
                     <div class="right_box">
                         <div class="form_title">
-                            Rent
+                            Sell
                         </div>
                         <div class="form_msg">
                             hello
@@ -151,7 +151,7 @@
         nav_check();
         $.id("submit").onclick = function(){
             let result = formtostring("form");
-            $.post('/content/house/edit', result, function(){
+            $.post('/content/trading/edit', result, function(){
                 alert('Save Success!');
             }, function(){
                 alert('Save Failure!');

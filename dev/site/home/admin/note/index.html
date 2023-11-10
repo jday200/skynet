@@ -185,6 +185,13 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        let result = formtostring("form");
+        $.post('/admin/note/list', result, function(data){
+            $.id("list_box").innerHTML = data;
+        }, function(){
+            alert("Load Failure!");
+        });
     };
 </script>
 

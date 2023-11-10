@@ -16,8 +16,10 @@ async function do_exchange_list(request, response, cookie, session, resource) {
         if(HomeExchange.verify_login(cookie, session)){
             exchange.user_id = session.get("userid");
             if(T200HttpsForm.verify_id(exchange.user_id)){
-                HomeExchange.list(exchange.merge_select_by_id(exchange.user_id)).then(function(data){
+                HomeExchange.list(exchange.merge_select_by_id(exchange.user_id)).then(function(values){
                     let view = new T200View(resource);
+                    let data = {};
+                    data.exchanges = values;
                     return view.render_file("content/exchange/index.ejs", data).then(function(result){
                         response.type("json");
                         resolve(result);

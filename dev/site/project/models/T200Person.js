@@ -17,6 +17,7 @@ class T200Person extends T200ModelBase {
         super();
         this._table = "person";
         this._key = "user_id";
+        this._id = "user_id";
         //
         this._fields = this.fields();
     }

@@ -30,6 +30,10 @@ class T200Exchange extends T200ModelBase {
     values() {
         return `'${this.user_id}', '${this.title}', '${this.content}'`;
     }
+
+    merge_list() {
+        return `select t1.* from ${this._table} t1 inner join city t2 on t1.city_id = t2.id order by t1.level`;
+    }
 }
 
 module.exports = T200Exchange;

@@ -8,7 +8,7 @@
                 if(index_cities){ 
                     index_cities.forEach(item => {
                 %>
-                        a
+                    <a href="/region/city.html"><%=item.name%></a>
                 <% 
                     });
                 } 
@@ -24,17 +24,19 @@
         <legend><a href="/house/index.html">House</a></legend>
         <div class="channel">
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/house/rent.html">Rent</a></legend>
                     <div>
                         <% 
                         if(house_rents){ 
                             house_rents.forEach(item => {
                         %>
-                                a
+                        <div class="channel_item">
+                            <a target="_blank" href="/house/house.html"><%=item.title%></a>
+                        </div>
                         <% 
                             });
-                        } 
+                        }else{
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/house/house.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -45,22 +47,25 @@
                         <div class="channel_item">
                             <a target="_blank" href="/house/house.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>
 
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/house/wanted.html">Wanted</a></legend>
                     <div>
                         <% 
                         if(house_wanteds){ 
                             house_wanteds.forEach(item => {
                         %>
-                                a
+                        <div class="channel_item">
+                            <a target="_blank" href="/house/house.html"><%=item.title%></a>
+                        </div>
                         <% 
                             });
-                        } 
+                        }else{ 
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/house/house.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -71,6 +76,7 @@
                         <div class="channel_item">
                             <a target="_blank" href="/house/house.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>
@@ -84,17 +90,19 @@
         <legend><a href="/job/index.html">Job</a></legend>
         <div class="channel">
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/job/recruit.html">Recruit</a></legend>
                     <div>
                         <% 
                         if(job_recruits){ 
                             job_recruits.forEach(item => {
                         %>
-                                a
+                        <div class="channel_item">
+                            <a target="_blank" href="/job/job.html"><%=item.title%></a>
+                        </div>
                         <% 
                             });
-                        } 
+                        }else{ 
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/job/job.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -105,22 +113,25 @@
                         <div class="channel_item">
                             <a target="_blank" href="/job/job.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>
 
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/job/wanted.html">Wanted</a></legend>
                     <div>
                         <% 
                         if(job_wanteds){ 
                             job_wanteds.forEach(item => {
                         %>
-                                a
+                        <div class="channel_item">
+                            <a target="_blank" href="/job/job.html"><%=item.title%></a>
+                        </div>
                         <% 
                             });
-                        } 
+                        }else{ 
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/job/job.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -131,6 +142,7 @@
                         <div class="channel_item">
                             <a target="_blank" href="/job/job.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>
@@ -144,17 +156,19 @@
         <legend><a href="/trading/index.html">Trading</a></legend>
         <div class="channel">
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/trading/sell.html">Sell</a></legend>
                     <div>
                         <% 
-                        if(job_recruits){ 
-                            job_recruits.forEach(item => {
+                        if(trading_sells){ 
+                            trading_sells.forEach(item => {
                         %>
-                                a
+                        <div class="channel_item">
+                            <a target="_blank" href="/trading/trading.html"><%=item.title%></a>
+                        </div>
                         <% 
                             });
-                        } 
+                        }else{ 
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/trading/trading.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -165,22 +179,25 @@
                         <div class="channel_item">
                             <a target="_blank" href="/trading/trading.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>
 
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/trading/buy.html">Buy</a></legend>
                     <div>
                         <% 
-                        if(job_wanteds){ 
-                            job_wanteds.forEach(item => {
+                        if(trading_buys){ 
+                            trading_buys.forEach(item => {
                         %>
-                                a
+                        <div class="channel_item">
+                            <a target="_blank" href="/trading/trading.html"><%=item.title%></a>
+                        </div>
                         <% 
                             });
-                        } 
+                        }else{ 
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/trading/trading.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -191,6 +208,7 @@
                         <div class="channel_item">
                             <a target="_blank" href="/trading/trading.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>
@@ -205,17 +223,25 @@
         <legend><a href="/exchange/index.html">Exchange</a></legend>
         <div class="channel">
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/exchange/index.html">Exchange</a></legend>
                     <div>
                         <% 
-                        if(job_recruits){ 
-                            job_recruits.forEach(item => {
+                        if(exchanges){ 
+                            let i = 0;
+                            exchanges.forEach(item => {
+                                if(3 <= i){
+                                    return;
+                                }else{
+                                    i++;
+                                }
                         %>
-                                a
+                        <div class="channel_item">
+                            <a target="_blank" href="/exchange/exchange.html"><%=item.title%></a>
+                        </div>
                         <% 
                             });
-                        } 
+                        }else{ 
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/exchange/exchange.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -226,22 +252,31 @@
                         <div class="channel_item">
                             <a target="_blank" href="/exchange/exchange.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>
 
             <div class="channel_group">
-                <fieldset>
+                <fieldset class="channel_panel">
                     <legend><a href="/exchange/index.html">Exchange</a></legend>
                     <div>
                         <% 
-                        if(job_wanteds){ 
-                            job_wanteds.forEach(item => {
-                        %>
-                                a
-                        <% 
+                        if(exchanges){ 
+                            let i = 0;
+                            exchanges.forEach(item => {
+                                if(3 > i){
+                                    i++;
+                                }else{
+                                    i++;
+                                    %>
+                                    <div class="channel_item">
+                                        <a target="_blank" href="/exchange/exchange.html"><%=item.title%></a>
+                                    </div>
+                                    <% 
+                                }
                             });
-                        } 
+                        }else{ 
                         %>
                         <div class="channel_item">
                             <a target="_blank" href="/exchange/exchange.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
@@ -252,6 +287,7 @@
                         <div class="channel_item">
                             <a target="_blank" href="/exchange/exchange.html">presentation data</a>
                         </div>
+                        <%}%>
                     </div>
                 </fieldset>
             </div>

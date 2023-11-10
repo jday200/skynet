@@ -15,6 +15,17 @@ class T200Region extends T200ModelBase {
         super();
         this._table = "region";
         this._key = "id";
+        this._id = "id";
+        //
+        this._fields = this.fields();
+    }
+
+    fields() {
+        return `name, content`;
+    }
+
+    values() {
+        return `'${this.name}', '${this.content}'`;
     }
 }
 

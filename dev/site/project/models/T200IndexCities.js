@@ -13,6 +13,19 @@ class T200IndexCities extends T200ModelBase {
     
     constructor() {
         super();
+        this._table = "index_cities";
+        this._key = "id";
+        this._id = "city_id";
+        //
+        this._fields = this.fields();
+    }
+
+    fields() {
+        return `city_id, intro`;
+    }
+
+    values() {
+        return `'${this.city_id}', '${this.intro}'`;
     }
 
     merge_list() {
