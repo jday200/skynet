@@ -113,14 +113,36 @@
                                     <select>
                                         <option value="1" label="1"></option>
                                     </select>
+                                </div>       
+                                <input type="hidden" name="test">                         
+                                <div class="form_item">
+                                    <label class="form_label">Region</label>
+                                    <select id="region" name="region_id">
+                                        <option value="1" label="1"></option>
+                                    </select>
                                 </div>
-                                <div>
-                                    <label>Name</label>
-                                    <input type="text">
-                                    <label>Name</label>
-                                    <input type="text">
-                                    <input type="button" value="Append">
+                                <div class="form_item">
+                                    <label class="form_label">Name</label>
+                                    <input class="form_value" type="text" name="name">
                                 </div>
+                                <div class="form_item">
+                                    <label class="form_label">Intro</label>
+                                    <input class="form_value" type="text" name="intro">
+                                </div>
+                                <div class="form_item">
+                                    <label class="form_label">Level</label>
+                                    <select name="level">
+                                        <option value="1" label="1"></option>
+                                        <option value="2" label="2"></option>
+                                        <option value="3" label="3"></option>
+                                        <option value="4" label="4"></option>
+                                        <option value="5" label="5"></option>
+                                    </select>
+                                </div>
+                                <div class="form_item">
+                                    <input type="button" id="submit" value="Append">
+                                </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -146,6 +168,23 @@
         }, function(){
             alert("Load Failure!");
         });
+
+        result = formtostring("form");
+        $.post('/admin/region/all', result, function(data){
+            $.id("region").innerHTML = data;
+        }, function(){
+            alert("Load Failure!");
+        });
+
+        $.id("submit").onclick = function(){
+            let result = formtostring("form");
+            $.post('/admin/city/edit', result, function(){
+                alert('Save Success!');
+                reload();
+            }, function(){
+                alert('Save Failure!');
+            });
+        };
     };
 </script>
 

@@ -6,8 +6,8 @@ const T200HttpsForm = require('../../../../library/net/T200HttpsForm.js');
 const T200House = require('../../../models/T200House.js');
 const T200HomeHouse = require('../../../biz/T200HomeHouse.js');
 
-async function do_house_list(request, response, cookie, session, resource) {
-    log(__filename, "do_house_list");
+async function do_house_rent_list(request, response, cookie, session, resource) {
+    log(__filename, "do_house_rent_list");
     let self = this;
     let promise = new Promise(function(resolve, reject){
         let house = new T200House();
@@ -21,7 +21,7 @@ async function do_house_list(request, response, cookie, session, resource) {
                     let view = new T200View(resource);
                     let data = {};
                     data.rents = values;
-                    return view.render_file("content/house/index.ejs", data).then(function(result){
+                    return view.render_file("content/house/rent.ejs", data).then(function(result){
                         response.type("json");
                         resolve(result);
                     }, function(){
@@ -41,5 +41,5 @@ async function do_house_list(request, response, cookie, session, resource) {
     return promise;
 }
 
-global.action.use_post('/content/house/list', do_house_list);
+global.action.use_post('/content/house/rent/list', do_house_rent_list);
 

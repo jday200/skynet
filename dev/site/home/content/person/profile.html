@@ -19,6 +19,7 @@
 
 <script src="/js/t200.js"></script>
 <script src="/js/t200home.js"></script>
+<script src="/js/t200person.js"></script>
 
 </head>
 <body>
@@ -52,7 +53,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>House</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -63,7 +64,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Job</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -74,7 +75,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Trading</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -85,7 +86,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Exchange</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -93,7 +94,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Note</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -109,7 +110,39 @@
                 <fieldset>
                     <legend>Profile</legend>
                     <div>
-                        
+                        <fieldset>
+                            <legend>Profile</legend>
+                            <div>
+                                <div>
+                                    username
+                                </div>
+                                <div>
+                                    password
+                                </div>
+                                <div>
+                                    email
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Profile</legend>
+                            <div>
+                                <form id="form"></form>
+                                <div>
+                                    nationality
+                                </div>
+                                <div>
+                                    location
+                                    <button id="location_edit">edit</button>
+                                    <div id="location">
+
+                                    </div>
+                                </div>
+                                <div>
+                                    intro
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
                 </fieldset>
             </div>
@@ -126,6 +159,8 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        $.id("location_edit").onclick = location_edit;
     };
 </script>
 

@@ -115,11 +115,18 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label>Name</label>
-                                    <input type="text">
-                                    <label>Name</label>
-                                    <input type="text">
-                                    <input type="button" value="Append">
+                                    <input type="hidden" name="test">
+                                    <div class="form_item">
+                                        <label class="form_label">Name</label>
+                                        <input class="form_value" type="text" name="name">
+                                    </div>
+                                    <div class="form_item">
+                                        <label class="form_label">Intro</label>
+                                        <input class="form_value" type="text" name="intro">
+                                    </div>
+                                    <div class="form_item">
+                                        <input type="button" id="submit" value="Append">
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -146,6 +153,16 @@
         }, function(){
             alert("Load Failure!");
         });
+
+        $.id("submit").onclick = function(){
+            let result = formtostring("form");
+            $.post('/admin/region/edit', result, function(){
+                alert('Save Success!');
+                reload();
+            }, function(){
+                alert('Save Failure!');
+            });
+        };
     };
 </script>
 

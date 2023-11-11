@@ -15,7 +15,7 @@ class T200ModelBase {
     }
 
     merge_select() {
-        return `select * from ${this._table} order by ${this._key} limit ${this._size} offset ${this._offset}`;
+        return `select * from ${this._table} order by ${this._key} DESC limit ${this._size} offset ${this._offset}`;
     }
 
     merge_insert() {

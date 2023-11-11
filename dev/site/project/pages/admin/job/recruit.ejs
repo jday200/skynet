@@ -1,0 +1,66 @@
+<form id="form">
+    <div class="pages_top_box">
+        <div class="pages">
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+        </div>
+    </div>
+    <div class="item_box">
+        <% 
+            if(jobs){
+                jobs.forEach(item => {
+        %> 
+        <div class="item">
+            <a target="_blank" href="/job/job.html"><%=item.title%></a>
+        </div>
+        <%
+                });
+            }else{
+        %>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <div class="item">
+            <a target="_blank" href="/job/job.html">presentation data</a>
+        </div>
+        <%
+            }       
+        %>
+    </div>
+    <div class="pages_bottom_box">
+        <div class="pages">
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+        </div>
+    </div>
+</form>

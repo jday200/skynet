@@ -19,6 +19,7 @@
 
 <script src="/js/t200.js"></script>
 <script src="/js/t200home.js"></script>
+<script src="/js/t200region.js"></script>
 
 </head>
 <body>
@@ -44,7 +45,7 @@
                 <div>
                     <fieldset class="left">
                         <legend>My</legend>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>My</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -63,7 +64,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Job</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -74,7 +75,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Trading</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -85,7 +86,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Exchange</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -93,7 +94,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Note</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -119,6 +120,31 @@
                         <div class="form_box">
                             <form id="form" class="form">
                                 <input type="hidden" name="test">
+                                <div class="form_item">
+                                    <label class="form_label">Continent:</label>
+                                    <select id="continent">
+                                        <option>Asia</option>
+                                        <option>America</option>
+                                        <option>Europe</option>
+                                        <option>Oceania</option>
+                                        <option>Africa</option>
+                                    </select>
+                                    <label class="form_label">Region:</label>
+                                    <select>
+                                        <option>1</option>
+                                    </select>
+                                    <select>
+                                        <option>1</option>
+                                    </select>
+                                    <label class="form_label">City:</label>
+                                    <select>
+                                        <option>1</option>
+                                    </select>
+                                    <label class="form_label">City:</label>
+                                    <select>
+                                        <option>1</option>
+                                    </select>
+                                </div>
                                 <div class="form_item">
                                     <label class="form_label">Title:</label>
                                     <input class="form_value" type="text" name="title">
@@ -157,6 +183,12 @@
                 alert('Save Failure!');
             });
         };
+        /*
+        $.id("continent").onchange = function(){
+            alert('hello');
+        };
+        */
+       $.id("continent").onchange = change1;
     };
 </script>
 

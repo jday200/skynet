@@ -7,6 +7,10 @@ const T200ModelBase = require('../../library/model/T200ModelBase.js');
 class T200City extends T200ModelBase {
     id;
 
+    region_id;
+
+    level;
+
     name;
 
     content;
@@ -21,11 +25,11 @@ class T200City extends T200ModelBase {
     }
 
     fields() {
-        return `name, content`;
+        return `region_id, level, name, content`;
     }
 
     values() {
-        return `'${this.name}', '${this.content}'`;
+        return `${this.region_id}, ${this.level}, '${this.name}', '${this.content}'`;
     }
 }
 

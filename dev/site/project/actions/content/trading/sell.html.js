@@ -6,8 +6,8 @@ const T200HttpsForm = require('../../../../library/net/T200HttpsForm.js');
 const T200Trading = require('../../../models/T200Trading.js');
 const T200HomeTrading = require('../../../biz/T200HomeTrading.js');
 
-async function do_trading_list(request, response, cookie, session, resource) {
-    log(__filename, "do_trading_list");
+async function do_trading_sell_list(request, response, cookie, session, resource) {
+    log(__filename, "do_trading_sell_list");
     let self = this;
     let promise = new Promise(function(resolve, reject){
         let trading = new T200Trading();
@@ -20,8 +20,8 @@ async function do_trading_list(request, response, cookie, session, resource) {
                 HomeTrading.list(trading.merge_select_by_id(trading.user_id)).then(function(values){
                     let view = new T200View(resource);
                     let data = {};
-                    data.rents = values;
-                    return view.render_file("content/trading/index.ejs", data).then(function(result){
+                    data.tradings = values;
+                    return view.render_file("content/trading/sell.ejs", data).then(function(result){
                         response.type("json");
                         resolve(result);
                     }, function(){
@@ -41,5 +41,5 @@ async function do_trading_list(request, response, cookie, session, resource) {
     return promise;
 }
 
-global.action.use_post('/content/trading/list', do_trading_list);
+global.action.use_post('/content/trading/sell/list', do_trading_sell_list);
 

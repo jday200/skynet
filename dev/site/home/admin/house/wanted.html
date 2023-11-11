@@ -45,7 +45,7 @@
                 <div>
                     <fieldset class="left">
                         <legend>Admin</legend>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Global</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Advert</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Person</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Region</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -84,14 +84,47 @@
                             </div>
                         </details>
                         <details open class="menu">
-                            <summary>Article</summary>
+                            <summary>House</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
-                                    <a href="/admin/article/index.html">Article</a>
+                                    <a href="/admin/house/rent.html">Rent</a>
+                                </div>
+                                <div class="menu_item">
+                                    <a href="/admin/house/wanted.html">Wanted</a>
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
+                            <summary>Job</summary>
+                            <div class="menu_group">
+                                <div class="menu_item">
+                                    <a href="/admin/job/recruit.html">Recruit</a>
+                                </div>
+                                <div class="menu_item">
+                                    <a href="/admin/job/wanted.html">Wanted</a>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="menu">
+                            <summary>Trading</summary>
+                            <div class="menu_group">
+                                <div class="menu_item">
+                                    <a href="/admin/trading/sell.html">Sell</a>
+                                </div>
+                                <div class="menu_item">
+                                    <a href="/admin/trading/buy.html">Buy</a>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="menu">
+                            <summary>Exchange</summary>
+                            <div class="menu_group">
+                                <div class="menu_item">
+                                    <a href="/admin/exchange/index.html">Exchange</a>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="menu">
                             <summary>Note</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -106,7 +139,7 @@
 
             <div class="right">
                 <fieldset>
-                    <legend>Article</legend>
+                    <legend>Wanted</legend>
                     <div class="right_box">
                         <div class="search_box">
                             <form>
@@ -127,34 +160,34 @@
                                 </div>
                                 <div class="item_box">
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                                        <a target="_blank" href="/house/house.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                     <div class="item">
-                                        <a target="_blank" href="/person/profile.html">presentation data</a>
+                                        <a target="_blank" href="/house/house.html">presentation data</a>
                                     </div>
                                 </div>
                                 <div class="pages_bottom_box">
@@ -187,7 +220,7 @@
         nav_check();
 
         let result = formtostring("form");
-        $.post('/admin/article/list', result, function(data){
+        $.post('/admin/house/wanted/list', result, function(data){
             $.id("list_box").innerHTML = data;
         }, function(){
             alert("Load Failure!");

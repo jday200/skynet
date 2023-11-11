@@ -9,7 +9,7 @@ class T200Region extends T200ModelBase {
 
     name;
 
-    content;
+    intro;
 
     constructor() {
         super();

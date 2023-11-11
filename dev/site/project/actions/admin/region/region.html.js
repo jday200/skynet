@@ -40,5 +40,70 @@ async function do_region_list(request, response, cookie, session, resource) {
     return promise;
 }
 
+async function do_region_edit(request, response, cookie, session, resource) {
+    log(__filename, "do_edit");
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let HomeRegion = new T200HomeRegion();
+
+        if(HomeRegion.verify_login(cookie, session)){
+            let rid = cookie.get("rid");
+            if(rid && 0 < rid){
+                do_region_modify(request, response, cookie, session, resource);
+            }else{
+                do_region_add(request, response, cookie, session, resource).then(function(result){
+                    response.type("json");
+                    if(result){
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                }, function(){
+                    reject();
+                });
+            }
+        }else{
+            reject();
+        }
+    });
+
+    return promise;
+}
+
+async function do_region_add(request, response, cookie, session, resource) {
+    log(__filename, "do_edit");
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let region = new T200Region();
+        let HomeRegion = new T200HomeRegion();
+
+        region.name = request.get("name");
+        region.content = request.get("intro");
+        
+        if(T200HttpsForm.verify_text(region.name)
+            && T200HttpsForm.verify_text(region.content)){
+                region._values = region.values();
+                HomeRegion.add(region.merge_insert()).then(resolve, reject);
+        }else{
+            reject();
+        }
+    });
+
+    return promise;
+}
+
+async function do_region_modify(request, response, cookie, session, resource) {
+    log(__filename, "do_edit");
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let HomeRegion = new T200HomeRegion();
+
+
+    });
+
+    return promise;
+}
+
 global.action.use_post('/admin/region/list', do_region_list);
+global.action.use_post('/admin/region/edit', do_region_edit);
 

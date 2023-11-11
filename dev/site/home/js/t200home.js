@@ -2,6 +2,10 @@ function login() {
 
 }
 
+function reload() {
+    location.reload();
+}
+
 function logout() {
     $.set_cookie('sid', '');
     location.reload();
