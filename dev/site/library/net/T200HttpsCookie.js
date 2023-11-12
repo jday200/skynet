@@ -61,13 +61,13 @@ class T200HttpsCookie {
             throw T200Error.build();
         }
 
-        let cookie = new T200CookieItem();
         msg.split(';').forEach(item => {
+            let cookie = new T200CookieItem();
             let values = item.split('=');
             self.#classify(cookie, values[0].trim(), (values[1] || '').trim());
+            self.cookies[cookie._name] = cookie;
         });
-
-        self.cookies[cookie._name] = cookie;
+        
     }
 
     #classify(cookie, name, value) {

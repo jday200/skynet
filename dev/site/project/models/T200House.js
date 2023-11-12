@@ -1,10 +1,10 @@
 const { error, log } = require('../../library/T200Lib.js');
 const T200Error = require('../../library/T200Error.js');
 
-const T200ModelBase = require('../../library/model/T200ModelBase.js');
+const T200Forum = require('./T200Forum.js');
 
 
-class T200House extends T200ModelBase {
+class T200House extends T200Forum {
     id;
 
     user_id;

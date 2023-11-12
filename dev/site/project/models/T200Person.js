@@ -45,6 +45,10 @@ class T200Person extends T200ModelBase {
     merge_login_update() {
         return `update ${this._table} set username = '${this.username}' where username = '${this.username}'`;
     }
+
+    merge_city_update() {
+        return `update ${this._table} set city_id = '${this.city_id}' where user_id = '${this.user_id}'`;
+    }
 }
 
 module.exports = T200Person;

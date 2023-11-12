@@ -29,3 +29,7 @@ function formtostring(name) {
     let result = $.datatostring(data);
     return result;
 }
+
+function hit(name, value) {
+    $.set_cookie(name, value);
+}

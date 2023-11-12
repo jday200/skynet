@@ -32,7 +32,7 @@
                             house_rents.forEach(item => {
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('hid', <%=item.id%>);" href="/house/house.html"><%=item.title%></a>
                         </div>
                         <% 
                             });

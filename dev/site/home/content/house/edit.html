@@ -123,21 +123,21 @@
                                 <div class="form_item">
                                     <label class="form_label">Continent:</label>
                                     <select id="continent">
-                                        <option>Asia</option>
-                                        <option>America</option>
-                                        <option>Europe</option>
-                                        <option>Oceania</option>
-                                        <option>Africa</option>
+                                        <option value="asia">Asia</option>
+                                        <option value="america">America</option>
+                                        <option value="europe">Europe</option>
+                                        <option value="oceania">Oceania</option>
+                                        <option value="africa">Africa</option>
                                     </select>
                                     <label class="form_label">Region:</label>
-                                    <select>
+                                    <select id="">
                                         <option>1</option>
                                     </select>
-                                    <select>
+                                    <select id="region">
                                         <option>1</option>
                                     </select>
                                     <label class="form_label">City:</label>
-                                    <select>
+                                    <select id="city">
                                         <option>1</option>
                                     </select>
                                     <label class="form_label">City:</label>
@@ -189,6 +189,7 @@
         };
         */
        $.id("continent").onchange = change1;
+       $.id("region").onchange = change2;
     };
 </script>
 

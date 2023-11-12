@@ -7,3 +7,12 @@ function location_edit() {
     });
 }
 
+function location_save() {
+    let result = formtostring("region");
+    $.post('/content/person/region/save', result, function(data){
+        alert("Save Success!");
+    }, function(){
+        alert("Save Failure!");
+    });
+}
+

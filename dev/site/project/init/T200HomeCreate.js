@@ -8,7 +8,7 @@ class T200HomeCreate {
     }
 
     create_house_rent() {
-        return `create table if not exists house_rent (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return `create table if not exists house_rent (id int primary key auto_increment, user_id int, parent_id int default 0, title varchar(255), content text)`;
     }
 
     create_house_wanted() {
@@ -37,7 +37,7 @@ class T200HomeCreate {
 
     ///
     create_person() {
-        return `create table if not exists person (user_id int primary key auto_increment, username varchar(50) UNIQUE, password varchar(100), email varchar(100) UNIQUE)`;
+        return `create table if not exists person (user_id int primary key auto_increment, city_id int default 0, username varchar(50) UNIQUE, password varchar(100), email varchar(100) UNIQUE)`;
     }
 
     create_advert() {

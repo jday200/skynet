@@ -1,11 +1,7 @@
-<script src="/js/t200.js"></script>
-
-<form>
-    <input type="button" id="asdf">
+<form id="region">
+    <input type="hidden" name="test">
+    <select id="id" name="id">
+        <option value="1">shanghai</option>
+    </select>
+    <input type="button" onclick="location_save();" id="asdf">
 </form>
-
-<script>
-    $.id("asdf").onclick = function(){
-        alert('hello');
-    };
-</script>

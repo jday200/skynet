@@ -40,5 +40,40 @@ async function do_person_region(request, response, cookie, session, resource) {
     return promise;
 }
 
+
+async function do_person_region_save(request, response, cookie, session, resource) {
+    log(__filename, "do_person_region_save");
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let person = new T200Person();
+        let HomePerson = new T200HomePerson();
+
+        if(HomePerson.verify_login(cookie, session)){
+            person.user_id = session.get("userid");
+            person.city_id = request.get("id");
+            if(T200HttpsForm.verify_id(person.user_id)
+                && T200HttpsForm.verify_id(person.city_id)){
+                HomePerson.modify(person.merge_city_update()).then(function(result){
+                    response.type("json");
+                    if(result){
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                }, function(){
+                    reject();
+                });
+            }else{
+                reject();
+            }
+        }else{
+            reject();
+        }
+    });
+
+    return promise;
+}
+
 global.action.use_post('/content/person/region', do_person_region);
+global.action.use_post('/content/person/region/save', do_person_region_save);
 
