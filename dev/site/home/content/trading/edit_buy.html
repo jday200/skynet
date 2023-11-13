@@ -19,6 +19,7 @@
 
 <script src="/js/t200.js"></script>
 <script src="/js/t200home.js"></script>
+<script src="/js/t200region.js"></script>
 
 </head>
 <body>
@@ -52,7 +53,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>House</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -74,7 +75,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details class="menu">
+                        <details open class="menu">
                             <summary>Trading</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -107,71 +108,46 @@
 
             <div class="right">
                 <fieldset>
-                    <legend>Wanted</legend>
+                    <legend>Buy</legend>
                     <div class="right_box">
-                        <div class="publish">
-                            <a href="/content/house/edit_wanted.html">Publish</a>
+                        <div class="form_title">
+                            Buy
                         </div>
-                        <div class="search_box">
-                            <form>
-                                <input type="text">
-                                <input type="submit" value="search">
-                            </form>
+                        <div class="form_msg">
+                            hello
                         </div>
-                        <div id="list_box" class="list_box">
-                            <form id="form">
-                                <div class="pages_top_box">
-                                    <div class="pages">
-                                        <a href="">1</a>
-                                        <a href="">2</a>
-                                        <a href="">3</a>
-                                        <a href="">4</a>
-                                        <a href="">5</a>
+                        <hr class="line">
+                        <div class="form_box">
+                            <form id="form" class="form">
+                                <input type="hidden" name="test">
+                                <input type="hidden" name="city_id" id="city_id">
+                                <div class="form_item">
+                                    <label class="form_label">Location:</label>
+                                    <div class="region_box">
+                                        <label class="form_label">Region:</label>
+                                        <div id="region">
+
+                                        </div>
+                                        <label class="form_label">City:</label>
+                                        <div id="city">
+
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="item_box">
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
-                                    <div class="item">
-                                        <a target="_blank" href="/house/house.html">presentation data</a>
-                                    </div>
+                                <div class="form_item">
+                                    <label class="form_label">Title:</label>
+                                    <input class="form_value" type="text" name="title">
                                 </div>
-                                <div class="pages_bottom_box">
-                                    <div class="pages">
-                                        <a href="">1</a>
-                                        <a href="">2</a>
-                                        <a href="">3</a>
-                                        <a href="">4</a>
-                                        <a href="">5</a>
-                                    </div>
+                                <div class="form_item">
+                                    <label class="form_label">Content:</label>
+                                    <textarea class="form_value" name="content" rows="25"></textarea>
+                                </div>
+                                <div class="form_item">
+                                    <input type="button" class="form_button" id="submit" name="submit" value="submit">
                                 </div>
                             </form>
                         </div>
+                        
                     </div>
                 </fieldset>
             </div>
@@ -189,12 +165,42 @@
     $.win.onload = function(){
         nav_check();
 
-        let result = formtostring("form");
-        $.post('/content/house/wanted/list', result, function(data){
-            $.id("list_box").innerHTML = data;
+        let region = formtostring("form");
+        $.post('/content/house/region', region, function(data){
+            if(undefined == data){
+                alert('undefined');               
+            }else{
+                if(1 == data.length){
+                    if(0 == data[0].city_id){
+                        alert('please setup location first');
+                    }else{
+                        //alert(data[0].city_id);
+                        let item = city[data[0].city_id];
+                        if(undefined == item){
+
+                        }else{
+                            $.id("region").innerHTML = item[1];
+                            $.id("city").innerHTML = item[2];
+                            $.id("city_id").value = data[0].city_id;
+                        }
+                    }
+                    
+                }else{
+                    alert('error');
+                }
+            }
         }, function(){
-            alert("Load Failure!");
+            alert('Save Failure!');
         });
+        
+        $.id("submit").onclick = function(){
+            let result = formtostring("form");
+            $.post('/content/trading/buy/edit', result, function(){
+                alert('Save Success!');
+            }, function(){
+                alert('Save Failure!');
+            });
+        };
     };
 </script>
 

@@ -19,6 +19,7 @@
 
 <script src="/js/t200.js"></script>
 <script src="/js/t200home.js"></script>
+<script src="/js/t200region.js"></script>
 
 </head>
 <body>
@@ -38,7 +39,7 @@
         <div class="header">
             header
         </div>
-
+        
         <div class="side_box">
             <div>
                 <div>
@@ -52,7 +53,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details class="menu">
+                        <details open class="menu">
                             <summary>House</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -74,7 +75,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Trading</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -107,10 +108,10 @@
 
             <div class="right">
                 <fieldset>
-                    <legend>Sell</legend>
+                    <legend>Rent</legend>
                     <div class="right_box">
                         <div class="form_title">
-                            Sell
+                            Rent
                         </div>
                         <div class="form_msg">
                             hello
@@ -119,6 +120,20 @@
                         <div class="form_box">
                             <form id="form" class="form">
                                 <input type="hidden" name="test">
+                                <input type="hidden" name="city_id" id="city_id">
+                                <div class="form_item">
+                                    <label class="form_label">Location:</label>
+                                    <div class="region_box">
+                                        <label class="form_label">Region:</label>
+                                        <div id="region">
+
+                                        </div>
+                                        <label class="form_label">City:</label>
+                                        <div id="city">
+
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form_item">
                                     <label class="form_label">Title:</label>
                                     <input class="form_value" type="text" name="title">
@@ -149,9 +164,38 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        let region = formtostring("form");
+        $.post('/content/house/region', region, function(data){
+            if(undefined == data){
+                alert('undefined');               
+            }else{
+                if(1 == data.length){
+                    if(0 == data[0].city_id){
+                        alert('please setup location first');
+                    }else{
+                        //alert(data[0].city_id);
+                        let item = city[data[0].city_id];
+                        if(undefined == item){
+
+                        }else{
+                            $.id("region").innerHTML = item[1];
+                            $.id("city").innerHTML = item[2];
+                            $.id("city_id").value = data[0].city_id;
+                        }
+                    }
+                    
+                }else{
+                    alert('error');
+                }
+            }
+        }, function(){
+            alert('Save Failure!');
+        });
+
         $.id("submit").onclick = function(){
             let result = formtostring("form");
-            $.post('/content/trading/edit', result, function(){
+            $.post('/content/house/rent/edit', result, function(){
                 alert('Save Success!');
             }, function(){
                 alert('Save Failure!');

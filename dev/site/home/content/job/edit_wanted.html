@@ -39,7 +39,7 @@
         <div class="header">
             header
         </div>
-        
+
         <div class="side_box">
             <div>
                 <div>
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>House</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details class="menu">
+                        <details open class="menu">
                             <summary>Job</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -108,10 +108,10 @@
 
             <div class="right">
                 <fieldset>
-                    <legend>Rent</legend>
+                    <legend>Wanted</legend>
                     <div class="right_box">
                         <div class="form_title">
-                            Rent
+                            Wanted
                         </div>
                         <div class="form_msg">
                             hello
@@ -165,6 +165,7 @@
     $.win.onload = function(){
         nav_check();
 
+
         let region = formtostring("form");
         $.post('/content/house/region', region, function(data){
             if(undefined == data){
@@ -195,7 +196,7 @@
 
         $.id("submit").onclick = function(){
             let result = formtostring("form");
-            $.post('/content/house/edit', result, function(){
+            $.post('/content/job/wanted/edit', result, function(){
                 alert('Save Success!');
             }, function(){
                 alert('Save Failure!');

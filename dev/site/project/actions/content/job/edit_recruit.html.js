@@ -2,24 +2,24 @@ const { error, log } = require('../../../../library/T200Lib.js');
 const T200Error = require('../../../../library/T200Error.js');
 
 const T200HttpsForm = require('../../../../library/net/T200HttpsForm.js');
-const T200House = require('../../../models/T200House.js');
-const T200HomeHouse = require('../../../biz/T200HomeHouse.js');
+const T200Job = require('../../../models/T200Job.js');
+const T200HomeJob = require('../../../biz/T200HomeJob.js');
 
 const T200Person = require('../../../models/T200Person.js');
 const T200HomePerson = require('../../../biz/T200HomePerson.js');
 
-async function do_house_edit(request, response, cookie, session, resource) {
+async function do_job_recruit_edit(request, response, cookie, session, resource) {
     log(__filename, "do_edit");
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        let HomeHouse = new T200HomeHouse();
+        let HomeJob = new T200HomeJob();
 
-        if(HomeHouse.verify_login(cookie, session)){
-            let hid = cookie.get("hid");
-            if(hid && 0 < hid){
-                do_house_modify(request, response, cookie, session, resource);
+        if(HomeJob.verify_login(cookie, session)){
+            let jid = cookie.get("jid");
+            if(jid && 0 < jid){
+                do_job_recruit_modify(request, response, cookie, session, resource);
             }else{
-                do_house_add(request, response, cookie, session, resource).then(function(result){
+                do_job_recruit_add(request, response, cookie, session, resource).then(function(result){
                     response.type("json");
                     if(result){
                         resolve();
@@ -38,25 +38,25 @@ async function do_house_edit(request, response, cookie, session, resource) {
     return promise;
 }
 
-async function do_house_add(request, response, cookie, session, resource) {
-    log(__filename, "do_edit");
+async function do_job_recruit_add(request, response, cookie, session, resource) {
+    log(__filename, "do_add");
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        let house = new T200House();
-        let HomeHouse = new T200HomeHouse();
+        let job = new T200Job();
+        let HomeJob = new T200HomeJob();
 
-        house.user_id = session.get("userid");
-        house.city_id = request.get("city_id");
-        house.title = request.get("title");
-        house.content = request.get("content");
+        job.user_id = session.get("userid");
+        job.city_id = request.get("city_id");
+        job.title = request.get("title");
+        job.content = request.get("content");
         
-        if(T200HttpsForm.verify_id(house.user_id)
-            && T200HttpsForm.verify_id(house.city_id)
-            && T200HttpsForm.verify_text(house.title)
-            && T200HttpsForm.verify_text(house.content)){
-                house._table = "house_rent";
-                house._values = house.values();
-                HomeHouse.add(house.merge_insert()).then(resolve, reject);
+        if(T200HttpsForm.verify_id(job.user_id)
+            && T200HttpsForm.verify_id(job.city_id)
+            && T200HttpsForm.verify_text(job.title)
+            && T200HttpsForm.verify_text(job.content)){
+                job._table = "job_recruit";
+                job._values = job.values();
+                HomeJob.add(job.merge_insert()).then(resolve, reject);
         }else{
             reject();
         }
@@ -65,17 +65,18 @@ async function do_house_add(request, response, cookie, session, resource) {
     return promise;
 }
 
-async function do_house_modify(request, response, cookie, session, resource) {
+async function do_job_recruit_modify(request, response, cookie, session, resource) {
     log(__filename, "do_edit");
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        let HomeHouse = new T200HomeHouse();
+        let HomeJob = new T200HomeJob();
 
 
     });
 
     return promise;
 }
+
 
 
 async function do_house_region(request, response, cookie, session, resource) {
@@ -107,6 +108,6 @@ async function do_house_region(request, response, cookie, session, resource) {
 }
 
 
-global.action.use_post('/content/house/edit', do_house_edit);
+global.action.use_post('/content/job/recruit/edit', do_job_recruit_edit);
 global.action.use_post('/content/house/region', do_house_region);
 
