@@ -120,30 +120,19 @@
                         <div class="form_box">
                             <form id="form" class="form">
                                 <input type="hidden" name="test">
+                                <input type="hidden" name="city_id" id="city_id">
                                 <div class="form_item">
-                                    <label class="form_label">Continent:</label>
-                                    <select id="continent">
-                                        <option value="asia">Asia</option>
-                                        <option value="america">America</option>
-                                        <option value="europe">Europe</option>
-                                        <option value="oceania">Oceania</option>
-                                        <option value="africa">Africa</option>
-                                    </select>
-                                    <label class="form_label">Region:</label>
-                                    <select id="">
-                                        <option>1</option>
-                                    </select>
-                                    <select id="region">
-                                        <option>1</option>
-                                    </select>
-                                    <label class="form_label">City:</label>
-                                    <select id="city">
-                                        <option>1</option>
-                                    </select>
-                                    <label class="form_label">City:</label>
-                                    <select>
-                                        <option>1</option>
-                                    </select>
+                                    <label class="form_label">Location:</label>
+                                    <div class="region_box">
+                                        <label class="form_label">Region:</label>
+                                        <div id="region">
+
+                                        </div>
+                                        <label class="form_label">City:</label>
+                                        <div id="city">
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form_item">
                                     <label class="form_label">Title:</label>
@@ -175,6 +164,35 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        let region = formtostring("form");
+        $.post('/content/house/region', region, function(data){
+            if(undefined == data){
+                alert('undefined');               
+            }else{
+                if(1 == data.length){
+                    if(0 == data[0].city_id){
+                        alert('please setup location first');
+                    }else{
+                        //alert(data[0].city_id);
+                        let item = city[data[0].city_id];
+                        if(undefined == item){
+
+                        }else{
+                            $.id("region").innerHTML = item[1];
+                            $.id("city").innerHTML = item[2];
+                            $.id("city_id").value = data[0].city_id;
+                        }
+                    }
+                    
+                }else{
+                    alert('error');
+                }
+            }
+        }, function(){
+            alert('Save Failure!');
+        });
+
         $.id("submit").onclick = function(){
             let result = formtostring("form");
             $.post('/content/house/edit', result, function(){
@@ -183,13 +201,6 @@
                 alert('Save Failure!');
             });
         };
-        /*
-        $.id("continent").onchange = function(){
-            alert('hello');
-        };
-        */
-       $.id("continent").onchange = change1;
-       $.id("region").onchange = change2;
     };
 </script>
 

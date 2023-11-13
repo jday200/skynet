@@ -7,32 +7,87 @@ class T200HomeCreate {
 
     }
 
-    create_house_rent() {
-        return `create table if not exists house_rent (id int primary key auto_increment, user_id int, parent_id int default 0, title varchar(255), content text)`;
-    }
+   create_house_rent() {
+        return "create table if not exists house_rent ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            parent_id int default 0, \
+            city_id int default 0,\
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
+   }
 
     create_house_wanted() {
-        return `create table if not exists house_wanted (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return "create table if not exists house_wanted ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            parent_id int default 0, \
+            city_id int default 0,\
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
     }
 
     create_job_recruit() {
-        return `create table if not exists job_recruit (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return "create table if not exists job_recruit ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            parent_id int default 0, \
+            city_id int default 0,\
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
     }
 
     create_job_wanted() {
-        return `create table if not exists job_wanted (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return "create table if not exists job_wanted ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            parent_id int default 0, \
+            city_id int default 0,\
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
     }
 
     create_trading_sell() {
-        return `create table if not exists trading_sell (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return "create table if not exists trading_sell ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            parent_id int default 0, \
+            city_id int default 0,\
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
     }
 
     create_trading_buy() {
-        return `create table if not exists trading_buy (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return "create table if not exists trading_buy ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            parent_id int default 0, \
+            city_id int default 0,\
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
     }
 
     create_exchange() {
-        return `create table if not exists exchange (id int primary key auto_increment, user_id int, title varchar(255), content text)`;
+        return "create table if not exists exchange ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            parent_id int default 0, \
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
     }
 
     ///

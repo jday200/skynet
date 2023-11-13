@@ -2,18 +2,9 @@
 <div>
     <fieldset class="region">
         <legend>Region</legend>
-        <div>
+        <div id="region">
             <div>
                 <a href="/region/city.html?id=10000">Tokyo</a>
-                <% 
-                if(index_cities){ 
-                    index_cities.forEach(item => {
-                %>
-                    <a href="/region/city.html"><%=item.name%></a> 
-                <% 
-                    });
-                } 
-                %>
                 <a href="/region/city.html">City</a>
             </div>
         </div>

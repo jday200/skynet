@@ -12,7 +12,7 @@ async function do_house_list(request, response, cookie, session, resource) {
     let promise = new Promise(function(resolve, reject){
         let house = new T200House();
         let HomeHouse = new T200HomeHouse();
-        debugger;
+
         if(HomeHouse.verify_login(cookie, session)){
             house.user_id = session.get("userid");
             let id = cookie.get("hid");

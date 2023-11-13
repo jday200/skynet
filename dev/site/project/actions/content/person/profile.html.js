@@ -50,7 +50,7 @@ async function do_person_region_save(request, response, cookie, session, resourc
 
         if(HomePerson.verify_login(cookie, session)){
             person.user_id = session.get("userid");
-            person.city_id = request.get("id");
+            person.city_id = request.get("city");
             if(T200HttpsForm.verify_id(person.user_id)
                 && T200HttpsForm.verify_id(person.city_id)){
                 HomePerson.modify(person.merge_city_update()).then(function(result){

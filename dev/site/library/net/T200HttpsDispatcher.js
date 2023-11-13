@@ -41,10 +41,10 @@ class T200HttpsDispatcher {
 
             switch(flag){
                 case 'GET':
-                    return self.assign_get(data.path).then(resolve, reject).catch(reject);
+                    return self.assign_get(data.pathname).then(resolve, reject).catch(reject);
                     break;
                 case 'POST':
-                    return self.assign_post(data.path).then(resolve, reject);
+                    return self.assign_post(data.pathname).then(resolve, reject);
                     break;
             }
 

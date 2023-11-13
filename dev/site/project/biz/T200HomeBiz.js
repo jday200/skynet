@@ -47,7 +47,7 @@ class T200HomeBiz extends T200BizBase {
 
     query(sql) {
         let self = this;
-        return self.query(sql).then(function(data){
+        return self.store.query(sql).then(function(data){
             return data;
         }, function(){
             return error();
@@ -56,7 +56,7 @@ class T200HomeBiz extends T200BizBase {
 
     execute(sql) {
         let self = this;
-        return self.execute(sql).then(function(result){
+        return self.store.execute(sql).then(function(result){
             return result;
         }, function(){
             return error();

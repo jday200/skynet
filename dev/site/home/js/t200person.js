@@ -8,7 +8,7 @@ function location_edit() {
 }
 
 function location_save() {
-    let result = formtostring("region");
+    let result = formtostring("location_form");
     $.post('/content/person/region/save', result, function(data){
         alert("Save Success!");
     }, function(){

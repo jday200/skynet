@@ -46,6 +46,10 @@ class T200Person extends T200ModelBase {
         return `update ${this._table} set username = '${this.username}' where username = '${this.username}'`;
     }
 
+    merge_region(value) {
+        return `select city_id from ${this._table} where ${this._key} = ${value} order by ${this._key}`;
+    }
+
     merge_city_update() {
         return `update ${this._table} set city_id = '${this.city_id}' where user_id = '${this.user_id}'`;
     }

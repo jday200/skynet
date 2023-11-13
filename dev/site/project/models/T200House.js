@@ -9,12 +9,21 @@ class T200House extends T200Forum {
 
     user_id;
 
+    parent_id;
+
+    city_id;
+
     title;
 
     content;
 
+    create_time;
+
     constructor() {
         super();
+        this.parent_id = 0;
+        this.city_id = 0;
+        //
         this._table = "";
         this._key = "id";
         this._id = "user_id";
@@ -23,11 +32,11 @@ class T200House extends T200Forum {
     }
 
     fields() {
-        return `user_id, title, content`;
+        return `user_id, parent_id, city_id, title, content`;
     }
 
     values() {
-        return `'${this.user_id}', '${this.title}', '${this.content}'`;
+        return `'${this.user_id}', '${this.parent_id}', '${this.city_id}', '${this.title}', '${this.content}'`;
     }
 }
 

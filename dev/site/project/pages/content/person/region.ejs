@@ -1,7 +1,18 @@
-<form id="region">
+<form id="location_form">
     <input type="hidden" name="test">
-    <select id="id" name="id">
-        <option value="1">shanghai</option>
+    <select id="continent" name="continent" onchange="continent_change(this.value);">
+        <option value="asia">Asia</option>
+        <option value="america">America</option>
+        <option value="europe">Europe</option>
+        <option value="oceania">Oceania</option>
+        <option value="africa">Africa</option>
+        <option value="other">Other</option>
+     </select>
+    <select id="region" name="region" onchange="region_change(this.value);">
+        <option value="other">Other</option>
     </select>
-    <input type="button" onclick="location_save();" id="asdf">
+    <select id="city" name="city">
+        <option value="other">Other</option>
+    </select>
+    <input type="button" value="save" onclick="location_save();">
 </form>
