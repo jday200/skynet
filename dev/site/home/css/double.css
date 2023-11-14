@@ -1,0 +1,40 @@
+.region {
+    width:  1024px;
+}
+
+.title {
+    width: 1024px;
+    min-height: 200px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+    border: 0px;
+    border-top: 1px solid black;
+}
+
+.channel {
+    width: 1024px;
+    min-height: 200px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.channel_group {
+    width: 525px;
+    height: 240px;
+}
+
+.channel_panel {
+    width: 495px;
+    height: 180px;
+
+}
+
+.channel_item {
+	width: 465px;
+	height: 35px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

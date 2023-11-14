@@ -49,6 +49,10 @@ class T200HomeClear {
     drop_advert() {
         return `drop table if exists advert`;
     }
+
+    drop_notice() {
+        return `drop table if exists notice`;
+    }
     
     drop_note() {
         return `drop table if exists note`;
@@ -146,6 +150,15 @@ class T200HomeClear {
                     log(__filename, "drop table advert success");
                 }, function(){
                     log(__filename, "drop table advert failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_notice()).then(function(){
+                    log(__filename, "drop table notice success");
+                }, function(){
+                    log(__filename, "drop table notice failure");
                     return error();
                 });
             }, function(){

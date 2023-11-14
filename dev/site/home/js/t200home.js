@@ -33,3 +33,26 @@ function formtostring(name) {
 function hit(name, value) {
     $.set_cookie(name, value);
 }
+
+function set_region() {
+    let city = [
+        ['seoul', 20000],
+        ['tokyo', 10000]
+    ];
+
+    let result = "";
+
+    city.forEach(item => {
+        result += `<a href="/region/city.html?id=${item[1]}">${item[0]}</a> `;
+    });
+    $.id("region").innerHTML = result;
+}
+
+function turning(id, obj, url) {
+    let result = `test=&paging=${id}`;
+    $.post(url, result, function(data){
+        obj.innerHTML = data;
+    }, function(){
+        alert("Load Failure!");
+    });
+}

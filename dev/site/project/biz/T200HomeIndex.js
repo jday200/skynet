@@ -2,7 +2,7 @@ const { error, log } = require('../../library/T200Lib.js');
 const T200Error = require('../../library/T200Error.js');
 
 const T200HomeBiz = require('./T200HomeBiz.js');
-const T200IndexCities = require('../models/T200IndexCities.js');
+const T200Notice = require('../models/T200Notice.js');
 const T200House = require('../models/T200House.js');
 const T200Job = require('../models/T200Job.js');
 const T200Trading = require('../models/T200Trading.js');
@@ -20,9 +20,9 @@ class T200HomeIndex extends T200HomeBiz {
         let promise = new Promise(function(resolve, reject){
             let data = {};
 
-            self.load_cities(data).then(function(){
+            self.load_notices(data).then(function(){
 
-            }, function(){
+            }, function(err){
                 return error();
             }).then(function(){
                 return self.load_house_rents(data);
@@ -63,13 +63,13 @@ class T200HomeIndex extends T200HomeBiz {
         return promise;
     }
 
-    load_cities(data) {
+    load_notices(data) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            let IndexCities = new T200IndexCities();
+            let notice = new T200Notice();
 
-            return self.load(IndexCities.merge_list()).then(function(cities){
-                data.index_cities = cities;
+            return self.load(notice.merge_select()).then(function(notices){
+                data.notices = notices;
                 resolve(data);
             }, function(){
                 reject();

@@ -1,17 +1,15 @@
 const { error, log } = require('../../library/T200Lib.js');
 const T200Error = require('../../library/T200Error.js');
 
-const T200Forum = require('./T200Forum.js');
+const T200ModelBase = require('../../library/model/T200ModelBase.js');
 
 
-class T200Job extends T200Forum {
+class T200Notice extends T200ModelBase {
     id;
 
     user_id;
 
-    parent_id;
-
-    city_id;
+    status;
 
     title;
 
@@ -21,10 +19,9 @@ class T200Job extends T200Forum {
 
     constructor() {
         super();
-        this.parent_id = 0;
-        this.city_id = 0;
+        this.status = 0;
         //
-        this._table = "";
+        this._table = "notice";
         this._key = "id";
         this._id = "user_id";
         //
@@ -32,12 +29,12 @@ class T200Job extends T200Forum {
     }
 
     fields() {
-        return `user_id, parent_id, city_id, title, content`;
+        return `user_id, status, title, content`;
     }
 
     values() {
-        return `'${this.user_id}', '${this.parent_id}', '${this.city_id}', '${this.title}', '${this.content}'`;
+        return `'${this.user_id}', '${this.status}', '${this.title}', '${this.content}'`;
     }
 }
 
-module.exports = T200Job;
+module.exports = T200Notice;

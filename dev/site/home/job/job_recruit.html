@@ -38,8 +38,8 @@
         <div class="header">
             header
         </div>
-
-        <div class="box">
+        <form id="form"></form>
+        <div id="list_box" class="box">
             <div class="region_head">
                 #region > city
             </div>
@@ -172,6 +172,13 @@
 <script>
     $.win.onload = function(){
         nav_check();
+
+        let result = formtostring("form");
+        $.post('/job/recruit/list', result, function(data){
+            $.id("list_box").innerHTML = data;
+        }, function(){
+            alert("Load Failure!");
+        });
     };
 </script>
 

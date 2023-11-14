@@ -45,7 +45,7 @@
                 <div>
                     <fieldset class="left">
                         <legend>Admin</legend>
-                        <details open class="menu">
+                        <details class="menu">
                             <summary>Global</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details class="menu">
+                        <details open class="menu">
                             <summary>Notice</summary>
                             <div class="menu_group">
                                 <div class="menu_item">
@@ -146,7 +146,33 @@
 
             <div class="right">
                 <fieldset>
-                    <legend>Admin</legend>
+                    <legend>Notice</legend>
+                    <div class="right_box">
+                        <div class="form_title">
+                            Notice
+                        </div>
+                        <div class="form_msg">
+                            hello
+                        </div>
+                        <hr class="line">
+                        <div class="form_box">
+                            <form id="form" class="form">
+                                <input type="hidden" name="test">
+                                <div class="form_item">
+                                    <label class="form_label">Title:</label>
+                                    <input class="form_value" type="text" name="title">
+                                </div>
+                                <div class="form_item">
+                                    <label class="form_label">Content:</label>
+                                    <textarea class="form_value" name="content" rows="25"></textarea>
+                                </div>
+                                <div class="form_item">
+                                    <input type="button" class="form_button" id="submit" name="submit" value="submit">
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
                 </fieldset>
             </div>
         </div>
@@ -162,6 +188,14 @@
 <script>
     $.win.onload = function(){
         nav_check();
+        $.id("submit").onclick = function(){
+            let result = formtostring("form");
+            $.post('/admin/notice/edit', result, function(){
+                alert('Save Success!');
+            }, function(){
+                alert('Save Failure!');
+            });
+        };
     };
 </script>
 

@@ -99,6 +99,17 @@ class T200HomeCreate {
         return `create table if not exists advert (id int primary key auto_increment, name varchar(255))`;
     }
 
+    create_notice() {
+        return "create table if not exists notice ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            status int not null default 0, \
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp \
+            )";
+    }
+
     create_note() {
         return `create table if not exists note (id int primary key auto_increment, user_id int, title varchar(255), content text) character set utf8`;
     }
@@ -191,6 +202,15 @@ class T200HomeCreate {
                     log(__filename, "create table advert success");
                 }, function(){
                     log(__filename, "create table advert failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_notice()).then(function(){
+                    log(__filename, "create table notice success");
+                }, function(){
+                    log(__filename, "create table notice failure");
                     return error();
                 });
             }, function(){

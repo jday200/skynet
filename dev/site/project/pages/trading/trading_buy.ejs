@@ -1,0 +1,146 @@
+
+<div class="region_head">
+    #region > city
+</div>
+<%
+    if(tradings){
+        tradings.forEach(item => {
+%>
+<div class="article_box">
+    <div class="user_box">
+        hello
+    </div>
+    <div class="article">
+        <div class="article_head">
+            <%=item.title%>
+        </div>
+        <div class="article_content">
+            <%=item.content%>
+        </div>
+        <div class="article_foot">
+            <a href="">reply</a>
+        </div>
+    </div>
+</div>
+<%
+    });
+}else{
+%>
+<div class="article_box">
+    <div class="user_box">
+        hello
+    </div>
+    <div class="article">
+        <div class="article_head">
+
+        </div>
+        <div class="article_content">
+
+        </div>
+        <div class="article_foot">
+            <a href="">reply</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="article_box">
+    <div class="user_box">
+        hello
+    </div>
+    <div class="article">
+        <div class="article_head">
+
+        </div>
+        <div class="article_content">
+
+        </div>
+        <div class="article_foot">
+            <a href="">reply</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="article_box">
+    <div class="user_box">
+        hello
+    </div>
+    <div class="article">
+        <div class="article_head">
+
+        </div>
+        <div class="article_content">
+
+        </div>
+        <div class="article_foot">
+            <a href="">reply</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="article_box">
+    <div class="user_box">
+        hello
+    </div>
+    <div class="article">
+        <div class="article_head">
+
+        </div>
+        <div class="article_content">
+
+        </div>
+        <div class="article_foot">
+            <a href="">reply</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="article_box">
+    <div class="user_box">
+        hello
+    </div>
+    <div class="article">
+        <div class="article_head">
+            @user
+        </div>
+        <div class="article_content">
+            Content
+        </div>
+        <div class="article_foot">
+            <a href="">reply</a>
+        </div>
+    </div>
+</div>
+
+<div class="article_pages_box">
+    <div class="article_pages">
+        1 2 3 4 5
+    </div>
+</div>
+
+<div class="reply_box">
+    <div class="reply_title">
+        reply
+    </div>
+    <div class="reply">
+        <form class="reply_form">
+            <div class="reply_group">
+                <div>
+                    <textarea class="reply_text" rows="4"></textarea>
+                </div>
+                <div>
+                    <input class="reply_button" type="button" value="reply">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+
+    </div>
+</div>
+<%
+}
+%>

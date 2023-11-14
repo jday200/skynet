@@ -1,19 +1,30 @@
-
 <div>
-    <fieldset class="region">
-        <legend>Region</legend>
+    <fieldset class="notice">
+        <legend>Notice</legend>
         <div>
             <div>
-                <a href="/region/city.html?id=10000">Tokyo</a>
                 <% 
-                if(index_cities){ 
-                    index_cities.forEach(item => {
+                if(notices){ 
+                    notices.forEach(item => {
                 %>
-                    <a href="/region/city.html"><%=item.name%></a> 
+                    <a href="/notice/notice.html"><%=item.name%></a> 
                 <% 
                     });
                 } 
                 %>
+            </div>
+            <div>
+                <a href="/notice/index.html">more</a>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div>
+    <fieldset class="region">
+        <legend>Region</legend>
+        <div id="region">
+            <div>
                 <a href="/region/city.html">City</a>
             </div>
         </div>
@@ -33,7 +44,7 @@
                             house_rents.forEach(item => {
                         %>
                         <div class="channel_item">
-                            <a target="_blank" onclick="hit('hid', <%=item.id%>);" href="/house/house.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('hid', <%=item.id%>);" href="/house/house_rent.html"><%=item.title%></a>
                             <% 
                                 let cdate = new Date(item.create_time);
                              %><%=cdate.getFullYear();%>:<%=("0" + (cdate.getMonth() + 1)).slice(-2);%>:<%=("0" + cdate.getDate()).slice(-2);%> <%=("0" + cdate.getHours()).slice(-2);%>:<%=("0" + cdate.getMinutes()).slice(-2);%>                      
@@ -43,13 +54,13 @@
                         }else{
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                            <a target="_blank" href="/house/house_rent.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                            <a target="_blank" href="/house/house_rent.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html">presentation data</a>
+                            <a target="_blank" href="/house/house_rent.html">presentation data</a>
                         </div>
                         <%}%>
                     </div>
@@ -65,20 +76,20 @@
                             house_wanteds.forEach(item => {
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('hid', <%=item.id%>);" href="/house/house_wanted.html"><%=item.title%></a>
                         </div>
                         <% 
                             });
                         }else{ 
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                            <a target="_blank" href="/house/house_wanted.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                            <a target="_blank" href="/house/house_wanted.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/house/house.html">presentation data</a>
+                            <a target="_blank" href="/house/house_wanted.html">presentation data</a>
                         </div>
                         <%}%>
                     </div>
@@ -102,20 +113,20 @@
                             job_recruits.forEach(item => {
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('jid', <%=item.id%>);" href="/job/job_recruit.html"><%=item.title%></a>
                         </div>
                         <% 
                             });
                         }else{ 
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                            <a target="_blank" href="/job/job_recruit.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                            <a target="_blank" href="/job/job_recruit.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html">presentation data</a>
+                            <a target="_blank" href="/job/job_recruit.html">presentation data</a>
                         </div>
                         <%}%>
                     </div>
@@ -131,20 +142,20 @@
                             job_wanteds.forEach(item => {
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('jid', <%=item.id%>);" href="/job/job_wanted.html"><%=item.title%></a>
                         </div>
                         <% 
                             });
                         }else{ 
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                            <a target="_blank" href="/job/job_wanted.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                            <a target="_blank" href="/job/job_wanted.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/job/job.html">presentation data</a>
+                            <a target="_blank" href="/job/job_wanted.html">presentation data</a>
                         </div>
                         <%}%>
                     </div>
@@ -168,20 +179,20 @@
                             trading_sells.forEach(item => {
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('tid', <%=item.id%>);" href="/trading/trading_sell.html"><%=item.title%></a>
                         </div>
                         <% 
                             });
                         }else{ 
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                            <a target="_blank" href="/trading/trading_sell.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                            <a target="_blank" href="/trading/trading_sell.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html">presentation data</a>
+                            <a target="_blank" href="/trading/trading_sell.html">presentation data</a>
                         </div>
                         <%}%>
                     </div>
@@ -197,20 +208,20 @@
                             trading_buys.forEach(item => {
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('tid', <%=item.id%>);" href="/trading/trading_buy.html"><%=item.title%></a>
                         </div>
                         <% 
                             });
                         }else{ 
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                            <a target="_blank" href="/trading/trading_buy.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                            <a target="_blank" href="/trading/trading_buy.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
                         </div>
                         <div class="channel_item">
-                            <a target="_blank" href="/trading/trading.html">presentation data</a>
+                            <a target="_blank" href="/trading/trading_buy.html">presentation data</a>
                         </div>
                         <%}%>
                     </div>
@@ -241,7 +252,7 @@
                                 }
                         %>
                         <div class="channel_item">
-                            <a target="_blank" href="/exchange/exchange.html"><%=item.title%></a>
+                            <a target="_blank" onclick="hit('eid', <%=item.id%>);" href="/exchange/exchange.html"><%=item.title%></a>
                         </div>
                         <% 
                             });
@@ -275,7 +286,7 @@
                                     i++;
                                     %>
                                     <div class="channel_item">
-                                        <a target="_blank" href="/exchange/exchange.html"><%=item.title%></a>
+                                        <a target="_blank" onclick="hit('eid', <%=item.id%>);" href="/exchange/exchange.html"><%=item.title%></a>
                                     </div>
                                     <% 
                                 }

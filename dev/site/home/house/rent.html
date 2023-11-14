@@ -15,7 +15,7 @@
 <meta http-equiv="expires" content="0">
 
 <link rel="stylesheet" href="/css/styles.css" />
-<link rel="stylesheet" href="/css/full.css" />
+<link rel="stylesheet" href="/css/single.css" />
 
 <script src="/js/t200.js"></script>
 <script src="/js/t200home.js"></script>
@@ -44,17 +44,8 @@
             <div>
                 <fieldset class="region">
                     <legend>Region</legend>
-                    <div>
+                    <div id="region">
                         <div>
-                            <% 
-                            if(index_cities){ 
-                                index_cities.forEach(item => {
-                            %>
-                                    a
-                            <% 
-                                });
-                            } 
-                            %>
                             City
                         </div>
                     </div>
@@ -66,77 +57,59 @@
                     <legend><a href="/house/index.html">Rent</a></legend>
                     <div class="channel">
                         <div class="channel_group">
-                            <fieldset>
+                            <fieldset class="channel_panel">
                                 <legend>Rent</legend>
                                 <div>
                                     <% 
                                     if(house_rents){ 
                                         house_rents.forEach(item => {
                                     %>
-                                            a
+                                    <div class="channel_item">
+                                        <a target="_blank" onclick="hit('hid', <%=item.id%>);" href="/house/house_rent.html"><%=item.title%></a>
+                                        <% 
+                                            let cdate = new Date(item.create_time);
+                                         %><%=cdate.getFullYear();%>:<%=("0" + (cdate.getMonth() + 1)).slice(-2);%>:<%=("0" + cdate.getDate()).slice(-2);%> <%=("0" + cdate.getHours()).slice(-2);%>:<%=("0" + cdate.getMinutes()).slice(-2);%>                      
+                                    </div>
                                     <% 
                                         });
-                                    } 
+                                    }else{
                                     %>
+                                    <div class="channel_item">
+                                        <a target="_blank" href="/house/house_rent.html">presentation data,presentation data,presentation data,presentation data,presentation data,presentation data</a>
+                                    </div>
+                                    <div class="channel_item">
+                                        <a target="_blank" href="/house/house_rent.html">11111111111111111111111111111111111111111111111111111111111111111111111111</a>
+                                    </div>
+                                    <div class="channel_item">
+                                        <a target="_blank" href="/house/house_rent.html">presentation data</a>
+                                    </div>
+                                    <%}%>
                                 </div>
                             </fieldset>
                         </div>
 
                         <div class="channel_group">
-                            <fieldset>
+                            <fieldset class="channel_panel">
                                 <legend>Wanted</legend>
                                 <div>
                                     <% 
-                                    if(house_wanteds){ 
-                                        house_wanteds.forEach(item => {
+                                    if(house_rents){ 
+                                        house_rents.forEach(item => {
                                     %>
-                                            a
+                                    <div class="channel_item">
+                                        <a target="_blank" onclick="hit('hid', <%=item.id%>);" href="/house/house_rent.html"><%=item.title%></a>
+                                        <% 
+                                            let cdate = new Date(item.create_time);
+                                         %><%=cdate.getFullYear();%>:<%=("0" + (cdate.getMonth() + 1)).slice(-2);%>:<%=("0" + cdate.getDate()).slice(-2);%> <%=("0" + cdate.getHours()).slice(-2);%>:<%=("0" + cdate.getMinutes()).slice(-2);%>                      
+                                    </div>
                                     <% 
                                         });
-                                    } 
+                                    }else{
                                     %>
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-
-
-            <div>
-                <fieldset class="title">
-                    <legend>Wanted</legend>
-                    <div class="channel">
-                        <div class="channel_group">
-                            <fieldset>
-                                <legend>Wanted</legend>
-                                <div>
-                                    <% 
-                                    if(job_recruits){ 
-                                        job_recruits.forEach(item => {
-                                    %>
-                                            a
-                                    <% 
-                                        });
-                                    } 
-                                    %>
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div class="channel_group">
-                            <fieldset>
-                                <legend>Wanted</legend>
-                                <div>
-                                    <% 
-                                    if(job_wanteds){ 
-                                        job_wanteds.forEach(item => {
-                                    %>
-                                            a
-                                    <% 
-                                        });
-                                    } 
-                                    %>
+                                    <div class="channel_item">
+                                        <a target="_blank" href="/house/house_rent.html">presentation data</a>
+                                    </div>
+                                    <%}%>
                                 </div>
                             </fieldset>
                         </div>
