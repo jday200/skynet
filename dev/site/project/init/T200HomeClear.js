@@ -46,6 +46,14 @@ class T200HomeClear {
         ];
     }
 
+    drop_admin() {
+        return `drop table if exists admin`;
+    }
+
+    drop_setting() {
+        return `drop table if exists setting`;
+    }
+
     drop_advert() {
         return `drop table if exists advert`;
     }
@@ -141,6 +149,24 @@ class T200HomeClear {
                     log(__filename, "drop table exchange success");
                 }, function(){
                     log(__filename, "drop table exchange failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_admin()).then(function(){
+                    log(__filename, "drop table admin success");
+                }, function(){
+                    log(__filename, "drop table admin failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.drop_setting()).then(function(){
+                    log(__filename, "drop table setting success");
+                }, function(){
+                    log(__filename, "drop table setting failure");
                     return error();
                 });
             }, function(){

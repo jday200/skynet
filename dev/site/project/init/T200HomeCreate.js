@@ -11,92 +11,141 @@ class T200HomeCreate {
         return "create table if not exists house_rent ( \
             id int primary key auto_increment, \
             user_id int, \
+            status int not null default 0, \
             parent_id int default 0, \
             city_id int default 0,\
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
    }
 
     create_house_wanted() {
         return "create table if not exists house_wanted ( \
             id int primary key auto_increment, \
             user_id int, \
+            status int not null default 0, \
             parent_id int default 0, \
             city_id int default 0,\
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
     }
 
     create_job_recruit() {
         return "create table if not exists job_recruit ( \
             id int primary key auto_increment, \
             user_id int, \
+            status int not null default 0, \
             parent_id int default 0, \
             city_id int default 0,\
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
     }
 
     create_job_wanted() {
         return "create table if not exists job_wanted ( \
             id int primary key auto_increment, \
             user_id int, \
+            status int not null default 0, \
             parent_id int default 0, \
             city_id int default 0,\
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
     }
 
     create_trading_sell() {
         return "create table if not exists trading_sell ( \
             id int primary key auto_increment, \
             user_id int, \
+            status int not null default 0, \
             parent_id int default 0, \
             city_id int default 0,\
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
     }
 
     create_trading_buy() {
         return "create table if not exists trading_buy ( \
             id int primary key auto_increment, \
             user_id int, \
+            status int not null default 0, \
             parent_id int default 0, \
             city_id int default 0,\
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
     }
 
     create_exchange() {
         return "create table if not exists exchange ( \
             id int primary key auto_increment, \
             user_id int, \
+            status int not null default 0, \
             parent_id int default 0, \
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
     }
 
     ///
+    create_admin() {
+        return `create table if not exists admin ( \
+            id int primary key auto_increment, \
+            user_id int default 0 UNIQUE, \
+            status int not null default 0, \
+            remark text, \
+            permission text, \
+            create_time timestamp not null default current_timestamp \
+            ) character set utf8`;
+    }
+
+    create_setting() {
+        return `create table if not exists setting ( \
+            id int primary key auto_increment, \
+            setting_id int default 0 UNIQUE, \
+            status int not null default 0, \
+            name varchar(255), \
+            content text, \
+            modify_time timestamp not null default current_timestamp \
+            ) character set utf8`;
+    }
+
     create_person() {
-        return `create table if not exists person (user_id int primary key auto_increment, city_id int default 0, username varchar(50) UNIQUE, password varchar(100), email varchar(100) UNIQUE)`;
+        return `create table if not exists person ( \
+            user_id int primary key auto_increment, \
+            city_id int default 0, \
+            status int not null default 0, \
+            username varchar(50) UNIQUE, \
+            password varchar(100), \
+            email varchar(100) UNIQUE, \
+            create_time timestamp not null default current_timestamp \
+            ) character set utf8`;
     }
 
     create_advert() {
-        return `create table if not exists advert (id int primary key auto_increment, name varchar(255))`;
+        return `create table if not exists advert ( \
+            id int primary key auto_increment, \
+            status int not null default 0, \
+            name varchar(255), \
+            create_time timestamp not null default current_timestamp \
+            ) character set utf8`;
     }
 
     create_notice() {
@@ -112,19 +161,42 @@ class T200HomeCreate {
     }
 
     create_note() {
-        return `create table if not exists note (id int primary key auto_increment, user_id int, title varchar(255), content text) character set utf8`;
+        return `create table if not exists note ( \
+            id int primary key auto_increment, \
+            user_id int, \
+            status int not null default 0, \
+            title varchar(255), \
+            content text, \
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8`;
     }
 
     create_region() {
-        return `create table if not exists region (id int primary key auto_increment, name varchar(255), content text)`;
+        return `create table if not exists region ( \
+            id int primary key auto_increment, \
+            name varchar(255), \
+            content text \
+            ) character set utf8`;
     }
 
     create_city() {
-        return `create table if not exists city (id int primary key auto_increment, region_id int, level int, name varchar(255), content text)`;
+        return `create table if not exists city ( \
+            id int primary key auto_increment, \
+            region_id int, \
+            level int, \
+            name varchar(255), \
+            content text \
+            ) character set utf8`;
     }
 
     create_index_cities() {
-        return `create table if not exists index_cities (id int primary key auto_increment, city_id int, level int, intro varchar(255) )`;
+        return `create table if not exists index_cities ( \
+            id int primary key auto_increment, \
+            city_id int, \
+            level int, \
+            intro varchar(255) \
+            ) character set utf8`;
     }
 
     create(db) {
@@ -194,6 +266,24 @@ class T200HomeCreate {
                     log(__filename, "create table exchange success");
                 }, function(){
                     log(__filename, "create table exchange failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_admin()).then(function(){
+                    log(__filename, "create table admin success");
+                }, function(){
+                    log(__filename, "create table admin failure");
+                    return error();
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                return db.execute(self.create_setting()).then(function(){
+                    log(__filename, "create table setting success");
+                }, function(){
+                    log(__filename, "create table setting failure");
                     return error();
                 });
             }, function(){
