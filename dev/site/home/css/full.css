@@ -1,5 +1,5 @@
 .channel {
-    width: 1024px;
+    width: 1000px;
     min-height: 200px;
     display:flex;
 	justify-content:center;
@@ -7,7 +7,7 @@
 }
 
 .title {
-    width: 1024px;
+    width: 1000px;
     min-height: 200px;
     display:flex;
 	justify-content:center;
@@ -17,12 +17,12 @@
 }
 
 .channel_group {
-    width: 525px;
+    width: 512px;
     height: 200px;
 }
 
 .channel_panel {
-    width: 495px;
+    width: 485px;
     height: 180px;
 
 }
@@ -36,7 +36,7 @@
 }
 
 .region {
-    width: 1024px;
+    width: 1000px;
     min-height: 50px;
     display:flex;
     border: 1px solid #FFA500;
@@ -216,7 +216,7 @@
 }
 
 .notice {
-    width: 1024px;
+    width: 1000px;
     min-height: 50px;
     display:flex;
 }

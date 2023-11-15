@@ -2,20 +2,40 @@
     <fieldset class="notice">
         <legend>Notice</legend>
         <div>
-            <div>
-                <% 
-                if(notices){ 
-                    notices.forEach(item => {
-                %>
-                    <a href="/notice/notice.html"><%=item.name%></a> 
-                <% 
-                    });
-                } 
-                %>
-            </div>
-            <div>
-                <a href="/notice/index.html">more</a>
-            </div>
+            <%
+            let i = 0;
+            if(notices){
+                notices.forEach(item => {
+                    if(9 < i){
+                        %>
+                        <div>
+                            <a href="/notice/index.html">more</a>
+                        </div>
+                        <%
+                        return;
+                    }
+                    if(0 == (i % 3)){
+                        %>
+                        <div>
+                        <%
+                    }
+                    %>
+                    <a href="/notice/notice.html?id=<%=item.id%>"><%=item.name%></a>
+                    <%
+                    if(0 == (i % 3)){
+                        %>
+                        </div>
+                        <%
+                    }
+
+                    
+                    i++;
+                });
+            }
+            
+            
+            %>
+
         </div>
     </fieldset>
 </div>
@@ -24,9 +44,7 @@
     <fieldset class="region">
         <legend>Region</legend>
         <div id="region">
-            <div>
-                <a href="/region/city.html">City</a>
-            </div>
+
         </div>
     </fieldset>
 </div>

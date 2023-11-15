@@ -43,5 +43,8 @@ fieldset {
 }
 
 .footer {
+    width: 1024px;
     height:50px;
+    background-color: #cdd9b3;
+    text-align: center;
 }
