@@ -8,6 +8,8 @@ class T200Job extends T200Forum {
     id;
 
     user_id;
+    
+    status;
 
     parent_id;
 
@@ -21,6 +23,7 @@ class T200Job extends T200Forum {
 
     constructor() {
         super();
+        this.status = 0;
         this.parent_id = 0;
         this.city_id = 0;
         //
@@ -32,11 +35,11 @@ class T200Job extends T200Forum {
     }
 
     fields() {
-        return `user_id, parent_id, city_id, title, content`;
+        return `user_id, status, parent_id, city_id, title, content`;
     }
 
     values() {
-        return `'${this.user_id}', '${this.parent_id}', '${this.city_id}', '${this.title}', '${this.content}'`;
+        return `'${this.user_id}', '${this.status}', '${this.parent_id}', '${this.city_id}', '${this.title}', '${this.content}'`;
     }
 }
 

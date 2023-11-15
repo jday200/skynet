@@ -9,10 +9,14 @@ class T200IndexCities extends T200ModelBase {
 
     city_id;
 
+    level;
+
     intro;
     
     constructor() {
         super();
+        this.level = 0;
+        //
         this._table = "index_cities";
         this._key = "id";
         this._id = "city_id";
@@ -21,15 +25,15 @@ class T200IndexCities extends T200ModelBase {
     }
 
     fields() {
-        return `city_id, intro`;
+        return `city_id, level, intro`;
     }
 
     values() {
-        return `'${this.city_id}', '${this.intro}'`;
+        return `'${this.city_id}', '${this.level}', '${this.intro}'`;
     }
 
     merge_list() {
-        return `select t1.* from index_cities t1 inner join city t2 on t1.city_id = t2.id order by t1.level`;
+        return `select * from index_cities order by level`;
     }
 }
 

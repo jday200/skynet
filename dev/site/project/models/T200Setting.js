@@ -4,35 +4,37 @@ const T200Error = require('../../library/T200Error.js');
 const T200ModelBase = require('../../library/model/T200ModelBase.js');
 
 
-class T200Note extends T200ModelBase {
+class T200Admin extends T200ModelBase {
     id;
 
-    user_id;
+    setting_id;
 
     status;
 
-    title;
+    name;
 
     content;
+
+    modify_time;
 
     constructor() {
         super();
         this.status = 0;
         //
-        this._table = "note";
+        this._table = "city";
         this._key = "id";
-        this._id = "user_id";
+        this._id = "id";
         //
         this._fields = this.fields();
     }
 
     fields() {
-        return `user_id, status, title, content`;
+        return `setting_id, status, name, content`;
     }
 
     values() {
-        return `'${this.user_id}', '${this.status}', '${this.title}', '${this.content}'`;
+        return `${this.setting_id}, ${this.status}, '${this.name}', '${this.content}'`;
     }
 }
 
-module.exports = T200Note;
+module.exports = T200Setting;

@@ -9,30 +9,43 @@ class T200Exchange extends T200Forum {
 
     user_id;
 
+    status;
+
+    parent_id;
+
     title;
 
     content;
 
+    create_time;
+
+    reply_time;
+
     constructor() {
         super();
+        this.status = 0;
+        this.parent_id = 0;
+        //
         this._table = "exchange";
         this._key = "id";
         this._id = "user_id";
+        //
+        this._search = "title, content";
         //
         this._fields = this.fields();
         //this._values = this.values();
     }
 
     fields() {
-        return `user_id, title, content`;
+        return `user_id, status, parent_id, title, content`;
     }
 
     values() {
-        return `'${this.user_id}', '${this.title}', '${this.content}'`;
+        return `'${this.user_id}', '${this.status}', '${this.parent_id}', '${this.title}', '${this.content}'`;
     }
 
     merge_list() {
-        return `select t1.* from ${this._table} t1 inner join city t2 on t1.city_id = t2.id order by t1.level`;
+        return `select * from ${this._table} order by id`;
     }
 }
 

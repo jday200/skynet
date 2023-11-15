@@ -7,6 +7,10 @@ const T200ModelBase = require('../../library/model/T200ModelBase.js');
 class T200Person extends T200ModelBase {
     user_id;
 
+    city_id;
+
+    status;
+
     username;
 
     password;
@@ -15,6 +19,9 @@ class T200Person extends T200ModelBase {
     
     constructor() {
         super();
+        this.city_id = 0;
+        this.status = 0;
+        //
         this._table = "person";
         this._key = "user_id";
         this._id = "user_id";
@@ -39,7 +46,7 @@ class T200Person extends T200ModelBase {
     }
 
     merge_login() {
-        return `select * from ${this._table} where username = '${this.username}' and password = '${this.password}'`;
+        return `select user_id from ${this._table} where username = '${this.username}' and password = '${this.password}'`;
     }
 
     merge_login_update() {
