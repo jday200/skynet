@@ -106,8 +106,9 @@ class T200HomeCreate {
             status int not null default 0, \
             title varchar(255), \
             content text, \
-            create_time timestamp not null default current_timestamp \
-            )";
+            create_time timestamp not null default current_timestamp, \
+            fulltext (title, content) with parser ngram \
+            ) character set utf8";
     }
 
     create_note() {

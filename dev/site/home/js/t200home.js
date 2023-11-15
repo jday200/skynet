@@ -56,3 +56,12 @@ function turning(id, obj, url) {
         alert("Load Failure!");
     });
 }
+
+function hit_search(id, obj, url) {
+    let result = formtostring(id);
+    $.post(url, result, function(data){
+        obj.innerHTML = data;
+    }, function(){
+        alert("Search Failure!");
+    });
+}

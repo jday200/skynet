@@ -47,9 +47,10 @@
                 <legend>Notice</legend>
                 <div>
                     <div class="search_box">
-                        <form>
-                            <input type="text">
-                            <input type="submit" value="search">
+                        <form id="search">
+                            <input type="hidden" name="test">
+                            <input type="text" name="search">
+                            <input type="button" onclick="hit_search('search', $.id('list_box'), '/notice/search');" value="search">
                         </form>
                     </div>
 

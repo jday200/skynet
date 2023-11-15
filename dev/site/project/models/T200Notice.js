@@ -1,10 +1,10 @@
 const { error, log } = require('../../library/T200Lib.js');
 const T200Error = require('../../library/T200Error.js');
 
-const T200ModelBase = require('../../library/model/T200ModelBase.js');
+const T200Paging = require('./T200Paging.js');
 
 
-class T200Notice extends T200ModelBase {
+class T200Notice extends T200Paging {
     id;
 
     user_id;
@@ -24,6 +24,7 @@ class T200Notice extends T200ModelBase {
         this._table = "notice";
         this._key = "id";
         this._id = "user_id";
+        this._search = "title, content";
         //
         this._fields = this.fields();
     }

@@ -34,10 +34,33 @@ class T200HomePaging extends T200HomeBiz {
             pading.last = 1;
             pading.pages = [1, 2, 3, 4, 5];
     
-            self.list(model.merge_select()).then(function(value){
+            self.list(model.merge_select()).then(function(values){
                 let data = {};
                 data.paging = pading;
-                data.values = value;
+                data.values = values;
+                resolve(data);
+            }, function(err){
+                reject();
+            });
+        });
+
+        return promise;
+    }
+
+    fulltext(sql) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.search(sql).then(function(values){
+                let data = {};
+                let paging = {};
+
+                paging.first = 1;
+                paging.last = 1;
+                paging.pages = [1, 2, 3, 4, 5];
+
+                data.paging = paging;
+                data.values = values;
+
                 resolve(data);
             }, function(err){
                 reject();
