@@ -11,11 +11,12 @@
 }
 
 .right {
-    width: 800px;
+    width: 770px;
     min-height: 600px;
 }
 
 .right_box {
+    width: 775px;
     display:flex;
 	justify-content:center;
 	align-items:center;

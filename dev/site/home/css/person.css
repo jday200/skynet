@@ -1,0 +1,25 @@
+.profile_box {
+    width: 770px;
+    min-height: 600px;
+}
+
+.profile_panel {
+    width: 748px;
+}
+
+.info_box {
+
+}
+
+.info_panel {
+    width: 740px;
+}
+
+.item {
+    line-height: 35px;
+}
+
+.item_label {
+    width: 100px;
+    line-height: 35px;
+}

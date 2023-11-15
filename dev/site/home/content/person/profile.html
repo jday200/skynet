@@ -16,6 +16,7 @@
 
 <link rel="stylesheet" href="/css/styles.css" />
 <link rel="stylesheet" href="/css/side.css" />
+<link rel="stylesheet" href="/css/person.css" />
 
 <script src="/js/t200.js"></script>
 <script src="/js/t200home.js"></script>
@@ -38,7 +39,7 @@
         </div>
 
         <div class="header">
-            header
+            <img src="/images/home.gif"/>
         </div>
 
         <div class="side_box">
@@ -108,39 +109,81 @@
             </div>
 
             <div class="right">
-                <fieldset>
+                <fieldset class="profile_box">
                     <legend>Profile</legend>
-                    <div>
-                        <fieldset>
-                            <legend>Profile</legend>
-                            <div>
-                                <div>
-                                    username
+                    <div class="profile_panel">
+                        <fieldset class="info_box">
+                            <legend>Account</legend>
+                            <div class="info_panel">
+                                <div class="item">
+                                    <div class="item_label">
+                                        Username
+                                    </div>
+                                    <div id="username" class="item_value">
+
+                                    </div>
                                 </div>
-                                <div>
-                                    password
+                                <div class="item">
+                                    <div class="item_label">
+                                        Nickname
+                                    </div>
+                                    <div id="nickname" class="item_value">
+
+                                    </div>
+                                    <button>Edit</button>
                                 </div>
-                                <div>
-                                    email
+                                <div class="item">
+                                    <div class="item_label">
+                                        Password
+                                    </div>
+                                    <div class="item_value">
+                                        ********
+                                    </div>
+                                    <button>Edit</button>
+                                </div>
+                                <div class="item">
+                                    <div class="item_label">
+                                        Email
+                                    </div>
+                                    <div id="email" class="item_value">
+                                        
+                                    </div>
+                                    <button>Edit</button>
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>
+                        <fieldset class="info_box">
                             <legend>Profile</legend>
-                            <div>
-                                <form id="form"></form>
-                                <div>
-                                    nationality
+                            <div class="info_panel">
+                                <div class="item">
+                                    <div class="item_label">
+                                        Nationality
+                                    </div>
+                                    <div id="email" class="item_value">
+                                        
+                                    </div>
+                                    <button>Edit</button>
                                 </div>
-                                <div>
-                                    location
-                                    <button id="location_edit">edit</button>
+                                <div class="item">
+                                    <div class="item_label">
+                                        Location
+                                    </div>
+                                    <div id="email" class="item_value">
+                                        
+                                    </div>
+                                    <button id="location_edit">Edit</button>
                                     <div id="location">
 
                                     </div>
                                 </div>
-                                <div>
-                                    intro
+                                <div class="item">
+                                    <div class="item_label">
+                                        Intro
+                                    </div>
+                                    <div id="email" class="item_value">
+                                        
+                                    </div>
+                                    <button>Edit</button>
                                 </div>
                             </div>
                         </fieldset>
@@ -162,6 +205,14 @@
         nav_check();
 
         $.id("location_edit").onclick = location_edit;
+
+        
+        let result = formtostring("form");
+        $.post('/content/person/profile', result, function(data){
+            $.id("list_box").innerHTML = data;
+        }, function(){
+            alert("Load Failure!");
+        });
     };
 </script>
 
