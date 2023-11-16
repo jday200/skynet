@@ -1,0 +1,85 @@
+.form_box {
+    width: 1024px;
+    min-height: 300px;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    background-color:darksalmon;
+}
+
+.form {
+
+}
+
+.form_title {
+    width: 1000px;
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.title_msg {
+    width: 1000px;
+    line-height: 35px;
+    font-weight: bold;
+    padding-left: 400px;
+}
+
+.form_group {
+    width: 600px;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: fuchsia;
+}
+
+
+.form_item {
+    width: 400px;
+    line-height: 35px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.form_label {
+    width: 100px;
+    text-align: left;
+}
+
+.form_value {
+    width: 300px;
+}
+
+.form_code {
+    width: 150px;
+}
+
+.form_email {
+    width: 250px;
+}
+
+.email_button {
+    width: 50px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.form_button {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form_msg {
+    width: 400px;
+    line-height: 30px;
+    font-weight: normal;
+}
