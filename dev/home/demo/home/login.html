@@ -33,7 +33,7 @@
                 <a href="/">Home</a> |
                 <a href="/about.html">About</a>
             </div>
-            <div class="nav_right">
+            <div id="nav_right" class="nav_right">
                 <a href="/login.html">Login</a> |
                 <a href="/register.html">Register</a>
             </div>
@@ -43,7 +43,7 @@
             <img src="/images/home.gif">
         </header>
 
-        <div class="form_box">
+        <div id="main" class="form_box">
             <div class="form_title">
                 Login
             </div>
@@ -68,7 +68,7 @@
 
                     <div class="form_item">
                         <div class="form_button">
-                            <input type="button" value="Submit">
+                            <input type="button" id="submit" value="Submit">
                         </div>
                     </div>
                 </form>
@@ -91,5 +91,16 @@
     </div>
 
 </body>
+
+<script>
+    $.win.onload = function(){
+        nav_check();
+
+        $.id('submit').onclick = function(){
+            login();
+            forward("/");
+        };
+    };
+</script>
 
 </html>
