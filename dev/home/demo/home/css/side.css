@@ -2,7 +2,7 @@
     width: 1024px;
     display: flex;
     justify-content: top;
-    align-items: center;
+    align-items: top;
 }
 
 .left_box {
@@ -20,6 +20,18 @@
     min-height: 600px;
 
     background-color: deeppink;
+}
+
+.right_title {
+    width: 800px;
+    background-color:lightblue;    
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+
+    border: 0;
+    border-top: 1px solid darkgray;
 }
 
 .right_group {
@@ -42,6 +54,14 @@
 
 }
 
+.right_button {
+    line-height: 35px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 5px;
+}
+
 .menu_group {
     line-height: 30px;
     border-bottom: 1px solid darkgray;
@@ -58,4 +78,49 @@
 
 .side_group {
     margin-bottom: 10px;
+}
+
+.search_box {
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paging_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.paging_top {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1 solid black;
+}
+
+.paging_bottom {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1 solid black;
+}
+
+.list_box {
+    border: 1px solid black;
+}
+
+.list_item {
+    width: 753px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
 }

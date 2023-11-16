@@ -83,3 +83,57 @@
     line-height: 30px;
     font-weight: normal;
 }
+
+.search_box {
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paging_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.paging_top {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1 solid black;
+}
+
+.paging_bottom {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1 solid black;
+}
+
+.list_box {
+    border: 1px solid black;
+}
+
+.list_item {
+    width: 753px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    width: 1000px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.content {
+    width: 800px;
+    line-height: 30px;
+    min-height: 300px;
+}
