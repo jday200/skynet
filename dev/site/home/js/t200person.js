@@ -50,22 +50,112 @@ function password_save() {
 }
 
 
-
-function location_edit() {
-    let result = formtostring("form");
-    $.post('/content/person/region', result, function(data){
-        $.id("location").innerHTML = data;
-    }, function(){
-        alert("Load Failure!");
-    });
+function email_edit() {
+    $.id('email_box').innerHTML = " \
+    <form class='form' id='email_form'> \
+    <div class='form_item'> \
+    <label class='form_label'>Email:</label> \
+    <input class='form_value' id='form_email' type='email' name='email'> \
+    </div> \
+    <div class='form_item'> \
+    <label class='form_label'>Code:</label> \
+    <input class='form_value' type='password' name='code'> \
+    </div> \
+    </form> \
+    ";
+    $.id("email_button").innerHTML = "Save";
+    $.id("email_button").onclick = email_save;
 }
 
-function location_save() {
-    let result = formtostring("location_form");
-    $.post('/content/person/region/save', result, function(data){
+function email_save() {
+    let result = formtostring("email_form");
+    $.post('/content/person/email/save', result, function(data){
         alert("Save Success!");
+        $.id("email").innerHTML = $.id("form_email").value;
+        $.id("email_box").innerHTML = "";
+        $.id("email_button").innerHTML = "Edit";
+        $.id("email_button").onclick = email_edit;
     }, function(){
         alert("Save Failure!");
     });
 }
 
+
+function nationality_edit() {
+    $.id('nationality_box').innerHTML = " \
+    <form class='form' id='nationality_form'> \
+    <div class='form_item'> \
+    <label class='form_label'>Email:</label> \
+    <input class='form_value' id='form_email' type='email' name='email'> \
+    </div> \
+    <div class='form_item'> \
+    <label class='form_label'>Code:</label> \
+    <input class='form_value' type='password' name='code'> \
+    </div> \
+    </form> \
+    ";
+    $.id("nationality_button").innerHTML = "Save";
+    $.id("nationality_button").onclick = nationality_save;
+}
+
+function nationality_save() {
+    let result = formtostring("nationality_form");
+    $.post('/content/person/nationality/save', result, function(data){
+        alert("Save Success!");
+        $.id("nationality").innerHTML = $.id("form_nationality").value;
+        $.id("nationality_box").innerHTML = "";
+        $.id("nationality_button").innerHTML = "Edit";
+        $.id("nationality_button").onclick = nationality_edit;
+    }, function(){
+        alert("Save Failure!");
+    });
+}
+
+
+function location_edit() {
+    $.id('location_box').innerHTML = " \
+    <form class='form' id='location_form'> \
+    <div class='form_item'> \
+    <label class='form_label'>Email:</label> \
+    <input class='form_value' id='form_email' type='email' name='email'> \
+    </div> \
+    <div class='form_item'> \
+    <label class='form_label'>Code:</label> \
+    <input class='form_value' type='password' name='code'> \
+    </div> \
+    </form> \
+    ";
+    $.id("location_button").innerHTML = "Save";
+    $.id("location_button").onclick = location_save;
+}
+
+function location_save() {
+    let result = formtostring("location_form");
+    $.post('/content/person/location/save', result, function(data){
+        alert("Save Success!");
+        $.id("location").innerHTML = $.id("form_location").value;
+        $.id("location_box").innerHTML = "";
+        $.id("location_button").innerHTML = "Edit";
+        $.id("location_button").onclick = location_edit;
+    }, function(){
+        alert("Save Failure!");
+    });
+}
+
+function intro_edit() {
+    $.id("intro").disabled = false;
+    $.id("intro_button").innerHTML = "Save";
+    $.id("intro_button").onclick = intro_save;
+}
+
+function intro_save() {
+    let result = formtostring("intro_form");
+    $.post('/content/person/intro/save', result, function(data){
+        alert("Save Success!");
+        $.id("intro").disabled = true;
+        $.id("intro_button").innerHTML = "Edit";
+        $.id("intro_button").onclick = intro_edit;
+    }, function(){
+        alert("Save Failure!");
+    });
+}

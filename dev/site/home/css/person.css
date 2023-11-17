@@ -4,11 +4,11 @@
 }
 
 .profile_panel {
-    width: 748px;
+    width: 740px;
 }
 
 .info_box {
-
+    width: 720px;
 }
 
 .info_panel {
@@ -23,18 +23,27 @@
 	align-items:center;
 }
 
+.profile_item {
+    width: 740px;
+    display:flex;
+	justify-content:space-between;
+	align-items:top;
+}
+
 .left_item {
+    display:flex;
+	justify-content:center;
+	align-items:top;
+}
+
+.right_item {
     display:flex;
 	justify-content:center;
 	align-items:center;
 }
 
-.right_item {
-
-}
-
 .right_button {
-    width: 50px;
+    width: 50px;    
 }
 
 .item_label {
@@ -43,7 +52,9 @@
 }
 
 .item_value {
-
+    display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
 .form_item {
@@ -56,4 +67,22 @@
 
 .form_value {
     width: 200px;
+}
+
+.profile_panel {
+    width: 740px;
+    min-height: 350px;
+}
+
+.intro_form {
+    width: 500px;
+    margin-top: 10px;
+}
+
+.region_title {
+    width: 100px;
+}
+
+.region_value {
+    width: 100px;
 }

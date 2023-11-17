@@ -109,7 +109,7 @@ async function do_person_nickname_save(request, response, cookie, session, resou
 }
 
 async function do_person_password_save(request, response, cookie, session, resource) {
-    log(__filename, "do_person_region_save");
+    log(__filename, "do_person_password_save");
     let self = this;
     let promise = new Promise(function(resolve, reject){
         let person = new T200Person();
@@ -142,8 +142,8 @@ async function do_person_password_save(request, response, cookie, session, resou
 }
 
 
-async function do_person_region_save(request, response, cookie, session, resource) {
-    log(__filename, "do_person_region_save");
+async function do_person_email_save(request, response, cookie, session, resource) {
+    log(__filename, "do_person_email_save");
     let self = this;
     let promise = new Promise(function(resolve, reject){
         let person = new T200Person();
@@ -174,11 +174,119 @@ async function do_person_region_save(request, response, cookie, session, resourc
 
     return promise;
 }
+
+
+
+async function do_person_nationality_save(request, response, cookie, session, resource) {
+    log(__filename, "do_person_password_save");
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let person = new T200Person();
+        let HomePerson = new T200HomePerson();
+
+        if(HomePerson.verify_login(cookie, session)){
+            person.user_id = session.get("userid");
+            person.city_id = request.get("city");
+            if(T200HttpsForm.verify_id(person.user_id)
+                && T200HttpsForm.verify_id(person.city_id)){
+                HomePerson.modify(person.merge_city_update()).then(function(result){
+                    response.type("json");
+                    if(result){
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                }, function(){
+                    reject();
+                });
+            }else{
+                reject();
+            }
+        }else{
+            reject();
+        }
+    });
+
+    return promise;
+}
+
+
+async function do_person_location_save(request, response, cookie, session, resource) {
+    log(__filename, "do_person_password_save");
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let person = new T200Person();
+        let HomePerson = new T200HomePerson();
+
+        if(HomePerson.verify_login(cookie, session)){
+            person.user_id = session.get("userid");
+            person.city_id = request.get("city");
+            if(T200HttpsForm.verify_id(person.user_id)
+                && T200HttpsForm.verify_id(person.city_id)){
+                HomePerson.modify(person.merge_city_update()).then(function(result){
+                    response.type("json");
+                    if(result){
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                }, function(){
+                    reject();
+                });
+            }else{
+                reject();
+            }
+        }else{
+            reject();
+        }
+    });
+
+    return promise;
+}
+
+
+async function do_person_intro_save(request, response, cookie, session, resource) {
+    log(__filename, "do_person_password_save");
+    let self = this;
+    let promise = new Promise(function(resolve, reject){
+        let person = new T200Person();
+        let HomePerson = new T200HomePerson();
+
+        if(HomePerson.verify_login(cookie, session)){
+            person.user_id = session.get("userid");
+            person.city_id = request.get("city");
+            if(T200HttpsForm.verify_id(person.user_id)
+                && T200HttpsForm.verify_id(person.city_id)){
+                HomePerson.modify(person.merge_city_update()).then(function(result){
+                    response.type("json");
+                    if(result){
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                }, function(){
+                    reject();
+                });
+            }else{
+                reject();
+            }
+        }else{
+            reject();
+        }
+    });
+
+    return promise;
+}
+
 
 global.action.use_post('/content/person/region', do_person_region);
 global.action.use_post('/content/person/profile', do_person_profile);
 
 global.action.use_post('/content/person/nickname/save', do_person_nickname_save);
 global.action.use_post('/content/person/password/save', do_person_password_save);
-global.action.use_post('/content/person/region/save', do_person_region_save);
+global.action.use_post('/content/person/email/save', do_person_email_save);
+global.action.use_post('/content/person/nationality/save', do_person_nationality_save);
+global.action.use_post('/content/person/location/save', do_person_location_save);
+global.action.use_post('/content/person/intro/save', do_person_intro_save);
+
 
