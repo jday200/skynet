@@ -20,8 +20,8 @@
 
 <script src="/js/t200.js"></script>
 <script src="/js/t200home.js"></script>
-<script src="/js/t200person.js"></script>
 <script src="/js/t200region.js"></script>
+<script src="/js/t200person.js"></script>
 
 </head>
 <body>
@@ -248,12 +248,9 @@
 <script>
     $.win.onload = function(){
         nav_check();
-
-        $.id("location_edit").onclick = location_edit;
-
         
         let result = formtostring("form");
-        $.post('/content/person/profile1', result, function(data){
+        $.post('/content/person/profile', result, function(data){
             $.id("list_box").innerHTML = data;
         }, function(){
             alert("Load Failure!");

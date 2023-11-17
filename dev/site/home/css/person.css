@@ -62,7 +62,8 @@
 }
 
 .form_label {
-    width: 150px;
+    width: 120px;
+    text-align: left;
 }
 
 .form_value {
@@ -84,5 +85,9 @@
 }
 
 .region_value {
+    width: 150px;
+}
+
+.city_value {
     width: 100px;
 }

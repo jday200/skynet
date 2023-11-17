@@ -115,16 +115,26 @@ function nationality_save() {
 function location_edit() {
     $.id('location_box').innerHTML = " \
     <form class='form' id='location_form'> \
+    <input type='hidden' name='test'> \
     <div class='form_item'> \
-    <label class='form_label'>Email:</label> \
-    <input class='form_value' id='form_email' type='email' name='email'> \
+    <label class='form_label'>Continent:</label> \
+    <select class='form_value' id='continent' name='continent' \
+    onchange='continent_change(this.value);'> </select> \
     </div> \
     <div class='form_item'> \
-    <label class='form_label'>Code:</label> \
-    <input class='form_value' type='password' name='code'> \
+    <label class='form_label'>Region:</label> \
+    <select class='form_value' id='region' name='region' \
+    onchange='region_change(this.value);'> </select> \
+    </div> \
+    <div class='form_item'> \
+    <label class='form_label'>City:</label> \
+    <select class='form_value' id='city' name='city'> </select> \
     </div> \
     </form> \
     ";
+
+    continent_init($.id("continent"));
+
     $.id("location_button").innerHTML = "Save";
     $.id("location_button").onclick = location_save;
 }
@@ -133,7 +143,8 @@ function location_save() {
     let result = formtostring("location_form");
     $.post('/content/person/location/save', result, function(data){
         alert("Save Success!");
-        $.id("location").innerHTML = $.id("form_location").value;
+        $.id("location_region").innerHTML = $.id("region").value;
+        $.id("location_city").innerHTML = $.id("city").options[$.id("city").selectedIndex].text;
         $.id("location_box").innerHTML = "";
         $.id("location_button").innerHTML = "Edit";
         $.id("location_button").onclick = location_edit;

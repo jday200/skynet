@@ -2,74 +2,118 @@
     <legend>Account</legend>
     <div class="info_panel">
         <div class="item">
-            <div class="item_label">
-                Username
+            <div class="left_item">
+                <div class="item_label">
+                    Username: 
+                </div>
+                <div id="username" class="item_value">
+                    username
+                </div>
+            </div>                                    
+        </div>
+        <div class="item">
+            <div class="left_item">
+                <div class="item_label">
+                    Nickname:
+                </div>
+                <div class="item_value">
+                    <form id="nickname_form">
+                        <input type="text" disabled id="nickname" name="nickname" value="nickname">
+                    </form>
+                </div>
+            </div>                                    
+            <button class="right_button" id="nickname_button" onclick="nickname_edit();">Edit</button>
+        </div>
+        <div class="item">
+            <div class="left_item">
+                <div class="item_label">
+                    Password:
+                </div>
+                <div class="item_value">
+                    ********
+                </div>
             </div>
-            <div id="username" class="item_value">
+            
+            <button class="right_button" id="password_button" onclick="password_edit();">Edit</button>
+        </div>
+        <div id="password_box">
 
-            </div>
         </div>
         <div class="item">
-            <div class="item_label">
-                Nickname
+            <div class="left_item">
+                <div class="item_label">
+                    Email:
+                </div>
+                <div id="email" class="item_value">
+                    Email@email.com
+                </div>
             </div>
-            <div id="nickname" class="item_value">
+            
+            <button class="right_button" id="email_button" onclick="email_edit();">Edit</button>
+        </div>
+        <div id="email_box">
 
-            </div>
-            <button>Edit</button>
-        </div>
-        <div class="item">
-            <div class="item_label">
-                Password
-            </div>
-            <div class="item_value">
-                ********
-            </div>
-            <button>Edit</button>
-        </div>
-        <div class="item">
-            <div class="item_label">
-                Email
-            </div>
-            <div id="email" class="item_value">
-                
-            </div>
-            <button>Edit</button>
         </div>
     </div>
 </fieldset>
 <fieldset class="info_box">
     <legend>Profile</legend>
-    <div class="info_panel">
+    <div class="profile_panel">
         <div class="item">
-            <div class="item_label">
-                Nationality
+            <div class="left_item">
+                <div class="item_label">
+                    Nationality:
+                </div>
+                <div id="nationality" class="item_value">
+                    Country
+                </div>
             </div>
-            <div id="email" class="item_value">
-                
-            </div>
-            <button>Edit</button>
+            
+            <button class="right_button" id="nationality_button" onclick="nationality_edit();">Edit</button>
         </div>
-        <div class="item">
-            <div class="item_label">
-                Location
-            </div>
-            <div id="email" class="item_value">
-                
-            </div>
-            <button id="location_edit">Edit</button>
-            <div id="location">
+        <div id="nationality_box">
 
-            </div>
         </div>
         <div class="item">
-            <div class="item_label">
-                Intro
+            <div class="left_item">
+                <div class="item_label">
+                    Location:
+                </div>
+                <div id="location" class="item_value">
+                    <div class="region_title">
+                        Region:
+                    </div>
+                    <div id="location_region" class="region_value">
+                        region
+                    </div>
+                    <div class="region_title">
+                        City:
+                    </div>
+                    <div id="location_city" class="city_value">
+                        City
+                    </div>
+                </div>
             </div>
-            <div id="email" class="item_value">
-                
+            <button class="right_button" id="location_button" onclick="location_edit();">Edit</button>
+        </div>
+        <div id="location_box">
+
+        </div>
+        
+        <div class="profile_item">
+            <div class="left_item">
+                <div class="item_label">
+                    Intro:
+                </div>
+                <div class="item_value">
+                    <form id="intro_form" class="intro_form">
+                        <textarea disabled id="intro" rows="15" cols="60" name="intro"></textarea>
+                    </form>
+                </div>
             </div>
-            <button>Edit</button>
+            <div class="right_item">
+                <button class="right_button" id="intro_button" onclick="intro_edit();">Edit</button>
+            </div>
         </div>
     </div>
 </fieldset>

@@ -70,6 +70,7 @@ function continent_init(obj, value) {
            
         });
         obj.innerHTML = result;
+        obj.value = "";
     }
 }
 
@@ -84,6 +85,7 @@ function continent_change(value) {
             result += `<option value='${item}'>${item}</option>`;
         });
         $.id('region').innerHTML = result;
+        $.id('region').value = "";
     }
 }
 

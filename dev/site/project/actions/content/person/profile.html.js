@@ -212,7 +212,7 @@ async function do_person_nationality_save(request, response, cookie, session, re
 
 
 async function do_person_location_save(request, response, cookie, session, resource) {
-    log(__filename, "do_person_password_save");
+    log(__filename, "do_person_location_save");
     let self = this;
     let promise = new Promise(function(resolve, reject){
         let person = new T200Person();
