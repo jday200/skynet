@@ -117,34 +117,46 @@
                             <legend>Account</legend>
                             <div class="info_panel">
                                 <div class="item">
-                                    <div class="item_label">
-                                        Username
+                                    <div class="left_item">
+                                        <div class="item_label">
+                                            Username: 
+                                        </div>
+                                        <div id="username" class="item_value">
+                                            username
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="item">
+                                    <div class="left_item">
+                                        <div class="item_label">
+                                            Nickname:
+                                        </div>
+                                        <div class="item_value">
+                                            <form id="nickname_form">
+                                                <input type="text" disabled id="nickname" name="nickname" value="nickname">
+                                            </form>
+                                        </div>
+                                    </div>                                    
+                                    <button class="right_button" id="nickname_button" onclick="nickname_edit();">Edit</button>
+                                </div>
+                                <div class="item">
+                                    <div class="left_item">
+                                        <div class="item_label">
+                                            Password:
+                                        </div>
+                                        <div class="item_value">
+                                            ********
+                                        </div>
                                     </div>
-                                    <div id="username" class="item_value">
+                                    
+                                    <button class="right_button" id="password_button" onclick="password_edit();">Edit</button>
+                                </div>
+                                <div id="password_box">
 
-                                    </div>
                                 </div>
                                 <div class="item">
                                     <div class="item_label">
-                                        Nickname
-                                    </div>
-                                    <div id="nickname" class="item_value">
-
-                                    </div>
-                                    <button>Edit</button>
-                                </div>
-                                <div class="item">
-                                    <div class="item_label">
-                                        Password
-                                    </div>
-                                    <div class="item_value">
-                                        ********
-                                    </div>
-                                    <button>Edit</button>
-                                </div>
-                                <div class="item">
-                                    <div class="item_label">
-                                        Email
+                                        Email:
                                     </div>
                                     <div id="email" class="item_value">
                                         
@@ -209,7 +221,7 @@
 
         
         let result = formtostring("form");
-        $.post('/content/person/profile', result, function(data){
+        $.post('/content/person/profile1', result, function(data){
             $.id("list_box").innerHTML = data;
         }, function(){
             alert("Load Failure!");

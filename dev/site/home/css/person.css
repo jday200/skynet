@@ -16,13 +16,44 @@
 }
 
 .item {
+    width: 740px;
     line-height: 35px;
     display:flex;
-	justify-content:left;
+	justify-content:space-between;
 	align-items:center;
+}
+
+.left_item {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.right_item {
+
+}
+
+.right_button {
+    width: 50px;
 }
 
 .item_label {
     width: 100px;
     line-height: 35px;
+}
+
+.item_value {
+
+}
+
+.form_item {
+    width: 350px;
+}
+
+.form_label {
+    width: 150px;
+}
+
+.form_value {
+    width: 200px;
 }
