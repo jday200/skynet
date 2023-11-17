@@ -1,5 +1,5 @@
 .profile_box {
-    width: 770px;
+    width: 765px;
     min-height: 600px;
 }
 
@@ -17,6 +17,9 @@
 
 .item {
     line-height: 35px;
+    display:flex;
+	justify-content:left;
+	align-items:center;
 }
 
 .item_label {

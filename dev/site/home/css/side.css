@@ -1,4 +1,5 @@
 .side_box {
+    width: 1024px;
     display:flex;
 	justify-content:center;
 	align-items:top;
@@ -11,12 +12,12 @@
 }
 
 .right {
-    width: 770px;
+    width: 795px;
     min-height: 600px;
 }
 
 .right_box {
-    width: 775px;
+    width: 760px;
     display:flex;
 	justify-content:center;
 	align-items:center;
@@ -41,7 +42,7 @@
 }
 
 .publish {
-    width: 800px;
+    width: 780px;
     line-height: 50px;
     display:flex;
 	justify-content:right;
@@ -56,7 +57,7 @@
 }
 
 .list_box {
-    width: 800px;
+    width: 780px;
     display:flex;
 	justify-content:center;
 	align-items:center;
@@ -64,7 +65,7 @@
 }
 
 .pages_top_box {
-    width: 800px;
+    width: 766px;
     line-height: 50px;
     display:flex;
 	justify-content:center;
@@ -73,7 +74,7 @@
 }
 
 .pages_bottom_box {
-    width: 800px;
+    width: 766px;
     line-height: 50px;
     display:flex;
 	justify-content:center;
