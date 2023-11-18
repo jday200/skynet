@@ -1,0 +1,97 @@
+const T200Error = require('../T200Error.js');
+
+class T200DBClient {
+    constructor(db) {
+        this.database = db;
+    }
+
+    connect() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            if(undefined == self.database){
+                reject(T200Error.build());
+            }else{
+                self.database.connect().then(function(conn){
+                    self._conn = conn;
+                    resolve();
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
+        });
+
+        return promise;
+    }
+
+    disconnect() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            if(undefined == self.database){
+                reject(T200Error.build());
+            }else{
+                self.database.disconnect(self._conn).then(function(){
+                    resolve();
+                }, function(err){
+                    reject(err);
+                });
+            }
+        });
+
+        return promise;
+    }
+
+    query(sql) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            if(undefined == self.database){
+                reject(T200Error.build());
+            }else{
+                self._conn.query(sql).then(function(data){
+                    resolve(data);
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
+        });
+
+        return promise;
+    }
+
+    execute(sql) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+
+        });
+
+        return promise;
+    }
+
+    begin() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+
+        });
+
+        return promise;
+    }
+
+    commit() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+
+        });
+
+        return promise;
+    }
+
+    rollback() {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+
+        });
+
+        return promise;
+    }
+}
+
+module.exports = T200DBClient;
