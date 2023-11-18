@@ -60,7 +60,16 @@ class T200DBClient {
     execute(sql) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
+            if(undefined == self.database){
+                reject(T200Error.build());
+            }else{
+                self._conn.query(sql).then(function(data){
 
+                    resolve(data);
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
         });
 
         return promise;
@@ -69,7 +78,15 @@ class T200DBClient {
     begin() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-
+            if(undefined == self.database){
+                reject(T200Error.build());
+            }else{
+                self._conn.beginTransaction().then(function(){
+                    resolve();
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
         });
 
         return promise;
@@ -78,7 +95,15 @@ class T200DBClient {
     commit() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-
+            if(undefined == self.database){
+                reject(T200Error.build());
+            }else{
+                self._conn.commit().then(function(){
+                    resolve();
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
         });
 
         return promise;
@@ -87,7 +112,15 @@ class T200DBClient {
     rollback() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-
+            if(undefined == self.database){
+                reject(T200Error.build());
+            }else{
+                self._conn.rollback().then(function(){
+                    resolve();
+                }, function(err){
+                    reject(T200Error.build());
+                });
+            }
         });
 
         return promise;
