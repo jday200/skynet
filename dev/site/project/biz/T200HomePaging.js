@@ -16,30 +16,43 @@ class T200HomePaging extends T200HomeBiz {
         this.cookie = cookie;
         this.session = session;
         //
+        this._page_size = 5;
         this._paging_size = 10;
     }
 
-    paging(model) {
+    calculate(model, page) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            let page = self.request.get("paging");
-            let offset = (page - 1) * self._paging_size;
+            self.count(model.merge_count()).then(function(data){
+                let value = data[0].total;
+                let total = Number(value);
+                let prev = page - 1;
+                let next = page + 1;
 
-            let pading = {};
-    
-            model._size = self._paging_size;
-            model._offset = offset;
+                let paging = {};
 
-            pading.first = 1;
-            pading.last = 1;
-            pading.pages = [1, 2, 3, 4, 5];
-    
-            self.list(model.merge_select()).then(function(values){
-                let data = {};
-                data.paging = pading;
-                data.values = values;
-                resolve(data);
-            }, function(err){
+                paging.first = 1;
+                paging.last = Math.ceil(total / self._paging_size);
+
+                paging.prev = prev < paging.first ? paging.first : prev;
+                paging.next = next > paging.last ? paging.last : next;
+
+                let head = Math.floor(page / self._page_size) * self._page_size;
+                let tail = head + self._page_size;
+
+                head = 0 == head ? 1 : head;
+                paging.pages = new Array();
+
+                for(let i = head;i <= tail;i++){
+                    if(i > paging.last){
+                        break;
+                    }else{
+                        paging.pages.push(i);
+                    }
+                }
+
+                resolve(paging);
+            }, function(){
                 reject();
             });
         });
@@ -47,23 +60,41 @@ class T200HomePaging extends T200HomeBiz {
         return promise;
     }
 
-    fulltext(sql) {
+
+    paging(model) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            self.search(sql).then(function(values){
-                let data = {};
-                let paging = {};
+            let page = self.request.get("paging");
 
-                paging.first = 1;
-                paging.last = 1;
-                paging.pages = [1, 2, 3, 4, 5];
-
-                data.paging = paging;
-                data.values = values;
-
-                resolve(data);
-            }, function(err){
+            self.calculate(model, page).then(function(paging){
+                return self.list(model.merge_paging(paging)).then(function(values){
+                    let data = {};
+                    data.paging = paging;
+                    data.values = values;
+                    resolve(data);
+                }, function(err){
+                    return error();
+                });
+            }, function(){
                 reject();
+            });
+        });
+
+        return promise;
+    }
+
+
+    fulltext(model, search) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            self.count(model.merge_search(search)).then(function(){
+                self.paging(model).then(function(data){
+                    resolve(data);
+                }, function(){
+
+                });
+            }, function(){
+
             });
         });
 

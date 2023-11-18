@@ -43,7 +43,7 @@ function set_region() {
     let result = "";
 
     city.forEach(item => {
-        result += `<a href="/region/city.html?id=${item[1]}">${item[0]}</a> `;
+        result += `<a class="region_item" href="/region/city.html?id=${item[1]}">${item[0]}</a> `;
     });
     $.id("region").innerHTML = result;
 }

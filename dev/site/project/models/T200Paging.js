@@ -13,6 +13,14 @@ class T200Paging extends T200ModelBase {
         return `select * from ${this._table} where match(${this._search}) against('${value}')`;
     }
 
+    merge_paging(paging) {
+        return `select * from ${this._table} order by ${this._key} DESC limit ${this._size} offset ${this._offset}`;
+    }
+
+    merge_count() {
+        return `select count(${this._key}) as total from ${this._table}`;
+    }
+
 }
 
 module.exports = T200Paging;

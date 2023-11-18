@@ -36,6 +36,7 @@ class T200Notice extends T200Paging {
     values() {
         return `'${this.user_id}', '${this.status}', '${this.title}', '${this.content}'`;
     }
+
 }
 
 module.exports = T200Notice;

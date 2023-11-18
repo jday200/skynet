@@ -177,6 +177,46 @@ class T200HomeBiz extends T200BizBase {
         });
     }
 
+    
+    count(sql) {
+        let self = this;
+        let result = false;
+        let data;
+        return self.check().then(function(){
+            return self.store.connect().then(function(){
+                return self.store.query(sql).then(function(value){
+                    if(value){
+                        data = value;
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }, function(){
+
+                }).finally(function(){
+                    return self.store.disconnect().then(function(){
+
+                    }, function(){
+                        result = false;
+                        return error();
+                    });
+                });
+            }, function(){
+                return error();
+            }).then(function(){
+                if(result){
+                    return data;
+                }else{
+                    return error();
+                }
+            }, function(){
+                return error();
+            });
+        }, function(){
+            return error();
+        });
+    }
+
 
     find(sql) {
         let self = this;

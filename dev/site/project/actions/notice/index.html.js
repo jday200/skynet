@@ -44,7 +44,7 @@ async function do_notice_search(request, response, cookie, session, resource) {
         let search = request.get("search");
 
         if(T200HttpsForm.verify_text(search)){
-            HomeNotice.fulltext(notice.merge_search(search)).then(function (result) {
+            HomeNotice.fulltext(notice, search).then(function (result) {
                 let view = new T200View(resource);
                 let data = {};
                 data.paging = result.paging;
