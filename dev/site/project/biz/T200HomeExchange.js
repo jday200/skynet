@@ -1,14 +1,14 @@
 const { error, log } = require('../../library/T200Lib.js');
 const T200Error = require('../../library/T200Error.js');
 
-const T200HomeBiz = require('./T200HomeBiz.js');
-const T200IndexCities = require('../models/T200IndexCities.js');
+const T200HomePaging = require('./T200HomePaging.js');
+
 const T200Exchange = require('../models/T200Exchange.js');
 
 
-class T200HomeExchange extends T200HomeBiz {
-    constructor() {
-        super();
+class T200HomeExchange extends T200HomePaging {
+    constructor(request, cookie, session) {
+        super(request, cookie, session);
     }
 
     

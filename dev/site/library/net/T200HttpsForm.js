@@ -23,6 +23,14 @@ class T200HttpsForm {
         return false;
     }
 
+    static verify_ids(value) {
+        if(value){
+            return true;
+        }
+
+        return false;
+    }
+
     static verify_text(value) {
         if(value){
             return true;

@@ -96,9 +96,20 @@
 .item {
     width: 760px;
 	height: 35px;
+    display:flex;
+	justify-content:space-between;
+	align-items:center;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.item_left {
+
+}
+
+.item_right {
+    
 }
 
 .form_title {
@@ -246,4 +257,24 @@
     display:flex;
 	justify-content:left;
 	align-items:center;
+}
+
+.right_item_top {
+    display:flex;
+    justify-content:right;
+	align-items:center;
+    border-bottom: 1px solid darkgray;
+}
+
+.right_item_bottom {
+    display:flex;
+    justify-content:right;
+	align-items:center;
+    border-top: 1px solid darkgray;
+}
+
+.list_button {
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }

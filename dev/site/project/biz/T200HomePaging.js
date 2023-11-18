@@ -20,10 +20,10 @@ class T200HomePaging extends T200HomeBiz {
         this._paging_size = 10;
     }
 
-    calculate(model, page) {
+    calculate(model, sql, page) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-            self.count(model.merge_count()).then(function(data){
+            self.count(sql).then(function(data){
                 let value = data[0].total;
                 let total = Number(value);
                 let prev = page - 1;
@@ -33,6 +33,9 @@ class T200HomePaging extends T200HomeBiz {
 
                 paging.first = 1;
                 paging.last = Math.ceil(total / self._paging_size);
+                if(0 == paging.last){
+                    paging.last = 1;
+                }
 
                 paging.prev = prev < paging.first ? paging.first : prev;
                 paging.next = next > paging.last ? paging.last : next;
@@ -60,8 +63,30 @@ class T200HomePaging extends T200HomeBiz {
         return promise;
     }
 
+    paging(model, count, sql) {
+        let self = this;
+        let promise = new Promise(function(resolve, reject){
+            let page = self.request.get("paging");
 
-    paging(model) {
+            self.calculate(model, count, page).then(function(paging){
+                return self.list(sql).then(function(values){
+                    let data = {};
+                    data.paging = paging;
+                    data.values = values;
+                    resolve(data);
+                }, function(err){
+                    return error();
+                });
+            }, function(){
+                reject();
+            });
+        });
+
+        return promise;
+    }
+
+
+    paging1(model) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             let page = self.request.get("paging");

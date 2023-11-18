@@ -65,3 +65,12 @@ function hit_search(id, obj, url) {
         alert("Search Failure!");
     });
 }
+
+function remove(id, obj, url) {
+    let result = formtostring('form');
+    $.post(url, result, function(data){
+        obj.innerHTML = data;
+    }, function(){
+        alert("Execute Failure!");
+    });
+}

@@ -113,7 +113,7 @@ class T200HomeBiz extends T200BizBase {
                     }else{
                         result = false;
                     }
-                }, function(){
+                }, function(err){
 
                 }).finally(function(){
                     return self.store.disconnect().then(function(){

@@ -9,16 +9,20 @@ class T200Paging extends T200ModelBase {
         super();
     }
 
+    merge_search_count(value) {
+        return `select count(${this._key}) as total from ${this._table} where match(${this._search}) against('${value}')`;
+    }
+
     merge_search(value) {
-        return `select * from ${this._table} where match(${this._search}) against('${value}')`;
+        return `select * from ${this._table} where match(${this._search}) against('${value}') order by ${this._key} DESC`;
+    }
+
+    merge_paging_count() {
+        return `select count(${this._key}) as total from ${this._table}`;
     }
 
     merge_paging(paging) {
         return `select * from ${this._table} order by ${this._key} DESC limit ${this._size} offset ${this._offset}`;
-    }
-
-    merge_count() {
-        return `select count(${this._key}) as total from ${this._table}`;
     }
 
 }

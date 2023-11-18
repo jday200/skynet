@@ -27,7 +27,7 @@ class T200ModelBase {
     }
 
     merge_delete() {
-        return `delete * from ${this._table}`;
+        return `delete from ${this._table}`;
     }
 
     //
