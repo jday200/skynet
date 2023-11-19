@@ -11,7 +11,7 @@ class T200DBClient {
             if(undefined == self.database){
                 reject(T200Error.build());
             }else{
-                self.database.connect().then(function(conn){
+                return self.database.connect().then(function(conn){
                     self._conn = conn;
                     resolve();
                 }, function(err){
@@ -29,7 +29,7 @@ class T200DBClient {
             if(undefined == self.database){
                 reject(T200Error.build());
             }else{
-                self.database.disconnect(self._conn).then(function(){
+                return self.database.disconnect(self._conn).then(function(){
                     delete self._conn;
                     resolve();
                 }, function(err){
@@ -64,7 +64,7 @@ class T200DBClient {
             if(undefined == self.database){
                 reject(T200Error.build());
             }else{
-                self._conn.query(sql).then(function(data){
+                return self._conn.query(sql).then(function(data){
 
                     resolve(data);
                 }, function(err){

@@ -53,6 +53,7 @@ mariadb.start(setup).then(function(){
     dotter.failure(12);
     return error();
 }).finally(function(){
+    dotter.hit(13);
     if(dotter.judge()){
         log(__filename, "dot success");
     }else{

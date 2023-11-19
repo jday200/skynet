@@ -49,7 +49,7 @@ class T200Mariadb {
             if(undefined == self.pool){
                 reject(T200Error.build());
             }else{
-                self.pool.getConnection().then(function(conn){
+                return self.pool.getConnection().then(function(conn){
                     resolve(conn);
                 }, function(err){
                     reject(T200Error.build());
@@ -66,7 +66,7 @@ class T200Mariadb {
             if(undefined == self.pool){
                 reject(T200Error.build());
             }else{
-                conn.end().then(function(){
+                return conn.end().then(function(){
                     resolve();
                 }, function(err){
                     reject(T200Error.build());

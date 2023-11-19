@@ -1,13 +1,12 @@
 const { error, log, log_start, log_stop } = require('../../library/T200Lib.js');
 const T200Error = require('../../library/T200Error.js');
 
-const T200Dotter = require('../../library/T200Dotter.js');
-
 const T200HomeDBSetup = require('../store/T200HomeDBSetup.js');
 const T200Database = require('../../library/db/T200Database.js');
 const T200DBClient = require('../../library/db/T200DBClient.js');
 
 const T200HomeClear = require('./T200HomeClear.js');
+const T200HomeCreate = require('./T200HomeCreate.js');
 
 
 class T200HomeDatabase extends T200Database {
@@ -17,105 +16,65 @@ class T200HomeDatabase extends T200Database {
     }
 
     init() {
-        log(__filename, "home database init");
-        this.dotter = new T200Dotter();
-
+        log(__filename, "database init");
         let self = this;
         let promise = new Promise(function(resolve, reject){
             let result = false;
-            self.dotter.hit(1);
             return self.start().then(function(){
-                self.dotter.hit(2);
-                return self.run().then(function(){
-                    self.dotter.hit(15);
+                log(__filename, "start success");
+                let client = self.client();
+                return client.connect().then(function(){
+                    log(__filename, "connect success");
+
+                    let HomeClear = new T200HomeClear();
+                    return HomeClear.clear(client).then(function(){
+                        log(__filename, "Home Clear success");
+                    }, function(){
+                        log(__filename, "Home Clear failure");
+                        return error();
+                    }).then(function(){
+                        let HomeCreate = new T200HomeCreate();
+                        return HomeCreate.create(client).then(function(){
+                            log(__filename, "Home Create success");
+                            result = true;
+                        }, function(){
+                            log(__filename, "Home Create failure");
+                        });
+                    }, function(){
+
+                    }).finally(function(){
+                        return client.disconnect().then(function(){
+                            log(__filename, "disconnect success");
+                        }, function(){
+                            log(__filename, "disconnect failure");
+                            result = false;
+                            return error();
+                        });
+                    });
+                }, function(){
+                    log(__filename, "connect failure");
+                }).finally(function(){
+                    return self.stop().then(function(){
+                        log(__filename, "stop success");
+                    }, function(){
+                        log(__filename, "stop failure");
+                        result = false;
+                    });
+                });
+            }, function(){
+                log(__filename, "start failure");
+            }).finally(function(){
+                if(result){
                     resolve();
-                }, function(err){
-
-                }).finally(function(){
-                    self.dotter.hit(16);
-                    return self.stop(function(){
-                        self.dotter.hit(17);
-                    }, function(err){
-                        return error();
-                    });
-                });
-            }, function(err){
-                return error();
+                }else{
+                    reject();
+                }
             });
         });
 
         return promise;
     }
 
-    run() {
-        log(__filename, "home database run");
-        let self = this;
-        let promise = new Promise(function(resolve, reject){
-            let result = false;
-            let client = self.client();
-
-            self.dotter.hit(3);
-            return client.connect().then(function(){
-                self.dotter.hit(4);
-                return self.clear(client).then(function(){
-                    self.dotter.hit(10);
-                }, function(err){
-                    return error();
-                }).then(function(){
-                    self.dotter.hit(11);
-                    return self.create(client);
-                }, function(err){
-                    return error();
-                }).then(function(){
-                    self.dotter.hit(12);
-                }, function(err){
-
-                }).finally(function(){
-                    self.dotter.hit(13);
-                    
-                    return client.disconnect().then(function(){
-                        self.dotter.hit(14);
-                    }, function(err){
-                        return error();
-                    });
-                    
-                });
-            }, function(err){
-
-            });
-        });
-
-        return promise; 
-    }
-
-    clear(client) {
-        let self = this;
-        let promise = new Promise(function(resolve, reject){
-            let HomeClear = new T200HomeClear();
-            self.dotter.hit(5);
-            HomeClear.dotter = self.dotter;
-            HomeClear.clear(client).then(function(){
-                self.dotter.success(9);
-                resolve();
-            }, function(err){
-                self.dotter.failure(10);
-                reject();
-            });
-
-        });
-
-        return promise;
-    }
-
-    create(client) {
-        let self = this;
-        let promise = new Promise(function(resolve, reject){
-            resolve();
-
-        });
-
-        return promise;
-    }
 }
 
 log_start(__filename, "Home Database init");
@@ -126,14 +85,6 @@ HomeDatabase.init().then(function(){
     log(__filename, "Home Database init success");
 }, function(){
     log(__filename, "Home Database init failure");
-}).finally(function(){
-    self.dotter.hit(18);
-    if(HomeDatabase.dotter.judge()){
-        log(__filename, "Result:", "true");
-    }else{
-        log(__filename, "Result:", "false");
-    }
 });
-
 
 log_stop(__filename, "Home Database init");

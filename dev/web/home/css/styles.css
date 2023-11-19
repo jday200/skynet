@@ -1,0 +1,112 @@
+body {
+	background-color: #ADD8E6;
+    overflow-x:hidden;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+fieldset {
+    border: 1px solid darkgray;
+}
+
+body > div {
+    width: 1024px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+    background-color:aquamarine;
+}
+
+nav {
+    width: 1024px;
+    line-height: 35px;
+    display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
+nav > div {
+    display:flex;
+	justify-content:left;
+	align-items:center;
+}
+
+nav > div + div {
+    display:flex;
+	justify-content:right;
+	align-items:center;
+}
+
+body > div > fieldset {
+    width: 998px;
+    margin-top: 5px;
+}
+
+.title {
+    width: 1000px;
+    border: 0px;
+    border-top: 1px solid darkgray;
+}
+
+fieldset > legend + div {
+    width: 1000px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+fieldset > legend + div > fieldset > legend + div {
+    width: 484px;
+}
+
+fieldset > legend + div > fieldset > div {
+    width: 484px;
+}
+
+
+.box {
+    display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+}
+
+.nav {
+    width: 1024px;
+    height: 35px;
+    display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
+.nav_left {
+    float: left;
+}
+
+.nav_right {
+    float: right;
+}
+
+header {
+    height:200px;
+}
+
+footer {
+    width: 1024px;
+    height:50px;
+    background-color: #cdd9b3;
+    text-align: center;
+}
+
+.region_item {
+    margin-left: 5px;
+    margin-right: 5px;
+}
