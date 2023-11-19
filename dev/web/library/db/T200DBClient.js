@@ -30,6 +30,7 @@ class T200DBClient {
                 reject(T200Error.build());
             }else{
                 self.database.disconnect(self._conn).then(function(){
+                    delete self._conn;
                     resolve();
                 }, function(err){
                     reject(err);

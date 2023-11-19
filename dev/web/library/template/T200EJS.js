@@ -14,7 +14,7 @@ class T200EJS {
             log(__filename, "render_file", file);
             ejs.renderFile(file, data, function(err, result){
                 if(err){
-                    reject(err);
+                    reject(T200Error.bind());
                 }else{
                     resolve(result);
                 }
