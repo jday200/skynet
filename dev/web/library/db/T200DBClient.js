@@ -58,7 +58,7 @@ class T200DBClient {
         return promise;
     }
 
-    execute(sql) {
+    async execute(sql) {
         let self = this;
         let promise = new Promise(function(resolve, reject){
             if(undefined == self.database){

@@ -9,16 +9,19 @@ class T200Dotter {
     }
 
     hit(i) {
+        console.log(`\thit => ${i}`);
         this._values.push(i);
     }
 
     success(i) {
+        console.log(`\tsuccess => ${i}`);
         this._values.push(i);
         this._success = true;
         this._result = this._result ? true : false;
     }
 
     failure(i) {
+        console.log(`\tfailure => ${i}`);
         this._values.push(i);
         this._result = false;
     }
