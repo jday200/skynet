@@ -1,126 +1,72 @@
-.side_box {
+body {
+	background-color: #ADD8E6;
+    overflow-x:hidden;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+fieldset {
+    border: 1px solid darkgray;
+}
+
+body > div {
     width: 1024px;
-    display: flex;
-    justify-content: top;
-    align-items: top;
+    display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+    background-color:aquamarine;
 }
 
-.left_box {
-    width: 200px;
-    min-height: 600px;
-    background-color: burlywood;
+nav {
+    width: 1024px;
+    line-height: 35px;
+    display:flex;
+	justify-content:space-between;
+	align-items:center;
 }
 
-.left_group {
-    width: 200px;
+nav > div {
+    display:flex;
+	justify-content:left;
+	align-items:center;
 }
 
-.right_box {
-    width: 800px;
-    min-height: 600px;
-
-    background-color: deeppink;
+nav > div + div {
+    display:flex;
+	justify-content:right;
+	align-items:center;
 }
 
-.right_title {
-    width: 800px;
-    background-color:lightblue;    
-    display: flex;
-    justify-content: top;
-    align-items: center;
-    flex-direction: column;
+body > div > fieldset {
+    width: 998px;
+    margin-top: 5px;
+}
 
-    border: 0;
+.title {
+    width: 1000px;
+    border: 0px;
     border-top: 1px solid darkgray;
 }
 
-.right_group {
-    width: 760px;
-    background-color: darkorange;
+fieldset > legend + div {
+    width: 1000px;
+    display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
-.right_item {
-    line-height: 35px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+fieldset > legend + div > fieldset > legend + div {
+    width: 484px;
 }
 
-.left_panel {
-
-}
-
-.right_panel {
-
-}
-
-.right_button {
-    line-height: 35px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    margin-right: 5px;
-}
-
-.menu_group {
-    line-height: 30px;
-    border-bottom: 1px solid darkgray;
-}
-
-.menu_box {
-
-}
-
-.menu_item {
-    margin-left: 50px;
-    line-height: 35px;
-}
-
-.side_group {
-    margin-bottom: 10px;
-}
-
-.search_box {
-    line-height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.paging_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.paging_top {
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1 solid black;
-}
-
-.paging_bottom {
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1 solid black;
-}
-
-.list_box {
-    border: 1px solid black;
-}
-
-.list_item {
-    width: 753px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid black;
-    margin-top: -1px;
-    margin-left: -1px;
-    margin-right: -1px;
+fieldset > legend + div > fieldset > div {
+    width: 484px;
 }
