@@ -23,6 +23,17 @@ fieldset > div {
     align-items: center;
 }
 
+form {
+    width: 1024px;
+    min-height: 200px;
+    background-color: lightpink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
 
 
 .channel {
@@ -32,6 +43,7 @@ fieldset > div {
 body > div > fieldset > div > fieldset > div {
     width: 484px;
     height: 150px;
+    justify-content: flex-start;
     flex-direction: column;
 }
 
@@ -69,4 +81,94 @@ body > div > fieldset > div > fieldset > div > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+form + div {
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+form > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form > div > div {
+    width: 400px;
+    line-height: 35px;
+    text-align: center;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+form > div > div > label {
+    display: flex;
+    width: 100px;
+    text-align: left;
+    font-weight: bold;
+}
+
+form > div > div > input {
+    width: 292px;
+}
+
+form > div > div > button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.form_title {
+    font-size: large;
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form_msg {
+    width: 400px;
+    line-height: 35px;
+    align-items: normal;
+    margin-bottom: 5px;
+}
+
+/*
+input[type="email"] {
+    width: 220px;
+}
+*/
+
+.normal_email {
+    width: 220px;
+}
+
+.code {
+    width: 100px;
+}
+
+.button {
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="email"] + button {
+    width: 60px;
+    margin-left: 10px;
+}
+
+.label {
+    width: 150px;
+}
+
+.text {
+    width: 242px;
+}
+
+.email {
+    width: 172px;
 }
