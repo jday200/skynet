@@ -172,3 +172,145 @@ input[type="email"] + button {
 .email {
     width: 172px;
 }
+
+.notice_panel {
+    width: 1000px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+.notice_title {
+    width: 1000px;
+    font-size: large;
+    line-height: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.notice_content {
+    width: 1000px;
+    min-height: 500px;
+    line-height: 30px;
+    text-align: left;
+}
+
+.notice_time {
+    width: 1000px;
+    line-height: 30px;
+    text-align: right;
+}
+
+.list_box {
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 600px;
+}
+
+.list_form {
+    width: 1000px;
+    background-color:aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search_box {
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: unset;
+}
+
+.search_button {
+    width: 60px;
+    margin-left: 20px;
+}
+
+.list_group {
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+}
+
+.list_item {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paging {
+    line-height: 50px;
+}
+
+.region_group {
+    width: 968px;
+    display: block;
+}
+
+.forum_box {
+    width: 1000px;
+    min-height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+
+    margin-top: -1px;
+    border: 1px solid darkgray;
+}
+
+
+.forum_person {
+    width: 200px;
+    padding: 10px;
+}
+
+.forum_user {
+    line-height: 35px;
+}
+
+.forum_intro {
+    min-height: 145px;
+}
+
+.forum_article {
+    width: 780px;
+    min-height: 180px;
+    border-left: 1px solid darkgray;
+}
+
+.forum_title {
+
+}
+
+.forum_content {
+    min-height: 180px;
+}
+
+.forum_footer {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.reply_box {
+    width: 1000px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid darkgray;
+    background-color: lightpink;
+}
+
+.reply_content {
+    width: 730px;
+    min-height: 100px;
+    border-left: 1px solid darkgray;
+}
+
+.reply_button {
+    width: 60px;
+    margin-left: 20px;
+}

@@ -1,72 +1,25 @@
-body {
-	background-color: #ADD8E6;
-    overflow-x:hidden;
+nav a {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-a {
-    text-decoration: none;
-    font-weight: bold;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-fieldset {
-    border: 1px solid darkgray;
-}
-
-body > div {
-    width: 1024px;
-    display:flex;
-	justify-content:center;
-	align-items:center;
-	flex-direction:column;
-    background-color:aquamarine;
-}
-
-nav {
-    width: 1024px;
-    line-height: 35px;
-    display:flex;
-	justify-content:space-between;
-	align-items:center;
-}
-
-nav > div {
-    display:flex;
+.nav_channel {
 	justify-content:left;
-	align-items:center;
 }
 
-nav > div + div {
-    display:flex;
-	justify-content:right;
-	align-items:center;
-}
-
-body > div > fieldset {
-    width: 998px;
-    margin-top: 5px;
-}
-
-.title {
+body > div > div {
     width: 1000px;
-    border: 0px;
-    border-top: 1px solid darkgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-fieldset > legend + div {
-    width: 1000px;
-    display:flex;
-	justify-content:center;
-	align-items:center;
+body > div > div > fieldset {
+    width: 200px;
+    min-height: 600px;
 }
 
-fieldset > legend + div > fieldset > legend + div {
-    width: 484px;
-}
-
-fieldset > legend + div > fieldset > div {
-    width: 484px;
+body > div > div > fieldset + fieldset{
+    width: 800px;
+    min-height: 600px;
 }
