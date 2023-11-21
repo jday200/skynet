@@ -70,7 +70,16 @@ class T200HttpsResponse {
                             break;
                     }
                 }else{
-                    this.res.end();
+                    switch(this._type){
+                        case "text":
+                            this.res.end(this._data);
+                            break;
+                        case "json":
+                            this.paras['result'] = "failure";
+
+                            this.res.end(JSON.stringify(this.paras));
+                            break;
+                    }
                 }
                 
                 break;

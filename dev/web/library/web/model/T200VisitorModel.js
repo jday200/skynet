@@ -9,9 +9,21 @@ class T200VisitorModel extends T200SearchModel {
         super();
 
     }
+
+    fields() {
+        return `username, password, email`;
+    }
+
+    values() {
+        return `'${this.username}', '${this.password}', '${this.email}'`;
+    }
+
+    merge_register() {
+        return this.merge_insert();
+    }
     
     merge_login() {
-        return `select ${this._key} from ${this._table} where username = '${this.username}' and password = '${this.password}'`;
+        return `select ${this._key}, username from ${this._table} where username = '${this.username}' and password = '${this.password}'`;
     }
 
     merge_login_update() {

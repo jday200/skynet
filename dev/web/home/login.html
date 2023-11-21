@@ -90,12 +90,15 @@
 
 <script>
     $.win.onload = function(){
+        $.id('form').onsubmit = function(){
+            return false;
+        };
         $.id('submit').onclick = function(){
             let data = formtostring('form');
             $.post('/login', data, function(){
-
+                forward("/");
             }, function(){
-
+                alert('Login Failure!');
             });
         };
     };

@@ -16,6 +16,7 @@
     <meta http-equiv="expires" content="0">
 
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/home.css">
 
 
     <script src="/js/t200.js"></script>
@@ -29,12 +30,12 @@
 
         <nav>
             <div>
-                <a href="">Home</a> |
-                <a href="">About</a>
+                <a href="/">Home</a> |
+                <a href="/about.html">About</a>
             </div>
             <div>
-                <a href="">Login</a> |
-                <a href="">Register</a>
+                <a href="/login.html">Login</a> |
+                <a href="/register.html">Register</a>
             </div>
         </nav>
 
@@ -42,99 +43,56 @@
             <img src="/images/home.gif" />
         </header>
 
-        <nav>
-            <a href="">Home</a> - 
-            <a href="">Home</a> -
-            <a href="">Home</a> -
-            <a href="">Home</a> -
-            <a href="">Home</a> -
-            <a href="">Home</a> -
-            <a href="">Home</a>
+        <nav class="nav_channel">
+            <a href="/">Home</a> -
+            <a href="/house/index.html">House</a> -
+            <a href="/job/index.html">Job</a> -
+            <a href="/trading/index.html">Trading</a> -
+            <a href="/exchange/index.html">Exchange</a>
         </nav>
 
-        <fieldset>
-            <legend>Notice</legend>
-            <div>
-
+        <form id="form">
+            <input type="hidden" name="test">
+            <div class="form_title">
+                Register
             </div>
-        </fieldset>
-
-        <fieldset>
-            <legend>Region</legend>
-            <div>
-                
+            <div class="form_msg">
+                Hello
             </div>
-        </fieldset>
-
-        <fieldset class="title">
-            <legend>House</legend>
-            <div>
-                <fieldset>
-                    <legend>Rent</legend>
-                    <div>
-
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Wanted</legend>
-                    <div>
-                        
-                    </div>
-                </fieldset>
+            <div id="main">
+                <div>
+                    <label >Username:</label>
+                    <input type="text" name="username">
+                </div>
+                <div>
+                    <label >Password:</label>
+                    <input type="password" name="password1">
+                </div>
+                <div>
+                    <label >Password:</label>
+                    <input type="password" name="password2">
+                </div>
+                <div>
+                    <label >Email:</label>
+                    <input class="normal_email" type="email" name="email">
+                    <button>Send</button>
+                </div>
+                <div>
+                    <label >Code:</label>
+                    <input class="code" type="password" name="authcode">
+                </div>
+                <div>
+                    <label >Code:</label>
+                    <input class="code" type="password" name="invitecode">
+                </div>
+                <div class="button">
+                    <button id="submit">Submit</button>
+                </div>
             </div>
-        </fieldset>
-
-        <fieldset class="title">
-            <legend>Job</legend>
-            <div>
-                <fieldset>
-                    <legend>Recruit</legend>
-                    <div>
-
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Wanted</legend>
-                    <div>
-                        
-                    </div>
-                </fieldset>
+            <div class="form_msg">
+                <a href="/login.html">Login</a>
             </div>
-        </fieldset>
-
-        <fieldset class="title">
-            <legend>Trading</legend>
-            <div>
-                <fieldset>
-                    <legend>Sell</legend>
-                    <div>
-
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Buy</legend>
-                    <div>
-                        
-                    </div>
-                </fieldset>
-            </div>
-        </fieldset>
-
-        <fieldset class="title">
-            <legend>Exchange</legend>
-            <div>
-                <fieldset>
-                    <div>
-
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div>
-                        
-                    </div>
-                </fieldset>
-            </div>
-        </fieldset>
+        </form>
 
         <footer>
 
@@ -143,5 +101,21 @@
     </div>
 
 </body>
+
+<script>
+    $.win.onload = function(){
+        $.id('form').onsubmit = function(){
+            return false;
+        };
+        $.id('submit').onclick = function(){
+            let data = formtostring('form');
+            $.post('/register', data, function(){
+                forward("/login.html");
+            }, function(){
+                alert('Register Failure!');
+            });
+        };
+    };
+</script>
 
 </html>

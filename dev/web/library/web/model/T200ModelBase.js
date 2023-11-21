@@ -11,6 +11,10 @@ class T200ModelBase {
         this._fields = "";
         this._values = "";
     }
+
+    merge_insert() {
+        return `insert into ${this._table} (${this._fields}) values (${this._values})`;
+    }
 }
 
 module.exports = T200ModelBase;
