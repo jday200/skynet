@@ -5,8 +5,8 @@ const T200ViewBase = require('../../library/web/view/T200ViewBase.js');
 
 
 class T200HomeView extends T200ViewBase {
-    constructor() {
-        super();
+    constructor(resource) {
+        super(resource);
     }
 }
 

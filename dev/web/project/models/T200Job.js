@@ -4,7 +4,7 @@ const T200Error = require('../../library/T200Error.js');
 const T200HomeVisitorModel = require('./T200HomeVisitorModel.js');
 
 
-class T200House extends T200HomeVisitorModel {
+class T200Job extends T200HomeVisitorModel {
     constructor() {
         super();
         this._table = "";
@@ -17,4 +17,4 @@ class T200House extends T200HomeVisitorModel {
 
 }
 
-module.exports = T200House;
+module.exports = T200Job;

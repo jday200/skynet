@@ -3,7 +3,11 @@ const T200Error = require('../../library/T200Error.js');
 
 const T200HomeVisitorBiz = require('./T200HomeVisitorBiz.js');
 
-const T200Notice = require('../models/T200Notice.js')
+const T200Notice = require('../models/T200Notice.js');
+const T200House = require('../models/T200House.js');
+const T200Job = require('../models/T200Job.js');
+const T200Trading = require('../models/T200Trading.js');
+const T200Exchange = require('../models/T200Exchange.js');
 
 
 class T200HomeIndex extends T200HomeVisitorBiz {
@@ -84,7 +88,9 @@ class T200HomeIndex extends T200HomeVisitorBiz {
         let promise = new Promise(function(resolve, reject){
             let house = new T200House();
             house._table = "house_rent";
-            return self.load(house.merge_select()).then(function(values){
+            house._fields = house.list_fields();
+            house._order_direction = "DESC";
+            return self.load(house.merge_list()).then(function(values){
                 data.house_rents = values;
                 resolve(data);
             }, function(){
@@ -100,7 +106,9 @@ class T200HomeIndex extends T200HomeVisitorBiz {
         let promise = new Promise(function(resolve, reject){
             let house = new T200House();
             house._table = "house_wanted";
-            return self.load(house.merge_select()).then(function(values){
+            house._fields = house.list_fields();
+            house._order_direction = "DESC";
+            return self.load(house.merge_list()).then(function(values){
                 data.house_wanteds = values;
                 resolve(data);
             }, function(){
@@ -116,7 +124,9 @@ class T200HomeIndex extends T200HomeVisitorBiz {
         let promise = new Promise(function(resolve, reject){
             let job = new T200Job();
             job._table = "job_recruit";
-            return self.load(job.merge_select()).then(function(values){
+            job._fields = job.list_fields();
+            job._order_direction = "DESC";
+            return self.load(job.merge_list()).then(function(values){
                 data.job_recruits = values;
                 resolve(data);
             }, function(){
@@ -132,7 +142,9 @@ class T200HomeIndex extends T200HomeVisitorBiz {
         let promise = new Promise(function(resolve, reject){
             let job = new T200Job();
             job._table = "job_wanted";
-            return self.load(job.merge_select()).then(function(values){
+            job._fields = job.list_fields();
+            job._order_direction = "DESC";
+            return self.load(job.merge_list()).then(function(values){
                 data.job_wanteds = values;
                 resolve(data);
             }, function(){
@@ -148,7 +160,9 @@ class T200HomeIndex extends T200HomeVisitorBiz {
         let promise = new Promise(function(resolve, reject){
             let trading = new T200Trading();
             trading._table = "trading_sell";
-            return self.load(trading.merge_select()).then(function(values){
+            trading._fields = trading.list_fields();
+            trading._order_direction = "DESC";
+            return self.load(trading.merge_list()).then(function(values){
                 data.trading_sells = values;
                 resolve(data);
             }, function(){
@@ -164,7 +178,9 @@ class T200HomeIndex extends T200HomeVisitorBiz {
         let promise = new Promise(function(resolve, reject){
             let trading = new T200Trading();
             trading._table = "trading_buy";
-            return self.load(trading.merge_select()).then(function(values){
+            trading._fields = trading.list_fields();
+            trading._order_direction = "DESC";
+            return self.load(trading.merge_list()).then(function(values){
                 data.trading_buys = values;
                 resolve(data);
             }, function(){
@@ -180,10 +196,12 @@ class T200HomeIndex extends T200HomeVisitorBiz {
         let promise = new Promise(function(resolve, reject){
             let exchange = new T200Exchange();
 
-            return self.load(exchange.merge_select()).then(function(values){
+            exchange._fields = exchange.list_fields();
+            exchange._order_direction = "DESC";
+            return self.load(exchange.merge_list()).then(function(values){
                 data.exchanges = values;
                 resolve(data);
-            }, function(){
+            }, function(err){
                 reject();
             });
         });

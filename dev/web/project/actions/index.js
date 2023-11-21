@@ -13,7 +13,7 @@ async function do_index(request, response, cookie, session, resource) {
         return HomeIndex.load_index().then(function(data){
             console.log(data);
             return view.render_file('index.ejs', data);
-        }, function(){
+        }, function(err){
             return error();
         }).then(function(result){
             response.success(result);
