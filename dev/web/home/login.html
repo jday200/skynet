@@ -96,7 +96,7 @@
         $.id('submit').onclick = function(){
             let data = formtostring('form');
             $.post('/login', data, function(){
-                forward("/");
+                forward("/content/index.html");
             }, function(){
                 alert('Login Failure!');
             });
