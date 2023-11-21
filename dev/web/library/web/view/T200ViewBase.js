@@ -1,7 +1,7 @@
-const { error, log } = require('../T200Lib.js');
-const T200Error = require('../T200Error.js');
+const { error, log } = require('../../T200Lib.js');
+const T200Error = require('../../T200Error.js');
 
-const T200EJS = require('../template/T200EJS.js');
+const T200EJS = require('../../template/T200EJS.js');
 
 
 class T200ViewBase {

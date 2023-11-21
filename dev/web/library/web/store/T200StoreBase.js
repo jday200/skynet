@@ -37,7 +37,11 @@ class T200StoreBase {
     disconnect() {
         let self = this;
         let promise = new Promise(function(resolve, reject){
-
+            if(self.check()){
+                self._client.disconnect().then(resolve, reject);
+            }else{
+                reject();
+            }
         });
 
         return promise;

@@ -11,8 +11,14 @@ class T200PagingModel extends T200ModelBase {
         this._folio_size = 5;
         this._page_size = 10;
         this._offset = 0;
+        this._order_field = "";
+        this._order_direction = "";
         //
         this._page;
+    }
+
+    merge_list() {
+        return `select ${this._fields} from ${this._table} order by ${this._key} ${this._order_direction} limit ${this._page_size} offset ${this._offset}`;
     }
 }
 
