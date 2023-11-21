@@ -4,7 +4,7 @@ const T200Error = require('../../T200Error.js');
 const T200ForumModel = require('./T200ForumModel.js');
 
 
-class T200UserModel extends T200ForumModel {
+class T200AdminModel extends T200ForumModel {
     constructor() {
         super();
 
@@ -13,4 +13,4 @@ class T200UserModel extends T200ForumModel {
 
 }
 
-module.exports = T200UserModel;
+module.exports = T200AdminModel;

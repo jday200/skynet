@@ -2,24 +2,24 @@ const { error, log } = require('../../library/T200Lib.js');
 const T200Error = require('../../library/T200Error.js');
 
 const T200HttpsForm = require('../../library/net/T200HttpsForm.js');
-const T200Person = require('../models/T200Person.js');
-const T200HomePerson = require('../biz/T200HomePerson.js');
+const T200Visitor = require('../models/T200Visitor.js');
+const T200HomeVisitorBiz = require('../biz/T200HomeVisitorBiz.js');
 
 
 async function do_login(request, response, cookie, session, resource) {
     log(__filename, "do_login");
     let self = this;
     let promise = new Promise(function(resolve, reject){
-        let person = new T200Person();
-        let HomePerson = new T200HomePerson();
+        let visitor = new T200Visitor();
+        let VisitorBiz = new T200HomeVisitorBiz();
 
-        person.username = request.get('username');
-        person.password = request.get('password');
+        visitor.username = request.get('username');
+        visitor.password = request.get('password');
 
-        if(T200HttpsForm.verify_text(person.username)
-            && T200HttpsForm.verify_text(person.password)){
+        if(T200HttpsForm.verify_text(visitor.username)
+            && T200HttpsForm.verify_text(visitor.password)){
 
-            HomePerson.login(person).then(function(data){
+            VisitorBiz.login(visitor).then(function(data){
                 set_data(cookie, session, data);
 
                 response.type('json');

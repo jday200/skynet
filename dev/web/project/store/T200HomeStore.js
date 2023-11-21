@@ -7,6 +7,7 @@ const T200StoreBiz = require('../../library/web/store/T200StoreBase.js');
 class T200HomeStore extends T200StoreBiz {
     constructor() {
         super();
+        this._client = global.database.client();
     }
     
 }

@@ -8,16 +8,13 @@ class T200BizBase {
     }
 
     check() {
-        let self = this;
-        let promise = new Promise(function(resolve, reject){
-            if(undefined == self.store){
-                reject(T200Error.build());
-            }else{
-                resolve();
-            }
-        });
+        if(undefined == this.store){
+            
+        }else{
+            return true;
+        }
 
-        return promise;
+        return false;
     }
 }
 
